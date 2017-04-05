@@ -4,7 +4,6 @@
 ![Made in PHP 7](https://img.shields.io/badge/PHP-7-blue.svg)
 
 
-Blog dedicado a la búsqueda de favores
-
+Sistema web dedicado a solicitud y realización de favores sin fines de lucro. 
 
 
