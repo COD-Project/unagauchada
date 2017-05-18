@@ -46,11 +46,11 @@ define('DATABASE', array(
  * @example "/" If to access the framework we place http://url.com in the URL, or http://localhost
  * @example "/php7-quickstart/" if to access the framework we place http://url.com/php7-quickstart, or http://localhost/php7-quickstart/
 */
-define('__ROOT__', '/php7-quickstart/');
+define('__ROOT__', '/unagauchada/');
 
 # App constants
-define('URL', 'http://localhost/php7-quickstart/');
-define('APP', 'PHP7-quickstart');
+define('URL', 'http://localhost/unagauchada/');
+define('APP', 'Unagauchada');
 define('HTML_DIR', 'templates/');
 define('APP_COPY','Copyright &copy; ' . date('Y',time()) . APP);
 
