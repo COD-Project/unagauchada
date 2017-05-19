@@ -50,7 +50,7 @@ define('__ROOT__', '/unagauchada/');
 
 # App constants
 define('URL', 'http://localhost/unagauchada/');
-define('APP', 'Unagauchada');
+define('APP', 'unagauchada');
 define('HTML_DIR', 'templates/');
 define('APP_COPY','Copyright &copy; ' . date('Y',time()) . APP);
 
