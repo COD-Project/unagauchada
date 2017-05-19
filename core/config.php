@@ -5,7 +5,7 @@ declare(strict_types=1);
 
 //------------------------------------------------
 # Security
-defined('INDEX_DIR') OR exit('PHP7-quickstart software says .i.');
+defined('INDEX_DIR') OR exit('unagauchada software says .i.');
 
 //------------------------------------------------
 # Timezone DOC http://php.net/manual/es/timezones.php
@@ -34,7 +34,7 @@ define('DATABASE', array(
   'host' => 'localhost', 
   'user' => 'root',
   'pass' => '',
-  'name' => '',
+  'name' => 'unagauchadaDB',
   'port' => 1521,
   'protocol' => 'TCP',
   'motor' => 'mysql'
@@ -56,7 +56,7 @@ define('APP_COPY','Copyright &copy; ' . date('Y',time()) . APP);
 
 //------------------------------------------------
 # Session control
-define('DB_SESSION', false);
+define('DB_SESSION', true);
 define('SESSION_TIME', 18000); # life time for session cookies -> 5 hs = 18000 seconds.
 define('SESS_APP_ID', '_sess_app_id_');
 define('KEY', '');

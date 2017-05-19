@@ -35,7 +35,7 @@ let goSignup = () => {
             if(connect.responseText == 1) {
               result = '<div class="alert alert-dismissible alert-success">';
               result += '<h4>Registration completed!</h4>';
-              result += '<p><strong>You are being redirected...</strong></p>';
+              result += '<p><strong>Estás siendo redirigido...</strong></p>';
               result += '</div>';
               __('_AJAX_SIGNUP_').innerHTML = result;
               location.reload();
@@ -46,7 +46,7 @@ let goSignup = () => {
             result = '<div class="alert alert-dismissible alert-warning">';
             result += '<button type="button" class="close" data-dismiss="alert">x</button>';
             result += '<h4>Processing...</h4>';
-            result += '<p><strong>Your registration is being processed...</strong></p>';
+            result += '<p><strong>Tu registro esta siendo procesado...</strong></p>';
             result += '</div>';
             __('_AJAX_SIGNUP_').innerHTML = result;
           }
@@ -59,9 +59,9 @@ let goSignup = () => {
         result += '<button type="button" class="close" data-dismiss="alert">x</button>';
         result += '<h4>ERROR</h4>';
         if (!email_query(email)) {
-          result += '<p><strong>Email has invalid characters.</strong></p>';
+          result += '<p><strong>El Email tiene campos invalidos.</strong></p>';
         } else {
-          result += '<p><strong>Passwords do not match or have invalid characters.</strong></p>';
+          result += '<p><strong>Las contraseñas no coinciden o tienen caracteres invalidos.</strong></p>';
         }
         result += '</div>';
         __('_AJAX_SIGNUP_').innerHTML = result;
@@ -70,7 +70,7 @@ let goSignup = () => {
       result = '<div class="alert alert-dismissible alert-warning">';
       result += '<button type="button" class="close" data-dismiss="alert">x</button>';
       result += '<h4>ERROR</h4>';
-      result += '<p><strong>All fields must be filled.</strong></p>';
+      result += '<p><strong>Todos los campos deben ser llenados.</strong></p>';
       result += '</div>';
       __('_AJAX_SIGNUP_').innerHTML = result;
     }
@@ -78,7 +78,7 @@ let goSignup = () => {
     result = '<div class="alert alert-dismissible alert-danger">';
     result += '<button type="button" class="close" data-dismiss="alert">x</button>';
     result += '<h4>ERROR</h4>';
-    result += '<p><strong>The terms and conditions must be accepted.</strong></p>';
+    result += '<p><strong>Los terminos y condiciones deben ser aceptados.</strong></p>';
     result += '</div>';
     __('_AJAX_SIGNUP_').innerHTML = result;
   }

@@ -27,7 +27,7 @@ let goLogin = () => {
         if(connect.responseText == 1) {
           result = '<div class="alert alert-dismissible alert-success">';
           result += '<h4>Conected!</h4>';
-          result += '<p><strong> You are being redirected...</strong></p>';
+          result += '<p><strong> Estás siendo redirigido...</strong></p>';
           result += '</div>';
           __('_AJAX_LOGIN_').innerHTML = result;
           location.reload();
@@ -42,7 +42,7 @@ let goLogin = () => {
         result = '<div class="alert alert-dismissible alert-warning">';
         result += '<button type="button" class="close" data-dismiss="alert">x</button>';
         result += '<h4>Processing...</h4>';
-        result += '<p><strong> You are initiating session...</strong></p>';
+        result += '<p><strong> Estás iniciando sesión...</strong></p>';
         result += '</div>';
         __('_AJAX_LOGIN_').innerHTML = result;
       }
@@ -54,9 +54,9 @@ let goLogin = () => {
     result = '<div class="alert alert-dismissible alert-danger">';
     result += '<button type="button" class="close" data-dismiss="alert">x</button>';
     if(password == null || password.length == 0 || email == null || email.length == 0){
-      result += '<strong>ERROR:</strong> All data must be full.';
+      result += '<strong>ERROR:</strong> Todos los campos deben ser completados.';
     } else {
-      result += '<strong>ERROR:</strong> Email or Password contain invalid characters';
+      result += '<strong>ERROR:</strong> Email o contraseñas incorrectas';
     }
     result += '</div>';
     __('_AJAX_LOGIN_').innerHTML = result;

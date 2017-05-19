@@ -28,14 +28,14 @@
                         if($this->sessions->session_in_use()){
                           echo ('
                           <li><a href="profiles/' . $this->router->semanticURL($this->sessions->connected_user()['name']) . '"><i class="glyphicon glyphicon-user"></i> ' . $this->sessions->connected_user()['name'] . '</a></li>
-                          <li><a href="logout"><i class="glyphicon glyphicon-log-out"></i> Log Out</a></li>
-                          <li><a href="preferences"><i class="glyphicon glyphicon-wrench"></i> Preferences</a></li>
-                          <li><a href="#"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
+                          <li><a href="logout"><i class="glyphicon glyphicon-log-out"></i> Cerrar sesión </a></li>
+                          <li><a href="preferences"><i class="glyphicon glyphicon-wrench"></i> Preferencias </a></li>
+                          <li><a href="#"><i class="glyphicon glyphicon-cog"></i> Configuración </a></li>
                           ');
                         } else {
                           echo ('
-                          <li><a data-toggle="modal" data-target="#Login"><i class="glyphicon glyphicon-log-in"></i>  Log In</a></li>
-                          <li><a data-toggle="modal" data-target="#Signup"><i class="glyphicon glyphicon-log-in"></i>  Sign Up</a></li>
+                          <li><a data-toggle="modal" data-target="#Login"><i class="glyphicon glyphicon-log-in"></i>  Iniciar sesión </a></li>
+                          <li><a data-toggle="modal" data-target="#Signup"><i class="glyphicon glyphicon-log-in"></i>  Registrarse </a></li>
                           ');
                         }
                       ?>
