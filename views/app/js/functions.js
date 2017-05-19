@@ -1,16 +1,16 @@
-function __(id) {
+let __ = (id) => {
   return document.getElementById(id);
 }
 
-function __tn(elem, tagName) {
+let __tn = (elem, tagName) => {
   return elem.getElementsByTagName(tagName);
 }
 
-function __cn(elem, className) {
+let __cn = (elem, className) => {
   return elem.getElementsByClassName(className);
 }
 
-function insertAfter(e, i) {
+let insertAfter = (e, i) => {
   if(e.nextSibling){
     e.parentNode.insertBefore(i, e.nextSibling);
   } else {
@@ -18,7 +18,7 @@ function insertAfter(e, i) {
   }
 }
 
-function DeleteItem(contenido, url) {
+let deleteItem = (contenido, url) => {
   if (window.confirm(contenido)) {
       window.location = url;
   }
@@ -26,7 +26,7 @@ function DeleteItem(contenido, url) {
 
 // CMDForm functions
 
-function getFormData() {
+let getFormData = () => {
   let nodeList = document.cmd_form.elements,
       data = new Object();
   for (var i = 0; i < (nodeList.length - 1); i++) {
@@ -35,17 +35,16 @@ function getFormData() {
   return data;
 }
 
-function render_form(elem, inputs, action=null) {
+let render_form = (elem, inputs, action=null) => {
   var container, 
       wrap, 
-      form, 
       div, 
       label, 
       input, 
       button, 
       script;
 
-  form = document.createElement('form');
+  let form = document.createElement('form');
     form.setAttribute("role", "form");
     form.setAttribute("name", "cmd_form");
     form.setAttribute("id", "cmd_form");

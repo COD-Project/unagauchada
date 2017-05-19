@@ -1,7 +1,10 @@
+const email_expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+const pass_expr = /^\w+$/;
+
 document.addEventListener('DOMContentLoaded', function() {
 
-    function prepare_view() {
-      var body = __tn(document, 'body')[0],
+    let prepare_view = () => {
+      let body = __tn(document, 'body')[0],
           footer = document.createElement('footer'),
           p = document.createElement('p'),
           span = document.createElement('span');
@@ -16,8 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
       body.appendChild(span);
     }
 
-    function paralax(){
-      $(window).scroll(function() {
+    let paralax = () => {
+      $(window).scroll(() => {
         var scrollBar = $(window).scrollTop(),
             position = scrollBar * 0.04;
 
@@ -27,14 +30,14 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     };
 
-    function scrollTop(){
-      $('.cmd_gotop').click(function(){
+    let scrollTop = () => {
+      $('.cmd_gotop').click(() => {
           $('body, html').animate({
               scrollTop: '0px'
           }, 300);
       });
 
-      $(window).scroll(function(){
+      $(window).scroll(() => {
           if( $(this).scrollTop() > 0 ){
               $('.cmd_gotop').slideDown(300);
           } else {

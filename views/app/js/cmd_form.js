@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', (function() {
+document.addEventListener('DOMContentLoaded', function() {
   // verify if cmd_form is defined
   if (document.cmd_form) {
     var cmd_form = document.cmd_form,
@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', (function() {
 
     //Functions
 
-    var validateInputs = function() {
+    let validateInputs = () => {
       for (var i = 0; i < nodeList.length; i++) {
         if (nodeList[i].type == "text" || nodeList[i].type == "email" || nodeList[i].type == "password") {
           if (nodeList[i].value == 0) {
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', (function() {
       return true;
     };
 
-    var send = function(e){
+    let send = (e) => {
       if (!validateInputs()) {
         console.log('Inputs were not validated');
         e.preventDefault();
@@ -37,12 +37,12 @@ document.addEventListener('DOMContentLoaded', (function() {
     };
 
     //Focus & Blur Functions
-    var focusInput = function() {
+    let focusInput = () => {
       this.parentElement.children[1].className = "cmd_label cmd_active";
       this.parentElement.children[0].className = this.parentElement.children[0].className.replace("error", "");
     };
 
-    var blurInput = function() {
+    let blurInput = () => {
       if (this.value.length <= 0) {
         this.parentElement.children[1].className = "cmd_label";
         this.parentElement.children[0].className += " cmd_error";
@@ -68,4 +68,4 @@ document.addEventListener('DOMContentLoaded', (function() {
       }
     }
   }
-}()), false);
+}());
