@@ -1,19 +1,16 @@
-const email_expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-const pass_expr = /^\w+$/;
-
 document.addEventListener('DOMContentLoaded', function() {
 
     let prepare_view = () => {
-      let body = __tn(document, 'body')[0],
+      var body = Func.$('body')[0],
           footer = document.createElement('footer'),
           p = document.createElement('p'),
           span = document.createElement('span');
 
-      p.innerHTML = '&copy; ' + __tn(document, 'title')[0].innerHTML;
+      p.innerHTML = '&copy; ' + Func.$('title')[0].innerHTML;
       footer.appendChild(p);
       footer.id = 'footer';
       span.className = 'fa fa-arrow-up cmd_gotop';
-      if (!__('footer')) {
+      if (!Func.$('#footer')) {
         body.appendChild(footer);
       }
       body.appendChild(span);

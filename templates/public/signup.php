@@ -9,7 +9,7 @@
          <h4><span class="glyphicon glyphicon-lock"></span> Registrarse </h4>
        </div>
        <div class="modal-body">
-         <div role="form" onkeypress="return runScriptSignup(event)">
+         <div id="signup_form" role="form">
            <div class="group">
              <input type="text" id="name_signup" name="name">
              <span class="highlight"></span><span class="bar"></span>
@@ -37,16 +37,16 @@
            </div>
            <div class="group">
                <div class="">
-                   <div class="umd_material-switch pull-left">
+                   <div class="cmd_material-switch pull-left">
                        <span> Acepto los terminos y condiciones </span>
                    </div>
-                   <div class="umd_material-switch pull-right">
+                   <div class="cmd_material-switch pull-right">
                        <input id="tyc_signup" name="tyc_signup" type="checkbox"/>
                        <label for="tyc_signup" class="label-success"></label>
                    </div>
                </div>
            </div>
-           <button type="button" class="button" onclick="goSignup()"> Registrarse
+           <button id="signup_button" type="button" class="button"> Registrarse
                <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
            </button>
          </div>
@@ -57,5 +57,3 @@
      </div>
    </div>
  </div>
-
- 

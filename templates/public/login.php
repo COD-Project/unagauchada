@@ -9,7 +9,7 @@
          <h4><span class="glyphicon glyphicon-lock"></span>  Iniciar sesión </h4>
        </div>
        <div class="modal-body">
-         <div role="form" onkeypress="return runScriptLogin(event)">
+         <div id="login_form" role="form">
            <div class="group">
              <input type="text" id="email" name="email">
              <span class="highlight"></span><span class="bar"></span>
@@ -31,7 +31,7 @@
                    </div>
                </div>
            </div>
-           <button type="button" class="button" onclick="goLogin()"> Iniciar sesión
+           <button id="login_button" type="button" class="button"> Iniciar sesión
                <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
            </button>
          </div>

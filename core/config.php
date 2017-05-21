@@ -59,7 +59,7 @@ define('APP_COPY','Copyright &copy; ' . date('Y',time()) . APP);
 define('DB_SESSION', true);
 define('SESSION_TIME', 18000); # life time for session cookies -> 5 hs = 18000 seconds.
 define('SESS_APP_ID', '_sess_app_id_');
-define('KEY', '');
+define('KEY', '__$unagauchada$__key&__');
 session_start([
   'use_strict_mode' => true,
   'use_cookies' => true,

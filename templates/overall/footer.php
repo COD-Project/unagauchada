@@ -8,6 +8,9 @@
 <!-- -->
 <script src="views/app/js/functions.js"></script>
 <script src="views/app/js/main.js"></script>
+<script src="views/app/js/ajax/init_login.js"></script>
+<script src="views/app/js/ajax/init_signup.js"></script>
+<script src="views/app/js/form_validate.js"></script>
 <script src="views/app/js/login.js"></script>
 <script src="views/app/js/signup.js"></script>
 <script src="views/app/js/contact.js"></script>
