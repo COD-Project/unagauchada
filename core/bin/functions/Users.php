@@ -2,7 +2,7 @@
 
 function Users() {
   $db = new Connection();
-  $sql = $db->query("SELECT * FROM Users ORDER BY role, registration_date;");
+  $sql = $db->query("SELECT * FROM Users ORDER BY role, registrationDate;");
   if($db->rows($sql) > 0) {
     //make Users matrix to return
     $d = $db->fetch_array($sql);
@@ -13,7 +13,7 @@ function Users() {
         'surname' => $d[$i]['surname'],
         'email' => $d[$i]['email'],
         'state' => ($d[$i]['state'] == 1),
-        'reg_date' => $d[$i]['registration_date'],
+        'reg_date' => $d[$i]['registrationDate'],
         'role' => ($d[$i]['role'] == 1) ? 'admin' : 'user'
         //put user's info here if there is more in the db
       );

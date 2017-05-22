@@ -1,13 +1,7 @@
 let _init_signup = function() {
   var connect, 
       form, 
-      result, 
-      name, 
-      surname, 
-      pass, 
-      email, 
-      tyc, 
-      rep_pass;
+      result;
 
   let name = Func.$('#name_signup').value,
       surname = Func.$('#surname_signup').value,

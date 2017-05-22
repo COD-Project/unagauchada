@@ -1,37 +1,14 @@
-class Functions {
-  $(elem) {
-    if (elem.charAt(0) === '#' || elem.charAt(0) === '.') {
-      return (elem.charAt(0) === '#') ? document.getElementById(elem.slice(1, elem.length)) : document.getElementsByTagName(elem.slice(1, elem.length));
-    } else {
-      return document.getElementsByTagName(elem);
-    }
-  }
-
-  insertAfter(e, i) {
-    if(e.nextSibling){
-      e.parentNode.insertBefore(i, e.nextSibling);
-    } else {
-      e.parentNode.appendChild(i);
-    }
-  }
-
-  deleteItem(contenido, url) {
-    if (window.confirm(contenido)) {
-        window.location = url;
-    }
-  }
-}
-
-let CMDForm = {
-  getData: () => {
+class CMDForm {
+  getData() {
     let nodeList = document.cmd_form.elements,
         data = new Object();
     for (var i = 0; i < (nodeList.length - 1); i++) {
       data[nodeList[i].name] = nodeList[i].value;
     }
     return data;
-  },
-  render: (elem, inputs, action=null) => {
+  }
+
+  render({ elem, inputs, action=null }) {
     var container, 
         wrap, 
         div, 
@@ -86,5 +63,3 @@ let CMDForm = {
     elem.appendChild(container);
   }
 }
-
-let Func = new Functions();
