@@ -17,7 +17,7 @@ let _init_signup = function() {
 
   if(tyc) {
     if(name != '' && surname != '' && pass != '' && rep_pass != '' && email != '') {
-      if(query.email && query.password) {
+      if(!query.email && !query.password) {
         form = 'name=' + name + '&surname=' + surname + '&pass=' + pass + '&email=' + email;
         connect = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
         connect.onreadystatechange = function() {
@@ -48,8 +48,8 @@ let _init_signup = function() {
         result = '<div class="alert alert-dismissible alert-warning">';
         result += '<button type="button" class="close" data-dismiss="alert">x</button>';
         result += '<h4>ERROR</h4>';
-        if (!query.email) {
-          result += '<p><strong>El Email tiene campos invalidos.</strong></p>';
+        if (query.email) {
+          result += '<p><strong>El Email debe ser de la forma example@domain.com</strong></p>';
         } else {
           result += '<p><strong>Las contraseñas no coinciden o tienen caracteres invalidos.</strong></p>';
         }

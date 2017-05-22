@@ -12,10 +12,14 @@ let login_query = ({ email, password }) => ({
 })
 
 let signup_query = ({email, pass, rep_pass}) => ({
-	email: Expresion.email.test(email),
+	email: (
+    email == null || 
+    email.length == 0 || 
+    !Expresion.email.test(email)
+  ),
 	password: (
-		!Expresion.password.test(pass) && 
-		!Expresion.password.test(rep_pass) && 
-		pass == rep_pass
+		!Expresion.password.test(pass) ||
+		!Expresion.password.test(rep_pass) || 
+		pass != rep_pass
 	)
 })

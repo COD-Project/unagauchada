@@ -46,7 +46,7 @@
         'email' => $email,
         'password' => $pass,
         'keyreg' => $keyreg,
-        'registration_date' => $reg_date
+        'registrationDate' => $reg_date
       );
       $db->insert("Users", $values);
       $sql = $db->query("SELECT MAX(idUser) AS idUser FROM Users;");
