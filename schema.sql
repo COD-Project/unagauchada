@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 22, 2017 at 04:51 PM
+-- Generation Time: May 22, 2017 at 05:12 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.2
 
@@ -42,6 +42,8 @@ CREATE TABLE `Categories` (
 CREATE TABLE `Comments` (
   `idComment` int(11) NOT NULL,
   `body` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `createdAt` date DEFAULT NULL,
+  `lastModify` date DEFAULT NULL,
   `idQuestion` int(11) DEFAULT NULL,
   `idGauchada` int(11) DEFAULT NULL,
   `idUser` int(11) NOT NULL
@@ -58,8 +60,8 @@ CREATE TABLE `Gauchadas` (
   `title` varchar(100) CHARACTER SET utf8 NOT NULL,
   `body` varchar(1024) CHARACTER SET utf8 NOT NULL,
   `location` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `limit_date` date NOT NULL,
-  `created_at` date NOT NULL,
+  `limitDate` date NOT NULL,
+  `createdAt` date NOT NULL,
   `evaluation` int(11) DEFAULT NULL,
   `idUser` int(11) NOT NULL,
   `idCategory` int(11) NOT NULL
@@ -97,7 +99,7 @@ CREATE TABLE `Users` (
   `points` int(11) DEFAULT NULL,
   `state` int(11) NOT NULL DEFAULT '0',
   `session` int(11) NOT NULL DEFAULT '0',
-  `registration_date` date NOT NULL,
+  `registrationDate` date NOT NULL,
   `keyreg` varchar(25) NOT NULL,
   `role` int(11) NOT NULL DEFAULT '2'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -106,7 +108,7 @@ CREATE TABLE `Users` (
 -- Dumping data for table `Users`
 --
 
-INSERT INTO `Users` (`idUser`, `name`, `surname`, `birthdate`, `idImage`, `phone`, `location`, `email`, `password`, `credits`, `points`, `state`, `session`, `registration_date`, `keyreg`, `role`) VALUES
+INSERT INTO `Users` (`idUser`, `name`, `surname`, `birthdate`, `idImage`, `phone`, `location`, `email`, `password`, `credits`, `points`, `state`, `session`, `registrationDate`, `keyreg`, `role`) VALUES
 (1, 'Juan Cruz', 'Ocampos', NULL, NULL, NULL, '', 'pepe@gmail.com', '1dd4ecb6f7f0091bc464fee9b9202d59', NULL, NULL, 0, 1495137069, '2017-05-18', '0463b4f6c6263825487df9a29', 2),
 (2, 'Ulises', 'Conejo', NULL, NULL, NULL, '', 'conejo@gmail.com', '47b4d0c9445131dec646a489805f0f52', NULL, NULL, 0, 1495129961, '2017-05-18', '3af8df129416280e97c11710e', 2),
 (3, 'Lucas', 'Saltamontes', NULL, NULL, NULL, '', 'saltalucassalta@gmail.com', '808a3fa3e3366945393dda70e59a61a2', NULL, NULL, 0, 1495132930, '2017-05-18', '90c2b0d54f9f90004f2fcd9d0', 2),
