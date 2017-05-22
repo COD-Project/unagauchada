@@ -1,4 +1,4 @@
-<section class="engine"><a rel="nofollow" href="#"><?php ?></a></section>
+<section class="engine"><a rel="nofollow" href="#"><?php APP;?></a></section>
 
 <nav class="navbar navbar-fixed-top" role="navigation">
     <div class="container">
@@ -25,9 +25,9 @@
                     </a>
                     <ul class="dropdown-menu">
                       <?php
-                        if($this->sessions->session_in_use()){
+                        if($this->sessions->isLoggedIn()){
                           echo ('
-                          <li><a href="profiles/' . $this->router->semanticURL($this->sessions->connected_user()['name']) . '"><i class="glyphicon glyphicon-user"></i> ' . $this->sessions->connected_user()['name'] . '</a></li>
+                          <li><a href="profiles/' . $this->router->semanticURL($this->sessions->connectedUser()['name']) . '"><i class="glyphicon glyphicon-user"></i> ' . $this->sessions->connectedUser()['name'] . '</a></li>
                           <li><a href="logout"><i class="glyphicon glyphicon-log-out"></i> Cerrar sesión </a></li>
                           <li><a href="preferences"><i class="glyphicon glyphicon-wrench"></i> Preferencias </a></li>
                           <li><a href="#"><i class="glyphicon glyphicon-cog"></i> Configuración </a></li>
@@ -48,7 +48,7 @@
 
 <?php
 
-if(!$this->sessions->session_in_use()) {
+if(!$this->sessions->isLoggedIn()) {
   $this->include('public/login');
   $this->include('public/signup');
 }

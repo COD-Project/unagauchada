@@ -51,7 +51,7 @@
       $db->insert("Users", $values);
       $sql = $db->query("SELECT MAX(idUser) AS idUser FROM Users;");
       $data = $db->fetch_array($sql);
-      (new Sessions)->generate_session($data[0]['idUser']);
+      (new Sessions)->generateSession($data[0]['idUser']);
       echo 1;
     //}
   }

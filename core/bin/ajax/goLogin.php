@@ -9,7 +9,7 @@
     if($db->rows($sql) > 0) {
       if($_POST['session']) ini_set('session.cookie_lifetime', time() + (60*60*24));
       $data = $sql->fetchAll();
-      (new Sessions)->generate_session($data[0]['idUser']);
+      (new Sessions)->generateSession($data[0]['idUser']);
       echo 1;
     } else {
       echo 'Credentials are incorrect.';

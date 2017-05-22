@@ -16,7 +16,7 @@ final class Router
   private $method = null;
   private $id = null;
 
-  final static function get_instance() {
+  final static function getInstance() {
     if (!self::$instance) {
         self::$instance = new self();
     }
@@ -25,7 +25,7 @@ final class Router
 
   final public function __construct()
   {
-    $this->session = Sessions::get_instance();
+    $this->session = Sessions::getInstance();
     $this->url = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
     if($this->dir == '/' and strlen($this->url) > strlen($this->dir)) {
       $this->url[0] = '';

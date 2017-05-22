@@ -8,7 +8,7 @@ class profilesController extends Controller {
 
   public function __construct() {
     parent::__construct(true);
-    if ($this->sessions->session_in_use()) {
+    if ($this->sessions->isLoggedIn()) {
       $this->render('profile/profile');
     } else {
       Func::redirect();

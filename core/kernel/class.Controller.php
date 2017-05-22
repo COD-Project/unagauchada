@@ -13,7 +13,7 @@ abstract class Controller
   protected $router;
   protected $sessions = null;
 
-  static function get_instance() {
+  static function getInstance() {
     if (!self::$instance) {
         self::$instance = new self();
     }
@@ -24,11 +24,11 @@ abstract class Controller
   {
     global $router;
     $this->router = $router;
-    $this->sessions = Sessions::get_instance();
+    $this->sessions = Sessions::getInstance();
 
     # Control de vida de sesiones
     if(DB_SESSION) {
-      $this->sessions->check_life();
+      $this->sessions->checkLife();
     }
 
     # Restricción para usuarios logeados

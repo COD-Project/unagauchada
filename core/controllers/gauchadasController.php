@@ -7,9 +7,9 @@ defined('INDEX_DIR') OR exit(APP . ' software says .i.');
 class gauchadasController extends Controller {
 	public function __construct() {
     	parent::__construct();
-    	if($this->session->session_inuse()) {
+    	if($this->sessions->isLoggedIn()) {
     		$gauchadas = new Gauchadas();
-    		if(!$this->session->is_granted()){
+    		if(!$this->sessions->isGranted()){
     			switch ($this->router->getMethod()) {
 		        case 'add':
 		          	if ($_POST) {
@@ -17,6 +17,8 @@ class gauchadasController extends Controller {
 		          	} else {
 		            	$this->render('gauchadas/add');
 		          	}
+                break;
+                }   
     		}
     	}
     }

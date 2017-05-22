@@ -8,7 +8,7 @@ class administrationController extends Controller {
 
   public function __construct() {
     parent::__construct(true);
-    if ($this->sessions->is_granted()) {
+    if ($this->sessions->isGranted()) {
       $this->render('_admin/_admin');
     } else {
       Func::redirect();

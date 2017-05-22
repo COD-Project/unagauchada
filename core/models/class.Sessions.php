@@ -1,19 +1,19 @@
 <?php
 
 /**
- *
- */
+  * created by Ulises J. Cornejo Fandos on 17/03/2017
+  */
 
 final class Sessions extends Models
 {
-  private static $ins;
+  static private $ins;
 
-  final static function get_instance()
+  static function getInstance()
   {
-    if (!self::$ins) {
-        self::$ins = new self();
-    }
-    return self::$ins;
+      if (!self::$ins) {
+          self::$ins = new self();
+      }
+      return self::$ins;
   }
 
   final public function __construct()
@@ -28,7 +28,7 @@ final class Sessions extends Models
     *
     * @return void
   */
-  final public function generate_session(int $id)
+  final public function generateSession(int $id)
   {
     $_SESSION[SESS_APP_ID] = $id;
     $e['session'] = time() + SESSION_TIME;
@@ -42,7 +42,7 @@ final class Sessions extends Models
     *
     * @return bool: TRUE si el usuario tiene la sesión iniciada, FALSE si no
   */
-  final public function session_in_use(int $id = NULL) : bool
+  final public function isLoggedIn(int $id = NULL) : bool
   {
     $idUser = ($id=='' && isset($_SESSION[SESS_APP_ID])) ? $_SESSION[SESS_APP_ID] : $id;
     $time = time();
@@ -59,7 +59,7 @@ final class Sessions extends Models
     *
     * @return void
   */
-  final public function check_life(bool $force = false)
+  final public function checkLife(bool $force = false)
   {
     if(isset($_SESSION[SESS_APP_ID])) {
       $id = $_SESSION[SESS_APP_ID];
@@ -74,15 +74,15 @@ final class Sessions extends Models
     }
   }
 
-  final public function connected_user() : array
+  final public function connectedUser() : array
   {
     $id = $_SESSION[SESS_APP_ID];
-    return ($this->session_in_use()) ? $this->db->select('*','Users',"idUser='$id'",'LIMIT 1')[0] : null;
+    return ($this->isLoggedIn()) ? $this->db->select('*','Users',"idUser='$id'",'LIMIT 1')[0] : null;
   }
 
-  final public function is_granted() : bool
+  final public function isGranted() : bool
   {
-    return ($this->session_in_use()) ? ($this->connected_user()['role'] == 1) : false; // 1 correspond to admin users - 2 correspond to normal users
+    return ($this->isLoggedIn()) ? ($this->connectedUser()['role'] == 1) : false; // 1 correspond to admin users - 2 correspond to normal users
   }
 
   final public function __destruct()
