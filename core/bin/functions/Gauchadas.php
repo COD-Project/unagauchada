@@ -13,8 +13,7 @@ function Gauchadas() {
       'createdAt' => $data[$i]['createdAt'],
       'evaluation' => $data[$i]['evaluation'],
       'idUser' => $data[$i]['idUser'],
-      'idCategory' => $data[$i]['idCategory'],
-      'comments' => Comments($data[$i]['idUser'])
+      'idCategory' => $data[$i]['idCategory']
     );
   }
   return $guachadas ? $gauchadas : false;

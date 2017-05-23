@@ -3,6 +3,16 @@
 <div class="container">
     <hr class="extra-margins">
 
+
+    <!--Second row-->
+    <div class="row">
+        <?php
+            
+
+        ?>
+    </div>
+
+
     <!--Second row-->
     <div class="row">
         <!--First columnn-->
