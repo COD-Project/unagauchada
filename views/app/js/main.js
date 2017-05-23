@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', function() {
       footer.appendChild(p);
       footer.id = 'footer';
       span.className = 'fa fa-arrow-up cmd_gotop';
-      if (!Func.$('#footer')) {
+      /* if (!Func.$('#footer')) {
         body.appendChild(footer);
-      }
-      body.appendChild(span);
+      } */
+      // body.appendChild(span);
     }
 
     let paralax = () => {

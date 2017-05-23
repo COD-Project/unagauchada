@@ -12,10 +12,15 @@
       (new Sessions)->generateSession($data[0]['idUser']);
       echo 1;
     } else {
-      echo 'Credentials are incorrect.';
+      $sql = $db->query("SELECT idUser FROM Users WHERE email='$email' LIMIT 1;");
+      if($db->rows($sql) > 0) {
+        echo 'La contraseña es incorrecta.';
+      } else {
+        echo 'El mail ingresado no corresponde a un usuario registrado';
+      }
     }
   } else {
-    echo 'All data must be full.';
+    echo 'Todos los campos deben ser llenados.';
   }
 
 ?>

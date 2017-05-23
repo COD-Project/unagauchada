@@ -11,9 +11,14 @@ function Users() {
         'idUser' => $d[$i]['idUser'],
         'name' => $d[$i]['name'],
         'surname' => $d[$i]['surname'],
+        'birthdate' => $d[$i]['birthdate'],
+        'location' => $d[$i]['location'],
+        'phone' => $d[$i]['phone'],
         'email' => $d[$i]['email'],
         'state' => ($d[$i]['state'] == 1),
-        'reg_date' => $d[$i]['registrationDate'],
+        'credits' => $d[$i]['credits'],
+        'points' => $d[$i]['points'],
+        'registrationDate' => $d[$i]['registrationDate'],
         'role' => ($d[$i]['role'] == 1) ? 'admin' : 'user'
         //put user's info here if there is more in the db
       );

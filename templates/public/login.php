@@ -1,14 +1,21 @@
-<div class="modal fade" id="Login" role="dialog">
-   <div class="modal-dialog">
-     <div class="modal-content" style="background: #fafafa;">
+<div class="modal fade modal-ext" id="Login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content" style="background: #fafafa; border-radius: 0px;">
 
        <div id="_AJAX_LOGIN_"></div>
 
        <div class="modal-header">
-         <button type="button" class="close" data-dismiss="modal">&times;</button>
-         <h4><span class="glyphicon glyphicon-lock"></span>  Iniciar sesión </h4>
+         <div>
+           <!-- -->
+         </div>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"> &times; </span>
+         </button>
        </div>
        <div class="modal-body">
+         <div class="text-center">
+             <h3><i class="fa fa-lock"></i> Iniciar Sesión </h3>
+         </div>
          <div id="login_form" role="form">
            <div class="group">
              <input type="text" id="email" name="email">
@@ -37,8 +44,8 @@
          </div>
        </div>
        <div class="modal-footer">
-         <p> ¿ Estás registrado ? <a data-toggle="modal" data-target="#Signup"> ¡Registrate!</a></p>
-         <p><a data-toggle="modal" data-target="#Lostpass"> ¿ Perdiste la contraseña ?</a></p>
+         <p> ¿Estás registrado? <a data-toggle="modal" data-target="#Signup"> ¡Registrate!</a></p>
+         <p><a data-toggle="modal" data-target="#Lostpass"> ¿Perdiste la contraseña?</a></p>
        </div>
      </div>
    </div>

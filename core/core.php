@@ -27,7 +27,8 @@ __models_autoload(array(
 ));
 __functions_autoload(array(
   'Users',
-  'EmailTemplate'
+  'EmailTemplate',
+  'Gauchadas'
 ));
 
 

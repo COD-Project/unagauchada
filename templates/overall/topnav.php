@@ -1,56 +1,57 @@
-<section class="engine"><a rel="nofollow" href="#"><?php APP;?></a></section>
-
-<nav class="navbar navbar-fixed-top" role="navigation">
+<!--Navigation & Intro-->
+<nav class="navbar fixed-top navbar-toggleable-md navbar-dark scrolling-navbar">
     <div class="container">
-        <!-- El logotipo y el icono que despliega el menú se agrupan
-           para mostrarlos mejor en los dispositivos móviles -->
-        <a class="navbar-brand waves-effect waves-light" href="<?php URL ?>"><p style="font-size: 20px;"><?php echo APP; ?> </p></a>
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Desplegar navegación</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-
-        <!-- Agrupar los enlaces de navegación, los formularios y cualquier
-        otro elemento que se pueda ocultar al minimizar la barra -->
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a class="" role="button" data-toggle="dropdown" href="#">
-                        <i style="font-size: 20px;" class="glyphicon glyphicon-menu-hamburger"></i>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+            <img src="views/app/images/avatar_28012e5b8492_128.png" class="d-inline-block align-top cmd_zoomin" style="height: 55px;" alt="UnaGauchada">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Pricing</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav nav-flex-icons">
+                <li class="nav-item btn-group">
+                    <a class="nav-link"  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <!-- quité la clase  dropdown-toggle porque rompía todo -->
+                      <i style="font-size: 20px;" class="fa fa-bars"></i>
                     </a>
-                    <ul class="dropdown-menu">
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
                       <?php
-                        if($this->sessions->isLoggedIn()){
-                          echo ('
-                          <li><a href="profiles/' . $this->router->semanticURL($this->sessions->connectedUser()['name']) . '"><i class="glyphicon glyphicon-user"></i> ' . $this->sessions->connectedUser()['name'] . '</a></li>
-                          <li><a href="logout"><i class="glyphicon glyphicon-log-out"></i> Cerrar sesión </a></li>
-                          <li><a href="preferences"><i class="glyphicon glyphicon-wrench"></i> Preferencias </a></li>
-                          <li><a href="#"><i class="glyphicon glyphicon-cog"></i> Configuración </a></li>
-                          ');
-                        } else {
-                          echo ('
-                          <li><a data-toggle="modal" data-target="#Login"><i class="glyphicon glyphicon-log-in"></i>  Iniciar sesión </a></li>
-                          <li><a data-toggle="modal" data-target="#Signup"><i class="glyphicon glyphicon-log-in"></i>  Registrarse </a></li>
-                          ');
-                        }
-                      ?>
-                    </ul>
+                          if($this->sessions->isLoggedIn()){
+                            echo ('
+                            <a class="dropdown-item" href="profiles/' . $this->router->semanticURL($this->sessions->connectedUser()['name']) . '"><i class="fa fa-user"></i> ' . $this->sessions->connectedUser()['name'] . '</a>
+                            <a class="dropdown-item" href="logout"><i class="fa fa-sign-out"></i> Cerrar sesión </a>
+                            <a class="dropdown-item" href="preferences"><i class="fa fa-sliders"></i> Preferencias </a>
+                            <a class="dropdown-item" href="#"><i class="fa fa-cog"></i> Configuración </a>
+                            ');
+                          } else {
+                            echo ('
+                            <a class="dropdown-item" data-toggle="modal" data-target="#Login"><i class="fa fa-sign-in"></i>  Iniciar sesión </a>
+                            <a class="dropdown-item" data-toggle="modal" data-target="#Signup"><i class="fa fa-user-plus"></i>  Registrarse </a>
+                            ');
+                          }
+                        ?>
+                    </div>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+<!--/.Navigation & Intro-->
 
 <?php
-
 if(!$this->sessions->isLoggedIn()) {
   $this->include('public/login');
   $this->include('public/signup');
 }
-
 ?>

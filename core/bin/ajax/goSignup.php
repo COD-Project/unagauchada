@@ -7,7 +7,7 @@
   $pass = Func::encrypt($_POST['pass']);
   $sql = $db->query("SELECT idUser FROM Users WHERE email='$email' LIMIT 1;");
   if($db->rows($sql) > 0) {
-    echo 'The email entered already exists.';
+    echo 'El mail ingresado corresponde a un usuario existente.';
   } else {
     $keyreg = md5(time());
     $link = URL . '?view=activate&key=' . $keyreg;
@@ -55,5 +55,5 @@
       echo 1;
     //}
   }
-  
+
 ?>

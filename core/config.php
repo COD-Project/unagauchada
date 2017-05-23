@@ -31,7 +31,7 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
   *        odbc
   */
 define('DATABASE', array(
-  'host' => 'localhost', 
+  'host' => 'localhost',
   'user' => 'root',
   'pass' => '',
   'name' => 'unagauchadaDB',
@@ -50,7 +50,7 @@ define('__ROOT__', '/unagauchada/');
 
 # App constants
 define('URL', 'http://localhost/unagauchada/');
-define('APP', 'unagauchada');
+define('APP', 'UnaGauchada');
 define('HTML_DIR', 'templates/');
 define('APP_COPY','Copyright &copy; ' . date('Y',time()) . APP);
 

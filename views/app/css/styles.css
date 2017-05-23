@@ -27,7 +27,6 @@
 body {
 	min-height: 100vh;
 	/*background:url(../img/bg.jpg);*/
-	background-color: gray;
 	background-repeat:no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
@@ -64,16 +63,39 @@ hgroup {
   padding-bottom: 20px;
 }
 
-h1, h3 { 
-  font-weight: 300; 
+h1, h3 {
+  font-weight: 300;
 }
 
-h1 { 
-  color: #636363; 
+h1 {
+  color: #636363;
 }
 
-h3 { 
-  color: #4a89dc; 
+h3 {
+  color: #4a89dc;
+}
+
+/* Navigation*/
+.navbar {
+    background-color: transparent;
+}
+
+.top-nav-collapse {
+    background-color: #fff;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar {
+        background-color: #fff;
+    }
+}
+/*Intro*/
+.view {
+    background: url("../images/fondo.png") ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .cmd_container {

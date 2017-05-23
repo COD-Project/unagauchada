@@ -18,8 +18,10 @@ class gauchadasController extends Controller {
 		            	$this->render('gauchadas/add');
 		          	}
                 break;
-                }   
+                }
     		}
+    	} else {
+    		$this->render('gauchadas/view');
     	}
     }
 }
