@@ -81,17 +81,13 @@ h3 {
 }
 
 .top-nav-collapse {
-    background-color: #fff;
+    background-color: #f4f4f4;
 }
 
-@media only screen and (max-width: 768px) {
-    .navbar {
-        background-color: #fff;
-    }
-}
 /*Intro*/
-.view {
-    background: url("../images/fondo.png") ;
+.main-view {
+    background: url("../images/fondo.png");
+    height: 450px;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

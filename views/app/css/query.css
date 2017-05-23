@@ -12,4 +12,12 @@
 	  padding: 0px;
 	}
 
+	.navbar {
+        background-color: #f4f4f4;
+    }
+
+    .main-view {
+    	height: 400px;
+    }
+
 }

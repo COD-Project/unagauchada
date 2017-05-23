@@ -9,15 +9,7 @@
         </a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">Pricing</a>
-                </li>
+                
             </ul>
             <ul class="navbar-nav nav-flex-icons">
                 <li class="nav-item btn-group">
@@ -27,7 +19,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
                       <?php
-                          if($this->sessions->isLoggedIn()){
+                          if($this->sessions->isLoggedIn()) {
                             echo ('
                             <a class="dropdown-item" href="profiles/' . $this->router->semanticURL($this->sessions->connectedUser()['name']) . '"><i class="fa fa-user"></i> ' . $this->sessions->connectedUser()['name'] . '</a>
                             <a class="dropdown-item" href="logout"><i class="fa fa-sign-out"></i> Cerrar sesión </a>
