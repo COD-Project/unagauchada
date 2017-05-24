@@ -3,6 +3,8 @@
 function Gauchadas() {
   $db = new Connection();
   $data = $db->select('*', 'Gauchadas');
+  if(count($data) == 0) return false;
+
   for($i = 0; $i < count($data); $i++) {
     $gauchadas[$data[$i]['idGauchada']] = array(
       'idGauchada' => $data[$i]['idGauchada'],
@@ -14,10 +16,10 @@ function Gauchadas() {
       'evaluation' => $data[$i]['evaluation'],
       'idUser' => $data[$i]['idUser'],
       'idCategory' => $data[$i]['idCategory'],
-      // 'comments' => Comments($data[$i]['idUser'])
+      'comments' => Comments($data[$i]['idUser'])
     );
   }
-  return $gauchadas ? $gauchadas : false;
+  return $gauchadas;
 }
 
 ?>

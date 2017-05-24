@@ -4,7 +4,6 @@
   <div class="container">
       <hr class="extra-margins">
 
-
       <!--Second row-->
       <div class="row" style="margin-bottom: 5px;">
           <?php
@@ -15,8 +14,8 @@
             } else {
               $i = 1;
               foreach ($_gauchadas as $id => $constent_array) {
-                $HTML .= $i % 4 == 0 ? "<div class=\"row\"> style=\"margin-bottom: 5px;\"" : "";
-                $HTML .= "<div class=\"col-lg-4\">
+                $HTML .= $i % 4 == 0 ? "<div class=\"row\">" : "";
+                $HTML .= "<div class=\"col-lg-4\" style=\"margin-bottom: 10px;\">
                     <!--Card-->
                     <div class=\"card wow fadeIn\" data-wow-delay=\"0." . ($i+1)*2 . "s\">
 
@@ -42,11 +41,11 @@
                               </div>
                             </div>
 
-                            <div class=\"card-title text-fluid\" style=\"margin-top: 15px; height: 45px;\"><h4 class=\"h4-responsive\">" . $_gauchadas[$id]['title'] . "</h4></div>
+                            <div class=\"card-title text-fluid\" style=\"margin-top: 15px; height: 45px;\"><h4 class=\"h4-responsive\">" . Func::reduceString($_gauchadas[$id]['title'], 45) . "</h4></div>
                             <hr>
                             <!--Text-->
-                            <p class=\"card-text text-fluid\" style=\"height: 45px;\">" . Func::reduceString($_gauchadas[$id]['body'], 75) . "</p>
-                            <a href=\"#\" class=\"d-flex flex-row-reverse\"><h6 class=\"waves-effect p-2\"> Read more <i class=\"fa fa-chevron-right\"></i></h6></a>
+                            <p class=\"card-text text-fluid\" style=\"height: 50px;\">" . Func::reduceString($_gauchadas[$id]['body'], 75) . "</p>
+                            <a href=\"#\" class=\"d-flex flex-row-reverse\"><h6 class=\"waves-effect p-2\"> Leer más <i class=\"fa fa-chevron-right\"></i></h6></a>
                         </div>
                         <!--/.Card content-->
 
