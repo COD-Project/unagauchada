@@ -2,7 +2,7 @@
 <html>
 	<?php $this->render('overall/header'); ?>
 <body>
-	<<?php $this->render('overall/topnav'); ?>
+	<?php $this->render('overall/topnav'); ?>
   <div class="container">
     <div id="carousel-example-1z" style="padding-top: 100px" class="carousel slide carousel-fade" data-ride="carousel">
         <ol class="carousel-indicators">
