@@ -22,9 +22,9 @@
                           if($this->sessions->isLoggedIn()) {
                             echo ('
                             <a class="dropdown-item" href="profiles/' . $this->router->semanticURL($this->sessions->connectedUser()['name']) . '"><i class="fa fa-user"></i> ' . $this->sessions->connectedUser()['name'] . '</a>
-                            <a class="dropdown-item" href="logout"><i class="fa fa-sign-out"></i> Cerrar sesión </a>
                             <a class="dropdown-item" href="preferences"><i class="fa fa-sliders"></i> Preferencias </a>
                             <a class="dropdown-item" href="#"><i class="fa fa-cog"></i> Configuración </a>
+                            <a class="dropdown-item" href="logout"><i class="fa fa-sign-out"></i> Cerrar sesión </a>
                             ');
                           } else {
                             echo ('
