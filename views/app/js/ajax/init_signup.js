@@ -23,7 +23,8 @@ let _init_signup = function() {
         connect.onreadystatechange = function() {
           if(connect.readyState == 4 && connect.status == 200) {
             if(connect.responseText == 1) {
-              result = '<div class="card card-success z-depth-2" style="border-radius: 0px;"><div class="card-block">';
+              result = '<div class="alert alert-success alert-dismissible fade show" role="alert" style="border-radius: 0;">';
+              result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
               result += '<h4>Registration completed!</h4>';
               result += '<p><strong>Estás siendo redirigido...</strong></p>';
               result += '</div></div>';
@@ -33,7 +34,8 @@ let _init_signup = function() {
               Func.$('#_AJAX_SIGNUP_').innerHTML = connect.responseText;
             }
           } else if(connect.readyState != 4) {
-            result = '<div class="card card-warning z-depth-2" style="border-radius: 0px;"><div class="card-block">';
+            result = '<div class="alert alert-warning alert-dismissible fade show" role="alert" style="border-radius: 0;">';
+            result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
             result += '<h4>Processing...</h4>';
             result += '<p><strong>Tu registro esta siendo procesado...</strong></p>';
             result += '</div></div>';
@@ -44,7 +46,8 @@ let _init_signup = function() {
         connect.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
         connect.send(form);
       } else {
-        result = '<div class="card card-warning z-depth-2" style="border-radius: 0px;"><div class="card-block">';
+        result = '<div class="alert alert-warning alert-dismissible fade show" role="alert" style="border-radius: 0;">';
+        result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
         result += '<h4>ERROR</h4>';
         if (query.email) {
           result += '<p><strong>El Email debe ser de la forma example@domain.com</strong></p>';
@@ -55,14 +58,16 @@ let _init_signup = function() {
         Func.$('#_AJAX_SIGNUP_').innerHTML = result;
       }
     } else {
-      result = '<div class="card card-warning z-depth-2" style="border-radius: 0px;"><div class="card-block">';
+      result = '<div class="alert alert-warning alert-dismissible fade show" role="alert" style="border-radius: 0;">';
+      result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
       result += '<h4>ERROR</h4>';
       result += '<p><strong>Todos los campos deben ser llenados.</strong></p>';
       result += '</div></div>';
       Func.$('#_AJAX_SIGNUP_').innerHTML = result;
     }
   } else {
-    result = '<div class="card card-danger z-depth-2" style="border-radius: 0px;"><div class="card-block">';
+    result = '<div class="alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0;">';
+    result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
     result += '<h4>ERROR</h4>';
     result += '<p><strong>Los terminos y condiciones deben ser aceptados.</strong></p>';
     result += '</div></div>';

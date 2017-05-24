@@ -1,109 +1,66 @@
 <main>
 <!--Main layout-->
-<div class="container">
-    <hr class="extra-margins">
+
+  <div class="container">
+      <hr class="extra-margins">
 
 
-    <!--Second row-->
-    <div class="row">
-        <?php
-            
+      <!--Second row-->
+      <div class="row" style="margin-bottom: 5px;">
+          <?php
+            $_gauchadas = Gauchadas();
+            $HTML = "";
+            if (!$_gauchadas) {
 
-        ?>
-    </div>
+            } else {
+              $i = 1;
+              foreach ($_gauchadas as $id => $constent_array) {
+                $HTML .= $i % 4 == 0 ? "<div class=\"row\"> style=\"margin-bottom: 5px;\"" : "";
+                $HTML .= "<div class=\"col-lg-4\">
+                    <!--Card-->
+                    <div class=\"card wow fadeIn\" data-wow-delay=\"0." . ($i+1)*2 . "s\">
 
+                        <!--Card image-->
+                        <div class=\"card-up view overlay hm-white-slight\">
+                            <img src=\"views/app/images/unagauchada.$i.jpg\" class=\"img-fluid\" alt=\"\">
+                            <a href=\"#\">
+                                <div class=\"mask\"></div>
+                            </a>
+                        </div>
+                        <!--/.Card image-->
+                        <!--Card content-->
+                        <div class=\"card-block\">
+                            <!--Title-->
+                            <!--Avatar-->
+                            <div class=\"row\">
+                              <div class=\"avatar text-right col-3\">
+                                <img style=\"width: 65px;\" src=\"https://mdbootstrap.com/img/Photos/Avatars/img%20%289%29.jpg\" class=\"rounded-circle img-responsive\">
+                              </div>
+                              <div class=\"text-left col-9\">
+                                <p class=\"text-fluid\">" . Users()[$_gauchadas[$id]['idUser']]['completeName'] . "</p>
+                                <p style=\"color: gray; margin-top: -15px;\" class=\"text-fluid\">" . Users()[$_gauchadas[$id]['idUser']]['email'] . "</p>
+                              </div>
+                            </div>
 
-    <!--Second row-->
-    <div class="row">
-        <!--First columnn-->
-        <div class="col-lg-4">
-            <!--Card-->
-            <div class="card wow fadeIn" data-wow-delay="0.4s">
+                            <div class=\"card-title text-fluid\" style=\"margin-top: 15px; height: 45px;\"><h4 class=\"h4-responsive\">" . $_gauchadas[$id]['title'] . "</h4></div>
+                            <hr>
+                            <!--Text-->
+                            <p class=\"card-text text-fluid\" style=\"height: 45px;\">" . Func::reduceString($_gauchadas[$id]['body'], 75) . "</p>
+                            <a href=\"#\" class=\"d-flex flex-row-reverse\"><h6 class=\"waves-effect p-2\"> Read more <i class=\"fa fa-chevron-right\"></i></h6></a>
+                        </div>
+                        <!--/.Card content-->
 
-                <!--Card image-->
-                <div class="view overlay hm-white-slight">
-                    <img src="http://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20(37).jpg" class="img-fluid" alt="">
-                    <a href="#">
-                        <div class="mask"></div>
-                    </a>
-                </div>
-                <!--/.Card image-->
+                    </div>
+                    <!--/.Card-->
+                </div>";
+                $HTML .= $i % 3 == 0 ? "</div>" : "";
+                $i++;
+              }
+            }
+            echo $HTML;
+          ?>
+      </div>
+  </div>
 
-                <!--Card content-->
-                <div class="card-block">
-                    <!--Title-->
-                    <h4 class="card-title">Card title</h4>
-                    <!--Text-->
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="black-text d-flex flex-row-reverse"><h5 class="waves-effect p-2"> Read more <i class="fa fa-chevron-right"></i></h5></a>
-                </div>
-                <!--/.Card content-->
-
-            </div>
-            <!--/.Card-->
-        </div>
-        <!--First columnn-->
-
-        <!--Second columnn-->
-        <div class="col-lg-4">
-            <!--Card-->
-            <div class="card wow fadeIn" data-wow-delay="0.6s">
-
-                <!--Card image-->
-                <div class="view overlay hm-white-slight">
-                    <img src="http://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20(21).jpg" class="img-fluid" alt="">
-                    <a href="#">
-                        <div class="mask"></div>
-                    </a>
-                </div>
-                <!--/.Card image-->
-
-                <!--Card content-->
-                <div class="card-block">
-                    <!--Title-->
-                    <h4 class="card-title">Card title</h4>
-                    <!--Text-->
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="black-text d-flex flex-row-reverse"><h5 class="waves-effect p-2">Read more <i class="fa fa-chevron-right"></i></h5></a>
-                </div>
-                <!--/.Card content-->
-
-            </div>
-            <!--/.Card-->
-        </div>
-        <!--Second columnn-->
-
-        <!--Third columnn-->
-        <div class="col-lg-4">
-            <!--Card-->
-            <div class="card wow fadeIn" data-wow-delay="0.8s">
-
-                <!--Card image-->
-                <div class="view overlay hm-white-slight">
-                    <img src="http://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20(12).jpg" class="img-fluid" alt="">
-                    <a href="#">
-                        <div class="mask"></div>
-                    </a>
-                </div>
-                <!--/.Card image-->
-
-                <!--Card content-->
-                <div class="card-block">
-                    <!--Title-->
-                    <h4 class="card-title">Card title</h4>
-                    <!--Text-->
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="black-text d-flex flex-row-reverse"><h5 class="waves-effect p-2">Read more <i class="fa fa-chevron-right"></i></h5></a>
-                </div>
-                <!--/.Card content-->
-
-            </div>
-            <!--/.Card-->
-        </div>
-        <!--Third columnn-->
-    </div>
-    <!--/.Second row-->
-</div>
 <!--/.Main layout-->
-
 </main>

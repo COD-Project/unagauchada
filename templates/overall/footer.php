@@ -20,4 +20,7 @@
 <script src="views/app/js/main.js"></script>
 <script>
   new WOW().init()
+  $(function () {
+  $('[data-toggle="popover"]').popover()
+})
 </script>

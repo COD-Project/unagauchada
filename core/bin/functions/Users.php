@@ -11,6 +11,7 @@ function Users() {
         'idUser' => $d[$i]['idUser'],
         'name' => $d[$i]['name'],
         'surname' => $d[$i]['surname'],
+        'completeName' => $d[$i]['name'] . $d[$i]['surname'],
         'birthdate' => $d[$i]['birthdate'],
         'location' => $d[$i]['location'],
         'phone' => $d[$i]['phone'],

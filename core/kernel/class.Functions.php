@@ -98,6 +98,19 @@ final class Func
      return false;
    }
 
+   final public static function reduceString(string $string, int $limit) : string
+   {
+    	if(strlen($string) <= $limit){
+    		return $string;
+    	}else{
+    		$string = substr($string, 0, $limit);
+    		$palabras = explode(' ', $string);
+    		$output = implode(' ', $palabras);
+    		$output .= '...';
+    	}
+    	return $output;
+   }
+
 }
 
 ?>

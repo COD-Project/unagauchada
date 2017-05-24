@@ -22,20 +22,23 @@ let _init_login = function() {
     connect.onreadystatechange = () => {
       if(connect.readyState == 4 && connect.status == 200) {
         if(connect.responseText == 1) {
-          result = '<div class="card card-success z-depth-2" style="border-radius: 0px;"><div class="card-block">';
-          result += '<h4>¡Conexión exitosa!</h4>';
+          result = '<div class="alert alert-success alert-dismissible fade show" role="alert" style="border-radius: 0;">';
+          result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+          result += '<h5>¡Conexión exitosa!</h5>';
           result += '<p><strong> Estás siendo redirigido...</strong></p>';
           result += '</div></div>';
           Func.$('#_AJAX_LOGIN_').innerHTML = result;
           location.reload();
         } else {
-          result = '<div class="card card-danger z-depth-2" style="border-radius: 0px;"><div class="card-block">';
+          result = '<div class="alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0;">';
+          result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
           result += '<p><strong>ERROR: </strong>' + connect.responseText + '</p>';
           result += '</div></div>';
           Func.$('#_AJAX_LOGIN_').innerHTML = result;
         }
       } else if(connect.readyState != 4) {
-        result = '<div class="card card-warning z-depth-2" style="border-radius: 0px;"><div class="card-block">';
+        result = '<div class="alert alert-warning alert-dismissible fade show" role="alert" style="border-radius: 0;">';
+        result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
         result += '<h4>Processing...</h4>';
         result += '<p><strong> Estás iniciando sesión...</strong></p>';
         result += '</div></div>';
@@ -46,7 +49,8 @@ let _init_login = function() {
     connect.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     connect.send(form);
   } else {
-    result = '<div class="card card-danger z-depth-2" style="border-radius: 0px;"><div class="card-block">';
+    result = '<div class="alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0;">';
+    result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
     if(password == null || password.length == 0 || email == null || email.length == 0){
       result += '<strong>ERROR:</strong> Todos los campos deben ser completados.';
     } else {

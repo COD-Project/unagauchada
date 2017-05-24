@@ -87,11 +87,11 @@ h3 {
 /*Intro*/
 .main-view {
     background: url("../images/fondo.png");
-    height: 450px;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+		height: 500px;
 }
 
 .cmd_container {
