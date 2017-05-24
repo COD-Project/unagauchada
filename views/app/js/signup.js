@@ -15,5 +15,13 @@ if(Func.$('#signup_form')) {
         return false;
       }
   };
+
+  Func.limitate([
+    { hash: 'email_signup', value: 35 },
+    { hash: 'name_signup', value: 25 },
+    { hash: 'surname_signup', value: 25 }
+  ]);
 }
+
+
 
