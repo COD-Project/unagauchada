@@ -62,7 +62,7 @@ final class Gauchadas extends Models
 	      'body' => $this->body,
 	      'location' => $this->location,
 	      'limitDate' => $this->limitDate,
-	      'creationAt' => date('Y/m/d H:i:s', time()),
+	      'createdAt' => date('Y/m/d H:i:s', time()),
 	      'evaluation' => $this->evaluation,
 	      'idUser' => $this->idUser,
 	      'idCategory' => $this->idCategory 

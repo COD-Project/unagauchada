@@ -23,13 +23,15 @@ __kernel_autoload('class.Functions');
 __models_autoload(array(
   'Models',
   'Sessions',
-  'Gauchadas'
+  'Gauchadas',
+  'Categories'
 ));
 __functions_autoload(array(
   'Users',
   'EmailTemplate',
   'Comments',
-  'Gauchadas'
+  'Gauchadas',
+  'Categories'
 ));
 
 

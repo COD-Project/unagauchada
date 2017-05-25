@@ -162,9 +162,7 @@ ALTER TABLE `Comments`
 -- Indices de la tabla `Gauchadas`
 --
 ALTER TABLE `Gauchadas`
-  ADD PRIMARY KEY (`idGauchada`),
-  ADD UNIQUE KEY `idSolicitante` (`idUser`),
-  ADD UNIQUE KEY `idCategoria` (`idCategory`);
+  ADD PRIMARY KEY (`idGauchada`);
 
 --
 -- Indices de la tabla `Images`
