@@ -38,9 +38,7 @@
 									?>
 								</select>
 							</div>
-			<!--<input id="idUser" value=<?php echo $this->sessions->connectedUser()['idUser']?>>-->
-			<br>
-        	<input type="submit" id="btn-submit" value="Add">
+        	<input type="submit" id="btn-submit" value="Añadir">
        	</form>
       </div>
   	</div>

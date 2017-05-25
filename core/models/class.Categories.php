@@ -49,11 +49,16 @@ final class Categories extends Models
 	    $this->db->insert('Categories', array(
 	      'name' => $this->name, 
 	    ));
-	    Func::redirect(URL . "news?success=true");
+	    Func::redirect(URL . "categorias?success=true");
+  	}
+
+  	final public function Delete() {
+	    $this->Errors('categorias?errors=');
+	    $this->db->delete('Categories', "idCategory=$this->id");
   	}
 
   	final public function __destruct()
   	{
-
+  		parent::__destruct();
   	}
 }

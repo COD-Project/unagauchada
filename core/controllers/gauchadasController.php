@@ -11,19 +11,21 @@ class gauchadasController extends Controller {
     		$gauchadas = new Gauchadas();
     		if(!$this->sessions->isGranted()){
     			switch ($this->router->getMethod()) {
-		        case 'add':
-		          	if ($_POST) {
-		            	$gauchadas->Add();
-		          	} else {
-		            	$this->render('gauchadas/add');
-		          	}
-                break;
-						case 'view':
-								$this->render("gauchadas/view");
-			          break;
-            }
-    		}
+			        case 'add':
+			          	if ($_POST) {
+			            	$gauchadas->Add();
+			          	} else {
+			            	$this->render('gauchadas/add');
+			          	}
+	                	break;
+					case 'view':
+						$this->render("gauchadas/view");
+		         	 	break;
+            	} 
+            } 
     	}
+
+    	//Func::redirect();
     }
 }
 

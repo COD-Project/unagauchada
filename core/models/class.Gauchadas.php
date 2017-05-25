@@ -67,11 +67,11 @@ final class Gauchadas extends Models
 	      'idUser' => $this->idUser,
 	      'idCategory' => $this->idCategory 
 	    ));
-	    Func::redirect(URL . "news?success=true");
+	    Func::redirect(URL . "gauchadas?success=true");
   	}
 
   	final public function __destruct()
   	{
-
+  		parent::__destruct();
   	}
 }
