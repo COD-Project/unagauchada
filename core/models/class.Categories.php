@@ -29,7 +29,7 @@ final class Categories extends Models
 	    parent::__construct();
 	}
 
-	final private function Errors($url) 
+	final private function errors($url) 
 	{
 	    try {
 	      	if (empty($this->router->getId()) && empty($_POST['name'])) {
@@ -45,7 +45,7 @@ final class Categories extends Models
 
   	final public function Add() 
   	{
-	    $this->Errors('categorias?error=');
+	    $this->errors('categorias?error=');
 	    $this->db->insert('Categories', array(
 	      'name' => $this->name, 
 	    ));
@@ -53,7 +53,7 @@ final class Categories extends Models
   	}
 
   	final public function Delete() {
-	    $this->Errors('categorias?errors=');
+	    $this->errors('categorias?errors=');
 	    $this->db->delete('Categories', "idCategory=$this->id");
   	}
 

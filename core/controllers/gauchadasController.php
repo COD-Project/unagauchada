@@ -24,8 +24,6 @@ class gauchadasController extends Controller {
             	} 
             } 
     	}
-
-    	//Func::redirect();
     }
 }
 

@@ -34,7 +34,7 @@ final class Gauchadas extends Models
 	    parent::__construct();
 	}
 
-	final private function Errors($url) 
+	final private function errors($url) 
 	{
 	    try {
 	      	if (empty($this->router->getId()) && empty($_POST['title']) && empty($_POST['body']) && empty($_POST['location']) && empty($_POST['limitDate']) && empty($_POST['evaluation']) && empty($_POST['idUser']) && empty($_POST['idCategory'])) {
@@ -56,7 +56,7 @@ final class Gauchadas extends Models
 
   	final public function Add() 
   	{
-	    $this->Errors('gauchadas?error=');
+	    $this->errors('gauchadas?error=');
 	    $this->db->insert('Gauchadas', array(
 	      'title' => $this->title,
 	      'body' => $this->body,
