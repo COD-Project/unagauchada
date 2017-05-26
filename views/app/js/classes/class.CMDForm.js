@@ -22,7 +22,8 @@ class CMDForm {
       form.setAttribute("name", "cmd_form");
       form.setAttribute("id", "cmd_form");
       form.setAttribute("class", "cmd_form");
-      form.setAttribute("action", action)
+      form.setAttribute("action", action);
+      form.setAttribute("method", "POST")
 
     for (var i = 0; i < inputs.length; i++) {
       // preparing children to append

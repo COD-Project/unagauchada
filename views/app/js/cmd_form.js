@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //Functions
 
-    let validateInputs = () => {
+    function validateInputs() {
       for (var i = 0; i < nodeList.length; i++) {
         if (nodeList[i].type == "text" || nodeList[i].type == "email" || nodeList[i].type == "password") {
           if (nodeList[i].value == 0) {
@@ -37,12 +37,12 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     //Focus & Blur Functions
-    let focusInput = () => {
+    function focusInput() {
       this.parentElement.children[1].className = "cmd_label cmd_active";
       this.parentElement.children[0].className = this.parentElement.children[0].className.replace("error", "");
     };
 
-    let blurInput = () => {
+    function blurInput() {
       if (this.value.length <= 0) {
         this.parentElement.children[1].className = "cmd_label";
         this.parentElement.children[0].className += " cmd_error";
