@@ -23,7 +23,7 @@
 					<div class="cmd_input-group">
 							<label class="col-md-2 control-label" for="categories">Categorias</label>
 							<div class="col-md-10">
-								<select id="categories" name="categories[]">
+								<select id="idCategory" name="idCategory">
 									<?php
 										$categories = Categories();
 										if($categories != NULL){
@@ -38,6 +38,12 @@
 									?>
 								</select>
 							</div>
+            <div>
+
+            <div class="cmd_input-group">
+              <input type="date" id="limitDate" name="limitDate">   
+            </div>
+            <input type="hidden" id="idUser" name="idUser" value=<?php echo ("\"" . $this->sessions->connectedUser()['idUser'] . "\"") ?>>
         	<input type="submit" id="btn-submit" value="Añadir">
        	</form>
       </div>
