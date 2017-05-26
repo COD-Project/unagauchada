@@ -51,8 +51,9 @@
         'registrationDate' => $reg_date,
         'phone' => $phone,
         'birthdate' => $birthdate,
-        'credits' => 50,
-        'points' => 50
+        'credits' => 1,
+        'points' => 0,
+        'idImage' => 1
       );
       $db->insert("Users", $values);
       $sql = $db->query("SELECT MAX(idUser) AS idUser FROM Users;");

@@ -24,14 +24,16 @@ __models_autoload(array(
   'Models',
   'Sessions',
   'Gauchadas',
-  'Categories'
+  'Categories',
+  'Images'
 ));
 __functions_autoload(array(
   'Users',
   'EmailTemplate',
   'Comments',
   'Gauchadas',
-  'Categories'
+  'Categories',
+  'Images'
 ));
 
 

@@ -18,7 +18,7 @@
               <div class="dropdown navbar-text">
                 <a class="nav-link dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <!-- quité la clase  dropdown-toggle porque rompía todo -->
-                  <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%289%29.jpg" class="rounded-circle img-responsive cmd_zoomin" style="width: 35px;">
+                  <img src="' . ProfilePicture($this->sessions->connectedUser()['idImage'])['path'] . '" class="rounded-circle img-responsive cmd_zoomin" style="width: 35px;">
                   <span class="navbar-text">' . $this->sessions->connectedUser()['name'] . '</span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
