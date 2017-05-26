@@ -36,10 +36,10 @@
                             <!--Avatar-->
                             <div class=\"row\">
                               <div class=\"avatar text-right col-3\">
-                                <img style=\"width: 65px;\" src=\"https://mdbootstrap.com/img/Photos/Avatars/img%20%289%29.jpg\" class=\"rounded-circle img-responsive\">
+                                <img style=\"width: 65px;\" src=\"" . $_gauchadas[$id]['user']['profilePicture'] . "\" class=\"rounded-circle img-responsive\">
                               </div>
                               <div class=\"text-left col-9\">
-                                <p class=\"text-fluid\">" . Users()[$_gauchadas[$id]['idUser']]['completeName'] . "</p>
+                                <p class=\"text-fluid\">" . $_gauchadas[$id]['user']['completeName'] . "</p>
                                 <p style=\"color: gray; margin-top: -15px;\" class=\"text-fluid\">" . $_gauchadas[$id]['creationDate'] . "</p>
                               </div>
                             </div>

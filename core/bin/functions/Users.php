@@ -20,7 +20,8 @@ function Users() {
         'credits' => $d[$i]['credits'],
         'points' => $d[$i]['points'],
         'registrationDate' => $d[$i]['registrationDate'],
-        'role' => ($d[$i]['role'] == 1) ? 'admin' : 'user'
+        'role' => ($d[$i]['role'] == 1) ? 'admin' : 'user',
+        'profilePicture' => Images()[$d[$i]['idImage']]['path']
         //put user's info here if there is more in the db
       );
     }

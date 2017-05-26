@@ -14,7 +14,7 @@ function Gauchadas() {
       'limitDate' => $data[$i]['limitDate'],
       'creationDate' => $data[$i]['createdAt'],
       'evaluation' => $data[$i]['evaluation'],
-      'idUser' => $data[$i]['idUser'],
+      'user' => Users()[$data[$i]['idUser']],
       'idCategory' => $data[$i]['idCategory'],
       'comments' => Comments($data[$i]['idGauchada'])
     );

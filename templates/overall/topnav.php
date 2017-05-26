@@ -17,8 +17,7 @@
               echo ('
               <div class="dropdown navbar-text">
                 <a class="nav-link dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <!-- quité la clase  dropdown-toggle porque rompía todo -->
-                  <img src="' . ProfilePicture($this->sessions->connectedUser()['idImage'])['path'] . '" class="rounded-circle img-responsive cmd_zoomin" style="width: 35px;">
+                  <img src="' . $this->sessions->connectedUser()['profilePicture'] . '" class="rounded-circle img-responsive cmd_zoomin" style="width: 35px;">
                   <span class="navbar-text">' . $this->sessions->connectedUser()['name'] . '</span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu1">

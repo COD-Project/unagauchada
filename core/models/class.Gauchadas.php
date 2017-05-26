@@ -16,7 +16,6 @@ final class Gauchadas extends Models
 	private $location;
 	private $limitDate;
 	private $evaluation;
-	private $idUser;
 	private $idCategory;
 
 	static private $ins;
@@ -46,7 +45,6 @@ final class Gauchadas extends Models
 		        $this->location = isset($_POST['location']) ? $this->purifier($this->db->escape($_POST['location'])) : null;
 		        $this->limitDate = isset($_POST['limitDate']) ? $_POST['limitDate'] : null;
 		        $this->evaluation = isset($_POST['evaluation']) ? intval($_POST['evaluation']) : null;
-		        $this->idUser = isset($_POST['idUser']) ? intval($_POST['idUser']) : null;
 		        $this->idCategory = isset($_POST['idCategory']) ? intval($_POST['idCategory']) : null;
 	      	}
 	    } catch (PDOException $e) {
@@ -64,7 +62,7 @@ final class Gauchadas extends Models
 	      'limitDate' => $this->limitDate,
 	      'createdAt' => date('Y/m/d H:i:s', time()),
 	      'evaluation' => $this->evaluation,
-	      'idUser' => $this->idUser,
+	      'idUser' => (new Sessions)->connectedUser()['idUser'],
 	      'idCategory' => $this->idCategory 
 	    ));
 	    Func::redirect(URL . "gauchadas?success=true");

@@ -38,18 +38,17 @@
 	      </div>
 	      <div class="col-10">
 	        <?php
-	          	$gauchadas = Gauchadas();
-							if (!array_key_exists($this->router->getId(), $gauchadas)) {
+	          	$_gauchadas = Gauchadas();
+							if (!array_key_exists($this->router->getId(), $_gauchadas)) {
 								echo '<h1 style="color: red"> PUTO </h1>';
 							}
 							else {
-								$gauchada = $gauchadas[$this->router->getId()];
-		          	$user = Users()[$gauchada['idUser']];
+								$_gauchada = $_gauchadas[$this->router->getId()];
 		          	$HTML = "";
-		          	$HTML.= '<h1 class="h1-responsive">'.$gauchada['title'].'</h1>
-		          			<h6 class="h6-responsive">'. $user['completeName'] . ' - ' . $gauchada['creationDate'] .'</h6>
+		          	$HTML.= '<h1 class="h1-responsive">'.$_gauchada['title'].'</h1>
+		          			<h6 class="h6-responsive">'. $_gauchada['user']['completeName'] . ' - ' . $_gauchada['creationDate'] .'</h6>
 		          			<hr>
-		          			<p class="text-fluid">' . $gauchada['body'] . '</p>';
+		          			<p class="text-fluid">' . $_gauchada['body'] . '</p>';
 		          	echo $HTML;
 				}
 	        ?>
@@ -65,8 +64,8 @@
 			<?php
 				$HTML = '';
 
-				for($i = 0; $i < count($gauchada['comments']); $i++) {
-					$comment = $gauchada['comments'][$i];
+				for($i = 0; $i < count($_gauchada['comments']); $i++) {
+					$comment = $_gauchada['comments'][$i];
 					$userComment = Users()[$comment['idUser']];
 					$HTML.= '
 					<div class="col-3 text-right">
@@ -88,7 +87,7 @@
 				              </div>
 				            </div>
 				            <div class="col-9">
-				              <h4>' . $user['completeName'] . '</h4>
+				              <h4>' . $_gauchada['user']['completeName'] . '</h4>
 				              <h6 class="h6-responsive">' . $comment['answer']['lastModify'] . '</h6>
 				              <p style="color: red">Aca tendria que ir el body $comment[answer][body] pero como es una mierda, se pierden las columnas.<br> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				            </div>

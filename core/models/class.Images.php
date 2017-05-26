@@ -12,8 +12,6 @@ defined('INDEX_DIR') OR exit(APP . ' software says .i.');
 final class Images extends Models
 {
 	private $path;
-  private $idUser;
-
 
 	static private $ins;
 
@@ -38,7 +36,6 @@ final class Images extends Models
 	      	} else {
 		        $this->id = $this->router->getId() != null ? intval($this->router->getId()) : null;
 		        $this->path = isset($_POST['path']) ? $this->purifier($this->db->escape($_POST['path'])) : null;
-            $this->idUser = isset($_POST['idUser']) ? intval($_POST['idUser']) : null;
 	      	}
 	    } catch (PDOException $e) {
 	      Func::redirect(URL . $url . $e->getMessage());
@@ -50,7 +47,6 @@ final class Images extends Models
 	    $this->errors('imagenes?error=');
 	    $this->db->insert('Images', array(
 	      'path' => $this->path,
-        'idUser' => $this->idUser
 	    ));
 	    Func::redirect(URL . "imagenes?success=true");
   	}

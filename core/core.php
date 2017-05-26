@@ -28,12 +28,12 @@ __models_autoload(array(
   'Images'
 ));
 __functions_autoload(array(
+  'Images',
   'Users',
   'EmailTemplate',
   'Comments',
   'Gauchadas',
-  'Categories',
-  'Images'
+  'Categories'
 ));
 
 
