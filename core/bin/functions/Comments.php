@@ -25,7 +25,7 @@ function Comments($idGauchada) {
       'createdAt' => $data[$i]['createdAt'],
       'lastModify' => $data[$i]['lastModify'],
       'idUser' => $data[$i]['idUser'],
-      'answer' => Answer($idGauchada, $data[$i]['idComment'])
+      'answer' => (isset($data[$i]['idComment']))? Answer($idGauchada, $data[$i]['idComment']): false
     );
   }
   return $comments ? $comments : false;
