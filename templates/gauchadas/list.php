@@ -7,7 +7,7 @@
       <!--Second row-->
       <div class="row" style="margin-bottom: 5px;">
           <?php
-            $_gauchadas = Gauchadas();
+            $_gauchadas = array_reverse(Gauchadas());
             $HTML = "";
             if (!$_gauchadas) {
               $HTML .= '<div class="col-12">
@@ -40,7 +40,7 @@
                               </div>
                               <div class=\"text-left col-9\">
                                 <p class=\"text-fluid\">" . Users()[$_gauchadas[$id]['idUser']]['completeName'] . "</p>
-                                <p style=\"color: gray; margin-top: -15px;\" class=\"text-fluid\">" . Users()[$_gauchadas[$id]['idUser']]['email'] . "</p>
+                                <p style=\"color: gray; margin-top: -15px;\" class=\"text-fluid\">" . $_gauchadas[$id]['creationDate'] . "</p>
                               </div>
                             </div>
 
