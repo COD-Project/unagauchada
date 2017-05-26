@@ -18,6 +18,7 @@
       position: relative;
       margin-bottom: 32px; }
       .cmd_form_container .cmd_form .cmd_input-group input[type="text"],
+      .cmd_form_container .cmd_form .cmd_input-group input[type="date"],
       .cmd_form_container .cmd_form .cmd_input-group input[type="file"],
       .cmd_form_container .cmd_form .cmd_input-group input[type="email"],
       .cmd_form_container .cmd_form .cmd_input-group input[type="password"] {
@@ -32,6 +33,8 @@
         border-bottom: 2px solid #BBDEFB; }
         .cmd_form_container .cmd_form .cmd_input-group input[type="text"]:focus,
         .cmd_form_container .cmd_form .cmd_input-group input[type="text"]:active,
+        .cmd_form_container .cmd_form .cmd_input-group input[type="date"]:focus,
+        .cmd_form_container .cmd_form .cmd_input-group input[type="date"]:active,
         .cmd_form_container .cmd_form .cmd_input-group input[type="email"]:focus,
         .cmd_form_container .cmd_form .cmd_input-group input[type="email"]:active,
         .cmd_form_container .cmd_form .cmd_input-group input[type="password"]:focus,
@@ -39,10 +42,12 @@
           outline: none;
           border-bottom: 2px solid #303F9F; }
         .cmd_form_container .cmd_form .cmd_input-group input[type="text"].cmd_error,
+        .cmd_form_container .cmd_form .cmd_input-group input[type="date"].cmd_error,
         .cmd_form_container .cmd_form .cmd_input-group input[type="email"].cmd_error,
         .cmd_form_container .cmd_form .cmd_input-group input[type="password"].cmd_error {
           border-bottom: 2px solid #D32F2F; }
           .cmd_form_container .cmd_form .cmd_input-group input[type="text"].cmd_error + label,
+          .cmd_form_container .cmd_form .cmd_input-group input[type="date"].cmd_error + label,
           .cmd_form_container .cmd_form .cmd_input-group input[type="email"].cmd_error + label,
           .cmd_form_container .cmd_form .cmd_input-group input[type="password"].cmd_error + label {
             color: #D32F2F; }

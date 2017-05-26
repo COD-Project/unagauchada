@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function validateInputs() {
       for (var i = 0; i < nodeList.length; i++) {
-        if (nodeList[i].type == "text" || nodeList[i].type == "email" || nodeList[i].type == "password") {
+        if (nodeList[i].type == "text" || nodeList[i].type == "date" || nodeList[i].type == "email" || nodeList[i].type == "password") {
           if (nodeList[i].value == 0) {
             console.log('El campo ' + nodeList[i].name + ' debe estar lleno');
             nodeList[i].className += " cmd_error";
@@ -53,15 +53,15 @@ document.addEventListener('DOMContentLoaded', function() {
     cmd_form.addEventListener("submit", send);
 
     for (var i = 0; i < nodeList.length; i++) {
-      if (nodeList[i].type == "text" || nodeList[i].type == "email" || nodeList[i].type == "password"){
+      if (nodeList[i].type == "text" || nodeList[i].type == "date" || nodeList[i].type == "email" || nodeList[i].type == "password"){
         nodeList[i].addEventListener("focus", focusInput);
         nodeList[i].addEventListener("blur", blurInput);
       }
     }
 
     for (var i = 0; i < nodeList.length; i++) {
-      if (nodeList[i].type == "text" || nodeList[i].type == "email" || nodeList[i].type == "password"){
-        if (nodeList[i].value.length > 0) {
+      if (nodeList[i].type == "text" || nodeList[i].type == "date" || nodeList[i].type == "email" || nodeList[i].type == "password"){
+        if (nodeList[i].value.length > 0 || nodeList[i].type == "date") {
           nodeList[i].parentElement.children[1].className = "cmd_label cmd_active";
           nodeList[i].parentElement.children[0].className = nodeList[i].parentElement.children[0].className.replace("error", "");
         }

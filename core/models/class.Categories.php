@@ -13,7 +13,6 @@ final class Categories extends Models
 {
 	private $name;
 
-
 	static private $ins;
 
 	static function getInstance()
