@@ -1,8 +1,8 @@
 class Functions {
   $(elem) {
     if (elem.charAt(0) === '#' || elem.charAt(0) === '.') {
-      return (elem.charAt(0) === '#') ? 
-        document.getElementById(elem.slice(1, elem.length)) : 
+      return (elem.charAt(0) === '#') ?
+        document.getElementById(elem.slice(1, elem.length)) :
         document.getElementsByClassName(elem.slice(1, elem.length));
     } else {
       return document.getElementsByTagName(elem);

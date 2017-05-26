@@ -5,6 +5,8 @@
   $surname = $db->escape($_POST['surname']);
   $email = $db->escape($_POST['email']);
   $pass = Func::encrypt($_POST['pass']);
+  $birthdate = $_POST['birthdate'];
+  $phone = $_POST['phone'];
   $sql = $db->query("SELECT idUser FROM Users WHERE email='$email' LIMIT 1;");
   if($db->rows($sql) > 0) {
     echo 'El mail ingresado corresponde a un usuario existente.';
@@ -46,7 +48,11 @@
         'email' => $email,
         'password' => $pass,
         'keyreg' => $keyreg,
-        'registrationDate' => $reg_date
+        'registrationDate' => $reg_date,
+        'phone' => $phone,
+        'birthdate' => $birthdate,
+        'credits' => 50,
+        'points' => 50
       );
       $db->insert("Users", $values);
       $sql = $db->query("SELECT MAX(idUser) AS idUser FROM Users;");

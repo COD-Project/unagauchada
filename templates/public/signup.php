@@ -14,7 +14,7 @@
        </div>
        <div class="modal-body">
          <div class="text-center">
-             <h3><i class="fa fa-lock"></i> Registrar Cuenta </h3>
+             <h3><i class="fa fa-user-plus"></i> Registrar Cuenta </h3>
          </div>
          <div id="signup_form" role="form">
            <div class="group">
@@ -26,6 +26,16 @@
              <input type="text" id="surname_signup" name="surname">
              <span class="highlight"></span><span class="bar"></span>
              <label for="surname_signup">Apellido</label>
+           </div>
+           <div class="group">
+             <input type="text" id="tel_signup" name="name" placeholder=" ">
+             <span class="highlight"></span><span class="bar"></span>
+             <label for="tel_signup">Teléfono</label>
+           </div>
+           <div class="group">
+             <input type="date" id="date_signup" name="name">
+             <span class="highlight"></span><span class="bar"></span>
+             <label for="date_signup">Fecha de Nacimiento</label>
            </div>
            <div class="group">
              <input type="text" id="email_signup" name="email">
@@ -59,7 +69,7 @@
          </div>
        </div>
        <div class="modal-footer">
-         <p> ¿Estás registrado? <a data-toggle="modal" data-target="#Login"> ¡Inicia sesión!</a></p>
+         <p> ¿Estás registrado? <a data-toggle="modal" data-dismiss="modal" data-target="#Login"> ¡Inicia sesión!</a></p>
        </div>
      </div>
    </div>

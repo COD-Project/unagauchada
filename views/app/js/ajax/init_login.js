@@ -4,16 +4,10 @@ let _init_login = function() {
       response,
       result;
 
-  let email = Func.$('#email').value,
-      password = Func.$('#pass').value,
-      session = Func.$('#session_login').checked,
-      query = login_query({
-        email: email,
-        password: password
-      });
-
-  if(!query.email && !query.password) {
-    form = 'email=' + email + '&pass=' + password + '&session=' + session;
+  let data = getLoginData();
+  console.log(data.email.empty);
+  if(data.email.success && data.password.success) {
+    form = 'email=' + data.email.value + '&pass=' + data.password.value + '&session=' + data.session;
 
     connect = window.XMLHttpRequest ?
       new XMLHttpRequest() :
@@ -26,14 +20,14 @@ let _init_login = function() {
           result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
           result += '<h5>¡Conexión exitosa!</h5>';
           result += '<p><strong> Estás siendo redirigido...</strong></p>';
-          result += '</div></div>';
+          result += '</div>';
           Func.$('#_AJAX_LOGIN_').innerHTML = result;
           location.reload();
         } else {
           result = '<div class="alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0;">';
           result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
           result += '<p><strong>ERROR: </strong>' + connect.responseText + '</p>';
-          result += '</div></div>';
+          result += '</div>';
           Func.$('#_AJAX_LOGIN_').innerHTML = result;
         }
       } else if(connect.readyState != 4) {
@@ -41,7 +35,7 @@ let _init_login = function() {
         result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
         result += '<h4>Processing...</h4>';
         result += '<p><strong> Estás iniciando sesión...</strong></p>';
-        result += '</div></div>';
+        result += '</div>';
         Func.$('#_AJAX_LOGIN_').innerHTML = result;
       }
     }
@@ -51,12 +45,12 @@ let _init_login = function() {
   } else {
     result = '<div class="alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0;">';
     result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
-    if(password == null || password.length == 0 || email == null || email.length == 0){
+    if(data.email.empty || data.password.empty){
       result += '<strong>ERROR:</strong> Todos los campos deben ser completados.';
     } else {
       result += '<strong>ERROR:</strong> Email o contraseñas incorrectas';
     }
-    result += '</div></div>';
+    result += '</div>';
     Func.$('#_AJAX_LOGIN_').innerHTML = result;
   }
 };

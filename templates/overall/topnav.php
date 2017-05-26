@@ -1,7 +1,7 @@
 
 <!--Navigation & Intro-->
 <header>
-  <nav class="navbar navbar-toggleable-md navbar-dark scrolling-navbar bg-faded">
+  <nav class="navbar navbar-toggleable-md navbar-dark scrolling-navbar bg-faded fixed-top">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
     </button>

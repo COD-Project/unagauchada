@@ -3,22 +3,12 @@ let _init_signup = function() {
       form,
       result;
 
-  let name = Func.$('#name_signup').value,
-      surname = Func.$('#surname_signup').value,
-      email = Func.$('#email_signup').value,
-      pass = Func.$('#pass_signup').value,
-      rep_pass = Func.$('#pass_signup_dos').value,
-      tyc = Func.$('#tyc_signup').checked;
-      query = signup_query({
-        email: email,
-        pass: pass,
-        rep_pass: rep_pass
-      });
-
-  if(tyc) {
-    if(name != '' && surname != '' && pass != '' && rep_pass != '' && email != '') {
-      if(!query.email && !query.password) {
-        form = 'name=' + name + '&surname=' + surname + '&pass=' + pass + '&email=' + email;
+  let data = getSignupData();
+  console.log(data.date.age);
+  if(data.tyc) {
+    if(!data.name.empty && !data.surname.empty && !data.password.empty && !data.phone.empty) {
+      if(data.email.success && data.password.success && data.date.success) {
+        form = 'name=' + data.name.value + '&surname=' + data.surname.value + '&pass=' + data.password.value[0] + '&email=' + data.email.value + '&birthdate=' + data.date.value + '&phone=' + data.phone.value;
         connect = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
         connect.onreadystatechange = function() {
           if(connect.readyState == 4 && connect.status == 200) {
@@ -27,7 +17,7 @@ let _init_signup = function() {
               result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
               result += '<h4>Registration completed!</h4>';
               result += '<p><strong>Estás siendo redirigido...</strong></p>';
-              result += '</div></div>';
+              result += '</div>';
               Func.$('#_AJAX_SIGNUP_').innerHTML = result;
               location.reload();
             } else {
@@ -38,7 +28,7 @@ let _init_signup = function() {
             result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
             result += '<h4>Processing...</h4>';
             result += '<p><strong>Tu registro esta siendo procesado...</strong></p>';
-            result += '</div></div>';
+            result += '</div>';
             Func.$('#_AJAX_SIGNUP_').innerHTML = result;
           }
         }
@@ -49,12 +39,14 @@ let _init_signup = function() {
         result = '<div class="alert alert-warning alert-dismissible fade show" role="alert" style="border-radius: 0;">';
         result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
         result += '<h4>ERROR</h4>';
-        if (query.email) {
+        if (!data.email.success) {
           result += '<p><strong>El Email debe ser de la forma example@domain.com</strong></p>';
-        } else {
+        } else if (!data.password.success) {
           result += '<p><strong>Las contraseñas no coinciden o tienen caracteres invalidos.</strong></p>';
+        } else if (!data.date.success) {
+          result += '<p><strong>Debes ser mayor de edad para registrate.</strong></p>';
         }
-        result += '</div></div>';
+        result += '</div>';
         Func.$('#_AJAX_SIGNUP_').innerHTML = result;
       }
     } else {
@@ -62,7 +54,7 @@ let _init_signup = function() {
       result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
       result += '<h4>ERROR</h4>';
       result += '<p><strong>Todos los campos deben ser llenados.</strong></p>';
-      result += '</div></div>';
+      result += '</div>';
       Func.$('#_AJAX_SIGNUP_').innerHTML = result;
     }
   } else {
@@ -70,7 +62,7 @@ let _init_signup = function() {
     result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
     result += '<h4>ERROR</h4>';
     result += '<p><strong>Los terminos y condiciones deben ser aceptados.</strong></p>';
-    result += '</div></div>';
+    result += '</div>';
     Func.$('#_AJAX_SIGNUP_').innerHTML = result;
   }
 }

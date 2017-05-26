@@ -14,7 +14,7 @@
        </div>
        <div class="modal-body">
          <div class="text-center">
-             <h3><i class="fa fa-lock"></i> Iniciar Sesión </h3>
+             <h3><i class="fa fa-sign-in"></i> Iniciar Sesión </h3>
          </div>
          <div id="login_form" role="form">
            <div class="group">
@@ -44,8 +44,7 @@
          </div>
        </div>
        <div class="modal-footer">
-         <p> ¿Estás registrado? <a data-toggle="modal" data-target="#Signup"> ¡Registrate!</a></p>
-         <p><a data-toggle="modal" data-target="#Lostpass"> ¿Perdiste la contraseña?</a></p>
+         <p> ¿Aún no tenés una cuenta? <a data-toggle="modal" data-dismiss="modal" data-target="#Signup"> ¡Registrate!</a></p>
        </div>
      </div>
    </div>
