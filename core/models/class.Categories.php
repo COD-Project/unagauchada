@@ -47,9 +47,9 @@ final class Categories extends Models
   	{
 	    $this->errors('categorias?error=');
 	    $this->db->insert('Categories', array(
-	      'name' => $this->name, 
+	      'name' => $this->name
 	    ));
-	    Func::redirect(URL . "categorias?success=true");
+	    Func::redirect(URL);
   	}
 
   	final public function Delete() {
