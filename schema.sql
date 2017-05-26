@@ -154,7 +154,6 @@ ALTER TABLE `Categories`
 --
 ALTER TABLE `Comments`
   ADD PRIMARY KEY (`idComment`),
-  ADD UNIQUE KEY `idUser` (`idUser`),
   ADD UNIQUE KEY `daddy` (`idGauchada`,`idQuestion`),
   ADD KEY `Comments_ibfk_2` (`idQuestion`);
 
@@ -168,15 +167,13 @@ ALTER TABLE `Gauchadas`
 -- Indices de la tabla `Images`
 --
 ALTER TABLE `Images`
-  ADD PRIMARY KEY (`idImages`),
-  ADD UNIQUE KEY `idUser` (`idUser`);
+  ADD PRIMARY KEY (`idImages`);
 
 --
 -- Indices de la tabla `Users`
 --
 ALTER TABLE `Users`
-  ADD PRIMARY KEY (`idUser`),
-  ADD UNIQUE KEY `idImage` (`idImage`);
+  ADD PRIMARY KEY (`idUser`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
