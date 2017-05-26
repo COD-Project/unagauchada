@@ -29,12 +29,11 @@ class CMDForm {
       div = document.createElement('div');
         div.setAttribute("class", "cmd_input-group");
       input = document.createElement('input');
-        input.setAttribute("type", input[i].type);
+        input.setAttribute("type", inputs[i].type);
         input.setAttribute("name", inputs[i].name);
       label = document.createElement('label');
-        label.innerHTML = inputs[i];
-        label.setAttribute("for", inputs[i].name);
         label.innerHTML = inputs[i].inner;
+        label.setAttribute("for", inputs[i].name);
         label.setAttribute("class", "cmd_label");
 
       // append generated children
