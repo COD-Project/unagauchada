@@ -92,6 +92,10 @@ define('FIREWALL', true);
 # DEBUG mode
 define('DEBUG', false);
 
+define('IS_API', false);
+
+define('GENERATOR', false);
+
 //------------------------------------------------
 define('E_ERNO','');
 
