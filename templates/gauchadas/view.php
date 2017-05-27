@@ -4,7 +4,7 @@
 <body>
 	<?php $this->render('overall/topnav'); ?>
 	<div class="container">
-	    <div id="carousel-example-1z" style="padding-top: 100px" class="carousel slide carousel-fade" data-ride="carousel">
+	    <div id="carousel-example-1z" style="padding-top: 100px;" class="carousel slide carousel-fade" data-ride="carousel">
 	  		<ol class="carousel-indicators">
 	        	<li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
 	            <li data-target="#carousel-example-1z" data-slide-to="1"></li>
@@ -12,14 +12,20 @@
 	        </ol>
 	        <div class="carousel-inner" role="listbox">
 	            <div class="carousel-item active">
+								<div class="container">
 	                <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(18).jpg" alt="First slide">
+								</div>
 	            </div>
 	            <div class="carousel-item">
+								<div class="container">
 	                <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(19).jpg" alt="Second slide">
-	            </div>
+								</div>
+							</div>
 	            <div class="carousel-item">
+								<div class="container">
 	                <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(20).jpg" alt="Third slide">
-	            </div>
+								</div>
+							</div>
 	        </div>
 	        <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
 	            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -39,18 +45,13 @@
 	      <div class="col-10">
 	        <?php
 	          	$_gauchadas = Gauchadas();
-							if (!array_key_exists($this->router->getId(), $_gauchadas)) {
-								echo '<h1 style="color: red"> PUTO </h1>';
-							}
-							else {
-								$_gauchada = $_gauchadas[$this->router->getId()];
-		          	$HTML = "";
-		          	$HTML.= '<h1 class="h1-responsive">'.$_gauchada['title'].'</h1>
-		          			<h6 class="h6-responsive">'. $_gauchada['user']['completeName'] . ' - ' . $_gauchada['creationDate'] .'</h6>
-		          			<hr>
-		          			<p class="text-fluid">' . $_gauchada['body'] . '</p>';
-		          	echo $HTML;
-				}
+							$_gauchada = $_gauchadas[$this->router->getId()];
+	          	$HTML = "";
+	          	$HTML.= '<h1 class="h1-responsive">'.$_gauchada['title'].'</h1>
+	          			<h6 class="h6-responsive">'. $_gauchada['user']['completeName'] . ' - ' . $_gauchada['creationDate'] .'</h6>
+	          			<hr>
+	          			<p class="text-fluid">' . $_gauchada['body'] . '</p>';
+	          	echo $HTML;
 	        ?>
 	      </div>
 	    </div>
