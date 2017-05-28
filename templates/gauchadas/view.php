@@ -36,18 +36,18 @@
 	            <span class="sr-only">Next</span>
 	        </a>
 	    </div>
-	    <div class="row" style="padding-top: 50px">
-	      <div class="col-2 text-right">
-	        <div class="avatar">
-	          <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%289%29.jpg" class="rounded-circle img-responsive" style="width: 15vh">
-	        </div>
-	      </div>
-	      <div class="col-10">
-	        <?php
+			<?php
 	          	$_gauchadas = Gauchadas();
 							$_gauchada = $_gauchadas[$this->router->getId()];
 	          	$HTML = "";
-	          	$HTML.= '<h1 class="h1-responsive">'.$_gauchada['title'].'</h1>
+	          	$HTML.= '<div class="row" style="padding-top: 50px">
+							<div class="col-2 text-right">
+								<div class="avatar">
+									<img src="' . $_gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 15vh">
+								</div>
+							</div>
+							<div class="col-10">
+								<h1 class="h1-responsive">'.$_gauchada['title'].'</h1>
 	          			<h6 class="h6-responsive">'. $_gauchada['user']['completeName'] . ' - ' . $_gauchada['creationDate'] .'</h6>
 	          			<hr>
 	          			<p class="text-fluid">' . $_gauchada['body'] . '</p>';
@@ -71,7 +71,7 @@
 					$HTML.= '
 					<div class="col-3 text-right">
 						<div class="avatar">
-							<img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%289%29.jpg" class="rounded-circle img-responsive" style="width: 10vh">
+							<img src="' . $userComment['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 10vh">
 						</div>
 					</div>
 					<div class="col-9">
@@ -84,7 +84,7 @@
 						<div class="row">
 				            <div class="col-3 text-right">
 				              <div class="avatar">
-				                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%289%29.jpg" class="rounded-circle img-responsive" style="width: 8vh">
+				                <img src="' . $_gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 8vh">
 				              </div>
 				            </div>
 				            <div class="col-9">
