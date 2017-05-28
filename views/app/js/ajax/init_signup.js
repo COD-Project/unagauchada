@@ -21,7 +21,11 @@ let _init_signup = function() {
               Func.$('#_AJAX_SIGNUP_').innerHTML = result;
               location.reload();
             } else {
-              Func.$('#_AJAX_SIGNUP_').innerHTML = connect.responseText;
+              result = '<div class="alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0;">';
+              result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+              result += '<p><strong>ERROR: </strong>' + connect.responseText + '</p>';
+              result += '</div>';
+              Func.$('#_AJAX_SIGNUP_').innerHTML = result;
             }
           } else if(connect.readyState != 4) {
             result = '<div class="alert alert-warning alert-dismissible fade show" role="alert" style="border-radius: 0;">';

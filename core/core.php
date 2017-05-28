@@ -23,9 +23,10 @@ __kernel_autoload('class.Functions');
 __models_autoload(array(
   'Models',
   'Sessions',
+  'Images',
+  'Users',
   'Gauchadas',
-  'Categories',
-  'Images'
+  'Categories'
 ));
 __functions_autoload(array(
   'Images',

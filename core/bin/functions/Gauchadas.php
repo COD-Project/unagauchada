@@ -2,7 +2,7 @@
 
 function Gauchadas() {
   $db = new Connection();
-  $data = $db->select('*', 'Gauchadas');
+  $data = $db->select('*', 'Gauchadas', '1=1', 'ORDER BY idGauchada DESC');
   if(count($data) == 0) return false;
 
   for($i = 0; $i < count($data); $i++) {
