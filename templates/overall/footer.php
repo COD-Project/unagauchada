@@ -22,6 +22,6 @@
 <script>
   new WOW().init()
   $(function () {
-  $('[data-toggle="popover"]').popover()
-})
+    $('[data-toggle="popover"]').popover()
+  })
 </script>

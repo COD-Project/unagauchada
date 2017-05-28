@@ -1,11 +1,23 @@
 <!--Mask-->
-<div class="" style="height: 20px;"></div>
+<div class="" style="height: 75px;"></div>
 <!--/.Mask-->
 
 
 <!--Main layout-->
-<main class="pt-6 text-center wow fadeInUp" style="padding-top: 50px;" data-wow-delay="0.3s">
-    <h2> Gauchadas </h2>
+<main class="container pt-6 text-center wow fadeInUp" style="padding-top: 50px;" data-wow-delay="0.3s">
+    <div class="row">
+      <div class="col-4 text-left">
+        <h2 class="h2-responsive"> Gauchadas </h2>
+      </div>
+      <div class="col-4">
+
+      </div>
+      <div class="col-4 text-right">
+        <a class="btn btn-warning option-button text-center" href="#">
+          <i class="fa fa-plus"></i>
+        </a>
+      </div>
+    </div>
 </main>
 <!--/Main layout-->
 

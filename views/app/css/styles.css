@@ -26,7 +26,7 @@
 
 body {
 	min-height: 100vh;
-	/*background:url(../img/bg.jpg);*/
+	background-color: #fff;
 	background-repeat:no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
@@ -75,32 +75,13 @@ h3 {
   color: #4a89dc;
 }
 
-/* Navigation*/
-.navbar {
-    background-color: transparent;
-}
-
-.top-nav-collapse {
-    background-color: #f4f4f4;
-}
-
-/*Intro*/
-.main-view {
-    background: url("../images/fondo.png");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-		height: 500px;
-}
-
-.cmd_container {
+.cmd-container {
 	width: 100%;
 	max-width: 900px;
 	margin: auto;
 }
 
-.cmd_container > article {
+.cmd-container > article {
 	/*background:rgba(24,8,33,.9);*/
 	background: rgba(0,0,0, .55);
 	padding: 20px;
@@ -109,87 +90,87 @@ h3 {
 	box-shadow: 0 5px 5px 3px rgba(0, 0, 0, 0.25);
 }
 
-.cmd_container>article>h2 {
+.cmd-container>article>h2 {
 	color: #fff;
 }
 
-.cmd_container>article>hr {
+.cmd-container>article>hr {
 	background: #F64740;
 	height: 5px;
 	border: none;
 }
 
-.cmd_container>article>p {
+.cmd-container>article>p {
 	line-height: 25px;
 }
 
-.cmd_container>article>h2, .cmd_container>article>p, .cmd_container>article>hr {
+.cmd-container>article>h2, .cmd-container>article>p, .cmd-container>article>hr {
 	margin-bottom: 20px;
 }
 
-.cmd_container>article>p {
+.cmd-container>article>p {
 	max-height: 200px;
 	overflow: auto;
 }
 
-.cmd_jumbotron {
+.cmd-jumbotron {
   padding: 30px 15px 30px 15px;
   margin-bottom: 30px;
   margin-top: 40px;
   background:rgba(0,0,0,.8);
 }
 
-.cmd_jumbotron h1 {
+.cmd-jumbotron h1 {
   color: #fff;
 }
 
-.cmd_jumbotron p {
+.cmd-jumbotron p {
   margin-bottom: 15px;
   font-size: 20px;
   font-weight: 200;
   color: #fff;
 }
-.cmd_jumbotron > hr {
+.cmd-jumbotron > hr {
   border-top-color: #d5d5d5;
 }
 
-.cmd_jumbotron {
+.cmd-jumbotron {
   max-width: 100%;
 }
 
-.cmd_jumbotron_2 {
+.cmd-jumbotron_2 {
   padding: 30px 15px;
   margin-bottom: 30px;
   margin-top: 45px;
 }
 
-.cmd_jumbotron_2 h1 {
+.cmd-jumbotron_2 h1 {
   color: #000;
 }
 
-.cmd_jumbotron_2 p {
+.cmd-jumbotron_2 p {
   margin-bottom: 15px;
   font-size: 20px;
   font-weight: 200;
   color: #000;
 }
 
-.cmd_jumbotron_2 > hr {
+.cmd-jumbotron_2 > hr {
   border-top-color: #d5d5d5;
 }
 
-.cmd_jumbotron_2 {
+.cmd-jumbotron_2 {
   border-radius: 6px;
 }
 
-.cmd_jumbotron_2 {
+.cmd-jumbotron_2 {
   max-width: 100%;
 }
 
 
-/*_____________________________ cmd_logo ____________________________________________________________________________________________________________________________*/
+/*_____________________________ cmd-logo ____________________________________________________________________________________________________________________________*/
 
-.cmd_logo {
+.cmd-logo {
 	position: fixed;
 	width: 7em;
 	float: left;
@@ -200,11 +181,11 @@ h3 {
 	z-index: 2000; /* Utilizamos la propiedad z-index para que no se superponga algún otro elemento como sliders, galerías, etc */
 }
 
-.cmd_logo img {
+.cmd-logo img {
 	width: 100%
 }
 
-.cmd_zoomin {
+.cmd-zoomin {
     -webkit-transform: scale(1, 1);
     -moz-transform: scale(1, 1);
     -o-transform: scale(1, 1);
@@ -216,7 +197,7 @@ h3 {
     transition: all 250ms ease;
 }
 
-.cmd_zoomin:hover {
+.cmd-zoomin:hover {
     -webkit-transform: scale(1.1, 1.1);
     -moz-transform: scale(1.1, 1.1);
     -o-transform: scale(1.1, 1.1);
@@ -226,7 +207,7 @@ h3 {
 
 /*____________________________________ boton para subir en pantalla _______________________________________________________________________________________________*/
 
-.cmd_gotop {
+.cmd-gotop {
 	display: none;
 	padding:10.5px 12.5px;
   border-radius: 50%;
@@ -240,6 +221,6 @@ h3 {
 	border: 1.5px solid #009688;
 }
 
-.cmd_gotop:hover {
+.cmd-gotop:hover {
 	background:rgba(0,0,0,1);
 }

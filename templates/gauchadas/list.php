@@ -42,7 +42,7 @@
                             </div>
                           </div>
                           <!--Title-->
-                          <div class=\"card-title text-fluid\" style=\"margin-top: 20px; height: 45px;\">
+                          <div class=\"card-title text-fluid\" style=\"margin-top: 20px; height: 55px;\">
                             <h5 class=\"h5-responsive\">" . Func::reduceString($_gauchadas[$id]['title'], 45) . "</h4>
                           </div>
                           <hr>

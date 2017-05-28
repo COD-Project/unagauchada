@@ -14,10 +14,10 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="views/app/css/styles.css">
+    <link rel="stylesheet" href="views/app/css/unagauchada.styles.css">
     <link rel="stylesheet" href="views/app/css/query.css">
     <link rel="stylesheet" href="views/app/css/modal_form.css">
     <link rel="stylesheet" href="views/app/css/cmd_form.css">
-    <link rel="stylesheet" href="views/app/css/admin_template.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

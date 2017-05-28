@@ -1,0 +1,28 @@
+
+/* Navigation*/
+.navbar {
+  background: transparent;
+  color: coral;
+}
+
+.top-nav-collapse {
+  background-color: #fafafa;
+  color: coral;
+}
+
+/*Intro*/
+.main-view {
+  background: url("../images/fondo.png");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+	height: 500px;
+}
+
+.option-button {
+	border-radius: 50%;
+  padding: 10.5px 12px;
+
+  margin-right: 10px;
+}
