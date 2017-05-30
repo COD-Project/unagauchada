@@ -68,6 +68,16 @@ session_start([
 ]);
 
 //------------------------------------------------
+# AJAX granted hash keys
+define('AJAX', array(
+  'users' => array(
+      'login',
+      'signup',
+      'edit'
+    )
+));
+
+//------------------------------------------------
 # PHPMailer constants
 define('PHPMAILER', array(
   'HOST' => '',

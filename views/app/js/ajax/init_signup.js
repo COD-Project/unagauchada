@@ -36,7 +36,7 @@ let _init_signup = function() {
             Func.$('#_AJAX_SIGNUP_').innerHTML = result;
           }
         }
-        connect.open('POST','ajax.php?mode=signup',true);
+        connect.open('POST','ajax.php?for=users&mode=signup',true);
         connect.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
         connect.send(form);
       } else {

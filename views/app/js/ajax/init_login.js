@@ -39,7 +39,7 @@ let _init_login = function() {
         Func.$('#_AJAX_LOGIN_').innerHTML = result;
       }
     }
-    connect.open('POST','ajax.php?mode=login', true);
+    connect.open('POST','ajax.php?for=users&mode=login', true);
     connect.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     connect.send(form);
   } else {
