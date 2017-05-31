@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-	if (Func.$('compra_creditos')) {
+	if (Func.$('#compra_creditos')) {
 		cmdForm.render({
 			elem: Func.$('#compra_creditos'),
 			inputs: [

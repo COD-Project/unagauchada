@@ -74,6 +74,12 @@ define('AJAX', array(
       'login',
       'signup',
       'edit'
+    ),
+  'states' => array(
+      'get'
+    ),
+  'locates' => array(
+      'get' 
     )
 ));
 

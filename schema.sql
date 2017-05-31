@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 26-05-2017 a las 21:14:00
+-- Tiempo de generación: 31-05-2017 a las 23:33:16
 -- Versión del servidor: 10.1.22-MariaDB
 -- Versión de PHP: 7.1.4
 
@@ -66,6 +66,19 @@ INSERT INTO `Comments` (`idComment`, `body`, `createdAt`, `lastModify`, `idQuest
 (2, 'que tipo gatoo!', '2017-05-23', '2017-05-23', 1, 1, 1),
 (3, 'que tan verde esta?', '2017-05-23', '2017-05-23', NULL, 2, 4),
 (4, 'verde manzana roja', '2017-05-23', '2017-05-23', 3, 2, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Creditos`
+--
+
+CREATE TABLE `Creditos` (
+  `idCredito` int(11) NOT NULL,
+  `monto` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `date` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -2609,7 +2622,7 @@ INSERT INTO `Users` (`idUser`, `name`, `surname`, `birthdate`, `phone`, `locatio
 (3, 'Lucas', 'Saltamontes', NULL, NULL, 0, 'saltalucassalta@gmail.com', '808a3fa3e3366945393dda70e59a61a2', NULL, NULL, 0, 1495132930, '2017-05-18', '90c2b0d54f9f90004f2fcd9d0', 2, 1),
 (4, 'Nuria', 'flkajdglkajs', NULL, NULL, NULL, 'nu@gmail.com', 'fe295ff0cd2bac35cfa387a3ad08d72a', NULL, NULL, 0, 1495135402, '2017-05-18', 'd6bfe454c4c3c053f1a480270', 2, 1),
 (5, 'mati', 'dd', NULL, NULL, NULL, 'maddti@gmail.com', '34386742333358bf5fbdcec9ef665bb4', NULL, NULL, 0, 1495135883, '2017-05-18', '7866da3bf22445a46610c0b87', 2, 1),
-(6, 'Juan Cruz', 'Ocampos', NULL, NULL, 0, 'pepe@gmail.com', '1dd4ecb6f7f0091bc464fee9b9202d59', NULL, NULL, 0, 1495839387, '2017-05-18', '0463b4f6c6263825487df9a29', 2, 1),
+(6, 'Juan Cruz', 'Ocampos', NULL, NULL, 0, 'pepe@gmail.com', '1dd4ecb6f7f0091bc464fee9b9202d59', NULL, NULL, 0, 1496280955, '2017-05-18', '0463b4f6c6263825487df9a29', 2, 1),
 (7, 'asd', 'asd', '1996-12-31', '123', NULL, 'ulisescf.24@gmail.com', 'b778143552427cbb42b37705334b53c8', 1, 0, 0, 0, '2017-05-26', 'e6d998e9dca8b4fe1696736bd', 1, 1);
 
 --
@@ -2630,6 +2643,13 @@ ALTER TABLE `Comments`
   ADD UNIQUE KEY `daddy` (`idGauchada`,`idQuestion`),
   ADD KEY `Comments_ibfk_2` (`idQuestion`),
   ADD KEY `Comments_ibfk_1` (`idUser`);
+
+--
+-- Indices de la tabla `Creditos`
+--
+ALTER TABLE `Creditos`
+  ADD PRIMARY KEY (`idCredito`),
+  ADD KEY `idUser` (`idUser`);
 
 --
 -- Indices de la tabla `Gauchadas`
@@ -2686,6 +2706,11 @@ ALTER TABLE `Categories`
 ALTER TABLE `Comments`
   MODIFY `idComment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
+-- AUTO_INCREMENT de la tabla `Creditos`
+--
+ALTER TABLE `Creditos`
+  MODIFY `idCredito` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `Gauchadas`
 --
 ALTER TABLE `Gauchadas`
@@ -2726,6 +2751,12 @@ ALTER TABLE `Comments`
   ADD CONSTRAINT `Comments_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `Users` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `Comments_ibfk_2` FOREIGN KEY (`idQuestion`) REFERENCES `Comments` (`idComment`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `Comments_ibfk_3` FOREIGN KEY (`idGauchada`) REFERENCES `Categories` (`idCategory`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `Creditos`
+--
+ALTER TABLE `Creditos`
+  ADD CONSTRAINT `Creditos_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `Users` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `Gauchadas`
