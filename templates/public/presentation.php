@@ -12,11 +12,16 @@
       <div class="col-4">
 
       </div>
-      <div class="col-4 text-right">
-        <a class="btn btn-warning rounded-circle option-button text-center" href="gauchadas/add">
-          <i class="fa fa-plus"></i>
-        </a>
-      </div>
+      <?php 
+        if($this->sessions->isLoggedIn()) {
+          echo ('
+            <div class="col-4 text-right">
+              <a class="btn btn-warning rounded-circle option-button text-center" href="gauchadas/add">
+                <i class="fa fa-plus"></i>
+              </a>
+            </div>');
+        }
+      ?>
     </div>
 </main>
 <!--/Main layout-->
