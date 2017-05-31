@@ -85,6 +85,11 @@ final class Sessions extends Models
     return ($this->isLoggedIn()) ? ($this->connectedUser()['role'] == 1) : false; // 1 correspond to admin users - 2 correspond to normal users
   }
 
+  final public function hasCredits() : bool
+  {
+    return ($this->isLoggedIn()) ? ($this->connectedUser()['credits'] >=1) : false; // 1 correspond to admin users - 2 correspond to normal users
+  }
+
   final public function __destruct()
   {
     parent::__destruct();
