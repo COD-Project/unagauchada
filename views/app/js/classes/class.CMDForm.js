@@ -8,7 +8,7 @@ class CMDForm {
     return data;
   }
 
-  render({ elem, inputs, action=null }) {
+  render({ elem, inputs, submit, action=null }) {
     var container, 
         wrap, 
         div, 
@@ -32,6 +32,7 @@ class CMDForm {
       input = document.createElement('input');
         input.setAttribute("type", inputs[i].type);
         input.setAttribute("name", inputs[i].name);
+        input.setAttribute("id", inputs[i].name);
       label = document.createElement('label');
         label.innerHTML = inputs[i].inner;
         label.setAttribute("for", inputs[i].name);
@@ -54,7 +55,7 @@ class CMDForm {
     input = document.createElement('input');
       input.setAttribute("type", "submit");
       input.setAttribute("id", "btn-submit");
-      input.setAttribute("innerHTML", "Add Option");
+      input.setAttribute("value", submit);
 
     // append generated children
     form.appendChild(input);

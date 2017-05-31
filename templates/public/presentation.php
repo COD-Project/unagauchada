@@ -13,7 +13,7 @@
 
       </div>
       <div class="col-4 text-right">
-        <a class="btn btn-warning option-button text-center" href="#">
+        <a class="btn btn-warning rounded-circle option-button text-center" href="#">
           <i class="fa fa-plus"></i>
         </a>
       </div>

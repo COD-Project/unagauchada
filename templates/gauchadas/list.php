@@ -34,7 +34,7 @@
                           <!--Avatar-->
                           <div class=\"row wow fadeIn\" data-wow-delay=\"0." . ($i+1)*3 . "s\" style=\"background-color: rgba(0, 0, 0, 0.5); margin-top: -100px; padding-top: 10px; \">
                             <div class=\"avatar text-right col-3\">
-                              <img style=\"width: 50px;\" src=\"" . $_gauchadas[$id]['user']['profilePicture'] . "\" class=\"rounded-circle img-responsive\">
+                              <img class=\"rounded-circle img-responsive\" src=\"" . $_gauchadas[$id]['user']['profilePicture'] . "\" style=\"width: 50px;\" >
                             </div>
                             <div class=\"text-left col-9\">
                               <p class=\"text-fluid\" style=\"color: #fff\">" . $_gauchadas[$id]['user']['completeName'] . "</p>

@@ -19,6 +19,7 @@
 <script src="views/app/js/cmd_form.js"></script>
 <script src="views/app/js/main.js"></script>
 <script src="views/app/js/categorias/add.js"></script>
+<script src="views/app/js/creditos/compra.js"></script>
 <script>
   new WOW().init()
   $(function () {
