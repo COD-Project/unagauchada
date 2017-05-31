@@ -65,6 +65,7 @@ final class Gauchadas extends Models
 	      'idUser' => (new Sessions)->connectedUser()['idUser'],
 	      'idCategory' => $this->idCategory 
 	    ));
+	    $this->db->update('Users', array('credits' => (new Sessions)->connectedUser()['credits'] - 1), 'idUser='.(new Sessions)->connectedUser()['idUser'], 'LIMIT 1');
 	    Func::redirect(URL . "gauchadas?success=true");
   	}
 
