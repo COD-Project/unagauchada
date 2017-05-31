@@ -23,9 +23,8 @@
                     <span class="navbar-text">' . $this->sessions->connectedUser()['name'] . '</span>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <a class="dropdown-item" href="profiles/' . $this->router->semanticURL($this->sessions->connectedUser()['name']) . '"><i class="fa fa-user"></i> Ver Perfil </a>
-                    <a class="dropdown-item" href="preferences"><i class="fa fa-sliders"></i> Preferencias </a>
-                    <a class="dropdown-item" href="#"><i class="fa fa-cog"></i> Configuración </a>
+                    <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Ver Perfil </a>
+                    <a class="dropdown-item" href="#"><i class="fa fa-sliders"></i> Editar Perfil </a>
                     <a class="dropdown-item" href="logout"><i class="fa fa-sign-out"></i> Cerrar sesión </a>
                   </div>
                 </div>
