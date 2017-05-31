@@ -3,14 +3,16 @@
 	<?php $this->render('overall/header'); ?>
 <body>
 	<?php $this->render('overall/topnav'); ?>
+	<datalist id="provincias"></datalist>
+	<datalist id="localidades"></datalist>
 	<div class="below-topnav"></div>
   	<div class="container">
-    	<div class="cmd_form_container">
-	      	<div class="wrap">
 	    		<?php
 	    			$HTML = "";
 	    			if($this->sessions->hasCredits()) {
 	    				$HTML .= '
+	    					<div class="cmd_form_container">
+	      					<div class="wrap">
 			    			<form name="cmd_form" class="cmd_form" action="gauchadas/add" method="post">
 			            <div class="cmd_input-group">
 			            	<input type="text" id="title" name="title">
@@ -38,42 +40,39 @@
 										</div>
 									</div>
 									<br>
-									<div class="cmd_input-cmd_input-group">
-										<label class="col-2 control-label" style="color:blue" for="categories">Localidades</label>
-										<div class="col-10">
-										<select id="idCategory" class="form_control" name="idCategory">
-											
-										</select>
-									</div>
+									<div class="cmd_input-group">
+						            	<input list="provincias" type="text" id="state" name="state">
+						            	<label class="cmd_label" for="state">Provincia</label>
+						            </div>
+									<div class="cmd_input-group">
+						            	<input list="localidades" type="text" id="locate" name="locate">
+						            	<label class="cmd_label" for="locate">Localidad</label>
+						            </div>
 									<br>
-					        <div class="cmd_input-group">
-					         	<label class="col-2 control-label" style="color:blue" for="fechalimite">PlazoLimite</label>
+					        <div class="cmd_input-group">	        	
 						        <input type="date" id="limitDate" min="' . date('Y-m-d') . '" name="limitDate">
+						        <label class="cmd_label" for="limitDate">Plazo Limite</label>
 					        </div>
 				        	<input type="submit" id="btn-submit" value="Añadir">
-			       		</form>';
+			       		</form>
+			       		</div>
+  						</div>';
 	    			} else {
-	    				$HTML .= '<h2 style="color:black">Usted no posee creditos disponibles para solicitar una gauchada.</h2>';
 	    				$HTML .= '
-	    					<div class="card text-center">
+	    					<div class="card text-center" style="margin-top:150px">
 								  <div class="card-header">
-								    Featured
+								    Espera
 								  </div>
 								  <div class="card-block">
-								    <h4 class="card-title">Special title treatment</h4>
-								    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								    <a href="#" class="btn btn-primary">Go somewhere</a>
-								  </div>
-								  <div class="card-footer text-muted">
-								    2 days ago
+								    <h4 class="card-title">No se disponen de creditos</h4>
+								    <p class="card-text">Debes tener aunque sea un crédito para poder solicitar una gauchada, si deseas comprar mas, ¡toca el botón!.</p>
+								    <a href="creditos/comprar" class="btn btn-primary" style="background-color:coral; border-color:coral">Comprar Creditos</a>
 								  </div>
 								</div>
 	    				';
 	    			}
 	    			echo $HTML;
 	    			?>
-	      	</div>
-  		</div>
   	</div>
   	<?php $this->render('overall/footer'); ?>
 </body>
