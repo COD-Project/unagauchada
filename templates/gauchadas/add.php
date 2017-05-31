@@ -35,6 +35,14 @@
 							</select>
 						</div>
 					<br>
+					<div class="cmd_input-cmd_input-group">
+						<label class="col-2 control-label" style="color:blue" for="categories">Localidades</label>
+						<div class="col-10">
+							<select id="idCategory" class="form_control" name="idCategory">
+								
+							</select>
+						</div>
+					<br>
 		            <div class="cmd_input-group">
 		            	<label class="col-2 control-label" style="color:blue" for="categories">PlazoLimite</label>
 			            <input type="date" id="limitDate" min=<?php echo("\"".date('Y-m-d')."\"") ?>  name="limitDate">
