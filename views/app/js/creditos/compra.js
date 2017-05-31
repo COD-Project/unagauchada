@@ -10,11 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 
 		let onchange = e => {
-
+			
 		};
 
 		Func.$('#creditos').addEventListener('change', onchange);
 
 		Func.$('#creditos').addEventListener('keyup', onchange);
+
 	};
 });
