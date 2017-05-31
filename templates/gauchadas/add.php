@@ -17,7 +17,7 @@
 			            <label class="cmd_label" for="body">Descripción</label>
 		          	</div>
 					<div class="cmd_input-cmd_input-group">
-						<label class="col-2 control-label" for="categories">Categorias</label>
+						<label class="col-2 control-label" style="color:blue" for="categories">Categorias</label>
 						<div class="col-10">
 							<select id="idCategory" class="form_control" name="idCategory">
 								<?php
@@ -36,8 +36,8 @@
 						</div>
 					<br>
 		            <div class="cmd_input-group">
-			            <input type="date" id="limitDate" name="limitDate">
-			            <label class="cmd_label" for="limitDate">Plazo Límite</label>
+		            	<label class="col-2 control-label" style="color:blue" for="categories">PlazoLimite</label>
+			            <input type="date" id="limitDate" min=<?php echo("\"".date('Y-m-d')."\"") ?>  name="limitDate">
 		            </div>
 	        		<input type="submit" id="btn-submit" value="Añadir">
 	       		</form>
