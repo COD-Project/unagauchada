@@ -22,8 +22,8 @@
                     <!--Card-->
                     <div class=\"card wow fadeIn\" data-wow-delay=\"0." . ($i+1)*2 . "s\">
                         <!--Card image-->
-                        <div class=\"card-up view overlay hm-white-slight\">
-                          <img src=\"views/app/images/unagauchada.$i.jpg\" class=\"img-fluid\" alt=\"\" style=\"\">
+                        <div class=\"card-up view overlay hm-white-slight text-center\" style=\"height: 245px;\">
+                          <img src=\"" . $_gauchadas[$id]['images'][0]['path'] . "\" class=\"img-fluid\" alt=\"\" style=\"height: 100%;\">
                           <a href=\"#\">
                               <div class=\"mask\"></div>
                           </a>

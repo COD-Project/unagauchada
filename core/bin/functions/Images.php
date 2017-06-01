@@ -8,7 +8,7 @@ function Images() {
   for($i = 0; $i < count($data); $i++) {
     $images[$data[$i]['idImage']] = array(
       'idImage' => $data[$i]['idImage'],
-      'path' => $data[$i]['path']
+      'path' => 'views/app/images/' . $data[$i]['path']
     );
   }
   return $images;
@@ -20,10 +20,10 @@ function ImagesGauchada($idGauchada) {
   if(!$data) return false;
 
   for($i = 0; $i < count($data); $i++) {
-    $images[$data[$i]['idImage']] = array(
+    $images[$i] = array(
       'idGauchadaImage' => $data[$i]['idGauchadaImage'],
       'idImage' => $data[$i]['idImage'],
-      'path' => $data[$i]['path']
+      'path' => 'views/app/images/' . $data[$i]['path']
     );
   }
   return $images;

@@ -8,37 +8,37 @@
 				$gauchadas = Gauchadas();
 				$gauchada = $gauchadas[$this->router->getId()];
 				$HTML = '';
-				if (count($gauchada['images'])) {
+				if ($gauchada['images']) {
 					$HTML .= '
 					<div id="carousel-example-1z" style="padding-top: 100px;" class="carousel slide " data-ride="carousel">
 						<ol class="carousel-indicators">';
-					for($i = 1; $i <= count($gauchada['images']); $i++) {
-						if ($i == 1) {
-							$HTML .= '<li data-target="#carousel-example-1z" data-slide-to="' . $i . '" class="active"></li>';
+					for($i = 0; $i < count($gauchada['images']); $i++) {
+						if ($i == 0) {
+							$HTML .= '<li data-target="#carousel-example-1z" data-slide-to="' . ($i + 1) . '" class="active"></li>';
 						} else {
-							$HTML .= '<li data-target="#carousel-example-1z" data-slide-to="' . $i . '"></li>';
+							$HTML .= '<li data-target="#carousel-example-1z" data-slide-to="' . ($i + 1) . '"></li>';
 						}
 					}
 					$HTML .= '
 						</ol>
 						<div class="carousel-inner" role="listbox">';
 
-					for($i = 1; $i <= count($gauchada['images']); $i++) {
+					for($i = 0; $i < count($gauchada['images']); $i++) {
 						if ($i == 1) {
 
 							$HTML .= '
 							<div class="carousel-item active">
-		              <img class="img-fluid rounded mx-auto d-block" style="height: 150px;" src="' . $gauchada['images'][$i]['path'] . '" alt="First slide">
+		              <img class="img-fluid rounded mx-auto d-block" style="height: 100%;" src="' . $gauchada['images'][$i]['path'] . '" alt="First slide">
 		          </div>';
 						} else {
 							$HTML .= '
 							<div class="carousel-item">
-		              <img class="img-fluid rounded mx-auto d-block" style="height: 150px;" src="' . $gauchada['images'][$i]['path'] . '" alt="First slide">
+		              <img class="img-fluid rounded mx-auto d-block" style="height: 100%;" src="' . $gauchada['images'][$i]['path'] . '" alt="First slide">
 		          </div>';
 						}
 					}
 					$HTML .= '</div>';
-					if(count($gauchada['images']) > 1) {
+					if($gauchada['images']) {
 						$HTML .= '
 		        <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
 		            <span class="carousel-control-prev-icon" style="color: black; "aria-hidden="true"></span>
