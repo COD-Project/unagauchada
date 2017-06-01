@@ -118,7 +118,7 @@
       </div>
 				<?php
 					$HTML = '';
-					if($this->sessions->connectedUser()['idUser'] != $gauchada['user']['idUser'] && $this->sessions->isGranted()) {
+					if($this->sessions->connectedUser()['idUser'] != $gauchada['user']['idUser'] && !$this->sessions->isGranted()) {
 						$HTML .= '<div class="row justify-content-center">
 											<div class="col-8">
 												<div class="text-center">
