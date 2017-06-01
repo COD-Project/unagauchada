@@ -2,10 +2,10 @@
 -- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jun 01, 2017 at 02:38 PM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 7.1.2
+-- Servidor: localhost
+-- Tiempo de generación: 01-06-2017 a las 15:56:57
+-- Versión del servidor: 10.1.22-MariaDB
+-- Versión de PHP: 7.1.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `unagauchadaDB`
+-- Base de datos: `unagauchadaDB`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Categories`
+-- Estructura de tabla para la tabla `Categories`
 --
 
 CREATE TABLE `Categories` (
@@ -34,7 +34,7 @@ CREATE TABLE `Categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Categories`
+-- Volcado de datos para la tabla `Categories`
 --
 
 INSERT INTO `Categories` (`idCategory`, `name`) VALUES
@@ -49,7 +49,7 @@ INSERT INTO `Categories` (`idCategory`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Comments`
+-- Estructura de tabla para la tabla `Comments`
 --
 
 CREATE TABLE `Comments` (
@@ -63,7 +63,7 @@ CREATE TABLE `Comments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Comments`
+-- Volcado de datos para la tabla `Comments`
 --
 
 INSERT INTO `Comments` (`idComment`, `body`, `createdAt`, `lastModify`, `idQuestion`, `idGauchada`, `idUser`) VALUES
@@ -74,7 +74,7 @@ INSERT INTO `Comments` (`idComment`, `body`, `createdAt`, `lastModify`, `idQuest
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Creditos`
+-- Estructura de tabla para la tabla `Creditos`
 --
 
 CREATE TABLE `Creditos` (
@@ -85,7 +85,7 @@ CREATE TABLE `Creditos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Creditos`
+-- Volcado de datos para la tabla `Creditos`
 --
 
 INSERT INTO `Creditos` (`idCredito`, `monto`, `idUser`, `date`) VALUES
@@ -94,7 +94,7 @@ INSERT INTO `Creditos` (`idCredito`, `monto`, `idUser`, `date`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Gauchadas`
+-- Estructura de tabla para la tabla `Gauchadas`
 --
 
 CREATE TABLE `Gauchadas` (
@@ -110,7 +110,7 @@ CREATE TABLE `Gauchadas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Gauchadas`
+-- Volcado de datos para la tabla `Gauchadas`
 --
 
 INSERT INTO `Gauchadas` (`idGauchada`, `title`, `body`, `location`, `limitDate`, `createdAt`, `evaluation`, `idUser`, `idCategory`) VALUES
@@ -120,7 +120,7 @@ INSERT INTO `Gauchadas` (`idGauchada`, `title`, `body`, `location`, `limitDate`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `GauchadasImages`
+-- Estructura de tabla para la tabla `GauchadasImages`
 --
 
 CREATE TABLE `GauchadasImages` (
@@ -130,17 +130,18 @@ CREATE TABLE `GauchadasImages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `GauchadasImages`
+-- Volcado de datos para la tabla `GauchadasImages`
 --
 
 INSERT INTO `GauchadasImages` (`idGauchadaImage`, `idGauchada`, `idImage`) VALUES
 (6, 6, 1),
-(7, 7, 1);
+(7, 7, 2),
+(8, 7, 3);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Images`
+-- Estructura de tabla para la tabla `Images`
 --
 
 CREATE TABLE `Images` (
@@ -149,16 +150,22 @@ CREATE TABLE `Images` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Images`
+-- Volcado de datos para la tabla `Images`
 --
 
 INSERT INTO `Images` (`idImage`, `path`) VALUES
-(1, 'views/app/images/avatar_28012e5b8492_128.png');
+(1, 'avatar_28012e5b8492_128.png'),
+(2, 'unagauchada.1.jpg'),
+(3, 'unagauchada.2.jpg'),
+(4, 'unagauchada.2.jpg'),
+(5, 'unagauchada.3.jpg'),
+(6, 'unagauchada.4.jpg'),
+(7, 'unagauchada.5.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Localidades`
+-- Estructura de tabla para la tabla `Localidades`
 --
 
 CREATE TABLE `Localidades` (
@@ -168,7 +175,7 @@ CREATE TABLE `Localidades` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Localidades`
+-- Volcado de datos para la tabla `Localidades`
 --
 
 INSERT INTO `Localidades` (`id`, `idProvincia`, `localidad`) VALUES
@@ -2559,7 +2566,7 @@ INSERT INTO `Localidades` (`id`, `idProvincia`, `localidad`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Provincias`
+-- Estructura de tabla para la tabla `Provincias`
 --
 
 CREATE TABLE `Provincias` (
@@ -2568,7 +2575,7 @@ CREATE TABLE `Provincias` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Provincias`
+-- Volcado de datos para la tabla `Provincias`
 --
 
 INSERT INTO `Provincias` (`id`, `provincia`) VALUES
@@ -2601,7 +2608,7 @@ INSERT INTO `Provincias` (`id`, `provincia`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Users`
+-- Estructura de tabla para la tabla `Users`
 --
 
 CREATE TABLE `Users` (
@@ -2624,27 +2631,27 @@ CREATE TABLE `Users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Users`
+-- Volcado de datos para la tabla `Users`
 --
 
 INSERT INTO `Users` (`idUser`, `name`, `surname`, `birthdate`, `phone`, `location`, `email`, `password`, `credits`, `points`, `state`, `session`, `registrationDate`, `keyreg`, `role`, `idImage`) VALUES
 (8, 'Admin', 'Admin', '1997-05-30', '4803992', NULL, 'admin@admin.com', '0b1c78bc8b5b71f6f49e0f29c36db73c', 1, 1, 0, 0, '2017-06-01', 'e7511a23920f0563a25ab0e71', 1, 1),
 (9, 'Juan Cruz', 'Ocampos', '1997-05-31', '2216150702', NULL, 'ocamposjuancruz23@gmail.com', '1dd4ecb6f7f0091bc464fee9b9202d59', 0, 1, 0, 0, '2017-06-01', '8345a792d4488c7db9f0d6891', 2, 1),
-(10, 'Ulises', 'Cornejo', '1996-11-24', '4801997', NULL, 'ulisescf.24@gmail.com', '85d42b1aa432bac0828989e6c05c76ec', 0, 1, 0, 0, '2017-06-01', '90e37b995374918409eb44684', 2, 1),
+(10, 'Ulises', 'Cornejo', '1996-11-24', '4801997', NULL, 'ulisescf.24@gmail.com', '85d42b1aa432bac0828989e6c05c76ec', 12, 1, 0, 1496340400, '2017-06-01', '90e37b995374918409eb44684', 2, 1),
 (11, 'Lucas', 'Di Cunzolo', '1996-06-23', '4891274', NULL, 'lucasdc@gmail.com', '85d42b1aa432bac0828989e6c05c76ec', 1, 1, 0, 1496338503, '2017-06-01', 'c67638b22d54eb4e58f34c500', 2, 1);
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `Categories`
+-- Indices de la tabla `Categories`
 --
 ALTER TABLE `Categories`
   ADD PRIMARY KEY (`idCategory`);
 
 --
--- Indexes for table `Comments`
+-- Indices de la tabla `Comments`
 --
 ALTER TABLE `Comments`
   ADD PRIMARY KEY (`idComment`),
@@ -2653,14 +2660,14 @@ ALTER TABLE `Comments`
   ADD KEY `Comments_ibfk_1` (`idUser`);
 
 --
--- Indexes for table `Creditos`
+-- Indices de la tabla `Creditos`
 --
 ALTER TABLE `Creditos`
   ADD PRIMARY KEY (`idCredito`),
   ADD KEY `idUser` (`idUser`);
 
 --
--- Indexes for table `Gauchadas`
+-- Indices de la tabla `Gauchadas`
 --
 ALTER TABLE `Gauchadas`
   ADD PRIMARY KEY (`idGauchada`),
@@ -2668,7 +2675,7 @@ ALTER TABLE `Gauchadas`
   ADD KEY `Gauchadas_ibfk_2` (`idCategory`);
 
 --
--- Indexes for table `GauchadasImages`
+-- Indices de la tabla `GauchadasImages`
 --
 ALTER TABLE `GauchadasImages`
   ADD PRIMARY KEY (`idGauchadaImage`),
@@ -2676,84 +2683,84 @@ ALTER TABLE `GauchadasImages`
   ADD KEY `idImage` (`idImage`);
 
 --
--- Indexes for table `Images`
+-- Indices de la tabla `Images`
 --
 ALTER TABLE `Images`
   ADD PRIMARY KEY (`idImage`);
 
 --
--- Indexes for table `Localidades`
+-- Indices de la tabla `Localidades`
 --
 ALTER TABLE `Localidades`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Provincias`
+-- Indices de la tabla `Provincias`
 --
 ALTER TABLE `Provincias`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `Users`
+-- Indices de la tabla `Users`
 --
 ALTER TABLE `Users`
   ADD PRIMARY KEY (`idUser`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `Categories`
+-- AUTO_INCREMENT de la tabla `Categories`
 --
 ALTER TABLE `Categories`
   MODIFY `idCategory` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT for table `Comments`
+-- AUTO_INCREMENT de la tabla `Comments`
 --
 ALTER TABLE `Comments`
   MODIFY `idComment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT for table `Creditos`
+-- AUTO_INCREMENT de la tabla `Creditos`
 --
 ALTER TABLE `Creditos`
   MODIFY `idCredito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `Gauchadas`
+-- AUTO_INCREMENT de la tabla `Gauchadas`
 --
 ALTER TABLE `Gauchadas`
   MODIFY `idGauchada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT for table `GauchadasImages`
+-- AUTO_INCREMENT de la tabla `GauchadasImages`
 --
 ALTER TABLE `GauchadasImages`
-  MODIFY `idGauchadaImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idGauchadaImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT for table `Images`
+-- AUTO_INCREMENT de la tabla `Images`
 --
 ALTER TABLE `Images`
-  MODIFY `idImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT for table `Localidades`
+-- AUTO_INCREMENT de la tabla `Localidades`
 --
 ALTER TABLE `Localidades`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2383;
 --
--- AUTO_INCREMENT for table `Provincias`
+-- AUTO_INCREMENT de la tabla `Provincias`
 --
 ALTER TABLE `Provincias`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
--- AUTO_INCREMENT for table `Users`
+-- AUTO_INCREMENT de la tabla `Users`
 --
 ALTER TABLE `Users`
   MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `Comments`
+-- Filtros para la tabla `Comments`
 --
 ALTER TABLE `Comments`
   ADD CONSTRAINT `Comments_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `Users` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -2761,20 +2768,20 @@ ALTER TABLE `Comments`
   ADD CONSTRAINT `Comments_ibfk_3` FOREIGN KEY (`idGauchada`) REFERENCES `Gauchadas` (`idGauchada`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `Creditos`
+-- Filtros para la tabla `Creditos`
 --
 ALTER TABLE `Creditos`
   ADD CONSTRAINT `Creditos_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `Users` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `Gauchadas`
+-- Filtros para la tabla `Gauchadas`
 --
 ALTER TABLE `Gauchadas`
   ADD CONSTRAINT `Gauchadas_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `Users` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `Gauchadas_ibfk_2` FOREIGN KEY (`idCategory`) REFERENCES `Categories` (`idCategory`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `GauchadasImages`
+-- Filtros para la tabla `GauchadasImages`
 --
 ALTER TABLE `GauchadasImages`
   ADD CONSTRAINT `GauchadasImages_ibfk_1` FOREIGN KEY (`idGauchada`) REFERENCES `Gauchadas` (`idGauchada`) ON DELETE NO ACTION ON UPDATE NO ACTION,

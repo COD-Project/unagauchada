@@ -7,7 +7,7 @@ let _init_signup = function() {
   console.log(data.date.age);
   if(data.tyc) {
     if(!data.name.empty && !data.surname.empty && !data.password.empty && !data.phone.empty) {
-      if(data.email.success && data.password.success && data.date.success) {
+      if(data.email.success && data.password.success && data.date.success && data.phone.success) {
         form = 'name=' + data.name.value + '&surname=' + data.surname.value + '&pass=' + data.password.value[0] + '&email=' + data.email.value + '&birthdate=' + data.date.value + '&phone=' + data.phone.value;
         connect = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
         connect.onreadystatechange = function() {
@@ -49,6 +49,8 @@ let _init_signup = function() {
           result += '<p><strong>Las contraseñas no coinciden o tienen caracteres invalidos.</strong></p>';
         } else if (!data.date.success) {
           result += '<p><strong>Debes ser mayor de edad para registrate.</strong></p>';
+        } else if (!data.phone.success) {
+          result += '<p><strong>El teléfono tiene caracteres inválidos.</strong></p>';
         }
         result += '</div>';
         Func.$('#_AJAX_SIGNUP_').innerHTML = result;

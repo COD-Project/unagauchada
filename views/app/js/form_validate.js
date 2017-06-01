@@ -82,7 +82,7 @@ let getSignupData = () => ({
       Func.$('#tel_signup').value == null ||
       Func.$('#tel_signup').value.length == 0
     ),
-    success: Expresion.number.test(Func.$('#tel_signup').value) && !(
+    success: Expresion.phone.test(Func.$('#tel_signup').value) && !(
       Func.$('#tel_signup').value == null ||
       Func.$('#tel_signup').value.length == 0
     )
