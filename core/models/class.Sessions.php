@@ -82,7 +82,7 @@ final class Sessions extends Models
 
   final public function isGranted() : bool
   {
-    return ($this->isLoggedIn()) ? ($this->connectedUser()['role'] == 1) : false; // 1 correspond to admin users - 2 correspond to normal users
+    return ($this->isLoggedIn()) ? ($this->connectedUser()['role'] == 'admin') : false; // 1 correspond to admin users - 2 correspond to normal users
   }
 
   final public function hasCredits() : bool

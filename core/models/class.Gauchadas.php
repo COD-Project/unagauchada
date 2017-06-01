@@ -13,6 +13,7 @@ final class Gauchadas extends Models
 {
 	private $title;
 	private $body;
+	private $state;
 	private $location;
 	private $limitDate;
 	private $evaluation;
@@ -42,7 +43,8 @@ final class Gauchadas extends Models
 		        $this->id = $this->router->getId() != null ? intval($this->router->getId()) : null;
 		        $this->title = isset($_POST['title']) ? $this->purifier($this->db->escape($_POST['title'])) : null;
 		        $this->body = isset($_POST['body']) ? $this->purifier($this->db->escape($_POST['body'])) : null;
-		        $this->location = isset($_POST['location']) ? $this->purifier($this->db->escape($_POST['location'])) : null;
+		        $this->state = isset($_POST['state']) ? $this->purifier($this->db->escape($_POST['state'])) : null;
+		        $this->location = isset($_POST['locate']) ? $this->purifier($this->db->escape($_POST['locate'])) : null;
 		        $this->limitDate = isset($_POST['limitDate']) ? $_POST['limitDate'] : null;
 		        $this->evaluation = isset($_POST['evaluation']) ? intval($_POST['evaluation']) : null;
 		        $this->idCategory = isset($_POST['idCategory']) ? intval($_POST['idCategory']) : null;
@@ -58,7 +60,7 @@ final class Gauchadas extends Models
 	    $this->db->insert('Gauchadas', array(
 	      'title' => $this->title,
 	      'body' => $this->body,
-	      'location' => $this->location,
+	      'location' => $this->state . ", " .$this->location,
 	      'limitDate' => $this->limitDate,
 	      'createdAt' => date('Y/m/d H:i:s', time()),
 	      'evaluation' => $this->evaluation,
@@ -70,7 +72,7 @@ final class Gauchadas extends Models
 				'idImage' => 1
 			));
 	    $this->db->update('Users', array('credits' => (new Sessions)->connectedUser()['credits'] - 1), 'idUser='.(new Sessions)->connectedUser()['idUser'], 'LIMIT 1');
-	    Func::redirect(URL . "gauchadas?success=true");
+	    Func::redirect(URL);
   	}
 
   	final public function __destruct()

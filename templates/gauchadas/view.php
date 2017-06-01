@@ -61,7 +61,7 @@
 					</div>
 					<div class="col-8">
 						<h1 class="h1-responsive">'.$gauchada['title'] . '</h1>
-        			<h6 class="h6-responsive">'. $gauchada['user']['completeName'] . ' - ' . $gauchada['creationDate'] .'</h6>
+        			<h6 class="h6-responsive">'. $gauchada['user']['completeName'] . ' - ' . $gauchada['location'] . ' - ' . $gauchada['creationDate'] .'</h6> 
         			<hr>
         			<p class="text-fluid">' . $gauchada['body'] . '</p>
 					</div>';
