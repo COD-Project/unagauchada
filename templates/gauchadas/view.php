@@ -24,7 +24,7 @@
 						<div class="carousel-inner" role="listbox">';
 
 					for($i = 0; $i < count($gauchada['images']); $i++) {
-						if ($i == 1) {
+						if ($i == 0) {
 
 							$HTML .= '
 							<div class="carousel-item active">
