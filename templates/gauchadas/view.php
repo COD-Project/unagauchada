@@ -9,8 +9,9 @@
 				$gauchada = $gauchadas[$this->router->getId()];
 				$HTML = '';
 				if (count($gauchada['images'])) {
-					$HTML .= '<div id="carousel-example-1z" style="padding-top: 100px;" class="carousel slide " data-ride="carousel">
-					<ol class="carousel-indicators">';
+					$HTML .= '
+					<div id="carousel-example-1z" style="padding-top: 100px;" class="carousel slide " data-ride="carousel">
+						<ol class="carousel-indicators">';
 					for($i = 1; $i <= count($gauchada['images']); $i++) {
 						if ($i == 1) {
 							$HTML .= '<li data-target="#carousel-example-1z" data-slide-to="' . $i . '" class="active"></li>';
@@ -18,8 +19,9 @@
 							$HTML .= '<li data-target="#carousel-example-1z" data-slide-to="' . $i . '"></li>';
 						}
 					}
-					$HTML .= '</ol>
-					<div class="carousel-inner" role="listbox">';
+					$HTML .= '
+						</ol>
+						<div class="carousel-inner" role="listbox">';
 
 					for($i = 1; $i <= count($gauchada['images']); $i++) {
 						if ($i == 1) {
@@ -35,18 +37,19 @@
 		          </div>';
 						}
 					}
+					$HTML .= '</div>';
 					if(count($gauchada['images']) > 1) {
-						$HTML .= '</div>
+						$HTML .= '
 		        <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-		            <span class="carousel-control-prev-icon" style="color: black;"aria-hidden="true"></span>
+		            <span class="carousel-control-prev-icon" style="color: black; "aria-hidden="true"></span>
 		            <span class="sr-only">Previous</span>
 		        </a>
 		        <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
 		            <span class="carousel-control-next-icon" aria-hidden="true"></span>
 		            <span class="sr-only">Next</span>
-		        </a>
-		    	</div>';
+		        </a>';
 					}
+					$HTML .= '</div>';
 					}
 					echo $HTML;
         	$HTML = "";
@@ -56,15 +59,22 @@
 							<img src="' . $gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 15vh">
 						</div>
 					</div>
-					<div class="col-10">
-						<h1 class="h1-responsive">'.$gauchada['title'] .'</h1>
+					<div class="col-8">
+						<h1 class="h1-responsive">'.$gauchada['title'] . '</h1>
         			<h6 class="h6-responsive">'. $gauchada['user']['completeName'] . ' - ' . $gauchada['creationDate'] .'</h6>
         			<hr>
-        			<p class="text-fluid">' . $gauchada['body'] . '</p>';
+        			<p class="text-fluid">' . $gauchada['body'] . '</p>
+					</div>';
+					if($this->sessions->connectedUser()['idUser'] == $gauchada['user']['idUser']) {
+						$HTML.= '<div class="col-2">
+							<a class="btn btn-warning rounded-circle option-button text-center" href="#">
+								<i class="fa fa-edit"></i>
+							</a>
+						</div>';
+					}
         	echo $HTML;
 	        ?>
 	      </div>
-	    </div>
       	<div class="row">
       		<div class="col-2"></div>
           	<div class="col-10 text-left">
@@ -74,7 +84,6 @@
         <div class="row">
 			<?php
 				$HTML = '';
-
 				for($i = 0; $i < count($gauchada['comments']); $i++) {
 					$comment = $gauchada['comments'][$i];
 					$userComment = Users()[$comment['idUser']];
@@ -106,10 +115,26 @@
 				echo $HTML;
 			?>
 
-        </div>
-
-	</div>
-
-    <?php $this->render('overall/footer'); ?>
-    </body>
+      </div>
+				<?php
+					$HTML = '';
+					if($this->sessions->connectedUser()['idUser'] != $gauchada['user']['idUser']) {
+						$HTML .= '<div class="row justify-content-center">
+											<div class="col-8">
+												<div class="text-center">
+													<a class="btn btn-warning btn-lg btn-block option-button text-center" href="#">
+														<i class="fa fa-comment"></i>
+													</a>
+												</div>
+											</div>
+										</div>
+										<hr>';
+					} else {
+						$HTML .= "<hr>";
+					}
+					echo $HTML;
+				?>
+		</div>
+  <?php $this->render('overall/footer'); ?>
+  </body>
 </html>
