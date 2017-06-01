@@ -26,18 +26,19 @@
 
 							$HTML .= '
 							<div class="carousel-item active">
-		              <img class="img-fluid rounded mx-auto d-block" src="' . $gauchada['images'][$i]['path'] . '" alt="First slide">
+		              <img class="img-fluid rounded mx-auto d-block" style="height: 150px;" src="' . $gauchada['images'][$i]['path'] . '" alt="First slide">
 		          </div>';
 						} else {
 							$HTML .= '
 							<div class="carousel-item">
-		              <img class="img-fluid rounded mx-auto d-block" src="' . $gauchada['images'][$i]['path'] . '" alt="First slide">
+		              <img class="img-fluid rounded mx-auto d-block" style="height: 150px;" src="' . $gauchada['images'][$i]['path'] . '" alt="First slide">
 		          </div>';
 						}
 					}
+					if(count($gauchada['images']) > 1) {
 						$HTML .= '</div>
 		        <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-		            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		            <span class="carousel-control-prev-icon" style="color: black;"aria-hidden="true"></span>
 		            <span class="sr-only">Previous</span>
 		        </a>
 		        <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
@@ -45,6 +46,7 @@
 		            <span class="sr-only">Next</span>
 		        </a>
 		    	</div>';
+					}
 					}
 					echo $HTML;
         	$HTML = "";
