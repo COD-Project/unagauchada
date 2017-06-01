@@ -28,12 +28,12 @@ final class Gauchadas extends Models
 	    return self::$ins;
 	}
 
-	final public function __construct() 
+	final public function __construct()
 	{
 	    parent::__construct();
 	}
 
-	final private function errors($url) 
+	final private function errors($url)
 	{
 	    try {
 	      	if (empty($this->router->getId()) && empty($_POST['title']) && empty($_POST['body']) && empty($_POST['location']) && empty($_POST['limitDate']) && empty($_POST['evaluation']) && empty($_POST['idUser']) && empty($_POST['idCategory'])) {
@@ -52,7 +52,7 @@ final class Gauchadas extends Models
 	    }
   	}
 
-  	final public function Add() 
+  	final public function Add()
   	{
 	    $this->errors('gauchadas?error=');
 	    $this->db->insert('Gauchadas', array(
@@ -63,8 +63,12 @@ final class Gauchadas extends Models
 	      'createdAt' => date('Y/m/d H:i:s', time()),
 	      'evaluation' => $this->evaluation,
 	      'idUser' => (new Sessions)->connectedUser()['idUser'],
-	      'idCategory' => $this->idCategory 
+	      'idCategory' => $this->idCategory
 	    ));
+			$this->db->insert('GauchadasImages', array(
+				'idGauchada' => $this->db->lastInsertId(),
+				'idImage' => 1
+			));
 	    $this->db->update('Users', array('credits' => (new Sessions)->connectedUser()['credits'] - 1), 'idUser='.(new Sessions)->connectedUser()['idUser'], 'LIMIT 1');
 	    Func::redirect(URL . "gauchadas?success=true");
   	}
