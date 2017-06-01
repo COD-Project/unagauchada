@@ -103,8 +103,8 @@ CREATE TABLE `Gauchadas` (
 --
 
 INSERT INTO `Gauchadas` (`idGauchada`, `title`, `body`, `location`, `limitDate`, `createdAt`, `evaluation`, `idUser`, `idCategory`) VALUES
-(1, 'Viaje a china', 'alguien a a china esta semana?', '', '2017-05-23', '2017-05-23', NULL, 1, 1),
-(2, 'Alguien disponible para comer un asado?', 'tengo carne que se esta por pudrir (o ya lo esta, no es importante ese detalle), y quisiera saber si alguien quiere compartir dicha carne conmigo.\r\npd: no tengo amigos :\'(', '', '2017-05-23', '2017-05-24', NULL, 5, 2);
+(1, 'Viaje a china', 'alguien a a china esta semana?', '', '2017-05-23', '2017-05-23', 0, 1, 1),
+(2, 'Alguien disponible para comer un asado?', 'tengo carne que se esta por pudrir (o ya lo esta, no es importante ese detalle), y quisiera saber si alguien quiere compartir dicha carne conmigo.\r\npd: no tengo amigos :\'(', '', '2017-05-23', '2017-05-24', 0, 5, 2);
 
 -- --------------------------------------------------------
 
