@@ -48,9 +48,9 @@ let _init_signup = function() {
         } else if (!data.password.success) {
           result += '<p><strong>Las contraseñas no coinciden o tienen caracteres invalidos.</strong></p>';
         } else if (!data.date.success) {
-          result += '<p><strong>Debes ser mayor de edad para registrate.</strong></p>';
+          result += '<p><strong>Debes ser mayor de 16 años de edad para registrate.</strong></p>';
         } else if (!data.phone.success) {
-          result += '<p><strong>El teléfono tiene caracteres inválidos.</strong></p>';
+          result += '<p><strong>El teléfono tiene caracteres inválidos y debe contener mas de 10 caracteres.</strong></p>';
         }
         result += '</div>';
         Func.$('#_AJAX_SIGNUP_').innerHTML = result;
