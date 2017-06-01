@@ -3,8 +3,8 @@
 	<?php $this->render('overall/header'); ?>
 <body>
 	<?php $this->render('overall/topnav'); ?>
-	<datalist id="provincias"></datalist>
-	<datalist id="localidades"></datalist>
+	<datalist id="states"></datalist>
+	<datalist id="locates"></datalist>
 	<div class="below-topnav"></div>
   	<div class="container">
 	    		<?php
@@ -41,11 +41,11 @@
 									</div>
 									<br>
 									<div class="cmd_input-group">
-						            	<input list="provincias" type="text" id="state" name="state">
+						            	<input list="states" type="text" id="state" name="state">
 						            	<label class="cmd_label" for="state">Provincia</label>
 						            </div>
 									<div class="cmd_input-group">
-						            	<input list="localidades" type="text" id="locate" name="locate">
+						            	<input list="locates" type="text" id="locate" name="locate">
 						            	<label class="cmd_label" for="locate">Localidad</label>
 						            </div>
 									<br>
