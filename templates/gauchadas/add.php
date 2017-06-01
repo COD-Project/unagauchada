@@ -22,7 +22,7 @@
 				            <input type="text" id="body" name="body">
 				            <label class="cmd_label" for="body">Descripción</label>
 			          	</div>
-									<div class="cmd_input-cmd_input-group">
+									<div class="cmd_input-group">
 										<label class="col-2 control-label" style="color:blue" for="categories">Categorias</label>
 										<div class="col-10">
 											<select id="idCategory" class="form_control" name="idCategory">';
@@ -39,7 +39,7 @@
 											</select>
 										</div>
 									</div>
-									<br>
+									
 									<div class="cmd_input-group">
 			            	<input list="states" type="text" id="state" name="state">
 			            	<label class="cmd_label" for="state">Provincia</label>

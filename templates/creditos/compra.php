@@ -5,6 +5,7 @@
   <?php $this->render('overall/topnav'); ?>
   <div class="jumbotron" style="background-color: transparent;"></div>
   <div class="container">
+    <div id="_AJAX_CREDITS_"></div>
     <ul class="nav nav-tabs">
         <li class="nav-item">
           <a data-toggle="tab" href="#credits" class="nav-link active">Créditos</a>
@@ -27,7 +28,11 @@
           </div>
         </div>
         <div class="tab-pane" id="details">
-            <div class="" id="compra_creditos"></div>
+          <datalist id="tipo_tarjetas">
+            <option value="Visa"></option>
+            <option value="Mastercard"></option>
+          </datalist>
+          <div class="" id="compra_creditos"></div>
         </div>
     </div>
   </div>

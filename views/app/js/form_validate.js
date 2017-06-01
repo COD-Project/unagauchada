@@ -104,5 +104,5 @@ let getCreditsData = () => ({
   creditos: {
     value: Func.$('#creditos').value
   },
-  date: new Date() <= new Date(Func.$('#date_signup').value)
+  date: new Date() <= new Date(Func.$('#fechaVencimiento').value)
 })

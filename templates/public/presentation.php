@@ -13,10 +13,10 @@
 
       </div>
       <?php 
-        if($this->sessions->isLoggedIn()) {
+        if($this->sessions->isLoggedIn() && !$this->sessions->isGranted()) {
           echo ('
             <div class="col-4 text-right">
-              <a class="btn btn-warning rounded-circle option-button text-center" href="gauchadas/add">
+              <a class="btn btn-warning rounded-circle option-button text-center" style="background: coral;" href="gauchadas/add">
                 <i class="fa fa-plus"></i>
               </a>
             </div>');

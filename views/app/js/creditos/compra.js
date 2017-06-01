@@ -4,13 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
 			elem: Func.$('#compra_creditos'),
 			inputs: [
 				{ name: 'tipoTarjeta', inner: 'Tipo de Tarjeta', type: 'text' },
-				{ name: 'numeroTarjeta', inner: 'Número de Tarjeta', type: 'number' },
+				{ name: 'numeroTarjeta', inner: 'Número de Tarjeta', type: 'text' },
 				{ name: 'fechaVencimiento', inner: 'Fecha de Vencimiento', type: 'date' },
 				{ name: 'creditos', inner: 'Créditos', type: 'number' }
 			],
 			submit: 'Comprar',
 			action: 'javascript: _init_compra()'
 		});
+
+		Func.$('#tipoTarjeta').setAttribute('list', 'tipo_tarjetas');
 
 		var div = document.createElement('div');
 				div.style = 'color: black; margin-bottom: 25px;';
