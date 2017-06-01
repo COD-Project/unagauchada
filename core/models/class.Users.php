@@ -62,14 +62,14 @@ final class Users extends Models
       echo 'El mail ingresado corresponde a un usuario existente.';
     } else {
       $this->keyreg = md5(time());
-      $reg_date = date('Y/m/d', time());
+      $regDate = date('Y/m/d', time());
       $values = array(
         'name' => $this->name,
         'surname' => $this->surname,
         'email' => $this->email,
         'password' => $this->password,
         'keyreg' => $this->keyreg,
-        'registrationDate' => $this->regDate,
+        'registrationDate' => $regDate,
         'phone' => $this->phone,
         'birthdate' => $this->birthdate,
         'credits' => 1,

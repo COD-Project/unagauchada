@@ -264,7 +264,7 @@ final class Connection extends PDO {
     * Selects and lists in an associative / numeric array the results of a search in the database
     *
     * @param string $e: Elements to Select Comma Separated
-    * @param string $tbale: Table from which you want to extract the elements $e
+    * @param string $table: Table from which you want to extract the elements $e
     * @param string $where: Condition that indicates who are the ones that are extracted, if not placed extracts all
     * @param string $limite: Limit of items to bring, by default brings ALL those that match $where
     *

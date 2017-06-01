@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
     cmd_form.addEventListener("submit", send);
 
     for (var i = 0; i < nodeList.length; i++) {
-      if (nodeList[i].type == "text" || nodeList[i].type == "date" || nodeList[i].type == "number" || nodeList[i].type == "email" || nodeList[i].type == "password"){
+      if (nodeList[i].type == "text" || nodeList[i].type == "number" || nodeList[i].type == "email" || nodeList[i].type == "password"){
         nodeList[i].addEventListener("focus", focusInput);
         nodeList[i].addEventListener("blur", blurInput);
       }

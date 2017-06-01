@@ -11,12 +11,12 @@ function Images() {
       'path' => $data[$i]['path']
     );
   }
-  return $images ? $images : false;
+  return $images;
 }
 
 function ImagesGauchada($idGauchada) {
   $db = new Connection();
-  $data = $db->select('*', 'Images i INNER JOIN GauchadasImages g ON (i.idImage = g.idImage)', "idGauchada = $idGauchada");
+  $data = $db->select('*', 'Images i INNER JOIN GauchadasImages g ON (i.idImage = g.idImage)', "idGauchada=$idGauchada");
   if(count($data) == 0) return false;
 
   for($i = 0; $i < count($data); $i++) {
@@ -26,7 +26,7 @@ function ImagesGauchada($idGauchada) {
       'path' => $data[$i]['path']
     );
   }
-  return $images ? $images : false;
+  return $images;
 }
 
 ?>
