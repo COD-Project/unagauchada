@@ -14,4 +14,19 @@ function Images() {
   return $images ? $images : false;
 }
 
+function ImagesGauchada($idGauchada) {
+  $db = new Connection();
+  $data = $db->select('*', 'Images i INNER JOIN GauchadasImages g ON (i.idImage = g.idImage)', "idGauchada = $idGauchada");
+  if(count($data) == 0) return false;
+
+  for($i = 0; $i < count($data); $i++) {
+    $images[$data[$i]['idImage']] = array(
+      'idGauchadaImage' => $data[$i]['idGauchadaImage'],
+      'idImage' => $data[$i]['idImage'],
+      'path' => $data[$i]['path']
+    );
+  }
+  return $images ? $images : false;
+}
+
 ?>

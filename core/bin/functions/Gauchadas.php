@@ -16,7 +16,8 @@ function Gauchadas() {
       'evaluation' => $data[$i]['evaluation'],
       'user' => Users()[$data[$i]['idUser']],
       'idCategory' => $data[$i]['idCategory'],
-      'comments' => Comments($data[$i]['idGauchada'])
+      'comments' => Comments($data[$i]['idGauchada']),
+      'images' => ImagesGauchada($data[$i]['idGauchada'])
     );
   }
   return $gauchadas;

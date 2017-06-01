@@ -13,6 +13,9 @@
 <script src="views/app/js/consts.js"></script>
 <script src="views/app/js/ajax/init_login.js"></script>
 <script src="views/app/js/ajax/init_signup.js"></script>
+<script src="views/app/js/ajax/init_states.js"></script>
+<script src="views/app/js/ajax/init_locates.js"></script>
+
 <script src="views/app/js/form_validate.js"></script>
 <script src="views/app/js/login.js"></script>
 <script src="views/app/js/signup.js"></script>
@@ -20,6 +23,9 @@
 <script src="views/app/js/main.js"></script>
 <script src="views/app/js/categorias/add.js"></script>
 <script src="views/app/js/creditos/compra.js"></script>
+<script src="views/app/js/locates/states.js"></script>
+<script src="views/app/js/locates/locates.js"></script>
+
 <script>
   new WOW().init()
   $(function () {

@@ -2,7 +2,7 @@
   define('INDEX_DIR', true);
   require('core/core.php');
   
-  if($_POST && isset($_GET['for']) && isset($_GET['mode'])) {
+  if(isset($_GET['for']) && isset($_GET['mode'])) {
     if (array_key_exists($_GET['for'], AJAX)) {
       if (in_array($_GET['mode'], AJAX[$_GET['for']])) {
         require('core/bin/ajax/' . $_GET['for'] . '/' . $_GET['mode'] . '.php');
