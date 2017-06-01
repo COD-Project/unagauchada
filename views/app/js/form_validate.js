@@ -94,3 +94,15 @@ let getSignupData = () => ({
   },
   tyc: Func.$('#tyc_signup').checked
 })
+
+let getCreditsData = () => ({
+  tarjeta: {
+    type: Func.$('#tipoTarjeta').value,
+    number: Func.$('#numeroTarjeta').value,
+    success: Expresion.tarjeta.test(Func.$('#numeroTarjeta').value)
+  },
+  creditos: {
+    value: Func.$('#creditos').value
+  },
+  date: new Date() <= new Date(Func.$('#date_signup').value)
+})

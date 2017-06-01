@@ -9,12 +9,12 @@ class CMDForm {
   }
 
   render({ elem, inputs, submit, action=null }) {
-    var container, 
-        wrap, 
-        div, 
-        label, 
-        input, 
-        button, 
+    var container,
+        wrap,
+        div,
+        label,
+        input,
+        button,
         script;
 
     let form = document.createElement('form');
