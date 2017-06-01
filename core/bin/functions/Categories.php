@@ -3,7 +3,7 @@
 function Categories() {
   $db = new Connection();
   $data = $db->select('*', 'Categories');
-  if(count($data) == 0) return false;
+  if(!$data) return false;
 
   for($i = 0; $i < count($data); $i++) {
     $categories[$i] = array(

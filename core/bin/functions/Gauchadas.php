@@ -2,8 +2,8 @@
 
 function Gauchadas() {
   $db = new Connection();
-  $data = $db->select('*', 'Gauchadas', '1=1', 'ORDER BY idGauchada DESC');
-  if(count($data) == 0) return false;
+  $data = $db->select('*', 'Gauchadas', 'DATEDIFF(CURDATE(), limitDate) <= 0', 'ORDER BY idGauchada DESC');
+  if(!$data) return false;
 
   for($i = 0; $i < count($data); $i++) {
     $gauchadas[$data[$i]['idGauchada']] = array(

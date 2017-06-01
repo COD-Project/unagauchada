@@ -3,7 +3,7 @@
 function Images() {
   $db = new Connection();
   $data = $db->select('*', 'Images');
-  if(count($data) == 0) return false;
+  if(!$data) return false;
 
   for($i = 0; $i < count($data); $i++) {
     $images[$data[$i]['idImage']] = array(
@@ -17,7 +17,7 @@ function Images() {
 function ImagesGauchada($idGauchada) {
   $db = new Connection();
   $data = $db->select('*', 'Images i INNER JOIN GauchadasImages g ON (i.idImage = g.idImage)', "idGauchada=$idGauchada");
-  if(count($data) == 0) return false;
+  if(!$data) return false;
 
   for($i = 0; $i < count($data); $i++) {
     $images[$data[$i]['idImage']] = array(
