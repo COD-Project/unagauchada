@@ -75,7 +75,7 @@
         	echo $HTML;
 	        ?>
 	      </div>
-      	<div class="row">
+      	<div class="row" style="margin-top: 20px; margin-bottom: 10px">
       		<div class="col-2"></div>
           	<div class="col-10 text-left">
             	<h3 class="h3-responsive">Comentarios</h3>
@@ -84,34 +84,43 @@
         <div class="row">
 			<?php
 				$HTML = '';
-				for($i = 0; $i < count($gauchada['comments']); $i++) {
-					$comment = $gauchada['comments'][$i];
-					$userComment = Users()[$comment['idUser']];
-					$HTML.= '
-					<div class="col-3 text-right">
-						<div class="avatar">
-							<img src="' . $userComment['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 10vh">
+				if ($gauchada['comments']) {
+					for($i = 0; $i < count($gauchada['comments']); $i++) {
+						$comment = $gauchada['comments'][$i];
+						$userComment = Users()[$comment['idUser']];
+						$HTML.= '
+						<div class="col-3 text-right" style="margin-top: 15px;">
+							<div class="avatar">
+								<img src="' . $userComment['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 10vh">
+							</div>
 						</div>
-					</div>
-					<div class="col-8">
-						<h2 class="h2-responsive">' . $userComment['completeName'] . '</h2>
-						<h5 class="h5-responsive">' . $comment['lastModify'] . '</h5>
-						<p class="text-fluid">' . $comment['body'] . '</p>
-					</div>';
-					if($comment['answer']['idComment']) {
-						$HTML .= '
-				            <div class="col-4 text-right">
-				              <div class="avatar">
-				                <img src="' . $gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 8vh">
-				              </div>
-				            </div>
-				            <div class="col-8">
-				              <h4>' . $gauchada['user']['completeName'] . '</h4>
-				              <h6 class="h6-responsive">' . $comment['answer']['lastModify'] . '</h6>
-				              <p>' . $comment["answer"]["body"] . '</p>
-				            </div>';
+						<div class="col-8" style="margin-top: 10px;">
+							<h2 class="h2-responsive">' . $userComment['completeName'] . '</h2>
+							<h5 class="h5-responsive">' . $comment['lastModify'] . '</h5>
+							<p class="text-fluid">' . $comment['body'] . '</p>
+						</div>';
+						if($comment['answer']['idComment']) {
+							$HTML .= '
+				            	<div class="col-4 text-right" style="margin-top: 5px;">
+				              	<div class="avatar">
+				               	 <img src="' . $gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 8vh">
+				              	</div>
+				            	</div>
+				            	<div class="col-8">
+				              	<h4>' . $gauchada['user']['completeName'] . '</h4>
+				             	 <h6 class="h6-responsive">' . $comment['answer']['lastModify'] . '</h6>
+				              	<p>' . $comment["answer"]["body"] . '</p>
+				            	</div>';
+						}
 					}
+				} else {
+					$HTML .= '<div class="col-2"></div><div class="col-8">
+              <div class="alert alert-info alert-dismissible fade show" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <p class="text-fluid">Aún no hay comentarios para esta gauchada. <strong>¡Se el primero en comentar!</strong></p>
+              </div></div><div class="col-2">';
 				}
+				
 				echo $HTML;
 			?>
 
@@ -119,7 +128,7 @@
 				<?php
 					$HTML = '';
 					if($this->sessions->connectedUser()['idUser'] != $gauchada['user']['idUser'] && !$this->sessions->isGranted()) {
-						$HTML .= '<div class="row justify-content-center">
+						$HTML .= '<div class="row justify-content-center" style="margin-top: 20px">
 											<div class="col-8">
 												<div class="text-center">
 													<a class="btn btn-warning btn-lg btn-block option-button text-center" href="#">
