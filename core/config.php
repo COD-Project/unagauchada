@@ -73,7 +73,8 @@ define('AJAX', array(
   'users' => array(
       'login',
       'signup',
-      'edit'
+      'edit',
+      'credits'
     ),
   'states' => array(
       'get'

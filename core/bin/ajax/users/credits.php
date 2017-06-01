@@ -1,13 +1,13 @@
 <?php
 
-if (!empty($_POST['credist'])) {
+if (!empty($_POST['cantidad'])) {
   $db = new Connection();
   $id = (new Sessions())->connectedUser()['idUser'];
-  $credist = (new Sessions())->connectedUser()['credits'] + $_POST['credist'];
+  $credits = intval((new Sessions())->connectedUser()['credits']) + intval($_POST['cantidad']);
   $db->update('Users', array('credits' => $credits), 'idUser=' . $id);
   echo 1;
 } else {
-  echo "La operación falló."
+  echo "La operación falló.";
 }
 
 ?>

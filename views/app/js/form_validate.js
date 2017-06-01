@@ -95,11 +95,15 @@ let getSignupData = () => ({
   tyc: Func.$('#tyc_signup').checked
 })
 
+let validateTarjeta = function() {
+  return Func.$('#tipoTarjeta').value == 'Visa' ? Expresion.tarjeta.visa.test(Func.$('#numeroTarjeta').value) : Expresion.tarjeta.mastercard.test(Func.$('#numeroTarjeta').value)
+}
+
 let getCreditsData = () => ({
   tarjeta: {
     type: Func.$('#tipoTarjeta').value,
     number: Func.$('#numeroTarjeta').value,
-    success: Expresion.tarjeta.test(Func.$('#numeroTarjeta').value)
+    success: validateTarjeta()
   },
   creditos: {
     value: Func.$('#creditos').value
