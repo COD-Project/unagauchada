@@ -34,7 +34,8 @@ __functions_autoload(array(
   'EmailTemplate',
   'Comments',
   'Gauchadas',
-  'Categories'
+  'Categories',
+  'Creditos'
 ));
 
 

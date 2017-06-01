@@ -27,6 +27,8 @@ class gauchadasController extends Controller {
 												break;
 					        }
 				      }
+		  	} else if ($this->router->getMethod() == 'view') {
+		  		Func::redirect(URL . '?error=Debes estar logueado para ver una gauchada');
 		  	}
 		}
 }

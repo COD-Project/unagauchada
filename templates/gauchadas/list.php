@@ -6,7 +6,7 @@
 
       <!--Second row-->
       <div class="row" style="margin-bottom: 5px;">
-          <?php
+          <?php            
             $_gauchadas = Gauchadas();
             $HTML = "";
             if (!$_gauchadas) {
