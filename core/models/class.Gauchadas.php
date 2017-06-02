@@ -54,8 +54,7 @@ final class Gauchadas extends Models
 	    }
   	}
 
-  	final public function Add()
-  	{
+  	final public function Add() {
 	    $this->errors('gauchadas?error=');
 	    $this->db->insert('Gauchadas', array(
 	      'title' => $this->title,
@@ -73,6 +72,13 @@ final class Gauchadas extends Models
 			));
 	    $this->db->update('Users', array('credits' => (new Sessions)->connectedUser()['credits'] - 1), 'idUser='.(new Sessions)->connectedUser()['idUser'], 'LIMIT 1');
 	    Func::redirect(URL);
+  	}
+
+  	final public function Delete() {
+  		$this->Errors('gauchadas?errors=');
+    	$this->db->delete('GauchadasImages', "idGauchada=$this->id");
+    	$this->db->delete('Gauchadas', "idGauchada=$this->id");
+    	Func::redirect(URL);
   	}
 
   	final public function __destruct()
