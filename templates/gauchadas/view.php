@@ -61,7 +61,7 @@
 					</div>
 					<div class="col-8">
 						<h1 class="h1-responsive">'.$gauchada['title'] . '</h1>
-        			<h6 class="h6-responsive">'. $gauchada['user']['completeName'] . ' - ' . $gauchada['location'] . ' - ' . $gauchada['creationDate'] .'</h6> 
+        			<h6 class="h6-responsive">'. $gauchada['user']['completeName'] . ' - ' . $gauchada['location'] . ' - ' . $gauchada['creationDate'] .'</h6>
         			<hr>
         			<p class="text-fluid">' . $gauchada['body'] . '</p>
 					</div>';
@@ -118,9 +118,9 @@
               <div class="alert alert-info alert-dismissible fade show" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <p class="text-fluid">Aún no hay comentarios para esta gauchada. <strong>¡Se el primero en comentar!</strong></p>
-              </div></div><div class="col-2">';
+              </div></div><div class="col-2"></div>';
 				}
-				
+
 				echo $HTML;
 			?>
 
