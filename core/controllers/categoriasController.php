@@ -17,14 +17,14 @@ class categoriasController extends Controller {
     		          	} else {
     		            	$this->render('categorias/add');
     		          	}
-                        break;
-                    case 'delete':
-                    	if ($_POST) {
-    		            	$categorias->Delete();
-    		          	} else {
-    		            	$this->render('categorias/delete');
-    		          	}
-                        break;
+                    break;
+                case 'delete':
+                	if ($_POST) {
+		            	$categorias->Delete();
+		          	} else {
+		            	$this->render('categorias/delete');
+		          	}
+                    break;
                 }
             }
     	}

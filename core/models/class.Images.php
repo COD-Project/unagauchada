@@ -51,6 +51,11 @@ final class Images extends Models
 	    Func::redirect(URL . "imagenes?success=true");
   	}
 
+		final public function Edit()
+		{
+			
+		}
+
   	final public function Delete() {
 	    $this->errors('imagenes?errors=');
 	    $this->db->delete('Imagenes', "idImages=$this->id");

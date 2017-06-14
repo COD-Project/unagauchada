@@ -84,6 +84,11 @@ final class Users extends Models
     }
   }
 
+  final public function Edit()
+  {
+
+  }
+
   final public function __destruct()
   {
     parent::__destruct();

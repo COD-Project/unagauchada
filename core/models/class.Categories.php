@@ -23,12 +23,12 @@ final class Categories extends Models
 	    return self::$ins;
 	}
 
-	final public function __construct() 
+	final public function __construct()
 	{
 	    parent::__construct();
 	}
 
-	final private function errors($url) 
+	final private function errors($url)
 	{
 	    try {
 	      	if (empty($this->router->getId()) && empty($_POST['name'])) {
@@ -42,7 +42,7 @@ final class Categories extends Models
 	    }
   	}
 
-  	final public function Add() 
+  	final public function Add()
   	{
 	    $this->errors('categorias?error=');
 	    $this->db->insert('Categories', array(
@@ -50,6 +50,11 @@ final class Categories extends Models
 	    ));
 	    Func::redirect(URL);
   	}
+
+		final public function Edit()
+		{
+			
+		}
 
   	final public function Delete() {
 	    $this->errors('categorias?errors=');
