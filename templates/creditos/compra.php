@@ -15,7 +15,7 @@
     }
   ?>
   <div class="container">
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-pills nav-fill">
         <li class="nav-item">
           <a data-toggle="tab" href="#credits" class="nav-link active">Créditos</a>
         </li>
@@ -24,7 +24,7 @@
         </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane active" id="credits">
+        <div class="tab-pane active wow fadeIn" id="credits" data-wow-delay="0.1s">
           <div class="card text-center" style="margin-top: 10px">
             <div class="card-header">
               Compra Créditos
@@ -36,7 +36,7 @@
             </div>
           </div>
         </div>
-        <div class="tab-pane" id="details">
+        <div class="tab-pane wow fadeIn" id="details" data-wow-delay="0.1s">
           <datalist id="tipo_tarjetas">
             <option value="Visa"></option>
             <option value="Mastercard"></option>

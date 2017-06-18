@@ -56,7 +56,7 @@
         	$HTML.= '<div class="row" style="padding-top: 50px">
 					<div class="col-2 text-right">
 						<div class="avatar">
-							<img src="' . $gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 15vh">
+							<img src="' . $gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 11vh">
 						</div>
 					</div>
 					<div class="col-8">
@@ -91,7 +91,7 @@
 						$HTML.= '
 						<div class="col-3 text-right" style="margin-top: 15px;">
 							<div class="avatar">
-								<img src="' . $userComment['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 10vh">
+								<img src="' . $userComment['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 8vh">
 							</div>
 						</div>
 						<div class="col-8" style="margin-top: 10px;">
@@ -103,7 +103,7 @@
 							$HTML .= '
 				            	<div class="col-4 text-right" style="margin-top: 5px;">
 				              	<div class="avatar">
-				               	 <img src="' . $gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 8vh">
+				               	 <img src="' . $gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 6vh">
 				              	</div>
 				            	</div>
 				            	<div class="col-8">
