@@ -26,10 +26,3 @@
 <script src="views/app/js/creditos/compra.js"></script>
 <script src="views/app/js/locates/states.js"></script>
 <script src="views/app/js/locates/locates.js"></script>
-
-<script>
-  new WOW().init()
-  $(function () {
-    $('[data-toggle="popover"]').popover()
-  })
-</script>

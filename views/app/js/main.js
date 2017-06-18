@@ -1,19 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    let prepare_view = () => {
-      var body = Func.$('body')[0],
-          footer = document.createElement('footer'),
-          p = document.createElement('p'),
-          span = document.createElement('span');
-
-      p.innerHTML = '&copy; ' + Func.$('title')[0].innerHTML;
-      footer.appendChild(p);
-      footer.id = 'footer';
-      span.className = 'fa fa-arrow-up cmd_gotop';
-      /* if (!Func.$('#footer')) {
-        body.appendChild(footer);
-      } */
-      // body.appendChild(span);
+    let init = () => {
+      new WOW().init()
+      $(function () {
+        $('[data-toggle="popover"]').popover()
+      })
     }
 
     let paralax = () => {
@@ -43,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     };
 
-    prepare_view();
+    init();
     paralax();
     scrollTop();
 
