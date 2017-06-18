@@ -1,8 +1,14 @@
 <?php
 
+function gauchadasQuery() {
+  $db = new Connection();
+
+  return $db->select('*', 'Gauchadas', 'DATEDIFF(CURDATE(), limitDate) <= 0', 'ORDER BY idGauchada DESC');
+}
+
 function Gauchadas() {
   $db = new Connection();
-  $data = $db->select('*', 'Gauchadas', 'DATEDIFF(CURDATE(), limitDate) <= 0', 'ORDER BY idGauchada DESC');
+  $data = gauchadasQuery();
   if(!$data) return false;
 
   for($i = 0; $i < count($data); $i++) {

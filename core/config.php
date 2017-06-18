@@ -80,8 +80,16 @@ define('AJAX', array(
       'get'
     ),
   'locates' => array(
-      'get' 
+      'get'
     )
+));
+
+define('Options', array(
+  'Gauchadas' => array(
+    'filter',
+    'categorie',
+    'location'
+  )
 ));
 
 //------------------------------------------------
