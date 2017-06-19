@@ -35,7 +35,7 @@ let _init_compra = function() {
     result += '<p><strong> El número de tarjeta es incorrecto.</strong></p>';
     result += '</div>';
     Func.$('#_AJAX_CREDITS_').innerHTML = result;
-  } else if (!date.date) {
+  } else if (!data.date) {
     result = '<div class="alert alert-warning alert-dismissible fade show" role="alert" style="border-radius: 0;">';
     result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
     result += '<h5>Cuidado:</h5>';
