@@ -4,10 +4,11 @@ function gauchadasFilter() {
   $db = new Connection();
   $where = 'DATEDIFF(CURDATE(), limitDate) <= 0';
   foreach (OPTIONS['gauchadas'] as $key => $value) {
-    $where .= array_key_exists($key, $_GET) ? ' AND ' . $value . $_GET[$key] : '';
+    $where .= array_key_exists($key, $_GET) && !Func::emp($_GET[$key]) ? 'AND ' . $value . '"' . $db->escape($_GET[$key]) . '"' : '';
   }
   return $db->select('*', 'Gauchadas', $where, 'ORDER BY idGauchada DESC');
 }
+
 
 function Gauchadas() {
   $db = new Connection();
