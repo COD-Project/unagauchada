@@ -5,8 +5,7 @@
 	<?php $this->render('overall/topnav'); ?>
 	<div class="container">
 			<?php
-				$gauchadas = Gauchadas();
-				$gauchada = $gauchadas[$this->router->getId()];
+				$gauchada = Gauchadas()[$this->router->getId()];
 				$HTML = '';
 				if ($gauchada['images']) {
 					$HTML .= '
@@ -120,7 +119,6 @@
               <p class="text-fluid">Aún no hay comentarios para esta gauchada. <strong>¡Se el primero en comentar!</strong></p>
               </div></div><div class="col-2"></div>';
 				}
-
 				echo $HTML;
 			?>
 

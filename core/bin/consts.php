@@ -2,7 +2,7 @@
 
 define('OPTIONS', array(
   'gauchadas' => array(
-    'filter',
+    'search' => '',
     'category' => 'idCategory=',
     'location' => 'location='
   )

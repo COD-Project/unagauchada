@@ -26,11 +26,11 @@
 										<label class="col-2 control-label" for="categories">Categorias</label>
 										<div class="col-10">
 											<select id="idCategory" class="form_control" name="idCategory">';
-													$_categories = Categories();
-													if($_categories != NULL) {
+													$categories = Categories();
+													if($categories != NULL) {
 														$HTML .= "<option value=0 selected disabled> Seleccione una categoria </option>";
-														for($i = 0; $i < count($_categories); $i++){
-															$HTML .= "<option value=" . $_categories[$i]['idCategory'] . ">" . $_categories[$i]['name'] . "</option>";
+														for($i = 0; $i < count($categories); $i++){
+															$HTML .= "<option value=" . $categories[$i]['idCategory'] . ">" . $categories[$i]['name'] . "</option>";
 														}
 								          } else {
 														$HTML .= "<option value=\"blank\" selected disabled>No hay categorias</option>";
