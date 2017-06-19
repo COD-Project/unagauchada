@@ -3,8 +3,9 @@
 function gauchadasFilter() {
   $db = new Connection();
   $where = 'DATEDIFF(CURDATE(), limitDate) <= 0';
-  foreach (OPTIONS['gauchadas'] as $key => $value) {
-    $where .= array_key_exists($key, $_GET) && !Func::emp($_GET[$key]) ? ' AND ' . $value . '"' . $db->escape($_GET[$key]) . '"' : '';
+  foreach (OPTIONS['gauchadas']['filter'] as $key => $value) {
+    $where .= array_key_exists($key, $_GET) && !Func::emp($_GET[$key]) ?
+              ' AND ' . $value['content'] . $value['begin'] . $db->escape($_GET[$key]) . $value['end'] : '';
   }
   return $db->select('*', 'Gauchadas', $where, 'ORDER BY idGauchada DESC');
 }

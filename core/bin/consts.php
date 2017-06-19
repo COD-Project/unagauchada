@@ -2,9 +2,26 @@
 
 define('OPTIONS', array(
   'gauchadas' => array(
-    'search' => '',
-    'category' => 'idCategory=',
-    'location' => 'location='
+    'filter' => array(
+      'search' => array(
+        'content' => 'title LIKE ',
+        'begin' => '"%',
+        'end' => '%"'
+      ),
+      'category' => array(
+        'content' => 'idCategory=',
+        'begin' => '"',
+        'end' => '"'
+      ),
+      'location' => array(
+        'content' => 'location=',
+        'begin' => '"',
+        'end' => '"'
+      )
+    ),
+    'mode' => array(
+      
+    )
   )
 ));
 
