@@ -1,14 +1,17 @@
 <?php
 
-function gauchadasQuery() {
+function gauchadasFilter() {
   $db = new Connection();
-
-  return $db->select('*', 'Gauchadas', 'DATEDIFF(CURDATE(), limitDate) <= 0', 'ORDER BY idGauchada DESC');
+  $where = 'DATEDIFF(CURDATE(), limitDate) <= 0';
+  foreach (OPTIONS['gauchadas'] as $key => $value) {
+    $where .= array_key_exists($key, $_GET) ? ' AND ' . $value . $_GET[$key] : '';
+  }
+  return $db->select('*', 'Gauchadas', $where, 'ORDER BY idGauchada DESC');
 }
 
 function Gauchadas() {
   $db = new Connection();
-  $data = gauchadasQuery();
+  $data = gauchadasFilter();
   if(!$data) return false;
 
   for($i = 0; $i < count($data); $i++) {

@@ -79,7 +79,7 @@ final class Users extends Models
       $this->db->insert("Users", $values);
       $sql = $this->db->query("SELECT MAX(idUser) AS idUser FROM Users;");
       $data = $this->db->fetch_array($sql);
-      (new Sessions)->generateSession($data[0]['idUser']);
+      (Sessions::getInstance())->generateSession($data[0]['idUser']);
       echo 1;
     }
   }

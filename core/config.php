@@ -84,14 +84,6 @@ define('AJAX', array(
     )
 ));
 
-define('Options', array(
-  'Gauchadas' => array(
-    'filter',
-    'categorie',
-    'location'
-  )
-));
-
 //------------------------------------------------
 # PHPMailer constants
 define('PHPMAILER', array(
