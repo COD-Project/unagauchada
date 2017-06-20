@@ -79,7 +79,7 @@ define('AJAX', array(
   'states' => array(
       'get'
     ),
-  'locates' => array(
+  'localities' => array(
       'get'
     )
 ));

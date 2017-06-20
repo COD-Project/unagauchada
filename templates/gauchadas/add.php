@@ -4,7 +4,7 @@
 <body>
 	<?php $this->render('overall/topnav'); ?>
 	<datalist id="states"></datalist>
-	<datalist id="locates"></datalist>
+	<datalist id="localities"></datalist>
 	<div class="below-topnav"></div>
   	<div class="container">
   		<?php
@@ -45,8 +45,8 @@
 			            	<label class="cmd_label" for="state">Provincia</label>
 			            </div>
 									<div class="cmd_input-group">
-			            	<input list="locates" type="text" id="locate" name="locate">
-			            	<label class="cmd_label" for="locate">Localidad</label>
+			            	<input list="localities" type="text" id="locality" name="locality">
+			            	<label class="cmd_label" for="locality">Localidad</label>
 			            </div>
 									<br>
 					        <div class="cmd_input-group">

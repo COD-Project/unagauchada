@@ -24,7 +24,7 @@ define('OPTIONS', array(
     )
   ),
   'profiles' => array(
-    'miperfil' => array(
+    'myprofile' => array(
       'path' => 'myprofile'
     )
   )

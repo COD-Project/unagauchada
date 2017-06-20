@@ -36,3 +36,5 @@
 <!--/Main layout-->
 
 <?php $this->include('gauchadas/list'); ?>
+
+<hr>

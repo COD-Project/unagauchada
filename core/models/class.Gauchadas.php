@@ -14,7 +14,7 @@ final class Gauchadas extends Models
 	private $title;
 	private $body;
 	private $state;
-	private $location;
+	private $locality;
 	private $limitDate;
 	private $evaluation;
 	private $idCategory;
@@ -37,14 +37,14 @@ final class Gauchadas extends Models
 	final private function errors($url)
 	{
 	    try {
-	      	if (empty($this->router->getId()) && empty($_POST['title']) && empty($_POST['body']) && empty($_POST['location']) && empty($_POST['limitDate']) && empty($_POST['evaluation']) && empty($_POST['idUser']) && empty($_POST['idCategory'])) {
+	      	if (empty($this->router->getId()) && empty($_POST['title']) && empty($_POST['body']) && empty($_POST['locality']) && empty($_POST['limitDate']) && empty($_POST['evaluation']) && empty($_POST['idUser']) && empty($_POST['idCategory'])) {
 	        	throw new PDOException("Error Processing Request", 1);
 	      	} else {
 		        $this->id = $this->router->getId() != null ? intval($this->router->getId()) : null;
 		        $this->title = isset($_POST['title']) ? $this->purifier($this->db->escape($_POST['title'])) : null;
 		        $this->body = isset($_POST['body']) ? $this->purifier($this->db->escape($_POST['body'])) : null;
 		        $this->state = isset($_POST['state']) ? $this->purifier($this->db->escape($_POST['state'])) : null;
-		        $this->location = isset($_POST['locate']) ? $this->purifier($this->db->escape($_POST['locate'])) : null;
+		        $this->locality = isset($_POST['locality']) ? $this->purifier($this->db->escape($_POST['locality'])) : null;
 		        $this->limitDate = $_POST['limitDate'] ?? null;
 		        $this->evaluation = isset($_POST['evaluation']) ? intval($_POST['evaluation']) : null;
 		        $this->idCategory = isset($_POST['idCategory']) ? intval($_POST['idCategory']) : null;
@@ -59,7 +59,7 @@ final class Gauchadas extends Models
 	    $this->db->insert('Gauchadas', array(
 	      'title' => $this->title,
 	      'body' => $this->body,
-	      'location' => $this->state . ", " .$this->location,
+	      'location' => $this->state . ", " .$this->locality,
 	      'limitDate' => $this->limitDate,
 	      'createdAt' => date('Y/m/d H:i:s', time()),
 	      'evaluation' => $this->evaluation,
