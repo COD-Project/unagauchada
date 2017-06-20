@@ -1,4 +1,4 @@
-<div class="tab-pane active" id="profile">
+<div class="tab-pane active wow fadeIn" id="profile" data-wow-delay="0.2s">
     <h4 class="m-y-2">User Profile</h4>
     <div class="row">
         <div class="col-md-6">

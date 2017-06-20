@@ -1,4 +1,4 @@
-<div class="tab-pane" id="edit">
+<div class="tab-pane wow fadeIn" id="edit" data-wow-delay="0.1s">
   <h4 class="m-y-2">Edit Profile</h4>
   <form role="form" method="post" action="">
     <?php
@@ -59,9 +59,10 @@
         </div>
         <div class=\"form-group row\">
             <label class=\"col-lg-3 col-form-label form-control-label\"></label>
-            <div class=\"col-lg-9\">
-                <button type=\"reset\" class=\"btn btn-secondary btn-rounded\">Reset</button>
-                <button type=\"submit\" class=\"btn btn-primary btn-rounded\">Editar</button>
+            <div class=\"col-lg-9 text-center\">
+              <a class=\"btn btn-warning btn-lg btn-block option-button text-center\" href=\"#\">
+                <i class=\"fa fa-send\"></i>
+              </a>
             </div>
         </div>
       ";
