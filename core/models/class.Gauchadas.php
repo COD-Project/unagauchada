@@ -45,7 +45,7 @@ final class Gauchadas extends Models
 		        $this->body = isset($_POST['body']) ? $this->purifier($this->db->escape($_POST['body'])) : null;
 		        $this->state = isset($_POST['state']) ? $this->purifier($this->db->escape($_POST['state'])) : null;
 		        $this->location = isset($_POST['locate']) ? $this->purifier($this->db->escape($_POST['locate'])) : null;
-		        $this->limitDate = isset($_POST['limitDate']) ? $_POST['limitDate'] : null;
+		        $this->limitDate = $_POST['limitDate'] ?? null;
 		        $this->evaluation = isset($_POST['evaluation']) ? intval($_POST['evaluation']) : null;
 		        $this->idCategory = isset($_POST['idCategory']) ? intval($_POST['idCategory']) : null;
 	      	}

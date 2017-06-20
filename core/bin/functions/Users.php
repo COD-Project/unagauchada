@@ -25,10 +25,8 @@ function Users() {
         //put user's info here if there is more in the db
       );
     }
-  } else {
-    $users = false; //if can not generate the matrix, return false
   }
-  return $users;
+  return $users ?? false;
 }
 
 ?>

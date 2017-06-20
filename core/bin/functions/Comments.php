@@ -12,7 +12,7 @@ function Answer($idGauchada, $idQuestion) {
       'idUser' => $data[$i]['idUser']
     );
   }
-  return $answer ? $answer[0] : false;
+  return $answer[0] ?? false;
 }
 
 function Comments($idGauchada) {

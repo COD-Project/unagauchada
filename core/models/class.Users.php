@@ -43,11 +43,11 @@ final class Users extends Models
         $this->surname = isset($_POST['surname']) ? $this->db->escape($_POST['surname']) : null;
         $this->email = isset($_POST['email']) ? $this->db->escape($_POST['email']) : null;
         $this->password = isset($_POST['pass']) ? Func::encrypt($_POST['pass']) : null;
-        $this->birthdate = isset($_POST['birthdate']) ? $_POST['birthdate'] : null;
-        $this->phone = isset($_POST['phone']) ? $_POST['phone'] : null;
-        $this->points = isset($_POST['points']) ? $_POST['points'] : null;
-        $this->credits = isset($_POST['credits']) ? $_POST['credits'] : null;
-        $this->idImage = isset($_POST['idImage']) ? $_POST['idImage'] : null;
+        $this->birthdate = $_POST['birthdate'] || null;
+        $this->phone = $_POST['phone'] ?? null;
+        $this->points = $_POST['points'] ?? null;
+        $this->credits = $_POST['credits'] ?? null;
+        $this->idImage = $_POST['idImage'] ?? null;
       }
     } catch (PDOException $error) {
         echo $error->getMessage();

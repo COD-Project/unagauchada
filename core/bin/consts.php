@@ -20,7 +20,7 @@ define('OPTIONS', array(
       )
     ),
     'mode' => array(
-      
+
     )
   )
 ));
