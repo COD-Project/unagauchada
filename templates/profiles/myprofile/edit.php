@@ -36,11 +36,13 @@
         </div>
         <div class=\"form-group row\">
             <label class=\"col-lg-3 col-form-label form-control-label\">Localidad</label>
-            <div class=\"col-lg-\">
-                <input id=\"state\" class=\"form-control\" type=\"text\" value=\"\" placeholder=\"Provincia\">
-            </div>
+            <datalist id=\"states\"></datalist>
+          	<datalist id=\"localities\"></datalist>
             <div class=\"col-lg-3\">
-                <input id=\"locality\" class=\"form-control\" type=\"text\" value=\"\" placeholder=\"Ciudad\">
+                <input list=\"states\" id=\"state\" class=\"form-control\" type=\"text\" value=\"\" placeholder=\"Provincia\">
+            </div>
+            <div class=\"col-lg-6\">
+                <input list=\"localities\" id=\"locality\" class=\"form-control\" type=\"text\" value=\"\" placeholder=\"Ciudad\">
             </div>
         </div>
         <div class=\"form-group row\">
