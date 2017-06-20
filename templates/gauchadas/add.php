@@ -54,7 +54,8 @@
 						        <label class="cmd_label" for="limitDate">Plazo Limite</label>
 					        </div>
 					        <div class="cmd_input-group">
-						        <input type="file" name="pic" accept="image/*" multiple="">
+						        <input class="custom-file-input" type="file" name="pic" accept="image/*" multiple="">
+										<label class="cmd_label" for="pic">Imágenes</label>
 					        </div>
 				        	<input type="submit" id="btn-submit" value="Añadir">
 			       		</form>

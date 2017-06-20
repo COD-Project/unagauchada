@@ -22,6 +22,11 @@ define('OPTIONS', array(
     'mode' => array(
 
     )
+  ),
+  'profiles' => array(
+    'miperfil' => array(
+      'path' => 'myprofile'
+    )
   )
 ));
 
