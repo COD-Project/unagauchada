@@ -71,12 +71,6 @@ final class Comments extends Models
 	    Func::redirect(URL . 'gauchadas/view/' . $this->idGauchada);
   	}
 
-  	final public function Delete() {
-  		$this->Errors('news?errors=');
-    	$this->db->delete('news', "idNew=$this->id");
-    	Func::redirect(URL);
-  	}
-
   	final public function __destruct()
   	{
   		parent::__destruct();
