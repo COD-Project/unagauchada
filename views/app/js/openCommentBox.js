@@ -15,7 +15,7 @@ function openCommentBox(question, idCourse){
   if(question === 0){
     form_comment.setAttribute('action',"comments/add/"+ idCourse);
   } else {
-    form_comment.setAttribute('action',"comments/addAnswer/"+idCourse+"?idAnswer="+question);
+    form_comment.setAttribute('action',"comments/addAnswer/"+idCourse+"?idQuestion="+question);
   }
   form_comment.setAttribute('class',"cmd_form");
   form_comment.setAttribute('name', "cmd_form")
