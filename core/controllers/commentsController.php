@@ -17,7 +17,7 @@ class commentsController extends Controller {
               break;
 						case 'addQuestion':
             	if ($_POST) {
-              	$categorias->AddAnswer();
+              	$categorias->AddQuestion();
             	}
               break;
           }
