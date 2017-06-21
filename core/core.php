@@ -27,7 +27,8 @@ __models_autoload(array(
   'Images',
   'Users',
   'Gauchadas',
-  'Categories'
+  'Categories',
+  'Comments'
 ));
 __functions_autoload(array(
   'Images',
@@ -36,7 +37,8 @@ __functions_autoload(array(
   'Comments',
   'Gauchadas',
   'Categories',
-  'Creditos'
+  'Creditos',
+  'Comments'
 ));
 
 
