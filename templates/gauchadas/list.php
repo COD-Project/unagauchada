@@ -23,7 +23,7 @@
                     <div class=\"card wow fadeIn\" data-wow-delay=\"0." . ($i+1)*2 . "s\">
                     ";
 
-                    if($this->sessions->connectedUser()['idUser'] == $gauchada['user']['idUser']){
+                    if($this->sessions->isLoggedIn() && $this->sessions->connectedUser()['idUser'] == $gauchada['user']['idUser']){
                         $HTML .= "<a href=\"gauchadas/delete/" . $gauchadas[$id]['idGauchada'] . "\"><i class=\"fa fa-close\"></i></a>";
                     }
                         $HTML .= "
