@@ -110,14 +110,33 @@
 				             	 <h6 class="h6-responsive">' . $comment['answer']['lastModify'] . '</h6>
 				              	<p>' . $comment["answer"]["body"] . '</p>
 				            	</div>';
+						} else {
+							if($this->sessions->connectedUser()['idUser'] == $gauchada['user']['idUser'] && !$this->sessions->isGranted()){
+								$HTML .= '
+										<div class="col-2"></div>
+												<div id="div_comment_button_' . $comment['idComment'] . '" class="col-8" style="margin-top: 20px; "margin-bottom: 20px">
+													<div>
+														<div class="text-center">
+															<div>
+																<button onClick="openCommentBox(' . $comment['idComment'] . ',' . $this->router->getId() . ')" class="btn btn-warning btn-lg btn-block option-button text-center">
+																	<i class="fa fa-comment"></i>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-2"></div>
+									';
+								}
 						}
 					}
 				} else {
-					$HTML .= '<div class="col-2"></div><div class="col-8">
-              <div class="alert alert-info alert-dismissible fade show" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <p class="text-fluid">Aún no hay comentarios para esta gauchada. <strong>¡Se el primero en comentar!</strong></p>
-              </div></div><div class="col-2"></div>';
+					if($this->sessions->connectedUser()['idUser'] != $gauchada['user']['idUser'] && !$this->sessions->isGranted()) {
+						$HTML .= '<div class="col-2"></div><div class="col-8">
+	              <div class="alert alert-info alert-dismissible fade show" role="alert">
+	              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	              <p class="text-fluid">Aún no hay comentarios para esta gauchada. <strong>¡Se el primero en comentar!</strong></p>
+	              </div></div><div class="col-2"></div>';
+					}
 				}
 				echo $HTML;
 			?>
@@ -126,12 +145,13 @@
 				<?php
 					$HTML = '';
 					if($this->sessions->connectedUser()['idUser'] != $gauchada['user']['idUser'] && !$this->sessions->isGranted()) {
-						$HTML .= '<div class="row justify-content-center" style="margin-top: 20px">
+						$HTML .= '<div id="div_comment_button_0" class="row justify-content-center" style="margin-top: 20px">
 											<div class="col-8">
 												<div class="text-center">
-													<a class="btn btn-warning btn-lg btn-block option-button text-center" href="#">
+												<div>
+													<button onClick="openCommentBox(0,' . $this->router->getId() . ', null)" class="btn btn-warning btn-lg btn-block option-button text-center">
 														<i class="fa fa-comment"></i>
-													</a>
+												</div>
 												</div>
 											</div>
 										</div>
