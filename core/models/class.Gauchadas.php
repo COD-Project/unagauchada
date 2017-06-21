@@ -76,8 +76,9 @@ final class Gauchadas extends Models
 
   	final public function Delete() {
   		$this->Errors('gauchadas?errors=');
-    	$this->db->delete('GauchadasImages', "idGauchada=$this->id");
-    	$this->db->delete('Gauchadas', "idGauchada=$this->id");
+    	$this->db->update('Gauchadas', array(
+	      'validate' => 1
+	    ),"idGauchada=$this->id");
     	Func::redirect(URL);
   	}
 

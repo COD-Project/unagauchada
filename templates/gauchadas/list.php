@@ -19,8 +19,14 @@
               $i = 1;
               foreach ($gauchadas as $id => $gauchada) {
                 $HTML .= "<div class=\"col-lg-4\" style=\"margin-bottom: 10px;\">
-                    <!--Card-->
+                <!--Card-->
                     <div class=\"card wow fadeIn\" data-wow-delay=\"0." . ($i+1)*2 . "s\">
+                    ";
+
+                    if($this->sessions->connectedUser()['idUser'] == $gauchada['user']['idUser']){
+                        $HTML .= "<a href=\"gauchadas/delete/" . $gauchadas[$id]['idGauchada'] . "\"><i class=\"fa fa-close\"></i></a>";
+                    }
+                        $HTML .= "
                         <!--Card image-->
                         <div class=\"card-up view overlay hm-white-slight text-center\" style=\"height: 245px;\">
                           <img src=\"" . $gauchada['images'][0]['path'] . "\" class=\"img-fluid\" alt=\"\" style=\"height: 100%;\">

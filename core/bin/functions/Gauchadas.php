@@ -2,7 +2,7 @@
 
 function gauchadasFilter() {
   $db = new Connection();
-  $where = 'DATEDIFF(CURDATE(), limitDate) <= 0';
+  $where = 'DATEDIFF(CURDATE(), limitDate) <= 0 AND validate IS NULL';
   foreach (OPTIONS['gauchadas']['filter'] as $key => $value) {
     $where .= array_key_exists($key, $_GET) && !Func::emp($_GET[$key]) ?
               ' AND ' . $value['content'] . $value['begin'] . $db->escape($_GET[$key]) . $value['end'] : '';
