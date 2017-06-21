@@ -130,7 +130,7 @@
 						}
 					}
 				} else {
-					if($this->sessions->connectedUser()['idUser'] != $gauchada['user']['idUser'] && !$this->sessions->isGranted()) {
+					if(($this->sessions->connectedUser()['idUser'] != $gauchada['user']['idUser']) && !$this->sessions->isGranted()) {
 						$HTML .= '<div class="col-2"></div><div class="col-8">
 	              <div class="alert alert-info alert-dismissible fade show" role="alert">
 	              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>

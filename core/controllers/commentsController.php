@@ -8,16 +8,16 @@ class commentsController extends Controller {
 	public function __construct() {
     	parent::__construct(true);
     	if($this->sessions->isLoggedIn()) {
-    		$categorias = new Comments();
+    		$comments = new Comments();
     			switch ($this->router->getMethod()) {
 		        case 'add':
             	if ($_POST) {
-              	$categorias->Add();
+              	$comments->Add();
             	}
               break;
 						case 'addQuestion':
             	if ($_POST) {
-              	$categorias->AddQuestion();
+              	$comments->AddQuestion();
             	}
               break;
           }
