@@ -55,7 +55,7 @@ final class Comments extends Models
         'idGauchada' => $this->router->getId(),
 	      'idUser' => (new Sessions)->connectedUser()['idUser'],
 	    ));
-	    Func::redirect(URL . 'courses/view/' . $this->router->getId());
+	    Func::redirect(URL . 'gauchadas/view/' . $this->router->getId());
   	}
 
 		final public function AddQuestion() {
