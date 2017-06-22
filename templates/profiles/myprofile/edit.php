@@ -1,5 +1,4 @@
 <div class="tab-pane wow fadeIn" id="edit" data-wow-delay="0.1s">
-  <h4 class="m-y-2">Edit Profile</h4>
   <form role="form" method="post" action="">
     <?php
       $user = $this->sessions->connectedUser();
@@ -23,15 +22,9 @@
             </div>
         </div>
         <div class=\"form-group row\">
-            <label class=\"col-lg-3 col-form-label form-control-label\">Company</label>
+            <label class=\"col-lg-3 col-form-label form-control-label\">Teléfono</label>
             <div class=\"col-lg-9\">
-                <input class=\"form-control\" type=\"text\" value=\"\">
-            </div>
-        </div>
-        <div class=\"form-group row\">
-            <label class=\"col-lg-3 col-form-label form-control-label\">Website</label>
-            <div class=\"col-lg-9\">
-                <input class=\"form-control\" type=\"url\" value=\"\">
+                <input class=\"form-control\" value=\"" . $user['phone'] . "\">
             </div>
         </div>
         <div class=\"form-group row\">

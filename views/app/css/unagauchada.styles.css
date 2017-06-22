@@ -29,3 +29,12 @@
   background-color: #ec971f;
   border-color: #ec971f;
 }
+
+.remove-item {
+  color: #fff;
+  font-size: 30px;
+}
+
+.remove-item:hover {
+  color: coral;
+}

@@ -21,12 +21,6 @@
                 $HTML .= "<div class=\"col-lg-4\" style=\"margin-bottom: 10px;\">
                 <!--Card-->
                     <div class=\"card wow fadeIn\" data-wow-delay=\"0." . ($i+1)*2 . "s\">
-                    ";
-
-                    if($this->sessions->isLoggedIn() && $this->sessions->connectedUser()['idUser'] == $gauchada['user']['idUser']){
-                        $HTML .= "<a href=\"gauchadas/delete/" . $gauchadas[$id]['idGauchada'] . "\"><i class=\"fa fa-close\"></i></a>";
-                    }
-                        $HTML .= "
                         <!--Card image-->
                         <div class=\"card-up view overlay hm-white-slight text-center\" style=\"height: 245px;\">
                           <img src=\"" . $gauchada['images'][0]['path'] . "\" class=\"img-fluid\" alt=\"\" style=\"height: 100%;\">
@@ -42,9 +36,16 @@
                             <div class=\"avatar text-right col-3\">
                               <img class=\"rounded-circle img-responsive\" src=\"" . $gauchada['user']['profilePicture'] . "\" style=\"width: 50px;\" >
                             </div>
-                            <div class=\"text-left col-9\">
+                            <div class=\"text-left col-7\">
                               <p class=\"text-fluid\" style=\"color: #fff\">" . $gauchada['user']['completeName'] . "</p>
                               <p class=\"text-fluid\" style=\"color: #C0C0C0; margin-top: -15px\">" . $gauchada['creationDate'] . "</p>
+                            </div>
+                            <div class=\"text-left col-2\">
+                            ";
+                            if($this->sessions->isLoggedIn() && $this->sessions->connectedUser()['idUser'] == $gauchada['user']['idUser']){
+                                $HTML .= "<a href=\"gauchadas/delete/" . $gauchadas[$id]['idGauchada'] . "\" class=\"remove-item\"><i class=\"fa fa-trash\"></i></a>";
+                            }
+                            $HTML .= "
                             </div>
                           </div>
                           <!--Title-->
