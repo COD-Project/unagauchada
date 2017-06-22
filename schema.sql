@@ -2,10 +2,10 @@
 -- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 21-06-2017 a las 15:39:25
+-- Servidor: localhost
+-- Tiempo de generación: 22-06-2017 a las 13:32:19
 -- Versión del servidor: 10.1.22-MariaDB
--- Versión de PHP: 7.1.4
+-- Versión de PHP: 7.0.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,25 +19,25 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `unagauchadadb`
+-- Base de datos: `unagauchadaDB`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categories`
+-- Estructura de tabla para la tabla `Categories`
 --
 
-CREATE TABLE `categories` (
+CREATE TABLE `Categories` (
   `idCategory` int(11) NOT NULL,
   `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `categories`
+-- Volcado de datos para la tabla `Categories`
 --
 
-INSERT INTO `categories` (`idCategory`, `name`) VALUES
+INSERT INTO `Categories` (`idCategory`, `name`) VALUES
 (1, 'Viajes'),
 (3, 'Negocios'),
 (4, 'Tecnologia'),
@@ -49,10 +49,10 @@ INSERT INTO `categories` (`idCategory`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `comments`
+-- Estructura de tabla para la tabla `Comments`
 --
 
-CREATE TABLE `comments` (
+CREATE TABLE `Comments` (
   `idComment` int(11) NOT NULL,
   `body` varchar(255) NOT NULL,
   `createdAt` date DEFAULT NULL,
@@ -63,10 +63,10 @@ CREATE TABLE `comments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `comments`
+-- Volcado de datos para la tabla `Comments`
 --
 
-INSERT INTO `comments` (`idComment`, `body`, `createdAt`, `lastModify`, `idQuestion`, `idGauchada`, `idUser`) VALUES
+INSERT INTO `Comments` (`idComment`, `body`, `createdAt`, `lastModify`, `idQuestion`, `idGauchada`, `idUser`) VALUES
 (1, 'Hola, soy estudiante de informatica y creo poder ayudarte! avisame si te parece :)', '2017-06-01', '2017-06-01', NULL, 6, 10),
 (2, 'Gracias! Me encantaria contacterme con vos', '2017-06-01', '2017-06-01', 1, 6, 9),
 (3, '¿Qué tan grande va a ser la tesis?', '2017-06-01', '2017-06-01', NULL, 6, 11);
@@ -74,10 +74,10 @@ INSERT INTO `comments` (`idComment`, `body`, `createdAt`, `lastModify`, `idQuest
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `creditos`
+-- Estructura de tabla para la tabla `Creditos`
 --
 
-CREATE TABLE `creditos` (
+CREATE TABLE `Creditos` (
   `idCredito` int(11) NOT NULL,
   `monto` int(11) NOT NULL,
   `idUser` int(11) NOT NULL,
@@ -85,19 +85,19 @@ CREATE TABLE `creditos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `creditos`
+-- Volcado de datos para la tabla `Creditos`
 --
 
-INSERT INTO `creditos` (`idCredito`, `monto`, `idUser`, `date`) VALUES
+INSERT INTO `Creditos` (`idCredito`, `monto`, `idUser`, `date`) VALUES
 (1, 50, 8, '2017-05-31');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `gauchadas`
+-- Estructura de tabla para la tabla `Gauchadas`
 --
 
-CREATE TABLE `gauchadas` (
+CREATE TABLE `Gauchadas` (
   `idGauchada` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
   `body` varchar(1024) NOT NULL,
@@ -111,10 +111,10 @@ CREATE TABLE `gauchadas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `gauchadas`
+-- Volcado de datos para la tabla `Gauchadas`
 --
 
-INSERT INTO `gauchadas` (`idGauchada`, `title`, `body`, `location`, `limitDate`, `createdAt`, `evaluation`, `idUser`, `idCategory`, `validate`) VALUES
+INSERT INTO `Gauchadas` (`idGauchada`, `title`, `body`, `location`, `limitDate`, `createdAt`, `evaluation`, `idUser`, `idCategory`, `validate`) VALUES
 (6, 'Tesis', 'Necesito ayuda para desarrollar mi tesis, requiero de alguien que me pueda explicar LaTeX.', 'Buenos Aires, La Plata', '2017-09-30', '2017-06-01', 0, 9, 7, NULL),
 (7, 'Problemas felinos', 'Quiero deshacerme del gato de mi novia, tiene que ser en un horario nocturno, cuando ella duerma.', 'Chubut, Camarones', '2017-07-12', '2017-06-01', 0, 10, 5, NULL),
 (8, 'blbfakldfba', 'klbdasklgbasd', 'Buenos Aires, La Plata', '2017-06-30', '2017-06-21', 0, 12, 4, 1);
@@ -122,20 +122,20 @@ INSERT INTO `gauchadas` (`idGauchada`, `title`, `body`, `location`, `limitDate`,
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `gauchadasimages`
+-- Estructura de tabla para la tabla `GauchadasImages`
 --
 
-CREATE TABLE `gauchadasimages` (
+CREATE TABLE `GauchadasImages` (
   `idGauchadaImage` int(11) NOT NULL,
   `idGauchada` int(11) NOT NULL,
   `idImage` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `gauchadasimages`
+-- Volcado de datos para la tabla `GauchadasImages`
 --
 
-INSERT INTO `gauchadasimages` (`idGauchadaImage`, `idGauchada`, `idImage`) VALUES
+INSERT INTO `GauchadasImages` (`idGauchadaImage`, `idGauchada`, `idImage`) VALUES
 (6, 6, 1),
 (7, 7, 2),
 (8, 7, 3);
@@ -143,19 +143,19 @@ INSERT INTO `gauchadasimages` (`idGauchadaImage`, `idGauchada`, `idImage`) VALUE
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `images`
+-- Estructura de tabla para la tabla `Images`
 --
 
-CREATE TABLE `images` (
+CREATE TABLE `Images` (
   `idImage` int(11) NOT NULL,
   `path` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `images`
+-- Volcado de datos para la tabla `Images`
 --
 
-INSERT INTO `images` (`idImage`, `path`) VALUES
+INSERT INTO `Images` (`idImage`, `path`) VALUES
 (1, 'avatar_28012e5b8492_128.png'),
 (2, 'unagauchada.1.jpg'),
 (3, 'unagauchada.2.jpg'),
@@ -167,20 +167,20 @@ INSERT INTO `images` (`idImage`, `path`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `localidades`
+-- Estructura de tabla para la tabla `Localidades`
 --
 
-CREATE TABLE `localidades` (
+CREATE TABLE `Localidades` (
   `id` int(11) NOT NULL,
   `idProvincia` int(11) NOT NULL,
   `localidad` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `localidades`
+-- Volcado de datos para la tabla `Localidades`
 --
 
-INSERT INTO `localidades` (`id`, `idProvincia`, `localidad`) VALUES
+INSERT INTO `Localidades` (`id`, `idProvincia`, `localidad`) VALUES
 (1, 1, '25 de Mayo'),
 (2, 1, '3 de febrero'),
 (3, 1, 'A. Alsina'),
@@ -2271,7 +2271,7 @@ INSERT INTO `localidades` (`id`, `idProvincia`, `localidad`) VALUES
 (2088, 22, 'Pueblo Gral. San Martin'),
 (2089, 22, 'Pueblo Irigoyen'),
 (2090, 22, 'Pueblo Marini');
-INSERT INTO `localidades` (`id`, `idProvincia`, `localidad`) VALUES
+INSERT INTO `Localidades` (`id`, `idProvincia`, `localidad`) VALUES
 (2091, 22, 'Pueblo Munoz'),
 (2092, 22, 'Pueblo Uranga'),
 (2093, 22, 'Pujato'),
@@ -2568,19 +2568,40 @@ INSERT INTO `localidades` (`id`, `idProvincia`, `localidad`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `provincias`
+-- Estructura de tabla para la tabla `Postulantes`
 --
 
-CREATE TABLE `provincias` (
+CREATE TABLE `Postulantes` (
+  `idPostulante` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `idGauchada` int(11) NOT NULL,
+  `selected` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `Postulantes`
+--
+
+INSERT INTO `Postulantes` (`idPostulante`, `idUser`, `idGauchada`, `selected`) VALUES
+(1, 9, 2, 0),
+(2, 10, 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Provincias`
+--
+
+CREATE TABLE `Provincias` (
   `id` int(10) NOT NULL,
   `provincia` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `provincias`
+-- Volcado de datos para la tabla `Provincias`
 --
 
-INSERT INTO `provincias` (`id`, `provincia`) VALUES
+INSERT INTO `Provincias` (`id`, `provincia`) VALUES
 (1, 'Buenos Aires'),
 (2, 'Buenos Aires-GBA'),
 (3, 'Capital Federal'),
@@ -2610,10 +2631,10 @@ INSERT INTO `provincias` (`id`, `provincia`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `users`
+-- Estructura de tabla para la tabla `Users`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `Users` (
   `idUser` int(11) NOT NULL,
   `name` varchar(25) NOT NULL,
   `surname` varchar(25) NOT NULL,
@@ -2633,10 +2654,10 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `users`
+-- Volcado de datos para la tabla `Users`
 --
 
-INSERT INTO `users` (`idUser`, `name`, `surname`, `birthdate`, `phone`, `location`, `email`, `password`, `credits`, `points`, `state`, `session`, `registrationDate`, `keyreg`, `role`, `idImage`) VALUES
+INSERT INTO `Users` (`idUser`, `name`, `surname`, `birthdate`, `phone`, `location`, `email`, `password`, `credits`, `points`, `state`, `session`, `registrationDate`, `keyreg`, `role`, `idImage`) VALUES
 (8, 'Admin', 'Admin', '1997-05-30', '4803992', NULL, 'admin@admin.com', '0b1c78bc8b5b71f6f49e0f29c36db73c', 1, 1, 0, 0, '2017-06-01', 'e7511a23920f0563a25ab0e71', 1, 1),
 (9, 'Juan Cruz', 'Ocampos', '1997-05-31', '2216150702', NULL, 'ocamposjuancruz23@gmail.com', '1dd4ecb6f7f0091bc464fee9b9202d59', 0, 1, 0, 0, '2017-06-01', '8345a792d4488c7db9f0d6891', 2, 1),
 (10, 'Ulises', 'Cornejo', '1996-11-24', '4801997', NULL, 'ulisescf.24@gmail.com', '85d42b1aa432bac0828989e6c05c76ec', 12, 1, 0, 1496340400, '2017-06-01', '90e37b995374918409eb44684', 2, 1),
@@ -2649,65 +2670,72 @@ INSERT INTO `users` (`idUser`, `name`, `surname`, `birthdate`, `phone`, `locatio
 --
 
 --
--- Indices de la tabla `categories`
+-- Indices de la tabla `Categories`
 --
-ALTER TABLE `categories`
+ALTER TABLE `Categories`
   ADD PRIMARY KEY (`idCategory`);
 
 --
--- Indices de la tabla `comments`
+-- Indices de la tabla `Comments`
 --
-ALTER TABLE `comments`
+ALTER TABLE `Comments`
   ADD PRIMARY KEY (`idComment`),
   ADD UNIQUE KEY `daddy` (`idGauchada`,`idQuestion`),
   ADD KEY `Comments_ibfk_2` (`idQuestion`),
   ADD KEY `Comments_ibfk_1` (`idUser`);
 
 --
--- Indices de la tabla `creditos`
+-- Indices de la tabla `Creditos`
 --
-ALTER TABLE `creditos`
+ALTER TABLE `Creditos`
   ADD PRIMARY KEY (`idCredito`),
   ADD KEY `idUser` (`idUser`);
 
 --
--- Indices de la tabla `gauchadas`
+-- Indices de la tabla `Gauchadas`
 --
-ALTER TABLE `gauchadas`
+ALTER TABLE `Gauchadas`
   ADD PRIMARY KEY (`idGauchada`),
   ADD KEY `Gauchadas_ibfk_1` (`idUser`),
   ADD KEY `Gauchadas_ibfk_2` (`idCategory`);
 
 --
--- Indices de la tabla `gauchadasimages`
+-- Indices de la tabla `GauchadasImages`
 --
-ALTER TABLE `gauchadasimages`
+ALTER TABLE `GauchadasImages`
   ADD PRIMARY KEY (`idGauchadaImage`),
   ADD KEY `idGauchada` (`idGauchada`,`idImage`),
   ADD KEY `idImage` (`idImage`);
 
 --
--- Indices de la tabla `images`
+-- Indices de la tabla `Images`
 --
-ALTER TABLE `images`
+ALTER TABLE `Images`
   ADD PRIMARY KEY (`idImage`);
 
 --
--- Indices de la tabla `localidades`
+-- Indices de la tabla `Localidades`
 --
-ALTER TABLE `localidades`
+ALTER TABLE `Localidades`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `provincias`
+-- Indices de la tabla `Postulantes`
 --
-ALTER TABLE `provincias`
+ALTER TABLE `Postulantes`
+  ADD PRIMARY KEY (`idPostulante`),
+  ADD KEY `idUser` (`idUser`,`idGauchada`);
+
+--
+-- Indices de la tabla `Provincias`
+--
+ALTER TABLE `Provincias`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `users`
+-- Indices de la tabla `Users`
 --
-ALTER TABLE `users`
+ALTER TABLE `Users`
   ADD PRIMARY KEY (`idUser`);
 
 --
@@ -2715,81 +2743,86 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT de la tabla `categories`
+-- AUTO_INCREMENT de la tabla `Categories`
 --
-ALTER TABLE `categories`
+ALTER TABLE `Categories`
   MODIFY `idCategory` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT de la tabla `comments`
+-- AUTO_INCREMENT de la tabla `Comments`
 --
-ALTER TABLE `comments`
+ALTER TABLE `Comments`
   MODIFY `idComment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
--- AUTO_INCREMENT de la tabla `creditos`
+-- AUTO_INCREMENT de la tabla `Creditos`
 --
-ALTER TABLE `creditos`
+ALTER TABLE `Creditos`
   MODIFY `idCredito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de la tabla `gauchadas`
+-- AUTO_INCREMENT de la tabla `Gauchadas`
 --
-ALTER TABLE `gauchadas`
+ALTER TABLE `Gauchadas`
   MODIFY `idGauchada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT de la tabla `gauchadasimages`
+-- AUTO_INCREMENT de la tabla `GauchadasImages`
 --
-ALTER TABLE `gauchadasimages`
+ALTER TABLE `GauchadasImages`
   MODIFY `idGauchadaImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT de la tabla `images`
+-- AUTO_INCREMENT de la tabla `Images`
 --
-ALTER TABLE `images`
+ALTER TABLE `Images`
   MODIFY `idImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT de la tabla `localidades`
+-- AUTO_INCREMENT de la tabla `Localidades`
 --
-ALTER TABLE `localidades`
+ALTER TABLE `Localidades`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2383;
 --
--- AUTO_INCREMENT de la tabla `provincias`
+-- AUTO_INCREMENT de la tabla `Postulantes`
 --
-ALTER TABLE `provincias`
+ALTER TABLE `Postulantes`
+  MODIFY `idPostulante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `Provincias`
+--
+ALTER TABLE `Provincias`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
--- AUTO_INCREMENT de la tabla `users`
+-- AUTO_INCREMENT de la tabla `Users`
 --
-ALTER TABLE `users`
+ALTER TABLE `Users`
   MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `comments`
+-- Filtros para la tabla `Comments`
 --
-ALTER TABLE `comments`
-  ADD CONSTRAINT `Comments_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `users` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `Comments_ibfk_2` FOREIGN KEY (`idQuestion`) REFERENCES `comments` (`idComment`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `Comments_ibfk_3` FOREIGN KEY (`idGauchada`) REFERENCES `gauchadas` (`idGauchada`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `Comments`
+  ADD CONSTRAINT `Comments_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `Users` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `Comments_ibfk_2` FOREIGN KEY (`idQuestion`) REFERENCES `Comments` (`idComment`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `Comments_ibfk_3` FOREIGN KEY (`idGauchada`) REFERENCES `Gauchadas` (`idGauchada`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `creditos`
+-- Filtros para la tabla `Creditos`
 --
-ALTER TABLE `creditos`
-  ADD CONSTRAINT `Creditos_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `users` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `Creditos`
+  ADD CONSTRAINT `Creditos_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `Users` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `gauchadas`
+-- Filtros para la tabla `Gauchadas`
 --
-ALTER TABLE `gauchadas`
-  ADD CONSTRAINT `Gauchadas_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `users` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `Gauchadas_ibfk_2` FOREIGN KEY (`idCategory`) REFERENCES `categories` (`idCategory`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `Gauchadas`
+  ADD CONSTRAINT `Gauchadas_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `Users` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `Gauchadas_ibfk_2` FOREIGN KEY (`idCategory`) REFERENCES `Categories` (`idCategory`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `gauchadasimages`
+-- Filtros para la tabla `GauchadasImages`
 --
-ALTER TABLE `gauchadasimages`
-  ADD CONSTRAINT `GauchadasImages_ibfk_1` FOREIGN KEY (`idGauchada`) REFERENCES `gauchadas` (`idGauchada`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `GauchadasImages_ibfk_2` FOREIGN KEY (`idImage`) REFERENCES `images` (`idImage`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `GauchadasImages`
+  ADD CONSTRAINT `GauchadasImages_ibfk_1` FOREIGN KEY (`idGauchada`) REFERENCES `Gauchadas` (`idGauchada`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `GauchadasImages_ibfk_2` FOREIGN KEY (`idImage`) REFERENCES `Images` (`idImage`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
