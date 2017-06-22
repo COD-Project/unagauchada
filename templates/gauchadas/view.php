@@ -97,7 +97,7 @@
 							<h2 class="h2-responsive">' . $userComment['completeName'] . '</h2>
 							<h5 class="h5-responsive">' . $comment['lastModify'] . '</h5>
 							<p class="text-fluid">' . $comment['body'] . '</p>
-						</div>';
+						</div><div class="col-1"></div>';
 						if($comment['answer']['idComment']) {
 							$HTML .= '
 				            	<div class="col-4 text-right" style="margin-top: 5px;">
@@ -113,18 +113,22 @@
 						} else {
 							if($this->sessions->connectedUser()['idUser'] == $gauchada['user']['idUser'] && !$this->sessions->isGranted()){
 								$HTML .= '
-										<div class="col-2"></div>
-												<div id="div_comment_button_' . $comment['idComment'] . '" class="col-8" style="margin-top: 20px; "margin-bottom: 20px">
-													<div>
-														<div class="text-center">
-															<div>
-																<button onClick="openCommentBox(' . $comment['idComment'] . ',' . $this->router->getId() . ')" class="btn btn-warning btn-lg btn-block option-button text-center">
-																	<i class="fa fa-comment"></i>
+										<div class="col-3"></div>
+											<div id="div_comment_button_' . $comment['idComment'] . '" class="col-9" style="margin-top: 20px; margin-bottom: 20px; "margin-bottom: 20px">
+												<div>
+													<div class="text-center">
+														<form class="form-inline" action="comments/addQuestion/'. $this->router->getId() . '?idQuestion='. $comment['idComment'] .'" method="post">
+															<div class="avatar" style="margin-right:3rem">
+															 <img src="' . $gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 8vh">
 															</div>
-														</div>
+															<label class="sr-only" for="body">Hace una pregunta!</label>
+															<input type="text" name="body" style="margin-right:1.5rem" class="form-control" for="body" placeholder="Responde la pregunta!">
+
+															<button type="submit" class="btn btn-primary">Responder</button>
+														</form>
 													</div>
 												</div>
-												<div class="col-2"></div>
+											</div>
 									';
 								}
 						}
@@ -145,17 +149,24 @@
 				<?php
 					$HTML = '';
 					if($this->sessions->connectedUser()['idUser'] != $gauchada['user']['idUser'] && !$this->sessions->isGranted()) {
-						$HTML .= '<div id="div_comment_button_0" class="row justify-content-center" style="margin-top: 20px">
-											<div class="col-8">
-												<div class="text-center">
-												<div>
-													<button onClick="openCommentBox(0,' . $this->router->getId() . ', null)" class="btn btn-warning btn-lg btn-block option-button text-center">
-														<i class="fa fa-comment"></i>
+						$HTML .= '<div class="row">
+							<div class="col-2"></div>
+								<div class="col-10" style="margin-top: 20px; margin-bottom: 20px; "margin-bottom: 20px">
+									<div>
+										<div class="text-center">
+											<form class="form-inline" action="comments/add/'. $this->router->getId() . '" method="post">
+												<div class="avatar" style="margin-right:3rem">
+												 <img src="' . $gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 8vh">
 												</div>
-												</div>
-											</div>
+												<label class="sr-only" for="body">Hace una pregunta!</label>
+												<input type="text" name="body" style="margin-right:1.5rem" class="form-control" for="body" placeholder="Responde la pregunta!">
+
+												<button type="submit" class="btn btn-primary">Responder</button>
+											</form>
 										</div>
-										<hr>';
+									</div>
+								</div>
+							</div>';
 					} else {
 						$HTML .= "<hr>";
 					}
