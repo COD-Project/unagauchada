@@ -38,7 +38,8 @@ __functions_autoload(array(
   'Gauchadas',
   'Categories',
   'Creditos',
-  'Comments'
+  'Comments',
+  'Postulantes'
 ));
 
 
