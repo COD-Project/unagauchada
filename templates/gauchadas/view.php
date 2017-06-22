@@ -69,6 +69,14 @@
 							<a class="btn btn-warning rounded-circle option-button text-center" href="#">
 								<i class="fa fa-edit"></i>
 							</a>
+							<a class="btn btn-warning rounded-circle option-button text-center" data-toggle="modal" data-target="#Postulantes">
+								<i class="fa fa-users" style="color: #fff"></i></a>
+						</div>';
+					} else {
+						$HTML.= '<div class="col-2">
+							<a class="btn btn-warning option-button text-center" href="#">
+								<img src="views/app/img/mate.png" style="width: 25px;"></img>Postulate!
+							</a>
 						</div>';
 					}
         	echo $HTML;
@@ -173,6 +181,9 @@
 					echo $HTML;
 				?>
 		</div>
-  <?php $this->render('overall/footer'); ?>
-  </body>
+  <?php
+		$this->render('overall/footer');
+		$this->include('gauchadas/postulantes/show');
+	?>
+	</body>
 </html>
