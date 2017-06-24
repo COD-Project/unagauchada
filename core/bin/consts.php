@@ -26,6 +26,9 @@ define('OPTIONS', array(
   'profiles' => array(
     'myprofile' => array(
       'path' => 'myprofile'
+    ),
+    'postulante' => array(
+      'path' => 'postulante'
     )
   )
 ));
