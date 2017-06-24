@@ -1,19 +1,16 @@
 <?php
 
 /**
- * created by Lucas Di Cunzolo in 26/05/2017
+ * created by Ulises J. Cornejo Fandos on 24/06/2017
  */
 
-# Security
-defined('INDEX_DIR') OR exit(APP . ' software says .i.');
-//------------------------------------------------
-
-
-final class Images extends Models
+class Images extends Models
 {
-	private $path;
+  private $images;
+  private $nexus;
+  private $controller;
 
-	static private $ins;
+  static private $ins;
 
 	static function getInstance()
 	{
@@ -28,41 +25,47 @@ final class Images extends Models
 	    parent::__construct();
 	}
 
-	final private function errors($url)
-	{
-	    try {
-	      	if (empty($this->router->getId()) && empty($_POST['path'])) {
-	        	throw new PDOException("Error Processing Request", 1);
-	      	} else {
-		        $this->id = $this->router->getId() != null ? intval($this->router->getId()) : null;
-		        $this->path = isset($_POST['path']) ? $this->purifier($this->db->escape($_POST['path'])) : null;
-	      	}
-	    } catch (PDOException $e) {
-	      Func::redirect(URL . $url . $e->getMessage());
-	    }
-  	}
+  final private function errors($url="")
+  {
+    try {
+      if (Func::images($_FILES['images'])) {
+        throw new PDOException("Solo pueden subirse imágenes", 1);
+      }
+      $this->images = $_FILES['images'];
+      $this->controller = explode('Controller', $this->router->getController())[0];
+      $this->id = $this->db->lastInsertId(EQUALS[$this->controller]['table']) ?? null;
+      $this->nexus = EQUALS[$this->controller]['nexus'] ?? null;
+    } catch (PDOException $e) {
+      echo $e->getMessage();
+    }
+  }
 
-  	final public function Add()
-  	{
-	    $this->errors('imagenes?error=');
-	    $this->db->insert('Images', array(
-	      'path' => $this->path,
-	    ));
-	    Func::redirect(URL . "imagenes?success=true");
-  	}
+  final public function Add() {
+    $this->errors();
+    for ($i=0; $i < count($this->images['name']); $i++) {
+      $folder = $this->controller . '/' . $this->id;
+      $name = 'image.' . $this->db->lastInsertId('Images') + 1 . $data['type'];
+      Func::saveFile(array(
+        'name' => $name,
+        'tmp' => $this->images['tmp_name'][$i],
+        'type' => $this->images['type'][$i],
+        'folder' => $folder
+      ));
+      if ($this->nexus != null) {
+        $this->db->insert($this->nexus['name'], array(
+          $this->nexus['firstId'] => $this->id,
+          'idImage' => $this->db->lastInsertId('Images')
+        ));
+      }
+    }
+  }
 
-		final public function Edit()
-		{
-			
-		}
+  final public function __destruct()
+  {
+    parent::__destruct();
+  }
 
-  	final public function Delete() {
-	    $this->errors('imagenes?errors=');
-	    $this->db->delete('Imagenes', "idImages=$this->id");
-  	}
-
-  	final public function __destruct()
-  	{
-  		parent::__destruct();
-  	}
 }
+
+
+ ?>

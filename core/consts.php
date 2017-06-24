@@ -30,4 +30,32 @@ define('OPTIONS', array(
   )
 ));
 
+define('FILES', array(
+  'images' => array(
+    'format' => 'image',
+    'extensions' => array(
+      'png',
+      'jpg',
+      'jpeg',
+      'gif',
+      'tiff',
+      'bmp',
+      'bpg'
+    )
+  )
+));
+
+define('EQUALS', array(
+  'gauchadas' => array(
+    'table' => 'Gauchadas',
+    'nexus' => array(
+      'name' => 'GauchadasImages',
+      'firstId' => 'idGauchada'
+    )
+  ),
+  'profiles' => array(
+    'table' => 'Gauchadas',
+  )
+));
+
 ?>

@@ -7,7 +7,7 @@
 final class Func
 {
 
-  final static function encrypt(string $e) : string
+  final public static function encrypt(string $e) : string
   {
     // Function made to be used in user passwords
     $str = '';
@@ -17,7 +17,7 @@ final class Func
     return md5($str);
   }
 
-  final static function encrypt_with_key(string $e, string $key) : string
+  final public static function encrypt_with_key(string $e, string $key) : string
   {
     // Function made to be used in networks passwords
      $result = '';
@@ -30,7 +30,7 @@ final class Func
      return base64_encode($result);
   }
 
-  final static function decrypt_with_key(string $e, string $key) : string
+  final public static function decrypt_with_key(string $e, string $key) : string
   {
     // Function made to be used in networks passwords
      $result = '';
@@ -56,7 +56,7 @@ final class Func
     *
     * @return true si está vacío, false si no, un espacio en blanco cuenta como vacío
   */
-  final static function emp($var) : bool
+  final public static function emp($var) : bool
   {
     return (isset($var) && empty(trim(str_replace(' ','',$var))));
   }
@@ -70,7 +70,7 @@ final class Func
     *
     * @return true si están todos llenos, false si al menos uno está vacío
   */
-  final static function all_full(array $array) : bool
+  final public static function all_full(array $array) : bool
   {
     foreach($array as $e) {
       if(self::emp($e) and $e != '0') {
@@ -109,6 +109,35 @@ final class Func
     		$output .= '...';
     	}
     	return $output;
+   }
+
+   final public static function images($files)
+   {
+     foreach ($files['type'] as $key => $value) {
+       $type = explode('/', $value);
+       if (!($type[0] == FILES['images']['format'] && in_array($type[1], FILES['images']['extensions']))) {
+         return false;
+       }
+     }
+     return true;
+   }
+
+   final public static function saveFile($data)
+   {
+      $db = new Connection();
+      $success = false;
+      $path = 'views/app/images/' . $data['folder'];
+      $name = $data['name'];
+      $route = $path . '/' . $name;
+      if (!is_dir($path))
+        mkdir($path, 0777, true);
+      if (!file_exists($route))
+        $success = @move_uploaded_file($data['tmp'], $route);
+      if ($success)
+        $db->insert('Images', array(
+          'path' => $name
+        ));
+      return $success;
    }
 
 }
