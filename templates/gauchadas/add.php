@@ -13,7 +13,7 @@
   				$HTML .= '
   					<div class="cmd_form_container">
     					<div class="wrap">
-			    			<form name="cmd_form" class="cmd_form" action="gauchadas/add" method="post">
+			    			<form name="cmd_form" class="cmd_form" action="gauchadas/add" method="post" enctype="multipart/form-data">
 			            <div class="cmd_input-group">
 			            	<input type="text" id="title" name="title">
 			            	<label class="cmd_label" for="title">Titulo</label>
@@ -54,8 +54,8 @@
 						        <label class="cmd_label" for="limitDate">Plazo Limite</label>
 					        </div>
 					        <div class="cmd_input-group">
-						        <input class="custom-file-input" type="file" name="pic" accept="image/*" multiple="">
-										<label class="cmd_label" for="pic">Imágenes</label>
+						        <input type="file" name="images[]" accept="image/*" multiple="">
+										<label class="cmd_label" for="images[]">Imágenes</label>
 					        </div>
 				        	<input type="submit" id="btn-submit" value="Añadir">
 			       		</form>

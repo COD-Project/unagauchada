@@ -77,9 +77,8 @@ final class Users extends Models
         'idImage' => 1
       );
       $this->db->insert("Users", $values);
-      $sql = $this->db->query("SELECT MAX(idUser) AS idUser FROM Users;");
-      $data = $this->db->fetch_array($sql);
-      (Sessions::getInstance())->generateSession($data[0]['idUser']);
+      $id = $this->db->lastInsertId('Users');
+      (Sessions::getInstance())->generateSession($id);
       echo 1;
     }
   }

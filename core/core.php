@@ -13,7 +13,7 @@ try {
 }
 
 require('core/config.php');
-require('core/bin/consts.php');
+require('core/consts.php');
 require('vendor/autoload.php');
 require('core/kernel/kernel.php');
 
