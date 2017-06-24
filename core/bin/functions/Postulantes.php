@@ -16,4 +16,15 @@ function Postulantes($idGauchada) {
   return $postulantes ?? false;
 }
 
+function Postulante($idGauchada, $idUser) {
+  $postulantes = Postulantes($idGauchada);
+  if($postulantes) {
+    foreach ($postulantes as $key) {
+      if($idUser == $key['idUser'])
+        return true;
+    }
+  }
+  return false;
+}
+
 ?>

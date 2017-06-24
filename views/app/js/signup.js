@@ -22,6 +22,3 @@ if(Func.$('#signup_form')) {
     { hash: 'surname_signup', value: 25 }
   ]);
 }
-
-
-

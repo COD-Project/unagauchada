@@ -6,6 +6,7 @@
 	<div class="container">
 			<?php
 				$gauchada = Gauchadas()[$this->router->getId()];
+				$postulante = Postulante($gauchada['idGauchada'], $this->sessions->connectedUser()['idUser']);
 				$HTML = '';
 				if ($gauchada['images']) {
 					$HTML .= '
@@ -72,9 +73,9 @@
 							<a class="btn btn-warning rounded-circle option-button text-center" data-toggle="modal" data-target="#Postulantes">
 								<i class="fa fa-users" style="color: #fff"></i></a>
 						</div>';
-					} else {
+					} else if (!$postulante) {
 						$HTML.= '<div class="col-2">
-							<a class="btn btn-warning option-button text-center" href="#">
+							<a class="btn btn-warning option-button text-center" style="color: #fff" data-toggle="modal" data-target="#Postulate">
 								<img src="views/app/img/mate.png" style="width: 25px;"></img>Postulate!
 							</a>
 						</div>';
@@ -184,6 +185,7 @@
   <?php
 		$this->render('overall/footer');
 		$this->include('gauchadas/postulantes/show');
+		$this->include('gauchadas/postulantes/postulate');
 	?>
 	</body>
 </html>

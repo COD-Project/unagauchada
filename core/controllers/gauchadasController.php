@@ -33,6 +33,14 @@ class gauchadasController extends Controller {
 							Func::redirect();
 						}
 						break;
+					case 'postulate':
+					if(array_key_exists($this->router->getId(), Gauchadas())){
+						$gauchadas->Postulate();
+					} else {
+						Func::redirect();
+					}
+					default:
+						Func::redirect();
         }
   	} else if ($this->router->getMethod() == 'view') {
   		Func::redirect(URL . '?error=Debes estar logueado para ver una gauchada');

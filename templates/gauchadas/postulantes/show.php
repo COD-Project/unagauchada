@@ -23,8 +23,11 @@
       				for($i = 0; $i < count($postulantes); $i++) {
                 $HTML.= '<li class="list-group-item justify-content-between">
                 <h4>'.$postulantes[$i]['completeName'].'</h4>
-                <a class="btn btn-info option-button text-center" href="#">
+                <a class="btn btn-info option-button text-center" href="profiles/postulante/' . $postulantes[$i]['idUser'] . '">
                   <i class="fa fa-user"></i>
+                </a>
+                <a class="btn btn-info option-button text-center" href="#">
+                  <i class="fa fa-check"></i>
                 </a>
                 </li>';
               }
