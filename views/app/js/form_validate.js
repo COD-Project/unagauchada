@@ -95,6 +95,46 @@ let getSignupData = () => ({
   tyc: Func.$('#tyc_signup').checked
 })
 
+let getEditData = () => ({
+  name: {
+    value: Func.$('#name').value,
+    empty: Func.$('#name').value.length == 0
+  },
+  surname: {
+    value: Func.$('#surname').value,
+    empty: Func.$('#surname').value.length == 0
+  },
+  password: {
+    value: [
+      Func.$('#pass').value,
+      Func.$('#new_pass').value
+    ],
+    exprSuccess: (
+      Expresion.password.test(Func.$('#pass').value) &&
+  		Expresion.password.test(Func.$('#new_pass').value)
+    ),
+    empty: (
+      Func.$('#pass').value == null ||
+      Func.$('#new_pass').value == null ||
+      Func.$('#pass').value.length == 0 ||
+      Func.$('#new_pass').value.length == 0
+    ),
+    success: (
+      Expresion.password.test(Func.$('#pass').value) &&
+  		Expresion.password.test(Func.$('#new_pass').value)
+    )
+  },
+  phone: {
+    value: Func.$('#phone').value,
+    exprSuccess: Expresion.phone.test(Func.$('#phone').value),
+    empty: (
+      Func.$('#phone').value == null ||
+      Func.$('#phone').value.length == 0
+    ),
+    success: Expresion.phone.test(Func.$('#phone').value)
+  }
+})
+
 let validateTarjeta = function() {
   return Func.$('#tipoTarjeta').value == 'Visa' ? Expresion.tarjeta.visa.test(Func.$('#numeroTarjeta').value) : Expresion.tarjeta.mastercard.test(Func.$('#numeroTarjeta').value)
 }

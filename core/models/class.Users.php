@@ -39,11 +39,12 @@ final class Users extends Models
       if (empty($_POST['email']) && empty($_POST['pass']) && empty($_POST['name']) && empty($_POST['surname']) && empty($_POST['birthdate']) && empty($_POST['phone'])) {
         throw new PDOException("Error Processing Request");
       } else {
+        $this->id = (Sessions::getInstance())->isLoggedIn() != null ? intval((Sessions::getInstance())->connectedUser()['idUser']) : null;
         $this->name = isset($_POST['name']) ? $this->db->escape($_POST['name']) : null;
         $this->surname = isset($_POST['surname']) ? $this->db->escape($_POST['surname']) : null;
         $this->email = isset($_POST['email']) ? $this->db->escape($_POST['email']) : null;
         $this->password = isset($_POST['pass']) ? Func::encrypt($_POST['pass']) : null;
-        $this->birthdate = $_POST['birthdate'] || null;
+        $this->birthdate = $_POST['birthdate'] ?? null;
         $this->phone = $_POST['phone'] ?? null;
         $this->points = $_POST['points'] ?? null;
         $this->credits = $_POST['credits'] ?? null;
@@ -89,10 +90,11 @@ final class Users extends Models
     $update = array();
     foreach (OPTIONS['profiles']['myprofile']['edit_options'] as $key => $value) {
       if (array_key_exists($key, $_POST)) {
-        eval("\$update[] = \$this->" . $value);
+        eval("\$update[\$value] = \$this->" . $value . ';');
       }
     }
     $this->db->update("Users", $update, "idUser=" . $this->id, "LIMIT 1;");
+    echo 1;
   }
 
   final public function delete() {

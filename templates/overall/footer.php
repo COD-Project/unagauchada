@@ -14,6 +14,7 @@
 <!-- AJAX Files -->
 <script src="views/app/js/ajax/init_login.js"></script>
 <script src="views/app/js/ajax/init_signup.js"></script>
+<script src="views/app/js/ajax/init_edit.js"></script>
 <script src="views/app/js/ajax/init_compra.js"></script>
 <script src="views/app/js/ajax/init_states.js"></script>
 <script src="views/app/js/ajax/init_localities.js"></script>
@@ -22,6 +23,7 @@
 <script src="views/app/js/form_validate.js"></script>
 <script src="views/app/js/login.js"></script>
 <script src="views/app/js/signup.js"></script>
+<script src="views/app/js/edit.js"></script>
 <script src="views/app/js/cmd_form.js"></script>
 <script src="views/app/js/main.js"></script>
 
@@ -30,4 +32,3 @@
 <script src="views/app/js/creditos/compra.js"></script>
 <script src="views/app/js/localities/states.js"></script>
 <script src="views/app/js/localities/localities.js"></script>
-<script src="views/app/js/profiles/edit.js"></script>
