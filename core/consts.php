@@ -50,14 +50,20 @@ define('FILES', array(
 
 define('EQUALS', array(
   'gauchadas' => array(
-    'table' => 'Gauchadas',
+    'table' => array(
+      'name' => 'Gauchadas',
+      'key' => 'idGauchada'
+    ),
     'nexus' => array(
       'name' => 'GauchadasImages',
-      'firstId' => 'idGauchada'
+      'fk' => 'idGauchada'
     )
   ),
   'profiles' => array(
-    'table' => 'Users',
+    'table' => array(
+      'name' => 'Users',
+      'key' => 'idUser'
+    ),
   )
 ));
 

@@ -10,7 +10,7 @@ class Images extends Models
   private $folder;
   private $controller;
   private $nexus;
-  private $idGauchada;
+  private $fk;
 
   static private $ins;
 
@@ -37,8 +37,9 @@ class Images extends Models
       $this->controller = explode('Controller', $this->router->getController())[0];
       $this->nexus = EQUALS[$this->controller]['nexus'] ?? null;
       $table = EQUALS[$this->controller]['table'];
-      $this->idGauchada = ($this->db->select('idGauchada', 'Gauchadas', '1=1', 'ORDER BY idGauchada DESC LIMIT 1'))[0]['idGauchada'] ?? null;
-      $this->folder = $this->controller . '/' . $this->idGauchada;
+      $this->fk = ($this->db->select($table['key'], $table['name'], '1=1', 'ORDER BY ' . $table['key'] . ' DESC LIMIT 1'))[0]['idGauchada'] ?? null;
+      $this->folder = $this->controller . '/' . $this->fk;
+      $this->id = ($this->db->select('idImage', 'Images', '1=1', 'ORDER BY idImage DESC LIMIT 1'))[0]['idImage'] + 1;
     } catch (PDOException $e) {
       Func::redirect(URL . $url . $e->getMessage());
     }
@@ -47,7 +48,7 @@ class Images extends Models
   final public function Add() {
     $this->errors('?error=');
     for ($i=0; $i < count($this->images['name']); $i++) {
-      $id = ($this->db->select('idImage', 'Images', '1=1', 'ORDER BY idImage DESC LIMIT 1'))[0]['idImage'] + 1;
+      $id = $this->id + $i;
       $type = explode('/', $this->images['type'][$i]);
       $name = 'image.' . $id . '.' . $type[1];
       Func::saveFile(array(
@@ -57,7 +58,7 @@ class Images extends Models
       ));
       if ($this->nexus != null) {
         $this->db->insert($this->nexus['name'], array(
-          $this->nexus['firstId'] => $this->idGauchada,
+          $this->nexus['fk'] => $this->fk,
           'idImage' => $id
         ));
       }

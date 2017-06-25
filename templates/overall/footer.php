@@ -31,4 +31,3 @@
 <script src="views/app/js/localities/states.js"></script>
 <script src="views/app/js/localities/localities.js"></script>
 <script src="views/app/js/profiles/edit.js"></script>
-<script src="views/app/js/openCommentBox.js"></script>

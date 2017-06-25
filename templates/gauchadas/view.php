@@ -10,7 +10,7 @@
 				$HTML = '';
 				if ($gauchada['images']) {
 					$HTML .= '
-					<div id="carousel-example-1z" style="padding-top: 100px;" class="carousel slide " data-ride="carousel">
+					<div id="carousel-example-1z" style="padding-top: 100px;" class="carousel slide" data-ride="carousel">
 						<ol class="carousel-indicators">';
 					for($i = 0; $i < count($gauchada['images']); $i++) {
 						if ($i == 0) {
@@ -28,12 +28,12 @@
 
 							$HTML .= '
 							<div class="carousel-item active">
-		              <img class="img-fluid rounded mx-auto d-block" style="height: 100%;" src="' . $gauchada['images'][$i]['path'] . '" alt="First slide">
+		              <img class="img-fluid rounded mx-auto d-block" style="height: 100%;" src="' . $gauchada['images'][$i]['path'] . '">
 		          </div>';
 						} else {
 							$HTML .= '
 							<div class="carousel-item">
-		              <img class="img-fluid rounded mx-auto d-block" style="height: 100%;" src="' . $gauchada['images'][$i]['path'] . '" alt="First slide">
+		              <img class="img-fluid rounded mx-auto d-block" style="height: 100%;" src="' . $gauchada['images'][$i]['path'] . '">
 		          </div>';
 						}
 					}
@@ -158,34 +158,33 @@
 				<?php
 					$HTML = '';
 					if($this->sessions->connectedUser()['idUser'] != $gauchada['user']['idUser'] && !$this->sessions->isGranted()) {
-						$HTML .= '<div class="row">
-							<div class="col-2"></div>
-								<div class="col-10" style="margin-top: 20px; margin-bottom: 20px; "margin-bottom: 20px">
-									<div>
-										<div class="text-center">
-											<form class="form-inline" action="comments/add/'. $this->router->getId() . '" method="post">
-												<div class="avatar" style="margin-right:3rem">
-												 <img src="' . $gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 8vh">
-												</div>
-												<label class="sr-only" for="body">Hace una pregunta!</label>
-												<input type="text" name="body" style="margin-right:1.5rem" class="form-control" for="body" placeholder="Responde la pregunta!">
-
-												<button type="submit" class="btn btn-primary">Responder</button>
-											</form>
-										</div>
+						$HTML .= '
+							<div class="row">
+								<div class="col-3 text-right">
+									<div class="avatar">
+									 <img src="' . $gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 8vh">
 									</div>
 								</div>
+								<div class="col-8" style="margin-top: 20px; "margin-bottom: 20px">
+									<div class="text-center">
+										<form class="form-inline" action="comments/add/'. $this->router->getId() . '" method="post">
+											<label class="sr-only" for="body">Hace una pregunta!</label>
+											<input type="text" name="body" style="width: 55%; margin-right: -1.35rem" class="form-control" for="body" placeholder="Escribe un comentario...">
+											<button type="submit" class="btn btn-warning rounded-circle"><i class="fa fa-angle-right"></i></button>
+										</form>
+									</div>
+								</div>
+								<div class="col-1"></div>
 							</div>';
-					} else {
-						$HTML .= "<hr>";
 					}
+					$HTML .= '<hr>';
 					echo $HTML;
 				?>
 		</div>
   <?php
-		$this->render('overall/footer');
 		$this->include('gauchadas/postulantes/show');
 		$this->include('gauchadas/postulantes/postulate');
+		$this->render('overall/footer');
 	?>
 	</body>
 </html>
