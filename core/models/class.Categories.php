@@ -42,7 +42,7 @@ final class Categories extends Models
 	    }
   	}
 
-  	final public function Add()
+  	final public function add()
   	{
 	    $this->errors('categorias?error=');
 	    $this->db->insert('Categories', array(
@@ -51,12 +51,12 @@ final class Categories extends Models
 	    Func::redirect(URL);
   	}
 
-		final public function Edit()
+		final public function edit()
 		{
-			
+
 		}
 
-  	final public function Delete() {
+  	final public function delete() {
 	    $this->errors('categorias?errors=');
 	    $this->db->delete('Categories', "idCategory=$this->id");
   	}

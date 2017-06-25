@@ -25,7 +25,10 @@ define('OPTIONS', array(
   ),
   'profiles' => array(
     'myprofile' => array(
-      'path' => 'myprofile'
+      'path' => 'myprofile',
+      'edit_options' => array(
+
+      )
     ),
     'postulante' => array(
       'path' => 'postulante'

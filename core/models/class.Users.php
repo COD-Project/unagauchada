@@ -54,7 +54,7 @@ final class Users extends Models
     }
   }
 
-  final public function Add()
+  final public function add()
   {
     $this->errors();
     $sql = $this->db->query("SELECT idUser FROM Users WHERE email='$this->email' LIMIT 1;");
@@ -83,9 +83,13 @@ final class Users extends Models
     }
   }
 
-  final public function Edit()
+  final public function edit()
   {
 
+  }
+
+  final public function delete() {
+    
   }
 
   final public function __destruct()

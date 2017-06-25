@@ -13,7 +13,7 @@ class categoriasController extends Controller {
     			switch ($this->router->getMethod()) {
     		        case 'add':
   		          	if ($_POST) {
-  		            	$categorias->Add();
+  		            	$categorias->add();
   		          	} else {
   		            	$this->render('categorias/add');
   		          	}

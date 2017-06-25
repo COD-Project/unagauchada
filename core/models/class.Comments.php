@@ -46,7 +46,7 @@ final class Comments extends Models
 	    }
   	}
 
-  	final public function Add() {
+  	final public function add() {
 	    $this->errors('comments?error=');
 	    $this->db->insert('comments', array(
 	      'body' => $this->body,
@@ -58,7 +58,7 @@ final class Comments extends Models
 	    Func::redirect(URL . 'gauchadas/view/' . $this->router->getId());
   	}
 
-		final public function AddQuestion() {
+		final public function addQuestion() {
 	    $this->errors('comments?error=');
 	    $this->db->insert('comments', array(
 	      'body' => $this->body,

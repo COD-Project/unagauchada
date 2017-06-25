@@ -13,7 +13,7 @@ class gauchadasController extends Controller {
 	        case 'add':
 						if(!$this->sessions->isGranted()){
 	          	if ($_POST) {
-            		$gauchadas->Add();
+            		$gauchadas->add();
 	          	} else {
             		$this->render('gauchadas/add');
 	          	}
@@ -28,20 +28,20 @@ class gauchadasController extends Controller {
 						break;
 					case 'delete':
 						if (array_key_exists($this->router->getId(), Gauchadas())) {
-							$gauchadas->Delete();
+							$gauchadas->delete();
 						} else {
 							Func::redirect();
 						}
 						break;
 					case 'postulate':
 						if (array_key_exists($this->router->getId(), Gauchadas())) {
-							$gauchadas->Postulate();
+							$gauchadas->postulate();
 						} else {
 							Func::redirect();
 						}
 					case 'accept':
 						if (array_key_exists($this->router->getId(), Gauchadas())) {
-							$gauchadas->Accept();
+							$gauchadas->accept();
 						} else {
 							Func::redirect();
 						}

@@ -54,7 +54,7 @@ final class Gauchadas extends Models
 	    }
   	}
 
-  	final public function Add() {
+  	final public function add() {
 	    $this->errors('gauchadas?error=');
 	    $this->db->insert('Gauchadas', array(
 	      'title' => $this->title,
@@ -78,7 +78,7 @@ final class Gauchadas extends Models
 	    Func::redirect(URL);
   	}
 
-  	final public function Delete() {
+  	final public function delete() {
   		$this->Errors('gauchadas?errors=');
     	$this->db->update('Gauchadas', array(
 	      'validate' => 1
@@ -86,7 +86,7 @@ final class Gauchadas extends Models
     	Func::redirect(URL);
   	}
 
-		final public function Postulate() {
+		final public function postulate() {
 			$this->Errors('gauchadas?errors=');
 			$this->db->insert('Postulantes', array(
 				'idUser' => (new Sessions)->connectedUser()['idUser'],
@@ -96,7 +96,7 @@ final class Gauchadas extends Models
 			Func::redirect(URL.'gauchadas/view/'. $this->id);
 		}
 
-		final public function Accept() {
+		final public function accept() {
 			$this->Errors('gauchadas?errors=');
 			$this->db->update('Postulantes', array(
 				'selected' => 1

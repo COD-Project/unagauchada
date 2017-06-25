@@ -12,12 +12,12 @@ class commentsController extends Controller {
     			switch ($this->router->getMethod()) {
 		        case 'add':
             	if ($_POST) {
-              	$comments->Add();
+              	$comments->add();
             	}
               break;
 						case 'addQuestion':
             	if ($_POST) {
-              	$comments->AddQuestion();
+              	$comments->addQuestion();
             	}
               break;
           }

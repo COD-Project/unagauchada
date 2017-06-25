@@ -1,7 +1,7 @@
 <?php
 
-if (empty($_POST['pass']) || empty($_POST['name']) || empty($_POST['surname']) || empty($_POST['birthdate']) || empty($_POST['phone']))
+if (Func::all_full($_POST))
   echo "Todos los campos deben estar llenos";
 else
-  (new Users())->Add();
+  (new Users())->add();
 ?>

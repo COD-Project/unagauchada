@@ -45,7 +45,7 @@ class Images extends Models
     }
   }
 
-  final public function Add() {
+  final public function add() {
     $this->errors('?error=');
     for ($i=0; $i < count($this->images['name']); $i++) {
       $id = $this->id + $i;
