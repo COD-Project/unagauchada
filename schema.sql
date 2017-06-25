@@ -2661,7 +2661,7 @@ INSERT INTO `Users` (`idUser`, `name`, `surname`, `birthdate`, `phone`, `locatio
 (1, 'Admin', 'Admin', '1997-05-30', '4803992', NULL, 'admin@admin.com', '0b1c78bc8b5b71f6f49e0f29c36db73c', 1, 1, 0, 0, '2017-06-01', 'e7511a23920f0563a25ab0e71', 1, 1),
 (2, 'Juan Cruz', 'Ocampos', '1997-05-31', '2216150702', NULL, 'ocamposjuancruz23@gmail.com', '1dd4ecb6f7f0091bc464fee9b9202d59', 0, 1, 0, 0, '2017-06-01', '8345a792d4488c7db9f0d6891', 2, 1),
 (3, 'Ulises', 'Cornejo', '1996-11-24', '4801997', NULL, 'ulisescf.24@gmail.com', '85d42b1aa432bac0828989e6c05c76ec', 12, 1, 0, 1496340400, '2017-06-01', '90e37b995374918409eb44684', 2, 1),
-(4, 'Lucas', 'Di Cunzolo', '1996-06-23', '4891274', NULL, 'lucasdc@gmail.com', '85d42b1aa432bac0828989e6c05c76ec', 1, 1, 0, 1496338503, '2017-06-01', 'c67638b22d54eb4e58f34c500', 2, 1),
+(4, 'Lucas', 'Di Cunzolo', '1996-06-23', '4891274', NULL, 'lucasdc@gmail.com', '5d050ec99317aa0b71462c74ab9f3093', 1, 1, 0, 1496338503, '2017-06-01', 'c67638b22d54eb4e58f34c500', 2, 1),
 (5, 'Juan Cruz', 'Ocampos', '1997-05-31', '02214803992', NULL, 'ocamposjuanc@gmail.com', 'd18cda93701d8d6538c763b6847d218d', 0, 1, 0, 1498067386, '2017-06-16', 'fe3faff31eed07dc6e40f93a2', 2, 1),
 (6, 'asdghakld', 'dgkslaj', '0000-00-00', '312423413241', NULL, 'pepe@pepe.com', 'd18cda93701d8d6538c763b6847d218d', 1, 1, 0, 0, '2017-06-21', 'a7b28f20d4e8a831b8c80366a', 2, 1);
 

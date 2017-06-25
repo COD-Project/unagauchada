@@ -184,7 +184,8 @@
   <?php
 		$this->include('gauchadas/postulantes/show');
 		$this->include('gauchadas/postulantes/postulate');
-		$this->render('overall/footer');
+		$this->include('gauchadas/postulantes/confirmation');
+		$this->include('overall/footer');
 	?>
 	</body>
 </html>

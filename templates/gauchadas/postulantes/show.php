@@ -12,7 +12,7 @@
        </div>
        <div class="modal-body">
          <div class="text-center">
-             <h3><i class="fa fa-users"></i> Postualantes </h3>
+             <h3><i class="fa fa-users"></i> Postulantes </h3>
          </div>
          <hr>
            <?php
@@ -21,15 +21,18 @@
             if($postulantes) {
                 $HTML .= '<ul class="list-group">';
       				for($i = 0; $i < count($postulantes); $i++) {
-                $HTML.= '<li class="list-group-item justify-content-between">
-                <h4>'.$postulantes[$i]['completeName'].'</h4>
-                <a class="btn btn-info option-button text-center" href="profiles/postulante/' . $postulantes[$i]['idUser'] . '">
-                  <i class="fa fa-user"></i>
-                </a>
-                <a class="btn btn-info option-button text-center" href="#">
-                  <i class="fa fa-check"></i>
-                </a>
-                </li>';
+                $HTML.= '<div class="container"><li class="list-group-item justify-content-between">
+                  <h4>'.$postulantes[$i]['completeName'].'</h4>
+                  <span>
+                    <a class="btn btn-warning option-button text-right" href="profiles/postulante/' . $postulantes[$i]['idUser'] . '">
+                      <i class="fa fa-user"></i>
+                    </a>
+                    <a class="btn btn-warning option-button text-right" data-dismiss="modal" data-toggle="modal" data-target="#Confirmation">
+                      <i class="fa fa-check" style="color: #fff"></i>
+                    </a>
+                  </span>
+                </li>
+              </div>';
               }
               $HTML .= '</ul>';
             } else {
