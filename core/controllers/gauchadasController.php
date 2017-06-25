@@ -27,18 +27,24 @@ class gauchadasController extends Controller {
 						}
 						break;
 					case 'delete':
-						if(array_key_exists($this->router->getId(), Gauchadas())){
+						if (array_key_exists($this->router->getId(), Gauchadas())) {
 							$gauchadas->Delete();
 						} else {
 							Func::redirect();
 						}
 						break;
 					case 'postulate':
-					if(array_key_exists($this->router->getId(), Gauchadas())){
-						$gauchadas->Postulate();
-					} else {
-						Func::redirect();
-					}
+						if (array_key_exists($this->router->getId(), Gauchadas())) {
+							$gauchadas->Postulate();
+						} else {
+							Func::redirect();
+						}
+					case 'accept':
+						if (array_key_exists($this->router->getId(), Gauchadas())) {
+							$gauchadas->Accept();
+						} else {
+							Func::redirect();
+						}
 					default:
 						Func::redirect();
         }
