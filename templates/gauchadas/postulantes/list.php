@@ -14,11 +14,11 @@
          <div class="text-center">
              <?php
                 $user = Users()[$this->router->getId()];
-                $HTML = '<h3>' . $user['completeName'] .' se encuentra postulado en:</h3>
+                $HTML = '<h3>' . $user['completeName'] .' se postuló en las siguientes gauchadas:</h3>
                 <br>';
                 $HTML .= '<ul class="list-group">';
                 $gauchadas = Gauchadas();
-                $postulantes = AllPostulantes();
+                $postulantes = Postulantes();
                 foreach ($postulantes as $postulante) {
                   if($postulante['idUser'] == $this->router->getId()) {
                     $HTML .= '<li class="list-group-item justify-content-between">

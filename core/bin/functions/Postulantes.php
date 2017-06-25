@@ -1,22 +1,10 @@
 <?php
 
-function AllPostulantes() {
+function Postulantes($idGauchada=null) {
   $db = new Connection();
-  $data = $db->select('*', 'Postulantes');
-  if(!$data) return false;
+  $where = $idGauchada != null ? 'idGauchada='.$idGauchada : '1=1';
+  $data = $db->select('*', 'Postulantes p INNER JOIN Users u ON(p.idUser = u.idUser)', $where);
 
-  for($i = 0; $i < count($data); $i++) {
-    $postulantes[$i] = array(
-      'idUser' => $data[$i]['idUser'],
-      'idGauchada' => $data[$i]['idGauchada']
-    );
-  }
-  return $postulantes;
-}
-
-function Postulantes($idGauchada) {
-  $db = new Connection();
-  $data = $db->select('*', 'Postulantes p INNER JOIN Users u ON(p.idUser = u.idUser)', 'idGauchada='.$idGauchada);
   if(!$data) return false;
 
   for($i = 0; $i < count($data); $i++) {
@@ -34,8 +22,8 @@ function Postulantes($idGauchada) {
 function Postulante($idGauchada, $idUser) {
   $postulantes = Postulantes($idGauchada);
   if($postulantes) {
-    foreach ($postulantes as $key) {
-      if($idUser == $key['idUser'])
+    foreach ($postulantes as $key => $value) {
+      if($idUser == $value['idUser'])
         return true;
     }
   }

@@ -32,8 +32,8 @@
       </div>
     </div>
     <?php
-      $this->include('overall/footer');
       $this->include('gauchadas/postulantes/list');
+      $this->include('overall/footer');
     ?>
   </body>
 </html>
