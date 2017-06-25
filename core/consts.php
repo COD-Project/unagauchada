@@ -57,7 +57,7 @@ define('EQUALS', array(
     )
   ),
   'profiles' => array(
-    'table' => 'Gauchadas',
+    'table' => 'Users',
   )
 ));
 

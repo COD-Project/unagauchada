@@ -132,10 +132,10 @@ final class Func
       if (!is_dir($path))
         mkdir($path, 0777, true);
       if (!file_exists($route))
-        $success = @move_uploaded_file($data['tmp'], $route);
+        $success =  @move_uploaded_file($data['tmp'], $route);
       if ($success)
         $db->insert('Images', array(
-          'path' => $name
+          'path' => ($data['folder'] . '/' . $name)
         ));
       return $success;
    }
