@@ -53,9 +53,9 @@
         <div class=\"form-group row\">
             <label class=\"col-lg-3 col-form-label form-control-label\"></label>
             <div class=\"col-lg-9 text-center\">
-              <a class=\"btn btn-warning btn-lg btn-block option-button text-center\" href=\"#\">
+              <button class=\"btn btn-warning btn-lg btn-block option-button text-center\">
                 <i class=\"fa fa-send\"></i>
-              </a>
+              </button>
             </div>
         </div>
       ";

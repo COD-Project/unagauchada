@@ -73,7 +73,7 @@ final class Func
   final public static function all_full(array $array) : bool
   {
     foreach($array as $e) {
-      if(self::emp($e) and $e != '0') {
+      if (self::emp($e) and $e != '0') {
         return false;
       }
     }
@@ -100,9 +100,9 @@ final class Func
 
    final public static function reduceString(string $string, int $limit) : string
    {
-    	if(strlen($string) <= $limit){
+    	if (strlen($string) <= $limit) {
     		return $string;
-    	}else{
+    	} else {
     		$string = substr($string, 0, $limit);
     		$palabras = explode(' ', $string);
     		$output = implode(' ', $palabras);

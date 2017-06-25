@@ -27,7 +27,11 @@ define('OPTIONS', array(
     'myprofile' => array(
       'path' => 'myprofile',
       'edit_options' => array(
-
+        'pass' => 'password',
+        'name' => 'name',
+        'surname' => 'surname',
+        'birthdate' => 'birthdate',
+        'phone' => 'phone'
       )
     ),
     'postulante' => array(

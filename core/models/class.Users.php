@@ -85,11 +85,18 @@ final class Users extends Models
 
   final public function edit()
   {
-
+    $this->errors();
+    $update = array();
+    foreach (OPTIONS['profiles']['myprofile']['edit_options'] as $key => $value) {
+      if (array_key_exists($key, $_POST)) {
+        eval("\$update[] = \$this->" . $value);
+      }
+    }
+    $this->db->update("Users", $update, "idUser=" . $this->id, "LIMIT 1;");
   }
 
   final public function delete() {
-    
+
   }
 
   final public function __destruct()
