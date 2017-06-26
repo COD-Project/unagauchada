@@ -6,7 +6,6 @@
 # Security
 defined('INDEX_DIR') OR exit(APP . 'software says .i.');
 
-
 //------------------------------------------------
 final class Router
 {

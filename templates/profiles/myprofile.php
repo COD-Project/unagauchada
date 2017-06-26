@@ -13,7 +13,7 @@
           <br>
           <h6 class="m-t-2">Cambia tu foto de perfil</h6>
           <label class="custom-file">
-              <input type="file" id="user-profile-picture" class="custom-file-input" accept="image/*">
+              <input type="file" id="user-profile-picture[]" class="custom-file-input" accept="image/*">
               <span class="custom-file-control">Subir imagen</span>
           </label>
         </div>

@@ -7,7 +7,7 @@ let _init_edit = function() {
 
   if(!(data.name.empty && data.surname.empty && data.password.empty && data.phone.empty)) {
     if(data.password.success && data.phone.success) {
-      form = 'name=' + data.name.value + '&surname=' + data.surname.value + '&pass=' + data.password.value[0] + '&phone=' + data.phone.value;
+      form = 'name=' + data.name.value + '&surname=' + data.surname.value + '&pass=' + data.password.value[0] + '&phone=' + data.phone.value + '&images[]=' + data.image.value;
       connect = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
       connect.onreadystatechange = function() {
         if(connect.readyState == 4 && connect.status == 200) {
