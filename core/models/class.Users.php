@@ -94,7 +94,9 @@ final class Users extends Models
       }
     }
     $this->db->update("Users", $update, "idUser=" . $this->id, "LIMIT 1;");
-    if (condition) (new Images)->add()
+    if ($this->image) {
+      (new Images)->add();
+    }
     echo 1;
   }
 

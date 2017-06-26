@@ -15,6 +15,7 @@ final class Router
   private $controller = null;
   private $method = null;
   private $id = null;
+  private $url;
 
   final static function getInstance() {
     if (!self::$instance) {
@@ -41,6 +42,11 @@ final class Router
     } else {
       $this->controller = 'homeController';
     }
+  }
+
+  final public function elements()
+  {
+    return array_slice($this->url, 3);
   }
 
   //------------------------------------------------
@@ -117,7 +123,6 @@ final class Router
       );
     return strtolower($string);
   }
-
 }
 
 ?>
