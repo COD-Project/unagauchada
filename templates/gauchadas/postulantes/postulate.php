@@ -14,7 +14,7 @@
          <div class="text-center">
              <h3><i class="fa fa-user"></i> Postularse </h3>
          </div>
-         <form id="postulate_form" role="form" action=<?php echo "postulant/add/" . $this->router->getId() ?> method="post">
+         <form id="postulate_form" role="form" action=<?php echo "postulants/add/" . $this->router->getId() ?> method="post">
            <div class="group">
              <input type="text" name="description">
              <span class="highlight"></span><span class="bar"></span>
