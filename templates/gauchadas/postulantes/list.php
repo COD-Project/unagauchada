@@ -18,7 +18,7 @@
                 <br>';
                 $HTML .= '<ul class="list-group">';
                 $gauchadas = Gauchadas();
-                $postulantes = Postulantes();
+                $postulantes = Postulants();
                 foreach ($postulantes as $postulante) {
                   if($postulante['idUser'] == $this->router->getId()) {
                     $HTML .= '<li class="list-group-item justify-content-between">

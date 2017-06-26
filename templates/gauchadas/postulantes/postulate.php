@@ -14,16 +14,16 @@
          <div class="text-center">
              <h3><i class="fa fa-user"></i> Postularse </h3>
          </div>
-         <div id="postulate_form" role="form">
+         <form id="postulate_form" role="form" action=<?php echo "postulant/add/" . $this->router->getId() ?> method="post">
            <div class="group">
-             <input type="text" id="description" name="email">
+             <input type="text" name="description">
              <span class="highlight"></span><span class="bar"></span>
              <label for="text">Descripcion</label>
            </div>
            <button id="postulate_button" type="button" class="button"> Postularse
                <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
            </button>
-         </div>
+         </form>
        </div>
      </div>
    </div>
