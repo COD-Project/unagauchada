@@ -34,8 +34,8 @@ define('OPTIONS', array(
         'phone' => 'phone'
       )
     ),
-    'postulante' => array(
-      'path' => 'postulante'
+    'profile' => array(
+      'path' => 'profile'
     )
   )
 ));

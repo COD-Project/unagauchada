@@ -86,24 +86,6 @@ final class Gauchadas extends Models
     	Func::redirect(URL);
   	}
 
-		final public function postulate() {
-			$this->errors('gauchadas?errors=');
-			$this->db->insert('Postulantes', array(
-				'idUser' => (new Sessions)->connectedUser()['idUser'],
-				'idGauchada' => $this->id,
-				'selected' => '0'
-			));
-			Func::redirect(URL.'gauchadas/view/'. $this->id);
-		}
-
-		final public function accept() {
-			$this->errors('gauchadas?errors=');
-			$this->db->update('Postulantes', array(
-				'selected' => 1
-			), "idGauchada=$this->id AND iduser=");
-			Func::redirect(URL);
-		}
-
   	final public function __destruct()
   	{
   		parent::__destruct();

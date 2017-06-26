@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 /*
   The Kernel of the App!
@@ -28,7 +28,8 @@ __models_autoload(array(
   'Users',
   'Gauchadas',
   'Categories',
-  'Comments'
+  'Comments',
+  'Postulants'
 ));
 __functions_autoload(array(
   'Images',
@@ -39,7 +40,7 @@ __functions_autoload(array(
   'Categories',
   'Creditos',
   'Comments',
-  'Postulantes'
+  'Postulants'
 ));
 
 
