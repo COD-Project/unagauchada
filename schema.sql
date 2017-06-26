@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 24-06-2017 a las 23:59:52
+-- Tiempo de generación: 26-06-2017 a las 18:54:09
 -- Versión del servidor: 10.1.22-MariaDB
 -- Versión de PHP: 7.0.18
 
@@ -116,7 +116,8 @@ CREATE TABLE `Gauchadas` (
 
 INSERT INTO `Gauchadas` (`idGauchada`, `title`, `body`, `location`, `limitDate`, `createdAt`, `evaluation`, `idUser`, `idCategory`, `validate`) VALUES
 (1, 'Tesis', 'Necesito ayuda para desarrollar mi tesis, requiero de alguien que me pueda explicar LaTeX.', 'Buenos Aires, La Plata', '2017-09-30', '2017-06-01', 0, 2, 6, NULL),
-(2, 'Problemas felinos', 'Quiero deshacerme del gato de mi novia, tiene que ser en un horario nocturno, cuando ella duerma.', 'Chubut, Camarones', '2017-07-12', '2017-06-01', 0, 3, 4, NULL);
+(2, 'Problemas felinos', 'Quiero deshacerme del gato de mi novia, tiene que ser en un horario nocturno, cuando ella duerma.', 'Chubut, Camarones', '2017-07-12', '2017-06-01', 0, 3, 4, NULL),
+(3, 'Nueva gauchada de prueba', 'testeandoo', 'Buenos Aires, La Plata', '2017-06-30', '2017-06-24', 0, 4, 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -137,7 +138,8 @@ CREATE TABLE `GauchadasImages` (
 INSERT INTO `GauchadasImages` (`idGauchadaImage`, `idGauchada`, `idImage`) VALUES
 (1, 1, 1),
 (2, 2, 2),
-(3, 2, 3);
+(3, 2, 3),
+(4, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -2567,10 +2569,10 @@ INSERT INTO `Localidades` (`id`, `idProvincia`, `localidad`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Postulantes`
+-- Estructura de tabla para la tabla `Postulants`
 --
 
-CREATE TABLE `Postulantes` (
+CREATE TABLE `Postulants` (
   `idPostulante` int(11) NOT NULL,
   `idUser` int(11) NOT NULL,
   `idGauchada` int(11) NOT NULL,
@@ -2579,12 +2581,14 @@ CREATE TABLE `Postulantes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `Postulantes`
+-- Volcado de datos para la tabla `Postulants`
 --
 
-INSERT INTO `Postulantes` (`idPostulante`, `idUser`, `idGauchada`, `description`, `selected`) VALUES
+INSERT INTO `Postulants` (`idPostulante`, `idUser`, `idGauchada`, `description`, `selected`) VALUES
 (1, 2, 2, 'No lo se...', 0),
-(2, 3, 2, 'Porque soy el mejor', 1);
+(2, 4, 2, 'Porque soy el mejor', 1),
+(3, 2, 3, 'Daaaleee', 0),
+(4, 3, 3, 'Una', 0);
 
 -- --------------------------------------------------------
 
@@ -2661,9 +2665,10 @@ INSERT INTO `Users` (`idUser`, `name`, `surname`, `birthdate`, `phone`, `locatio
 (1, 'Admin', 'Admin', '1997-05-30', '4803992', NULL, 'admin@admin.com', '0b1c78bc8b5b71f6f49e0f29c36db73c', 1, 1, 0, 0, '2017-06-01', 'e7511a23920f0563a25ab0e71', 1, 1),
 (2, 'Juan Cruz', 'Ocampos', '1997-05-31', '2216150702', NULL, 'ocamposjuancruz23@gmail.com', '1dd4ecb6f7f0091bc464fee9b9202d59', 0, 1, 0, 0, '2017-06-01', '8345a792d4488c7db9f0d6891', 2, 1),
 (3, 'Ulises', 'Cornejo', '1996-11-24', '4801997', NULL, 'ulisescf.24@gmail.com', '85d42b1aa432bac0828989e6c05c76ec', 12, 1, 0, 1496340400, '2017-06-01', '90e37b995374918409eb44684', 2, 1),
-(4, 'Lucas', 'Di Cunzolo', '1996-06-23', '4891274', NULL, 'lucasdc@gmail.com', '5d050ec99317aa0b71462c74ab9f3093', 1, 1, 0, 1496338503, '2017-06-01', 'c67638b22d54eb4e58f34c500', 2, 1),
+(4, 'Lucas', 'Di Cunzolo', '1996-06-23', '4891274', NULL, 'lucasdc@gmail.com', '5d050ec99317aa0b71462c74ab9f3093', 50, 1, 0, 1498499280, '2017-06-01', 'c67638b22d54eb4e58f34c500', 2, 1),
 (5, 'Juan Cruz', 'Ocampos', '1997-05-31', '02214803992', NULL, 'ocamposjuanc@gmail.com', 'd18cda93701d8d6538c763b6847d218d', 0, 1, 0, 1498067386, '2017-06-16', 'fe3faff31eed07dc6e40f93a2', 2, 1),
-(6, 'asdghakld', 'dgkslaj', '0000-00-00', '312423413241', NULL, 'pepe@pepe.com', 'd18cda93701d8d6538c763b6847d218d', 1, 1, 0, 0, '2017-06-21', 'a7b28f20d4e8a831b8c80366a', 2, 1);
+(6, 'asdghakld', 'dgkslaj', '0000-00-00', '312423413241', NULL, 'pepe@pepe.com', 'd18cda93701d8d6538c763b6847d218d', 1, 1, 0, 0, '2017-06-21', 'a7b28f20d4e8a831b8c80366a', 2, 1),
+(14, 'uno', 'uno', '0000-00-00', '23456734567', NULL, 'uno@gmail.com', 'c71ef24a1d74d6c77b4a01d1e1807c09', 1, 1, 0, 0, '2017-06-24', 'cf602dbac64904b76207225cc', 2, 1);
 
 --
 -- Índices para tablas volcadas
@@ -2720,9 +2725,9 @@ ALTER TABLE `Localidades`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `Postulantes`
+-- Indices de la tabla `Postulants`
 --
-ALTER TABLE `Postulantes`
+ALTER TABLE `Postulants`
   ADD PRIMARY KEY (`idPostulante`),
   ADD KEY `idUser` (`idUser`,`idGauchada`);
 
@@ -2761,12 +2766,12 @@ ALTER TABLE `Creditos`
 -- AUTO_INCREMENT de la tabla `Gauchadas`
 --
 ALTER TABLE `Gauchadas`
-  MODIFY `idGauchada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idGauchada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `GauchadasImages`
 --
 ALTER TABLE `GauchadasImages`
-  MODIFY `idGauchadaImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idGauchadaImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `Images`
 --
@@ -2778,10 +2783,10 @@ ALTER TABLE `Images`
 ALTER TABLE `Localidades`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2383;
 --
--- AUTO_INCREMENT de la tabla `Postulantes`
+-- AUTO_INCREMENT de la tabla `Postulants`
 --
-ALTER TABLE `Postulantes`
-  MODIFY `idPostulante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `Postulants`
+  MODIFY `idPostulante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `Provincias`
 --
@@ -2791,7 +2796,7 @@ ALTER TABLE `Provincias`
 -- AUTO_INCREMENT de la tabla `Users`
 --
 ALTER TABLE `Users`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- Restricciones para tablas volcadas
 --
