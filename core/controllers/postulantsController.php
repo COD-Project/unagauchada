@@ -16,7 +16,7 @@ class postulantsController extends Controller {
         Func::redirect();
       }
       case 'edit':
-      if (array_key_exists($this->router->elements()[0], Gauchadas())) {
+      if (array_key_exists($this->router->getId(), Gauchadas())) {
         $postulants->edit();
       } else {
         Func::redirect();

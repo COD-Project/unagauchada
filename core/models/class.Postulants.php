@@ -13,7 +13,6 @@ final class Postulants extends Models
   private $idUser;
   private $idGauchada;
   private $description;
-  private $selected;
 
   static private $ins;
 
@@ -49,7 +48,7 @@ final class Postulants extends Models
 
   final function add()
   {
-    $this->errors('gauchadas/?error=');
+    $this->errors('?error=');
     $this->db->insert('Postulants', array(
       'idUser' => $this->idUser,
       'idGauchada' => $this->idGauchada,
@@ -61,7 +60,7 @@ final class Postulants extends Models
 
   final public function edit()
   {
-    $this->errors('gauchadas/?error=');
+    $this->errors('?error=');
     $this->db->update('Postulants', array(
       'selected' => 1
     ), "idUser=$this->idUser AND idGauchada=$this->idGauchada");
@@ -70,7 +69,7 @@ final class Postulants extends Models
 
   final public function delete()
   {
-    $this->errors('gauchadas/?error=');
+    $this->errors('?error=');
     $this->db->delete('Postulants', "idUser=$this->idUser AND idGauchada=$this->idGauchada");
     Func::redirect(URL);
   }
