@@ -67,7 +67,7 @@ final class Gauchadas extends Models
 	      'idCategory' => $this->idCategory
 	    ));
 			if (isset($_FILES['images']) && Func::images($_FILES['images'])) {
-				(new Images())->Add();
+				(new Images())->add();
 			} else {
 				$this->db->insert('GauchadasImages', array(
 					'idGauchada' => $this->db->lastInsertId(),
@@ -87,7 +87,7 @@ final class Gauchadas extends Models
   	}
 
 		final public function postulate() {
-			$this->Errors('gauchadas?errors=');
+			$this->errors('gauchadas?errors=');
 			$this->db->insert('Postulantes', array(
 				'idUser' => (new Sessions)->connectedUser()['idUser'],
 				'idGauchada' => $this->id,
@@ -97,7 +97,7 @@ final class Gauchadas extends Models
 		}
 
 		final public function accept() {
-			$this->Errors('gauchadas?errors=');
+			$this->errors('gauchadas?errors=');
 			$this->db->update('Postulantes', array(
 				'selected' => 1
 			), "idGauchada=$this->id AND iduser=");

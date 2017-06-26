@@ -16,7 +16,7 @@ final class Users extends Models
   private $birthdate;
   private $points;
   private $credits;
-  private $idImage;
+  private $image;
 
   static private $ins;
 
@@ -48,7 +48,7 @@ final class Users extends Models
         $this->phone = $_POST['phone'] ?? null;
         $this->points = $_POST['points'] ?? null;
         $this->credits = $_POST['credits'] ?? null;
-        $this->idImage = $_POST['idImage'] ?? null;
+        $this->idImage = $_POST['image'] ?? null;
       }
     } catch (PDOException $error) {
         echo $error->getMessage();
@@ -94,6 +94,7 @@ final class Users extends Models
       }
     }
     $this->db->update("Users", $update, "idUser=" . $this->id, "LIMIT 1;");
+    if (condition) (new Images)->add()
     echo 1;
   }
 
