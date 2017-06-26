@@ -1,3 +1,8 @@
+function postulantconfirm(elem)
+{
+  Func.$('#postulant_confirm').href = elem;
+}
+
 let getLoginData = () => ({
   email : {
     value: Func.$('#email').value,

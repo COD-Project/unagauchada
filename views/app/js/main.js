@@ -1,8 +1,3 @@
-function postulantconfirm(elem)
-{
-  Func.$('#postulant_confirm').href = elem;
-}
-
 document.addEventListener('DOMContentLoaded', function() {
 
     let init = () => {
