@@ -15,11 +15,6 @@ class commentsController extends Controller {
               	$comments->add();
             	}
               break;
-						case 'addQuestion':
-            	if ($_POST) {
-              	$comments->addQuestion();
-            	}
-              break;
           }
     	}
     }

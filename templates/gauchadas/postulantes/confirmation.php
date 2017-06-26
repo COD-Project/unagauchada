@@ -15,7 +15,7 @@
              <h3> <img src="views/app/img/poncho.png" style="width: 25px;"></img> ¿Poner poncho? </h3>
              <br>
              <?php
-                echo '<a class="btn btn-success rounded-circle" href="postulant/edit/" ><i class="fa fa-check"></i></a>';
+                echo '<a id="postulant_confirm" class="btn btn-success rounded-circle" href="" ><i class="fa fa-check"></i></a>';
              ?>
              <a data-dismiss="modal" class="btn btn-danger rounded-circle" style="color: #fff"><i class="fa fa-close"></i></a>
          </div>

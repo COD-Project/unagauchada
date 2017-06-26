@@ -20,7 +20,7 @@
              <span class="highlight"></span><span class="bar"></span>
              <label for="text">Descripcion</label>
            </div>
-           <button id="postulate_button" type="button" class="button"> Postularse
+           <button id="postulate_button" type="submit" class="button"> Postularse
                <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
            </button>
          </form>

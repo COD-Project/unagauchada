@@ -127,7 +127,7 @@
 											<div id="div_comment_button_' . $comment['idComment'] . '" class="col-9" style="margin-top: 20px; margin-bottom: 20px; "margin-bottom: 20px">
 												<div>
 													<div class="text-center">
-														<form class="form-inline" action="comments/addQuestion/'. $this->router->getId() . '?idQuestion='. $comment['idComment'] .'" method="post">
+														<form class="form-inline" action="comments/add/'. $this->router->getId() . '?idQuestion='. $comment['idComment'] .'" method="post">
 															<div class="avatar" style="margin-right:3rem">
 															 <img src="' . $gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 8vh">
 															</div>

@@ -30,45 +30,47 @@ final class Postulants extends Models
     parent::__construct();
   }
 
-  final function errors()
+  final function errors($url="")
   {
     try {
-      if (empty($_POST['description']) && empty($_POST['selected'])) {
+      if (empty($_POST['description']) && empty($_POST['selected']) && empty($this->router->elements()[0]) && empty($this->router->getId())) {
         throw new PDOException("Error Processing Request");
       } else {
-        $this->idUser = intval($this->router->elements()[0]) ?? null;
-        $this->idGauchada = intval($this->router->elements()[1]) ?? null;
+        $this->idUser = is_numeric($this->router->elements()[0]) ?
+                          intval($this->router->elements()[0]) :
+                          (Sessions::getInstance())->connectedUser()['idUser'];
+        $this->idGauchada = $this->router->getId() ?? null;
         $this->description = isset($_POST['description']) ? $this->db->escape($_POST['description']) : null;
       }
     } catch (PDOException $error) {
-        echo $error->getMessage();
+        Func::redirect(URL . $url . $error->getMessage());
     }
   }
 
   final function add()
   {
-    $this->errors('postulant?error=');
+    $this->errors('gauchadas/?error=');
     $this->db->insert('Postulants', array(
       'idUser' => $this->idUser,
       'idGauchada' => $this->idGauchada,
       'description' => $this->description,
       'selected' => 0
     ));
-    Func::redirect(URL);
+    Func::redirect();
   }
 
   final public function edit()
   {
-    $this->errors('postulants?errors=');
+    $this->errors('gauchadas/?error=');
     $this->db->update('Postulants', array(
       'selected' => 1
     ), "idUser=$this->idUser AND idGauchada=$this->idGauchada");
-    Func::redirect(URL );
+    Func::redirect();
   }
 
   final public function delete()
   {
-    $this->errors('postulants?errors=');
+    $this->errors('gauchadas/?error=');
     $this->db->delete('Postulants', "idUser=$this->idUser AND idGauchada=$this->idGauchada");
     Func::redirect(URL);
   }

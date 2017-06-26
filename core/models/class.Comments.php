@@ -48,26 +48,15 @@ final class Comments extends Models
 
   	final public function add() {
 	    $this->errors('comments?error=');
-	    $this->db->insert('comments', array(
+			$insert = array(
 	      'body' => $this->body,
 	      'createdAt' => date('Y/m/d H:i:s', time()),
         'lastModify' => date('Y/m/d H:i:s', time()),
-        'idGauchada' => $this->router->getId(),
+        'idGauchada' => $this->idGauchada,
 	      'idUser' => (new Sessions)->connectedUser()['idUser'],
-	    ));
-	    Func::redirect(URL . 'gauchadas/view/' . $this->router->getId());
-  	}
-
-		final public function addQuestion() {
-	    $this->errors('comments?error=');
-	    $this->db->insert('comments', array(
-	      'body' => $this->body,
-	      'createdAt' => date('Y/m/d H:i:s', time()),
-        'lastModify' => date('Y/m/d H:i:s', time()),
-				'idGauchada' => $this->idGauchada,
-				'idQuestion' => $this->idQuestion,
-	      'idUser' => (new Sessions)->connectedUser()['idUser']
-	    ));
+	    );
+			if ($this->idQuestion != null) $insert['idQuestion'] = $this->idQuestion;
+	    $this->db->insert('Comments', $insert);
 	    Func::redirect(URL . 'gauchadas/view/' . $this->idGauchada);
   	}
 

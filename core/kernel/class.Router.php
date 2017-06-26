@@ -14,7 +14,6 @@ final class Router
   private $controller = null;
   private $method = null;
   private $id = null;
-  private $url;
 
   final static function getInstance() {
     if (!self::$instance) {

@@ -24,10 +24,10 @@
                 $HTML.= '<div class="container"><li class="list-group-item justify-content-between">
                   <h4>'.$postulantes[$i]['completeName'].'</h4>
                   <span>
-                    <a class="btn btn-warning option-button text-right" href="profiles/profile/' . $postulantes[$i]['idUser'] . '/' . $this->router->getId() . '/' . $postulantes[$i]['idUser'] . '">
+                    <a class="btn btn-warning option-button text-right" href="profiles/profile/' . $postulantes[$i]['idUser'] . '">
                       <i class="fa fa-user"></i>
                     </a>
-                    <a class="btn btn-warning option-button text-right" data-dismiss="modal" data-toggle="modal" data-target="#Confirmation">
+                    <a onclick="postulantconfirm(this.href)" href="postulant/edit/' . $postulantes[$i]['idGauchada'] . '/' . $postulantes[$i]['idUser'] . '" class="btn btn-warning option-button text-right" data-dismiss="modal" data-toggle="modal" data-target="#Confirmation">
                       <i class="fa fa-check" style="color: #fff"></i>
                     </a>
                   </span>
