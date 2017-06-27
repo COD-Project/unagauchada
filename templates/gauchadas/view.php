@@ -72,8 +72,14 @@
 							</a>
 							<a class="btn btn-warning rounded-circle option-button text-center" data-toggle="modal" data-target="#Postulants">
 								<i class="fa fa-users" style="color: #fff"></i>
-							</a>
-						</div>';
+							</a>';
+						if(SelectedPostulant($this->router->getId())){
+							$HTML .= '
+							<a class="btn btn-warning option-button text-center" style="color: #fff" data-toggle="modal" data-target="#califica">
+								<i class="fa fa-star" style="color: #fff"></i>Calificar!
+							</a>';
+						}
+						$HTML .= '</div>';
 					} else if (!$postulante) {
 						$HTML.= '<div class="col-2">
 							<a class="btn btn-warning option-button text-center" style="color: #fff" data-toggle="modal" data-target="#Postulate">
@@ -186,6 +192,7 @@
 		$this->include('gauchadas/postulantes/postulants');
 		$this->include('gauchadas/postulantes/postulate');
 		$this->include('gauchadas/postulantes/confirmation');
+		$this->include('gauchadas/calificaciones/califica');
 		$this->include('overall/footer');
 	?>
 	</body>
