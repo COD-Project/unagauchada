@@ -38,7 +38,7 @@ final class Comments extends Models
 	      	} else {
 		        $this->id = $this->router->getId() != null ? intval($this->router->getId()) : null;
 		        $this->body = isset($_POST['body']) ? $this->purifier($this->db->escape($_POST['body'])) : null;
-						$this->idGauchada = ($this->router->getId()) ? intval($this->router->getId()) : null;
+						$this->idGauchada = is_numeric($this->router->getId()) ? intval($this->router->getId()) : null;
 						$this->idQuestion = isset($_GET['idQuestion']) ? intval($_GET['idQuestion']) : null;
 	      	}
 	    } catch (PDOException $e) {
@@ -53,7 +53,7 @@ final class Comments extends Models
 	      'createdAt' => date('Y/m/d H:i:s', time()),
         'lastModify' => date('Y/m/d H:i:s', time()),
         'idGauchada' => $this->idGauchada,
-	      'idUser' => (new Sessions)->connectedUser()['idUser'],
+	      'idUser' => (Sessions::getInstance())->connectedUser()['idUser'],
 	    );
 			if ($this->idQuestion != null) $insert['idQuestion'] = $this->idQuestion;
 	    $this->db->insert('Comments', $insert);

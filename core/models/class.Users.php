@@ -36,10 +36,10 @@ final class Users extends Models
   final function errors()
   {
     try {
-      if (empty($_POST['email']) && empty($_POST['pass']) && empty($_POST['name']) && empty($_POST['surname']) && empty($_POST['birthdate']) && empty($_POST['phone'])) {
+      if (empty($_POST['email']) && empty($_POST['pass']) && empty($_POST['name']) && empty($_POST['surname']) && empty($_POST['birthdate']) && empty($_POST['phone']) && empty($_FILES['images'])) {
         throw new PDOException("Error Processing Request");
       } else {
-        $this->id = (Sessions::getInstance())->isLoggedIn() != null ? intval((Sessions::getInstance())->connectedUser()['idUser']) : null;
+        $this->id = (Sessions::getInstance())->isLoggedIn() ? intval((Sessions::getInstance())->connectedUser()['idUser']) : null;
         $this->name = isset($_POST['name']) ? $this->db->escape($_POST['name']) : null;
         $this->surname = isset($_POST['surname']) ? $this->db->escape($_POST['surname']) : null;
         $this->email = isset($_POST['email']) ? $this->db->escape($_POST['email']) : null;
@@ -48,7 +48,7 @@ final class Users extends Models
         $this->phone = $_POST['phone'] ?? null;
         $this->points = $_POST['points'] ?? null;
         $this->credits = $_POST['credits'] ?? null;
-        $this->idImage = $_POST['image'] ?? null;
+        $this->image = $_FILES['images'] ?? null;
       }
     } catch (PDOException $error) {
         echo $error->getMessage();
@@ -93,11 +93,19 @@ final class Users extends Models
         eval("\$update[\$value] = \$this->" . $value . ';');
       }
     }
-    $this->db->update("Users", $update, "idUser=" . $this->id, "LIMIT 1;");
     if ($this->image) {
-      (new Images)->add();
+      $idImage = $this->db->select('idImage', 'Images', '1=1', 'ORDER BY idImage DESC LIMIT 1')[0]['idImage'];
+      $type = explode('/', $this->image['type'][0]);
+      $name = 'image.' . $idImage . '.' . $type[1];
+      Func::saveFile(array(
+        'name' => $name,
+        'tmp' => $this->image['tmp_name'][0],
+        'folder' => 'users/' . $this->id
+      ));
+      $update['idImage'] = ($this->db->select('idImage', 'Images', '1=1', 'ORDER BY idImage DESC LIMIT 1'))[0]['idImage'];
     }
-    echo 1;
+    if ($update != null) $this->db->update("Users", $update, "idUser=" . $this->id, "LIMIT 1;");
+    if ($this->image) Func::redirect(URL . 'profiles/myprofile'); else echo 1;
   }
 
   final public function delete() {
