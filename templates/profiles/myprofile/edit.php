@@ -1,6 +1,6 @@
 <div class="tab-pane wow fadeIn" id="edit" data-wow-delay="0.1s">
   <div id="_AJAX_EDIT_"></div>
-  <form id="edit_user_form" role="form" method="post" action="">
+  <form id="edit_user_form" role="form" method="post" action="" enctype="multipart/form-data">
     <?php
       $user = $this->sessions->connectedUser();
       echo "

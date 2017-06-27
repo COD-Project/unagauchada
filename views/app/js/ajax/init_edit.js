@@ -7,14 +7,14 @@ let _init_edit = function() {
 
   if(!(data.name.empty && data.surname.empty && data.password.empty && data.phone.empty)) {
     if(data.password.success && data.phone.success) {
-      form = 'name=' + data.name.value + '&surname=' + data.surname.value + '&pass=' + data.password.value[0] + '&phone=' + data.phone.value + '&images[]=' + data.image.value;
+      form = 'name=' + data.name.value + '&surname=' + data.surname.value + '&pass=' + data.password.value[0] + '&phone=' + data.phone.value;
       connect = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
       connect.onreadystatechange = function() {
         if(connect.readyState == 4 && connect.status == 200) {
           if(connect.responseText == 1) {
             result = '<div class="alert alert-success alert-dismissible fade show" role="alert" style="border-radius: 0;">';
             result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
-            result += '<h4>Registration completed!</h4>';
+            result += '<h4>Edición completada!</h4>';
             result += '<p><strong>Estás siendo redirigido...</strong></p>';
             result += '</div>';
             Func.$('#_AJAX_EDIT_').innerHTML = result;
@@ -30,7 +30,7 @@ let _init_edit = function() {
           result = '<div class="alert alert-warning alert-dismissible fade show" role="alert" style="border-radius: 0;">';
           result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
           result += '<h4>Processing...</h4>';
-          result += '<p><strong>Tu registro esta siendo procesado...</strong></p>';
+          result += '<p><strong>Tu solicitud esta siendo procesada...</strong></p>';
           result += '</div>';
           Func.$('#_AJAX_EDIT_').innerHTML = result;
         }
