@@ -35,6 +35,25 @@
 </main>
 <!--/Main layout-->
 
-<?php $this->include('gauchadas/list'); ?>
+<div class="container">
+  <hr class="extra-margins">
+  <ul class="nav nav-pills nav-fill" style="margin-bottom: 5vh">
+    <li class="nav-item">
+        <a href="" data-target="#listado" data-toggle="tab" class="nav-link active">Listado</a>
+    </li>
+    <li class="nav-item">
+        <a href="" data-target="#filtrado" data-toggle="tab" class="nav-link">Busqueda y filtrado</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active wow fadeIn" id="listado" data-wow-delay="0.1s">
+      <?php $this->include('gauchadas/list'); ?>
+    </div>
+    <div class="tab-pane wow fadeIn" id="filtrado" data-wow-delay="0.1s">
+      <?php $this->include('public/filter'); ?>
+    </div>
+  </div>
+</div>
+
 
 <hr>

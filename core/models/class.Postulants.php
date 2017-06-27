@@ -39,7 +39,7 @@ final class Postulants extends Models
                           intval($this->router->elements()[0]) :
                           (Sessions::getInstance())->connectedUser()['idUser'];
         $this->idGauchada = $this->router->getId() ?? null;
-        $this->description = isset($_POST['description']) ? $this->db->escape($_POST['description']) : null;
+        $this->description = isset($_POST['description']) ? $this->purifier($this->db->escape($_POST['description'])) : null;
       }
     } catch (PDOException $error) {
         Func::redirect(URL . $url . $error->getMessage());

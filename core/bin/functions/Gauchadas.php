@@ -11,9 +11,9 @@ function gauchadasFilter() {
 }
 
 
-function Gauchadas() {
+function Gauchadas($all = false) {
   $db = new Connection();
-  $data = gauchadasFilter();
+  $data = !$all ? gauchadasFilter() : $db->select('*', 'Gauchadas', '1=1', 'ORDER BY idGauchada DESC');
   if(!$data) return false;
 
   for($i = 0; $i < count($data); $i++) {

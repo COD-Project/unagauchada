@@ -13,10 +13,15 @@ define('OPTIONS', array(
         'begin' => '"',
         'end' => '"'
       ),
-      'location' => array(
-        'content' => 'location=',
-        'begin' => '"',
-        'end' => '"'
+      'locality' => array(
+        'content' => 'location LIKE ',
+        'begin' => '"%',
+        'end' => '%"'
+      ),
+      'state' => array(
+        'content' => 'location LIKE ',
+        'begin' => '"%',
+        'end' => '%"'
       )
     ),
     'mode' => array(
