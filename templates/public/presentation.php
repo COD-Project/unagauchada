@@ -39,10 +39,10 @@
   <hr class="extra-margins">
   <ul class="nav nav-pills nav-fill" style="margin-bottom: 5vh">
     <li class="nav-item">
-        <a href="" data-target="#listado" data-toggle="tab" class="nav-link active">Listado</a>
+        <a href="" data-target="#listado" data-toggle="tab" class="nav-link active"><i class="fa fa-bars"></i></a>
     </li>
     <li class="nav-item">
-        <a href="" data-target="#filtrado" data-toggle="tab" class="nav-link">Busqueda y filtrado</a>
+        <a href="" data-target="#filtrado" data-toggle="tab" class="nav-link"><i class="fa fa-search"></i></a>
     </li>
   </ul>
   <div class="tab-content">

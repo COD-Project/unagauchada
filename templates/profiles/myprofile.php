@@ -22,10 +22,19 @@
         <div class="col-lg-8">
           <ul class="nav nav-pills nav-fill" style="margin-bottom: 5vh">
             <li class="nav-item">
-                <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Perfil</a>
+                <a href="" data-target="#profile" data-toggle="tab" class="nav-link active"><i class="fa fa-user"></i> Perfil</a>
             </li>
             <li class="nav-item">
-                <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Editar</a>
+                <a href="" data-target="#" data-toggle="tab" class="nav-link"><i class="fa fa-bars"></i> Gauchadas</a>
+            </li>
+            <li class="nav-item">
+                <a href="" data-target="#" data-toggle="tab" class="nav-link"><i class="fa fa-users"></i> Postulaciones</a>
+            </li>
+            <li class="nav-item">
+                <a href="" data-target="#" data-toggle="tab" class="nav-link"><i class="fa fa"></i> Calificaciones</a>
+            </li>
+            <li class="nav-item">
+                <a href="" data-target="#edit" data-toggle="tab" class="nav-link"><i class="fa fa-cogs"></i> Editar</a>
             </li>
           </ul>
           <div class="tab-content p-b-3">

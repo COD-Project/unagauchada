@@ -5,7 +5,7 @@ let _init_login = function() {
       result;
 
   let data = getLoginData();
-  console.log(data.email.empty);
+  
   if(data.email.success && data.password.success) {
     form = 'email=' + data.email.value + '&pass=' + data.password.value + '&session=' + data.session;
 
