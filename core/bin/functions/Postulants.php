@@ -30,4 +30,12 @@ function Postulant($idGauchada, $idUser) {
   return false;
 }
 
+function SelectedPostulant($idGauchada){
+  $db = new Connection();
+  $where = 'idGauchada='.$idGauchada.' AND selected=1';
+  $data = $db->select('*', 'Postulants p INNER JOIN Users u ON(p.idUser = u.idUser)', $where);
+
+  return (!$data) ? false : true;
+}
+
 ?>
