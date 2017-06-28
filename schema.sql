@@ -2698,7 +2698,6 @@ ALTER TABLE `Categories`
 --
 ALTER TABLE `Comments`
   ADD PRIMARY KEY (`idComment`),
-  ADD UNIQUE KEY `daddy` (`idGauchada`,`idQuestion`),
   ADD KEY `Comments_ibfk_2` (`idQuestion`),
   ADD KEY `Comments_ibfk_1` (`idUser`);
 
