@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 26-06-2017 a las 18:54:09
+-- Tiempo de generación: 28-06-2017 a las 01:59:50
 -- Versión del servidor: 10.1.22-MariaDB
 -- Versión de PHP: 7.0.18
 
@@ -2587,7 +2587,7 @@ CREATE TABLE `Postulants` (
 INSERT INTO `Postulants` (`idPostulante`, `idUser`, `idGauchada`, `description`, `selected`) VALUES
 (1, 2, 2, 'No lo se...', 0),
 (2, 4, 2, 'Porque soy el mejor', 1),
-(3, 2, 3, 'Daaaleee', 0),
+(3, 2, 3, 'Daaaleee', 1),
 (4, 3, 3, 'Una', 0);
 
 -- --------------------------------------------------------
@@ -2635,6 +2635,19 @@ INSERT INTO `Provincias` (`id`, `provincia`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `Ratings`
+--
+
+CREATE TABLE `Ratings` (
+  `idRating` int(11) NOT NULL,
+  `rating` int(11) NOT NULL,
+  `body` varchar(1024) NOT NULL,
+  `idGauchada` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `Users`
 --
 
@@ -2665,7 +2678,7 @@ INSERT INTO `Users` (`idUser`, `name`, `surname`, `birthdate`, `phone`, `locatio
 (1, 'Admin', 'Admin', '1997-05-30', '4803992', NULL, 'admin@admin.com', '0b1c78bc8b5b71f6f49e0f29c36db73c', 1, 1, 0, 0, '2017-06-01', 'e7511a23920f0563a25ab0e71', 1, 1),
 (2, 'Juan Cruz', 'Ocampos', '1997-05-31', '2216150702', NULL, 'ocamposjuancruz23@gmail.com', '1dd4ecb6f7f0091bc464fee9b9202d59', 0, 1, 0, 0, '2017-06-01', '8345a792d4488c7db9f0d6891', 2, 1),
 (3, 'Ulises', 'Cornejo', '1996-11-24', '4801997', NULL, 'ulisescf.24@gmail.com', '85d42b1aa432bac0828989e6c05c76ec', 12, 1, 0, 1496340400, '2017-06-01', '90e37b995374918409eb44684', 2, 1),
-(4, 'Lucas', 'Di Cunzolo', '1996-06-23', '4891274', NULL, 'lucasdc@gmail.com', '5d050ec99317aa0b71462c74ab9f3093', 50, 1, 0, 1498499280, '2017-06-01', 'c67638b22d54eb4e58f34c500', 2, 1),
+(4, 'Lucas', 'Di Cunzolo', '1996-06-23', '4891274', NULL, 'lucasdc@gmail.com', '5d050ec99317aa0b71462c74ab9f3093', 50, 1, 0, 1498590950, '2017-06-01', 'c67638b22d54eb4e58f34c500', 2, 1),
 (5, 'Juan Cruz', 'Ocampos', '1997-05-31', '02214803992', NULL, 'ocamposjuanc@gmail.com', 'd18cda93701d8d6538c763b6847d218d', 0, 1, 0, 1498067386, '2017-06-16', 'fe3faff31eed07dc6e40f93a2', 2, 1),
 (6, 'asdghakld', 'dgkslaj', '0000-00-00', '312423413241', NULL, 'pepe@pepe.com', 'd18cda93701d8d6538c763b6847d218d', 1, 1, 0, 0, '2017-06-21', 'a7b28f20d4e8a831b8c80366a', 2, 1),
 (14, 'uno', 'uno', '0000-00-00', '23456734567', NULL, 'uno@gmail.com', 'c71ef24a1d74d6c77b4a01d1e1807c09', 1, 1, 0, 0, '2017-06-24', 'cf602dbac64904b76207225cc', 2, 1);
@@ -2738,6 +2751,13 @@ ALTER TABLE `Provincias`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `Ratings`
+--
+ALTER TABLE `Ratings`
+  ADD PRIMARY KEY (`idRating`),
+  ADD KEY `idGauchada` (`idGauchada`);
+
+--
 -- Indices de la tabla `Users`
 --
 ALTER TABLE `Users`
@@ -2793,6 +2813,11 @@ ALTER TABLE `Postulants`
 ALTER TABLE `Provincias`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
+-- AUTO_INCREMENT de la tabla `Ratings`
+--
+ALTER TABLE `Ratings`
+  MODIFY `idRating` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `Users`
 --
 ALTER TABLE `Users`
@@ -2828,6 +2853,12 @@ ALTER TABLE `Gauchadas`
 ALTER TABLE `GauchadasImages`
   ADD CONSTRAINT `GauchadasImages_ibfk_1` FOREIGN KEY (`idGauchada`) REFERENCES `Gauchadas` (`idGauchada`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `GauchadasImages_ibfk_2` FOREIGN KEY (`idImage`) REFERENCES `Images` (`idImage`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `Ratings`
+--
+ALTER TABLE `Ratings`
+  ADD CONSTRAINT `Ratings_ibfk_1` FOREIGN KEY (`idGauchada`) REFERENCES `Gauchadas` (`idGauchada`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
