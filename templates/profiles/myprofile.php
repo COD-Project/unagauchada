@@ -8,22 +8,33 @@
       <div class="row m-y-2">
         <div class="col-lg-4 text-center" style="margin-bottom: 1vh;">
           <?php
-            echo '<img src="' . $this->sessions->connectedUser()['profilePicture'] . '" class="rounded-circle img-fluid cmd_zoomin">';
+            echo '<img src="' . $this->sessions->connectedUser()['profilePicture'] . '" class="rounded-circle img-fluid cmd_zoomin"  style="max-width: 50%; background-size: cover;">';
           ?>
-          <br>
-          <h6 class="m-t-2">Cambia tu foto de perfil</h6>
-          <label class="custom-file">
-              <input type="file" id="user-profile-picture[]" class="custom-file-input" accept="image/*">
-              <span class="custom-file-control">Subir imagen</span>
-          </label>
+          <h6 class="m-t-2" style="margin-top: 2vh;">Cambia tu foto de perfil</h6>
+          <form class="form-inline" action="ajax.php?for=users&mode=edit" method="post" enctype="multipart/form-data">
+            <label class="custom-file" style="margin-right: -1.8rem;">
+              <input type="file" name="images[]" class="custom-file-input" required>
+              <span class="custom-file-control"><i class="fa fa-file-image-o"></i> Subir imagen</span>
+            </label>
+            <button type="submit" class="btn btn-warning rounded-circle" style="z-index: 2000;"><i class="fa fa-arrow-right"></i></button>
+          </form>
         </div>
         <div class="col-lg-8">
           <ul class="nav nav-pills nav-fill" style="margin-bottom: 5vh">
             <li class="nav-item">
-                <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Perfil</a>
+                <a href="" data-target="#profile" data-toggle="tab" class="nav-link active"><i class="fa fa-user"></i> Perfil</a>
             </li>
             <li class="nav-item">
-                <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Editar</a>
+                <a href="" data-target="#" data-toggle="tab" class="nav-link"><i class="fa fa-bars"></i> Gauchadas</a>
+            </li>
+            <li class="nav-item">
+                <a href="" data-target="#" data-toggle="tab" class="nav-link"><i class="fa fa-users"></i> Postulaciones</a>
+            </li>
+            <li class="nav-item">
+                <a href="" data-target="#" data-toggle="tab" class="nav-link"><i class="fa fa"></i> Calificaciones</a>
+            </li>
+            <li class="nav-item">
+                <a href="" data-target="#edit" data-toggle="tab" class="nav-link"><i class="fa fa-cogs"></i> Editar</a>
             </li>
           </ul>
           <div class="tab-content p-b-3">

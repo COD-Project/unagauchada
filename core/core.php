@@ -29,7 +29,8 @@ __models_autoload(array(
   'Gauchadas',
   'Categories',
   'Comments',
-  'Postulants'
+  'Postulants',
+  'Ratings'
 ));
 __functions_autoload(array(
   'Images',
@@ -40,7 +41,8 @@ __functions_autoload(array(
   'Categories',
   'Creditos',
   'Comments',
-  'Postulants'
+  'Postulants',
+  'Ratings'
 ));
 
 

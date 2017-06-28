@@ -4,7 +4,6 @@ let _init_signup = function() {
       result;
 
   let data = getSignupData();
-  console.log(data.date.age);
   if(data.tyc) {
     if(!data.name.empty && !data.surname.empty && !data.password.empty && !data.phone.empty) {
       if(data.email.success && data.password.success && data.date.success && data.phone.success) {

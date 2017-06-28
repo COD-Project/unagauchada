@@ -137,9 +137,6 @@ let getEditData = () => ({
       Func.$('#phone').value.length == 0
     ),
     success: Expresion.phone.test(Func.$('#phone').value)
-  },
-  image: {
-    value: Func.$('#user-profile-picture[]').value
   }
 })
 

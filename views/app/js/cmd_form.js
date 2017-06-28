@@ -60,8 +60,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     for (var i = 0; i < nodeList.length; i++) {
-      if (nodeList[i].type == "text" || nodeList[i].type == "date" || nodeList[i].type == "number" || nodeList[i].type == "email" || nodeList[i].type == "password"){
-        if (nodeList[i].value.length > 0 || nodeList[i].type == "date") {
+      if (nodeList[i].type == "text" || nodeList[i].type == "date" || nodeList[i].type == "number" || nodeList[i].type == "email" || nodeList[i].type == "password" || nodeList[i].type == "file"){
+        if (nodeList[i].value.length > 0 || nodeList[i].type == "date" || nodeList[i].type == "file") {
           nodeList[i].parentElement.children[1].className = "cmd_label cmd_active";
           nodeList[i].parentElement.children[0].className = nodeList[i].parentElement.children[0].className.replace("error", "");
         }

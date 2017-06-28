@@ -6,7 +6,7 @@ let _init_edit = function() {
   let data = getEditData();
 
   if(!(data.name.empty && data.surname.empty && data.password.empty && data.phone.empty)) {
-    if(data.password.success && data.phone.success) {
+    if(!data.name.empty || !data.surname.empty || (!data.password.empty && data.password.success) || (!data.password.empty && data.phone.success)) {
       form = 'name=' + data.name.value + '&surname=' + data.surname.value + '&pass=' + data.password.value[0] + '&phone=' + data.phone.value;
       connect = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
       connect.onreadystatechange = function() {

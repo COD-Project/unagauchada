@@ -18,21 +18,4 @@
         ");
       ?>
     </div>
-    <!--/row-->
-    <div class="" style="margin-top: 45px;">
-      <ul class="nav nav-tabs" style="margin-bottom: 5vh">
-        <li class="nav-item">
-            <a href="" data-target="#" data-toggle="tab" class="nav-link active">Mis gauchadas</a>
-        </li>
-        <li class="nav-item">
-            <a href="" data-target="#" data-toggle="tab" class="nav-link">Mis comentarios</a>
-        </li>
-        <li class="nav-item">
-            <a href="" data-target="#" data-toggle="tab" class="nav-link">Menciones</a>
-        </li>
-        <li class="nav-item">
-            <a href="" data-target="#" data-toggle="tab" class="nav-link">Mis calificaciones</a>
-        </li>
-      </ul>
-    </div>
 </div>

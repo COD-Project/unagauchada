@@ -9,11 +9,11 @@ defined('INDEX_DIR') OR exit(APP . ' software says .i.');
 //------------------------------------------------
 
 
-final class Comments extends Models
+final class Ratings extends Models
 {
+	private $rating;
 	private $body;
 	private $idGauchada;
-	private $idQuestion;
 
 	static private $ins;
 
@@ -33,13 +33,12 @@ final class Comments extends Models
 	final private function errors($url)
 	{
 	    try {
-	      	if (empty($this->router->getId()) && empty($_POST['body']) && empty($_GET['idQuestion'])) {
+	      	if (empty($this->router->getId()) && empty($_POST['body']) && empty($_POST['rating'])) {
 	        	throw new PDOException("Error Processing Request", 1);
 	      	} else {
-		        $this->id = $this->router->getId() != null ? intval($this->router->getId()) : null;
+		        $this->rating = isset($_POST['rating']) ? intval($_POST['rating']) : null;
 		        $this->body = isset($_POST['body']) ? $this->purifier($this->db->escape($_POST['body'])) : null;
-						$this->idGauchada = is_numeric($this->router->getId()) ? intval($this->router->getId()) : null;
-						$this->idQuestion = isset($_GET['idQuestion']) ? intval($_GET['idQuestion']) : null;
+				$this->idGauchada = ($this->router->getId()) ? intval($this->router->getId()) : null;
 	      	}
 	    } catch (PDOException $e) {
 	      Func::redirect(URL . $url . $e->getMessage());
@@ -48,15 +47,12 @@ final class Comments extends Models
 
   	final public function add() {
 	    $this->errors('comments?error=');
-			$insert = array(
-	      'body' => $this->body,
-	      'createdAt' => date('Y/m/d H:i:s', time()),
-        'lastModify' => date('Y/m/d H:i:s', time()),
-        'idGauchada' => $this->idGauchada,
-	      'idUser' => (Sessions::getInstance())->connectedUser()['idUser'],
+		$insert = array(
+		'rating' => $this->rating,
+	    'body' => $this->body,
+        'idGauchada' => $this->idGauchada
 	    );
-			if ($this->idQuestion != null) $insert['idQuestion'] = $this->idQuestion;
-	    $this->db->insert('Comments', $insert);
+	    $this->db->insert('Ratings', $insert);
 	    Func::redirect(URL . 'gauchadas/view/' . $this->idGauchada);
   	}
 
