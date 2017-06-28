@@ -28,8 +28,6 @@
                       $HTML .= '<a onclick="postulantconfirm(this.href)" href="postulants/edit/' . $postulante['idGauchada'] . '/' . $postulante['idUser'] . '" class="btn btn-warning option-button text-center" data-dismiss="modal" data-toggle="modal" data-target="#Confirmation">
                         <i class="fa fa-check" style="color: #fff"></i>
                       </a>';
-                    } else if(Postulant($postulante['idGauchada'], $this->router->getId())){
-                      $HTML .= 'hola';
                     }
                     $HTML .= '</span>
                     </li>';

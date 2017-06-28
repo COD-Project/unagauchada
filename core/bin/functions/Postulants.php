@@ -19,8 +19,15 @@ function Postulants($idGauchada=null) {
   return $postulantes;
 }
 
-function Selected($idGauchada, $idUser) {
-
+function Postulant($idGauchada, $idUser) {
+  $postulantes = Postulants($idGauchada);
+  if($postulantes) {
+    foreach ($postulantes as $key => $value) {
+      if($idUser == $value['idUser'])
+        return true;
+    }
+  }
+  return false;
 }
 
 function SelectedPostulant($idGauchada) {
