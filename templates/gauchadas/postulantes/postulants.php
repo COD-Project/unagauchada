@@ -26,13 +26,15 @@
                   <span>
                     <a class="btn btn-warning option-button text-right" href="profiles/profile/' . $postulantes[$i]['idUser'] . '">
                       <i class="fa fa-user"></i>
-                    </a>
-                    <a onclick="postulantconfirm(this.href)" href="postulants/edit/' . $postulantes[$i]['idGauchada'] . '/' . $postulantes[$i]['idUser'] . '" class="btn btn-warning option-button text-right" data-dismiss="modal" data-toggle="modal" data-target="#Confirmation">
-                      <i class="fa fa-check" style="color: #fff"></i>
-                    </a>
-                  </span>
-                </li>
-              </div>';
+                    </a>';
+                  if(!SelectedPostulant($this->router->getId())) {
+                    $HTML .= '<a onclick="postulantconfirm(this.href)" href="postulants/edit/' . $postulantes[$i]['idGauchada'] . '/' . $postulantes[$i]['idUser'] . '" class="btn btn-warning option-button text-right" data-dismiss="modal" data-toggle="modal" data-target="#Confirmation">
+                        <i class="fa fa-check" style="color: #fff"></i>
+                      </a>';
+                  }
+                  $HTML .= '</span>
+                  </li>
+                </div>';
               }
               $HTML .= '</ul>';
             } else {

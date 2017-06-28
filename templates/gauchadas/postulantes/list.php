@@ -23,11 +23,15 @@
                   if($postulante['idUser'] == $this->router->getId()) {
                     $HTML .= '<li class="list-group-item justify-content-between">
                     <h4>' . $gauchadas[$postulante['idGauchada']]['title'] . '</h4>
-                    <span>
-                      <a onclick="postulantconfirm(this.href)" href="postulants/edit/' . $postulante['idGauchada'] . '/' . $postulante['idUser'] . '" class="btn btn-warning option-button text-center" data-dismiss="modal" data-toggle="modal" data-target="#Confirmation">
+                    <span>';
+                    if(!SelectedPostulant($postulante['idGauchada'])) {
+                      $HTML .= '<a onclick="postulantconfirm(this.href)" href="postulants/edit/' . $postulante['idGauchada'] . '/' . $postulante['idUser'] . '" class="btn btn-warning option-button text-center" data-dismiss="modal" data-toggle="modal" data-target="#Confirmation">
                         <i class="fa fa-check" style="color: #fff"></i>
-                      </a>
-                    </span>
+                      </a>';
+                    } else if(Postulant($postulante['idGauchada'], $this->router->getId())){
+                      $HTML .= 'hola';
+                    }
+                    $HTML .= '</span>
                     </li>';
                   }
                   $HTML .= '</ul>';
