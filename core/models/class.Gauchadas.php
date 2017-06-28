@@ -83,7 +83,14 @@ final class Gauchadas extends Models
     	$this->db->update('Gauchadas', array(
 	      'validate' => 1
 	    ),"idGauchada=$this->id");
-    	Func::redirect(URL);
+	    if(!Postulants($this->id)){
+	    	$this->db->update('Users', array(
+	    		'credits' => (Sessions::getInstance())->connectedUser()['credits'] + 1
+	    	), 'idUser='.(Sessions::getInstance())->connectedUser()['idUser']);
+	    	Func::redirect(URL . '?success=Gauchada eliminada con exito, se devolvio el credito invertido en la misma.');
+	    } else {
+	    	Func::redirect(URL . '?success=Gauchada eliminada con exito, no se devolvio el credito invertido en la misma debido a que esta tenia usuarios postulados.');
+	    }
   	}
 
   	final public function __destruct()
