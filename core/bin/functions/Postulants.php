@@ -19,18 +19,11 @@ function Postulants($idGauchada=null) {
   return $postulantes;
 }
 
-function Postulant($idGauchada, $idUser) {
-  $postulantes = Postulants($idGauchada);
-  if($postulantes) {
-    foreach ($postulantes as $key => $value) {
-      if($idUser == $value['idUser'])
-        return true;
-    }
-  }
-  return false;
+function Selected($idGauchada, $idUser) {
+
 }
 
-function SelectedPostulant($idGauchada){
+function SelectedPostulant($idGauchada) {
   $db = new Connection();
   $where = 'idGauchada='.$idGauchada.' AND selected=1';
   $data = $db->select('*', 'Postulants p INNER JOIN Users u ON(p.idUser = u.idUser)', $where);
@@ -47,6 +40,23 @@ function SelectedPostulant($idGauchada){
     );
   }
   return $postulantes;
+}
+
+function UserPostulants($idUser) {
+  $db = new Connection();
+  $data = $db->select('*', 'Postulants', "idUser=$idUser AND selected=1");
+  if (!$data) return false;
+
+  for($i = 0; $i < count($data); $i++) {
+    $postulantes[$i] = $data[$i]['idGauchada'];
+  }
+  return $postulantes;
+}
+
+function PostulantAndNotSelected($idUser) {
+  $db = new Connection();
+  $data = $db->select('*', 'Postulants p LEFT JOIN Ratings r ON(p.idGauchada=r.idGauchada)', "idRating IS NULL AND p.selected=1 AND p.idUser=$idUser");
+  return $data? true : false;
 }
 
 ?>
