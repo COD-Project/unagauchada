@@ -53,6 +53,22 @@ final class Ratings extends Models
         'idGauchada' => $this->idGauchada
 	    );
 	    $this->db->insert('Ratings', $insert);
+	    if($this->rating != 2){
+	    	$gaucho = SelectedPostulant($this->idGauchada);
+	    	$user = Users()[$gaucho[0]['idUser']];
+	    	$where = 'idUser='.$user['idUser'];
+	    	if($this->rating == 3){
+	    		$points = 1;
+	    		$credits = 1;
+	    	} else if ($this->rating == 1) {
+	    		$points = -2;
+	    		$credits = 0;
+	    	}
+	    	$this->db->update('Users', array(
+	    		'points' => $user['points'] + $points,
+	    		'credits' => $user['credits'] + $credits
+	    	), $where);
+	    }
 	    Func::redirect(URL . 'gauchadas/view/' . $this->idGauchada);
   	}
 
