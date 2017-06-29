@@ -55,7 +55,7 @@ final class Postulants extends Models
       'description' => $this->description,
       'selected' => 0
     ));
-    Func::redirect(URL . '?success=true');
+    Func::redirect(URL . '?success=Se ha postulado correctamente');
   }
 
   final public function edit()
@@ -70,8 +70,10 @@ final class Postulants extends Models
   final public function delete()
   {
     $this->errors('?error=');
-    $this->db->delete('Postulants', "idUser=$this->idUser AND idGauchada=$this->idGauchada");
-    Func::redirect(URL . '?success=true');
+    $this->db->update('Postulants', array(
+      'validate' => 1
+    ), "idUser=$this->idUser AND idGauchada=$this->idGauchada");
+    Func::redirect(URL . '?success=Se despostulo correctamente');
   }
 
   final public function __destruct()

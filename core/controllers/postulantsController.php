@@ -23,6 +23,12 @@ class postulantsController extends Controller {
         Func::redirect();
       }
       break;
+      case 'delete':
+      if (array_key_exists($this->router->getId(), Gauchadas())) {
+        $postulants->delete();
+      } else {
+        Func::redirect();
+      }
     }
   }
 }
