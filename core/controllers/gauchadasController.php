@@ -11,13 +11,16 @@ class gauchadasController extends Controller {
   		$gauchadas = new Gauchadas();
 			switch ($this->router->getMethod()) {
 	        case 'add':
-						if(!$this->sessions->isGranted()){
-	          	if ($_POST) {
-            		$gauchadas->add();
-	          	} else {
-            		$this->render('gauchadas/add');
-	          	}
-						}
+				if(!$this->sessions->isGranted()){
+		          	if ($_POST) {
+	            		$gauchadas->add();
+		          	} else {
+		          		if(!GauchadasDebit((Sessions::getInstance())->connectedUser()['idUser'])){
+		          			$this->render('gauchadas/add');
+		          		}
+	            		Func::redirect(URL.'?success=Usted tiene calificaciones pendientes.');
+		          	}
+				}
 	        	break;
 					case 'view':
 						if (array_key_exists($this->router->getId(), Gauchadas())) {
