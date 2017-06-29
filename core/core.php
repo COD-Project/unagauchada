@@ -42,7 +42,8 @@ __functions_autoload(array(
   'Creditos',
   'Comments',
   'Postulants',
-  'Ratings'
+  'Ratings',
+  'News'
 ));
 
 

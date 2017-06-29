@@ -13,46 +13,35 @@
               <p style=\"color: gray;\">" . $user['phone'] . "</p>
           </div>
           <div class=\"col-md-6 text-center\">
-              <h6>Aasdasd</h6>
+              <h6>Créditos y Puntos</h6>
               <hr>
-              <span class=\"badge badge-pill badge-success\"><i class=\"fa fa-credit-card-alt\"></i> " . $user['credits'] . " Créditos</span>
-              <span class=\"badge badge-pill badge-danger\"><i class=\"fa fa-credit-card-alt\"></i> " . $user['points'] . " Puntos</span>
+              <span class=\"badge badge-pill badge-success\"><i class=\"fa fa-credit-card-alt\"></i> " . $user['credits'] . " Crédito/s </span>
+              <span class=\"badge badge-pill badge-danger\"><i class=\"fa fa-credit-card-alt\"></i> " . $user['points'] . " Punto/s </span>
           </div>
           <div class=\"col-md-12\" style=\"margin-top: 20px;\">
-            <h4 class=\"m-t-2\"><span class=\"fa fa-clock-o ion-clock pull-xs-right\"></span> Recent Activity</h4>
-            <table class=\"table table-hover table-striped\">
-                <tbody>
-                    <tr>
-                        <td>
-                            <strong>Abby</strong> joined ACME Project Team in <strong>`Collaboration`</strong>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <strong>Gary</strong> deleted My Board1 in <strong>`Discussions`</strong>
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td>
-                            <strong>Kensington</strong> deleted MyBoard3 in <strong>`Discussions`</strong>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <strong>John</strong> deleted My Board1 in <strong>`Discussions`</strong>
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td>
-                            <strong>Skell</strong> deleted his post Look at Why this is.. in <strong>`Discussions`</strong>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+            <h4 class=\"m-t-2\"><span class=\"fa fa-clock-o ion-clock\"></span> Actividad Reciente</h4>
         ";
+        if (News()) {
+          $HTML .= "<table class=\"table table-hover table-striped\">
+              <tbody>";
+                foreach (News() as $key => $value) {
+                  $HTML .= "
+                    <tr>
+                        <td>
+                            <strong>" . $value['user']['completeName'] . "</strong> eliminó la gauchada <strong>`" . $value['title'] . "`</strong>
+                        </td>
+                    </tr>
+                  ";
+                }
+          $HTML .= "</tbody>
+              </table>";
+        } else {
+          $HTML .= '<div class="alert alert-info alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <p class="text-fluid"><strong></strong>No se han registrado actividades recientes.</p>
+          </div>';
+        }
+        $HTML .= "</div>";
         echo $HTML;
       ?>
     </div>

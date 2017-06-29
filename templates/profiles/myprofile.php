@@ -22,7 +22,7 @@
         <div class="col-lg-8">
           <ul class="nav nav-pills nav-fill" style="margin-bottom: 5vh">
             <li class="nav-item">
-                <a href="" data-target="#perfil" data-toggle="tab" class="nav-link active"><i class="fa fa-user"></i> Perfil</a>
+                <a href="" data-target="#profile" data-toggle="tab" class="nav-link active"><i class="fa fa-user"></i> Perfil</a>
             </li>
             <li class="nav-item">
                 <a href="" data-target="#gauchadas" data-toggle="tab" class="nav-link"><i class="fa fa-bars"></i> Gauchadas</a>
@@ -31,7 +31,7 @@
                 <a href="" data-target="#postulaciones" data-toggle="tab" class="nav-link"><i class="fa fa-users"></i> Postulaciones</a>
             </li>
             <li class="nav-item">
-                <a href="" data-target="#calificaciones" data-toggle="tab" class="nav-link"><i class="fa fa"></i> Calificaciones</a>
+                <a href="" data-target="#calificaciones" data-toggle="tab" class="nav-link"><i class="fa fa-check"></i> Calificaciones</a>
             </li>
             <li class="nav-item">
                 <a href="" data-target="#edit" data-toggle="tab" class="nav-link"><i class="fa fa-cogs"></i> Editar</a>
@@ -39,13 +39,22 @@
           </ul>
           <div class="tab-content p-b-3">
             <div class="tab-pane wow fadeIn" id="gauchadas" data-wow-delay="0.1s">
-
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <p class="text-fluid"><strong>Ups! Esta historia corresponde a la siguiente demo.</strong></p>
+              </div>
             </div>
             <div class="tab-pane wow fadeIn" id="postulaciones" data-wow-delay="0.1s">
-
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <p class="text-fluid"><strong>Ups! Esta historia corresponde a la siguiente demo.</strong></p>
+              </div>
             </div>
             <div class="tab-pane wow fadeIn" id="calificaciones" data-wow-delay="0.1s">
-
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <p class="text-fluid"><strong>Ups! Esta historia corresponde a la siguiente demo.</strong></p>
+              </div>
             </div>
             <?php
               $this->include('profiles/myprofile/user');
