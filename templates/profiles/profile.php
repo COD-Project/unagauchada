@@ -25,7 +25,7 @@
               <ul class="list-group">';
             if($postulants) {
               foreach ($postulants as $postulant) {
-                $rating = Rating($postulant);
+                $rating = Rating($postulant['idGauchada']);
                 if($rating) {
                   $HTML .= '<li class="list-group-item justify-content-between">
                     <span class="badge badge-primary"> ' . $rating['title'] . '</span>
@@ -40,7 +40,7 @@
             </div>
           </div>';
 
-            if(PostulantAndNotSelected($this->router->getId(), $this->sessions->connectedUser()['idUser']) || PostulantAndNotSelected($this->sessions->connectedUser()['idUser'], $this->router->getId())) {
+            if(SelectedAndNotFinished($this->router->getId(), $this->sessions->connectedUser()['idUser']) || SelectedAndNotFinished($this->sessions->connectedUser()['idUser'], $this->router->getId())) {
               $user = Users()[$this->router->getId()];
               $HTML .= '<div class="jumbotron">
               <h1 class="h1-responsive"> Información de contacto</h1>
