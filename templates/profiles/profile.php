@@ -11,17 +11,12 @@
           $postulants = UserPostulants($this->router->getId());
           $HTML = '';
           if ($user) {
-            $HTML .= '<div class="col-10">
+            $HTML .= '<div class="col-11">
               <h1>' . $user['completeName'] . '</h1>
             </div>
             <div class="col-1">
               <a class="btn btn-warning option-button text-center" data-toggle="modal" data-target="#ListGauchadas">
                 <i class="fa fa-check" style="color: #fff"></i>
-              </a>
-            </div>
-            <div class="col-1">
-              <a class="btn btn-warning option-button text-center" href="gauchadas/view">
-                <i class="fa fa-mail-forward" aria-hidden="true"></i>
               </a>
             </div>
             <div class="col-12">
@@ -45,7 +40,7 @@
             </div>
           </div>';
 
-            if(PostulantAndNotSelected($this->router->getId())) {
+            if(PostulantAndNotSelected($this->router->getId(), $this->sessions->connectedUser()['idUser']) || PostulantAndNotSelected($this->sessions->connectedUser()['idUser'], $this->router->getId())) {
               $user = Users()[$this->router->getId()];
               $HTML .= '<div class="jumbotron">
               <h1 class="h1-responsive"> Información de contacto</h1>
@@ -62,9 +57,9 @@
                   <p class="lead"> Localización: <small>' . $user['location'] . '</small></p>
                 </div>
               </div>
-          </div>';
-            }
+            </div>';
           }
+        }
           echo $HTML;
         ?>
       </div>
