@@ -2,7 +2,7 @@
 
 function Postulants($idGauchada=null) {
   $db = new Connection();
-  $where = $idGauchada != null ? 'idGauchada='.$idGauchada : '1=1';
+  $where = $idGauchada != null ? 'idGauchada='.$idGauchada.' AND validate IS NULL' : 'validate IS NULL';
   $data = $db->select('*', 'Postulants p INNER JOIN Users u ON(p.idUser = u.idUser)', $where);
 
   if(!$data) return false;
@@ -32,7 +32,7 @@ function Postulant($idGauchada, $idUser) {
 
 function SelectedPostulant($idGauchada) {
   $db = new Connection();
-  $where = 'p.idGauchada='.$idGauchada.' AND selected=1';
+  $where = 'p.idGauchada='.$idGauchada.' AND selected=1 AND validate IS NULL';
   $data = $db->select('*', 'Postulants p INNER JOIN Users u ON(p.idUser = u.idUser) LEFT JOIN Ratings r ON(p.idGauchada=r.idGauchada)', $where);
 
   if (!$data) return false;
@@ -52,7 +52,7 @@ function SelectedPostulant($idGauchada) {
 
 function UserPostulants($idUser) {
   $db = new Connection();
-  $data = $db->select('*', 'Postulants', "idUser=$idUser AND selected=1");
+  $data = $db->select('*', 'Postulants', "idUser=$idUser AND selected=1 AND validate IS NULL");
   if (!$data) return false;
 
   for($i = 0; $i < count($data); $i++) {
@@ -66,7 +66,7 @@ function PostulantAndNotSelected($idOwner, $idUser) {
   $data = $db->select('p.idUser',
                       '(Gauchadas g INNER JOIN Postulants p ON (g.idGauchada=p.idGauchada))
                       LEFT JOIN Ratings r ON(p.idGauchada=r.idGauchada)',
-                      "idRating IS NULL AND p.selected=1 AND g.idUser=$idOwner AND p.idUser=$idUser");
+                      "idRating IS NULL AND p.selected=1 AND g.idUser=$idOwner AND p.idUser=$idUser AND p.validate IS NULL");
   return $data? true : false;
 }
 
