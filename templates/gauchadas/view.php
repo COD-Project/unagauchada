@@ -53,15 +53,35 @@
 					}
 					echo $HTML;
         	$HTML = "";
+					$selected = SelectedPostulant($this->router->getId());
+					if($selected[0]['idUser'] == $this->sessions->connectedUser()['idUser'] && !$selected[0]['idRating']) {
+						$HTML .= '<div class="col-12"><br>
+						<div class="alert alert-info alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<p class="text-fluid text-center">¡¡Te han cedido el poncho!! ¡Felicitaciones ' . $this->sessions->connectedUser()['completeName'] . '!</p>
+						</div></div>';
+					} else if($selected[0]['idUser'] != $this->sessions->connectedUser()['idUser'] && $gauchada['idUser'] != $this->sessions->connectedUser()['idUser'] && $selected) {
+						$HTML .= '<div class="col-12"><br>
+						<div class="alert alert-info alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<p class="text-fluid text-center">Fuiste rechazado... Pero no te desmotives <a href=' . URL . ' >aquí</a> hay más gauchadas</p>
+						</div></div>';
+					} else if($selected[0]['idUser'] == $this->sessions->connectedUser()['idUser'] && $selected[0]['idRating']) {
+						$HTML .= '<div class="col-12"><br>
+						<div class="alert alert-info alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<p class="text-fluid text-center">¡¡Te han calificado tu gauchada!!<br>Puedes ver la calificación en tu perfil o <a href=profiles/profile/' . $this->sessions->connectedUser()['idUser'] . '>aquí</a></p>
+						</div></div>';
+					}
         	$HTML.= '<div class="row" style="padding-top: 50px">
 					<div class="col-2 text-right">
 						<div class="avatar">
-							<img src="' . $gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 11vh">
+							<a href=profiles/profile/' . $gauchada['user']['idUser'] . '><img src="' . $gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 11vh"></a>
 						</div>
 					</div>
 					<div class="col-8">
 						<h1 class="h1-responsive">'.$gauchada['title'] . '</h1>
-        			<h6 class="h6-responsive">'. $gauchada['user']['completeName'] . ' - ' . $gauchada['location'] . ' - ' . $gauchada['creationDate'] .'</h6>
+        			<a href=profiles/profile/' . $gauchada['user']['idUser'] . '><h6 class="h6-responsive">'. $gauchada['user']['completeName'] . '</a> - ' . $gauchada['location'] . ' - ' . $gauchada['creationDate'] .'</h6>
         			<hr>
         			<p class="text-fluid">' . $gauchada['body'] . '</p>
 					</div>';
@@ -80,7 +100,7 @@
 							</a>';
 						}
 						$HTML .= '</div>';
-					} else if (!$postulante && !SelectedPostulant($this->router->getId())) {
+					} else if(!$postulante && !SelectedPostulant($this->router->getId())) {
 						$HTML.= '<div class="col-2">
 							<a class="btn btn-warning option-button text-center" style="color: #fff" data-toggle="modal" data-target="#Postulate">
 								<img src="views/app/img/mate.png" style="width: 25px;"></img>Postulate!
