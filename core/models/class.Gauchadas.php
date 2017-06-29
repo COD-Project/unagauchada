@@ -83,6 +83,9 @@ final class Gauchadas extends Models
     	$this->db->update('Gauchadas', array(
 	      'validate' => 1
 	    ),"idGauchada=$this->id");
+			$this->db->update('Postulants', array(
+				'validate' => 1
+			), "idGauchada=$this->id");
 	    if(!Postulants($this->id)){
 	    	$this->db->update('Users', array(
 	    		'credits' => (Sessions::getInstance())->connectedUser()['credits'] + 1
