@@ -61,9 +61,25 @@ function SelectedPostulant($idGauchada) {
   return $postulantes;
 }
 
-function UserPostulants($idUser) {
+function UserSelected($idUser) {
   $db = new Connection();
   $data = $db->select('*', 'Postulants', "idUser=$idUser AND selected=1 AND validate IS NULL");
+  if (!$data) return false;
+
+  for($i = 0; $i < count($data); $i++) {
+    $postulantes[$i] = array(
+      'idGauchada' => $data[$i]['idGauchada'],
+      'description' => $data[$i]['description'],
+      'validate' => $data[$i]['validate'],
+      'description' => $data[$i]['description']
+    );
+  }
+  return $postulantes;
+}
+
+function UserPostulantions($idUser) {
+  $db = new Connection();
+  $data = $db->select('*', 'Postulants', "idUser=$idUser AND validate IS NULL");
   if (!$data) return false;
 
   for($i = 0; $i < count($data); $i++) {

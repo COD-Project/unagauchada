@@ -31,7 +31,7 @@ final class Categories extends Models
 	final private function errors($url)
 	{
 	    try {
-	      	if (empty($this->router->getId()) && empty($_POST['name'])) {
+	      	if (empty($this->router->getId()) && empty($_POST['name']) && empty($_POST['idCategory'])) {
 	        	throw new PDOException("Error Processing Request", 1);
 	      	} else {
 		        $this->id = $this->router->getId() != null ? intval($this->router->getId()) : null;
@@ -42,23 +42,27 @@ final class Categories extends Models
 	    }
   	}
 
-  	final public function add()
-  	{
-	    $this->errors('categorias?error=');
+  	final public function add() {
+	    $this->errors('categories?error=');
 	    $this->db->insert('Categories', array(
 	      'name' => $this->name
 	    ));
-	    Func::redirect(URL . '?success=true');
+	    Func::redirect(URL . 'categories/main?success=Se creo la categoria exitosamente.');
   	}
 
-		final public function edit()
-		{
-
-		}
+	final public function edit() {
+		$this->errors('categories?error=');
+		$this->db->update('Categories', array('validate' => 1), 'idCategory='.$this->id);
+		$this->db->insert('Categories', array(
+	      'name' => $this->name
+	    ));
+	    Func::redirect(URL . 'categories/main?success=Se edito la categoria exitosamente.');
+	}
 
   	final public function delete() {
-	    $this->errors('categorias?errors=');
-	    $this->db->delete('Categories', "idCategory=$this->id");
+	    $this->errors('categories?error=');
+	    $this->db->update('Categories', array('validate' => 1), 'idCategory='.$this->id);
+	    Func::redirect(URL . 'categories/main?success=Se elimino la categoria exitosamente.');
   	}
 
   	final public function __destruct()
