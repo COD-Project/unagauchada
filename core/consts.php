@@ -4,28 +4,25 @@ define('OPTIONS', array(
   'gauchadas' => array(
     'filter' => array(
       'search' => array(
-        'content' => 'title LIKE ',
+        'content' => 'g.title LIKE ',
         'begin' => '"%',
         'end' => '%"'
       ),
       'category' => array(
-        'content' => 'idCategory=',
+        'content' => 'g.idCategory=',
         'begin' => '"',
         'end' => '"'
       ),
       'locality' => array(
-        'content' => 'location LIKE ',
+        'content' => 'g.location LIKE ',
         'begin' => '"%',
         'end' => '%"'
       ),
       'state' => array(
-        'content' => 'location LIKE ',
+        'content' => 'g.location LIKE ',
         'begin' => '"%',
         'end' => '%"'
       )
-    ),
-    'mode' => array(
-
     )
   ),
   'profiles' => array(

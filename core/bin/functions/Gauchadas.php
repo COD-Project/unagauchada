@@ -2,12 +2,20 @@
 
 function gauchadasFilter() {
   $db = new Connection();
-  $where = 'DATEDIFF(CURDATE(), limitDate) <= 0 AND validate IS NULL';
+  $select = '*';
+  $table = 'Gauchadas g';
+  $criteria = 'ORDER BY g.idGauchada DESC';
+  $where = 'DATEDIFF(CURDATE(), limitDate) <= 0 AND g.validate IS NULL';
   foreach (OPTIONS['gauchadas']['filter'] as $key => $value) {
     $where .= array_key_exists($key, $_GET) && !Func::emp($_GET[$key]) ?
               ' AND ' . $value['content'] . $value['begin'] . $db->escape($_GET[$key]) . $value['end'] : '';
   }
-  return $db->select('*', 'Gauchadas', $where, 'ORDER BY idGauchada DESC');
+  if (isset($_GET['mode'])) {
+    $select = 'g.idGauchada, g.idUser, g.title, g.body, g.location, g.limitDate, g.createdAt, g.evaluation, g.idCategory, COUNT(idPostulante) as "postulantes"';
+    $table .= ' LEFT JOIN Postulants p ON (g.idGauchada=p.idGauchada)';
+    $criteria = 'GROUP BY g.idGauchada ORDER BY postulantes ' . $_GET['mode'] . ', g.idGauchada DESC';
+  }
+  return $db->select($select, $table, $where, $criteria);
 }
 
 

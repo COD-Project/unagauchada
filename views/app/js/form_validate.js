@@ -1,3 +1,7 @@
+Func.limitate([
+  { hash: 'body', value: 155 }
+]);
+
 function postulantconfirm(elem)
 {
   Func.$('#postulant_confirm').href = elem;
