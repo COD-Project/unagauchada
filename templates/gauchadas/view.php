@@ -58,7 +58,7 @@
 						$HTML .= '<div class="col-12"><br>
 						<div class="alert alert-info alert-dismissible fade show" role="alert">
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<p class="text-fluid text-center">¡¡Te han cedido el poncho!! ¡Felicitaciones ' . $this->sessions->connectedUser()['completeName'] . '!</p>
+						<p class="text-fluid text-center">¡Felicitaciones ' . $this->sessions->connectedUser()['completeName'] . ' el poncho es todo tuyo!</p>
 						</div></div>';
 					} else if($selected[0]['idUser'] != $this->sessions->connectedUser()['idUser'] && $gauchada['idUser'] != $this->sessions->connectedUser()['idUser'] && $selected) {
 						$HTML .= '<div class="col-12"><br>
@@ -70,7 +70,7 @@
 						$HTML .= '<div class="col-12"><br>
 						<div class="alert alert-info alert-dismissible fade show" role="alert">
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<p class="text-fluid text-center">¡¡Te han calificado tu gauchada!!<br>Puedes ver la calificación en tu perfil o <a href=profiles/profile/' . $this->sessions->connectedUser()['idUser'] . '>aquí</a></p>
+						<p class="text-fluid text-center">¡¡Te han calificado tu gauchada!!<br>Puedes ver la calificación en tu <a href=profiles/myprofile> perfil </a></p>
 						</div></div>';
 					}
         	$HTML.= '<div class="row" style="padding-top: 50px">
