@@ -10,10 +10,10 @@
           <?php
             echo '<img src="' . $this->sessions->connectedUser()['profilePicture'] . '" class="rounded-circle img-fluid cmd_zoomin"  style="max-width: 50%; background-size: cover;">';
           ?>
-          <h6 class="m-t-2" style="margin-top: 2vh;">Cambia tu foto de perfil</h6>
+          <h6 class="m-t-2" style="margin-top: 2vh;"><strong>Cambia tu foto de perfil</strong></h6>
           <form class="form-inline" action="ajax.php?for=users&mode=edit" method="post" enctype="multipart/form-data">
             <label class="custom-file" style="margin-right: -1.8rem;">
-              <input type="file" name="images[]" class="custom-file-input" required>
+              <input type="file" name="images[]" accept="image/*" class="custom-file-input" required>
               <span class="custom-file-control"><i class="fa fa-file-image-o"></i> Subir imagen</span>
             </label>
             <button type="submit" class="btn btn-warning rounded-circle" style="z-index: 2000;"><i class="fa fa-arrow-right"></i></button>
@@ -22,22 +22,31 @@
         <div class="col-lg-8">
           <ul class="nav nav-pills nav-fill" style="margin-bottom: 5vh">
             <li class="nav-item">
-                <a href="" data-target="#profile" data-toggle="tab" class="nav-link active"><i class="fa fa-user"></i> Perfil</a>
+                <a href="" data-target="#perfil" data-toggle="tab" class="nav-link active"><i class="fa fa-user"></i> Perfil</a>
             </li>
             <li class="nav-item">
-                <a href="" data-target="#" data-toggle="tab" class="nav-link"><i class="fa fa-bars"></i> Gauchadas</a>
+                <a href="" data-target="#gauchadas" data-toggle="tab" class="nav-link"><i class="fa fa-bars"></i> Gauchadas</a>
             </li>
             <li class="nav-item">
-                <a href="" data-target="#" data-toggle="tab" class="nav-link"><i class="fa fa-users"></i> Postulaciones</a>
+                <a href="" data-target="#postulaciones" data-toggle="tab" class="nav-link"><i class="fa fa-users"></i> Postulaciones</a>
             </li>
             <li class="nav-item">
-                <a href="" data-target="#" data-toggle="tab" class="nav-link"><i class="fa fa"></i> Calificaciones</a>
+                <a href="" data-target="#calificaciones" data-toggle="tab" class="nav-link"><i class="fa fa"></i> Calificaciones</a>
             </li>
             <li class="nav-item">
                 <a href="" data-target="#edit" data-toggle="tab" class="nav-link"><i class="fa fa-cogs"></i> Editar</a>
             </li>
           </ul>
           <div class="tab-content p-b-3">
+            <div class="tab-pane wow fadeIn" id="gauchadas" data-wow-delay="0.1s">
+
+            </div>
+            <div class="tab-pane wow fadeIn" id="postulaciones" data-wow-delay="0.1s">
+
+            </div>
+            <div class="tab-pane wow fadeIn" id="calificaciones" data-wow-delay="0.1s">
+
+            </div>
             <?php
               $this->include('profiles/myprofile/user');
               $this->include('profiles/myprofile/edit');

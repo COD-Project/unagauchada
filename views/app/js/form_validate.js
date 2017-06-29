@@ -1,9 +1,10 @@
-Func.limitate([
-  { hash: 'body', value: 155 }
-]);
+if (Func.$('#body')) {
+  Func.limitate([
+    { hash: 'body', value: 155 }
+  ]);
+}
 
-function postulantconfirm(elem)
-{
+let postulantconfirm = (elem) => {
   Func.$('#postulant_confirm').href = elem;
 }
 
@@ -141,6 +142,12 @@ let getEditData = () => ({
       Func.$('#phone').value.length == 0
     ),
     success: Expresion.phone.test(Func.$('#phone').value)
+  },
+  state: {
+    value: Func.$('#state').value
+  },
+  locality: {
+    value: Func.$('#locality').value
   }
 })
 
