@@ -2,7 +2,7 @@
 
 function Categories($id = null) {
   $db = new Connection();
-  $where = $id==null ? '1=1' : "idCategory=$id";
+  $where = $id==null ? '1=1 AND validate IS NULL' : "idCategory=$id AND validate IS NULL";
   $data = $db->select('*', 'Categories', $where);
   if(!$data) return false;
 
