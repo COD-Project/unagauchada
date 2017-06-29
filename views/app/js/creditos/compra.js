@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			inputs: [
 				{ name: 'tipoTarjeta', inner: 'Tipo de Tarjeta', type: 'text' },
 				{ name: 'numeroTarjeta', inner: 'Número de Tarjeta', type: 'text' },
-				{ name: 'CSC', inner: 'CSC (Código de seguridad de la tarjeta)', type: 'text' },
+				{ name: 'CSC', inner: 'Código de seguridad de la tarjeta', type: 'text' },
 				{ name: 'fechaVencimiento', inner: 'Fecha de Vencimiento', type: 'date' },
 				{ name: 'creditos', inner: 'Créditos', type: 'number' }
 			],
@@ -32,6 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		Func.$('#creditos').addEventListener('change', onchange);
 		Func.$('#creditos').addEventListener('click', onchange);
 		Func.$('#creditos').addEventListener('keyup', onchange);
+
+		Func.limitate([
+			{ hash: 'numeroTarjeta', value: 35 },
+			{ hash: 'CSC', value: 3 },
+	    { hash: 'creditos', value: 11 },
+	  ]);
 
 	};
 });

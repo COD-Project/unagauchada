@@ -158,7 +158,7 @@
 															 <img src="' . $gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 8vh">
 															</div>
 															<label class="sr-only" for="body">Hace una pregunta!</label>
-															<input type="text" name="body" style="margin-right:1.5rem" class="form-control" for="body" placeholder="Responde la pregunta!">
+															<input type="text" id="body" name="body" style="margin-right:1.5rem" class="form-control" for="body" placeholder="Responde la pregunta!">
 
 															<button type="submit" class="btn btn-primary">Responder</button>
 														</form>
@@ -196,7 +196,7 @@
 									<div class="text-center">
 										<form class="form-inline" action="comments/add/'. $this->router->getId() . '" method="post">
 											<label class="sr-only" for="body">Hace una pregunta!</label>
-											<input type="text" name="body" style="width: 55%; margin-right: -1.35rem" class="form-control" for="body" placeholder="Escribe un comentario...">
+											<input type="text" id="body" name="body" style="width: 55%; margin-right: -1.35rem" class="form-control" for="body" placeholder="Escribe un comentario...">
 											<button type="submit" class="btn btn-warning rounded-circle"><i class="fa fa-angle-right"></i></button>
 										</form>
 									</div>

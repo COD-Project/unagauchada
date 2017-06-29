@@ -56,7 +56,20 @@
       <?php $this->include('gauchadas/list'); ?>
     </div>
     <div class="tab-pane wow fadeIn" id="filtrado" data-wow-delay="0.1s">
-      <?php $this->include('public/filter'); ?>
+      <?php
+        if ($this->sessions->isLoggedIn()) {
+          $this->include('public/filter');
+        } else {
+          echo "
+            <div class=\"card-block text-center\">
+              <h4 class=\"card-title\">Debes iniciar sesión para buscar y filtrar las gauchadas.</h4>
+              <p class=\"card-text\">Debes iniciar sesión para buscar y filtrar las gauchadas. Puedes iniciar sesión presionando el siguiente botón.</p>
+              <a class=\"btn btn-warning\" style=\"color: #fff;\" data-toggle=\"modal\" data-target=\"#Login\"><i class=\"fa fa-sign-in\"></i>  Iniciar sesión </a>
+            </div>
+          ";
+        }
+
+      ?>
     </div>
   </div>
 </div>
