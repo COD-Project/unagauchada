@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 28-06-2017 a las 01:59:50
+-- Tiempo de generación: 29-06-2017 a las 18:50:05
 -- Versión del servidor: 10.1.22-MariaDB
 -- Versión de PHP: 7.0.18
 
@@ -30,21 +30,22 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `Categories` (
   `idCategory` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL
+  `name` varchar(50) NOT NULL,
+  `validate` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `Categories`
 --
 
-INSERT INTO `Categories` (`idCategory`, `name`) VALUES
-(1, 'Viajes'),
-(2, 'Negocios'),
-(3, 'Tecnologia'),
-(4, 'Animales'),
-(5, 'Comida'),
-(6, 'Educación'),
-(7, 'Otra');
+INSERT INTO `Categories` (`idCategory`, `name`, `validate`) VALUES
+(1, 'Viajes', NULL),
+(2, 'Negocios', NULL),
+(3, 'Tecnologia', NULL),
+(4, 'Animales', NULL),
+(5, 'Comida', NULL),
+(6, 'Educación', NULL),
+(7, 'Otra', NULL);
 
 -- --------------------------------------------------------
 
@@ -69,7 +70,11 @@ CREATE TABLE `Comments` (
 INSERT INTO `Comments` (`idComment`, `body`, `createdAt`, `lastModify`, `idQuestion`, `idGauchada`, `idUser`) VALUES
 (1, 'Hola, soy estudiante de informatica y creo poder ayudarte! avisame si te parece :)', '2017-06-01', '2017-06-01', NULL, 1, 3),
 (2, 'Gracias! Me encantaria contacterme con vos', '2017-06-01', '2017-06-01', 1, 1, 2),
-(3, '¿Qué tan grande va a ser la tesis?', '2017-06-01', '2017-06-01', NULL, 1, 4);
+(3, '¿Qué tan grande va a ser la tesis?', '2017-06-01', '2017-06-01', NULL, 1, 4),
+(4, 'comentario', '2017-06-29', '2017-06-29', NULL, 4, 6),
+(5, 'respuesta', '2017-06-29', '2017-06-29', 4, 4, 4),
+(6, 'otra pregunta', '2017-06-29', '2017-06-29', NULL, 4, 6),
+(7, 'otra mas', '2017-06-29', '2017-06-29', NULL, 4, 3);
 
 -- --------------------------------------------------------
 
@@ -117,7 +122,11 @@ CREATE TABLE `Gauchadas` (
 INSERT INTO `Gauchadas` (`idGauchada`, `title`, `body`, `location`, `limitDate`, `createdAt`, `evaluation`, `idUser`, `idCategory`, `validate`) VALUES
 (1, 'Tesis', 'Necesito ayuda para desarrollar mi tesis, requiero de alguien que me pueda explicar LaTeX.', 'Buenos Aires, La Plata', '2017-09-30', '2017-06-01', 0, 2, 6, NULL),
 (2, 'Problemas felinos', 'Quiero deshacerme del gato de mi novia, tiene que ser en un horario nocturno, cuando ella duerma.', 'Chubut, Camarones', '2017-07-12', '2017-06-01', 0, 3, 4, NULL),
-(3, 'A horas del segundo sprint', 'Hola, estoy terminando de definir la base de datos y estaba buscando un buen diseñador de publicaciones para crear la gauchadas de muestra', 'Buenos Aires, La Plata', '2017-06-30', '2017-06-29', 0, 4, 3, NULL);
+(3, 'A horas del segundo sprint', 'Hola, estoy terminando de definir la base de datos y estaba buscando un buen diseñador de publicaciones para crear la gauchadas de muestra', 'Buenos Aires, La Plata', '2017-06-30', '2017-06-29', 0, 4, 3, NULL),
+(4, 'Una Gauchada', 'Con descripcion', 'Buenos Aires, La Plata', '2017-06-30', '2017-06-29', 0, 4, 4, 1),
+(5, 'nueva gaucahada', 'descripcion', 'Buenos Aires, La Plata', '2017-06-30', '2017-06-29', 0, 4, 3, 1),
+(6, 'Una mas', 'des', 'Buenos Aires, La Plata', '2017-06-30', '2017-06-29', 0, 4, 2, 1),
+(7, 'Nueva Gauchada', 'Descri', 'Buenos Aires, La Plata', '2017-06-30', '2017-06-29', 0, 4, 7, NULL);
 
 -- --------------------------------------------------------
 
@@ -139,7 +148,12 @@ INSERT INTO `GauchadasImages` (`idGauchadaImage`, `idGauchada`, `idImage`) VALUE
 (1, 1, 1),
 (2, 2, 2),
 (3, 2, 3),
-(4, 3, 1);
+(4, 3, 1),
+(5, 4, 8),
+(6, 4, 9),
+(7, 5, 1),
+(8, 6, 1),
+(9, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -163,7 +177,10 @@ INSERT INTO `Images` (`idImage`, `path`) VALUES
 (4, 'unagauchada.2.jpg'),
 (5, 'unagauchada.3.jpg'),
 (6, 'unagauchada.4.jpg'),
-(7, 'unagauchada.5.jpg');
+(7, 'unagauchada.5.jpg'),
+(8, 'gauchadas/4/image.8.png'),
+(9, 'gauchadas/4/image.9.png'),
+(10, 'users/4/image.9.png');
 
 -- --------------------------------------------------------
 
@@ -2589,7 +2606,10 @@ INSERT INTO `Postulants` (`idPostulante`, `idUser`, `idGauchada`, `description`,
 (1, 2, 2, 'Porque soy buena persona', 0, NULL),
 (2, 4, 2, 'Porque puedo dar lo máximo', 1, NULL),
 (3, 2, 3, 'Haceme la gauchada dale?', 1, NULL),
-(4, 3, 3, 'Fue bueno el anterior jaja', 0, NULL);
+(4, 3, 3, 'Fue bueno el anterior jaja', 0, NULL),
+(5, 3, 5, 'Por soy bueno', 0, 1),
+(6, 3, 6, 'otra vez', 1, 1),
+(7, 3, 7, 'Dalee!!', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -2646,6 +2666,14 @@ CREATE TABLE `Ratings` (
   `idGauchada` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `Ratings`
+--
+
+INSERT INTO `Ratings` (`idRating`, `rating`, `body`, `idGauchada`) VALUES
+(1, 3, 'Fue un buen trabajo!', 3),
+(2, 3, 'Un buen tipo', 7);
+
 -- --------------------------------------------------------
 
 --
@@ -2677,10 +2705,10 @@ CREATE TABLE `Users` (
 
 INSERT INTO `Users` (`idUser`, `name`, `surname`, `birthdate`, `phone`, `location`, `email`, `password`, `credits`, `points`, `state`, `session`, `registrationDate`, `keyreg`, `role`, `idImage`) VALUES
 (1, 'Admin', 'Admin', '1997-05-30', '22189786756', 'Buenos Aires, La Plata', 'admin@admin.com', '0b1c78bc8b5b71f6f49e0f29c36db73c', 1, 1, 0, 0, '2017-06-01', 'e7511a23920f0563a25ab0e71', 1, 1),
-(2, 'Juan Cruz', 'Ocampos', '1997-05-31', '2216150702', 'Buenos Aires, La Plata', 'ocamposjuancruz23@gmail.com', '1dd4ecb6f7f0091bc464fee9b9202d59', 0, 1, 0, 0, '2017-06-01', '8345a792d4488c7db9f0d6891', 2, 1),
-(3, 'Ulises', 'Cornejo', '1996-11-24', '22121436587', 'Buenos Aires, La Plata', 'ulisescf.24@gmail.com', '85d42b1aa432bac0828989e6c05c76ec', 3, 1, 0, 1496340400, '2017-06-01', '90e37b995374918409eb44684', 2, 1),
-(4, 'Lucas', 'Di Cunzolo', '1996-06-23', '22156473829', 'Buenos Aires, La Plata', 'lucasdc@gmail.com', '5d050ec99317aa0b71462c74ab9f3093', 2, 1, 0, 1498590950, '2017-06-01', 'c67638b22d54eb4e58f34c500', 2, 1),
-(5, 'Juan Mas', 'Ocampos', '1997-05-31', '02214803992', 'Buenos Aires, La Plata', 'ocamposjuanc@gmail.com', 'd18cda93701d8d6538c763b6847d218d', 0, 1, 0, 1498067386, '2017-06-16', 'fe3faff31eed07dc6e40f93a2', 2, 1),
+(2, 'Juan Cruz', 'Ocampos', '1997-05-31', '2216150702', 'Buenos Aires, La Plata', 'ocamposjuancruz23@gmail.com', '1dd4ecb6f7f0091bc464fee9b9202d59', 1, 2, 0, 0, '2017-06-01', '8345a792d4488c7db9f0d6891', 2, 1),
+(3, 'Ulises', 'Cornejo', '1996-11-24', '22121436587', 'Buenos Aires, La Plata', 'ulisescf.24@gmail.com', '85d42b1aa432bac0828989e6c05c76ec', 4, 2, 0, 1498766031, '2017-06-01', '90e37b995374918409eb44684', 2, 1),
+(4, 'Otro', 'Di Cunzolo', '1996-06-23', '22156473829', 'Buenos Aires, Bahia Blanca', 'lucasdc@gmail.com', 'c8551dd5572876ae3cc2533cd449928e', 4, 1, 0, 1498766907, '2017-06-01', 'c67638b22d54eb4e58f34c500', 2, 10),
+(5, 'Juan Equis', 'Ocampos', '1997-05-31', '02214803992', ',', 'ocamposjuanc@gmail.com', 'd41d8cd98f00b204e9800998ecf8427e', 0, 1, 0, 0, '2017-06-16', 'fe3faff31eed07dc6e40f93a2', 2, 1),
 (6, 'Pepe', 'Da Pepe', '1990-12-12', '22178786565', 'Buenos Aires, La Plata', 'pepe@pepe.com', 'd18cda93701d8d6538c763b6847d218d', 1, 1, 0, 0, '2017-06-21', 'a7b28f20d4e8a831b8c80366a', 2, 1);
 
 --
@@ -2699,7 +2727,8 @@ ALTER TABLE `Categories`
 ALTER TABLE `Comments`
   ADD PRIMARY KEY (`idComment`),
   ADD KEY `Comments_ibfk_2` (`idQuestion`),
-  ADD KEY `Comments_ibfk_1` (`idUser`);
+  ADD KEY `Comments_ibfk_1` (`idUser`),
+  ADD KEY `Comments_ibfk_3` (`idGauchada`);
 
 --
 -- Indices de la tabla `Creditos`
@@ -2775,7 +2804,7 @@ ALTER TABLE `Categories`
 -- AUTO_INCREMENT de la tabla `Comments`
 --
 ALTER TABLE `Comments`
-  MODIFY `idComment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idComment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `Creditos`
 --
@@ -2785,17 +2814,17 @@ ALTER TABLE `Creditos`
 -- AUTO_INCREMENT de la tabla `Gauchadas`
 --
 ALTER TABLE `Gauchadas`
-  MODIFY `idGauchada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idGauchada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `GauchadasImages`
 --
 ALTER TABLE `GauchadasImages`
-  MODIFY `idGauchadaImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idGauchadaImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `Images`
 --
 ALTER TABLE `Images`
-  MODIFY `idImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `Localidades`
 --
@@ -2805,7 +2834,7 @@ ALTER TABLE `Localidades`
 -- AUTO_INCREMENT de la tabla `Postulants`
 --
 ALTER TABLE `Postulants`
-  MODIFY `idPostulante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idPostulante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `Provincias`
 --
@@ -2815,7 +2844,7 @@ ALTER TABLE `Provincias`
 -- AUTO_INCREMENT de la tabla `Ratings`
 --
 ALTER TABLE `Ratings`
-  MODIFY `idRating` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idRating` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `Users`
 --
