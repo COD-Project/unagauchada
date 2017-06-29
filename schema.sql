@@ -117,7 +117,7 @@ CREATE TABLE `Gauchadas` (
 INSERT INTO `Gauchadas` (`idGauchada`, `title`, `body`, `location`, `limitDate`, `createdAt`, `evaluation`, `idUser`, `idCategory`, `validate`) VALUES
 (1, 'Tesis', 'Necesito ayuda para desarrollar mi tesis, requiero de alguien que me pueda explicar LaTeX.', 'Buenos Aires, La Plata', '2017-09-30', '2017-06-01', 0, 2, 6, NULL),
 (2, 'Problemas felinos', 'Quiero deshacerme del gato de mi novia, tiene que ser en un horario nocturno, cuando ella duerma.', 'Chubut, Camarones', '2017-07-12', '2017-06-01', 0, 3, 4, NULL),
-(3, 'Nueva gauchada de prueba', 'testeandoo', 'Buenos Aires, La Plata', '2017-06-30', '2017-06-24', 0, 4, 2, NULL);
+(3, 'A horas del segundo sprint', 'Hola, estoy terminando de definir la base de datos y estaba buscando un buen diseñador de publicaciones para crear la gauchadas de muestra', 'Buenos Aires, La Plata', '2017-06-30', '2017-06-29', 0, 4, 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -2586,10 +2586,10 @@ CREATE TABLE `Postulants` (
 --
 
 INSERT INTO `Postulants` (`idPostulante`, `idUser`, `idGauchada`, `description`, `selected`, `validate`) VALUES
-(1, 2, 2, 'No lo se...', 0, NULL),
-(2, 4, 2, 'Porque soy el mejor', 1, NULL),
-(3, 2, 3, 'Daaaleee', 1, NULL),
-(4, 3, 3, 'Una', 0, NULL);
+(1, 2, 2, 'Porque soy buena persona', 0, NULL),
+(2, 4, 2, 'Porque puedo dar lo máximo', 1, NULL),
+(3, 2, 3, 'Haceme la gauchada dale?', 1, NULL),
+(4, 3, 3, 'Fue bueno el anterior jaja', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -2658,7 +2658,7 @@ CREATE TABLE `Users` (
   `surname` varchar(25) NOT NULL,
   `birthdate` date DEFAULT NULL,
   `phone` varchar(25) DEFAULT NULL,
-  `location` int(11) DEFAULT NULL,
+  `location` varchar(255) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(55) NOT NULL,
   `credits` int(11) DEFAULT NULL,
@@ -2676,13 +2676,12 @@ CREATE TABLE `Users` (
 --
 
 INSERT INTO `Users` (`idUser`, `name`, `surname`, `birthdate`, `phone`, `location`, `email`, `password`, `credits`, `points`, `state`, `session`, `registrationDate`, `keyreg`, `role`, `idImage`) VALUES
-(1, 'Admin', 'Admin', '1997-05-30', '4803992', NULL, 'admin@admin.com', '0b1c78bc8b5b71f6f49e0f29c36db73c', 1, 1, 0, 0, '2017-06-01', 'e7511a23920f0563a25ab0e71', 1, 1),
-(2, 'Juan Cruz', 'Ocampos', '1997-05-31', '2216150702', NULL, 'ocamposjuancruz23@gmail.com', '1dd4ecb6f7f0091bc464fee9b9202d59', 0, 1, 0, 0, '2017-06-01', '8345a792d4488c7db9f0d6891', 2, 1),
-(3, 'Ulises', 'Cornejo', '1996-11-24', '4801997', NULL, 'ulisescf.24@gmail.com', '85d42b1aa432bac0828989e6c05c76ec', 12, 1, 0, 1496340400, '2017-06-01', '90e37b995374918409eb44684', 2, 1),
-(4, 'Lucas', 'Di Cunzolo', '1996-06-23', '4891274', NULL, 'lucasdc@gmail.com', '5d050ec99317aa0b71462c74ab9f3093', 50, 1, 0, 1498590950, '2017-06-01', 'c67638b22d54eb4e58f34c500', 2, 1),
-(5, 'Juan Cruz', 'Ocampos', '1997-05-31', '02214803992', NULL, 'ocamposjuanc@gmail.com', 'd18cda93701d8d6538c763b6847d218d', 0, 1, 0, 1498067386, '2017-06-16', 'fe3faff31eed07dc6e40f93a2', 2, 1),
-(6, 'asdghakld', 'dgkslaj', '0000-00-00', '312423413241', NULL, 'pepe@pepe.com', 'd18cda93701d8d6538c763b6847d218d', 1, 1, 0, 0, '2017-06-21', 'a7b28f20d4e8a831b8c80366a', 2, 1),
-(14, 'uno', 'uno', '0000-00-00', '23456734567', NULL, 'uno@gmail.com', 'c71ef24a1d74d6c77b4a01d1e1807c09', 1, 1, 0, 0, '2017-06-24', 'cf602dbac64904b76207225cc', 2, 1);
+(1, 'Admin', 'Admin', '1997-05-30', '22189786756', 'Buenos Aires, La Plata', 'admin@admin.com', '0b1c78bc8b5b71f6f49e0f29c36db73c', 1, 1, 0, 0, '2017-06-01', 'e7511a23920f0563a25ab0e71', 1, 1),
+(2, 'Juan Cruz', 'Ocampos', '1997-05-31', '2216150702', 'Buenos Aires, La Plata', 'ocamposjuancruz23@gmail.com', '1dd4ecb6f7f0091bc464fee9b9202d59', 0, 1, 0, 0, '2017-06-01', '8345a792d4488c7db9f0d6891', 2, 1),
+(3, 'Ulises', 'Cornejo', '1996-11-24', '22121436587', 'Buenos Aires, La Plata', 'ulisescf.24@gmail.com', '85d42b1aa432bac0828989e6c05c76ec', 3, 1, 0, 1496340400, '2017-06-01', '90e37b995374918409eb44684', 2, 1),
+(4, 'Lucas', 'Di Cunzolo', '1996-06-23', '22156473829', 'Buenos Aires, La Plata', 'lucasdc@gmail.com', '5d050ec99317aa0b71462c74ab9f3093', 2, 1, 0, 1498590950, '2017-06-01', 'c67638b22d54eb4e58f34c500', 2, 1),
+(5, 'Juan Mas', 'Ocampos', '1997-05-31', '02214803992', 'Buenos Aires, La Plata', 'ocamposjuanc@gmail.com', 'd18cda93701d8d6538c763b6847d218d', 0, 1, 0, 1498067386, '2017-06-16', 'fe3faff31eed07dc6e40f93a2', 2, 1),
+(6, 'Pepe', 'Da Pepe', '1990-12-12', '22178786565', 'Buenos Aires, La Plata', 'pepe@pepe.com', 'd18cda93701d8d6538c763b6847d218d', 1, 1, 0, 0, '2017-06-21', 'a7b28f20d4e8a831b8c80366a', 2, 1);
 
 --
 -- Índices para tablas volcadas
@@ -2821,7 +2820,7 @@ ALTER TABLE `Ratings`
 -- AUTO_INCREMENT de la tabla `Users`
 --
 ALTER TABLE `Users`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Restricciones para tablas volcadas
 --

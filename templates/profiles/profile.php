@@ -22,20 +22,22 @@
             <div class="col-12">
               <hr>
               <br>
-              <ul class="list-group">';
+              <div class="list-group">';
             if($postulants) {
               foreach ($postulants as $postulant) {
                 $rating = Rating($postulant['idGauchada']);
                 if($rating) {
-                  $HTML .= '<li class="list-group-item justify-content-between">
-                    <span class="badge badge-primary"> ' . $rating['title'] . '</span>
-                    <h4>' . $rating['body'] . '</h4>
-                    <span class="badge badge' . $rating['color'] . ' badge-pill">'.$rating['rating'].'</span>
-                  </li>';
+                  $HTML .= '<a href="gauchadas/view/' . $postulant['idGauchada'] . '" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1"><strong>' . $rating['title'] . '</strong></h5>
+                      <h5><span class="badge badge-pill badge' . $rating['color'] . '">'.$rating['rating'].'</span></h5>
+                    </div>
+                    <p class="mb-1">' . $rating['body'] . '</p>
+                  </a>';
                 }
               }
             }
-            $HTML .= '</ul>
+            $HTML .= '</div>
             <br><hr><br>
             </div>
           </div>';
