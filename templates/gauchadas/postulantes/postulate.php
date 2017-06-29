@@ -16,7 +16,7 @@
          </div>
          <form id="postulate_form" role="form" action=<?php echo "postulants/add/" . $this->router->getId() ?> method="post">
            <div class="group">
-             <input type="text" name="description">
+             <input id="description" type="text" name="description">
              <span class="highlight"></span><span class="bar"></span>
              <label for="text">Descripcion</label>
            </div>
