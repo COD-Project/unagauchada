@@ -61,10 +61,11 @@
 						<p class="text-fluid text-center">¡Felicitaciones <strong>' . $this->sessions->connectedUser()['completeName'] . '</strong> el poncho es todo tuyo!</p>
 						</div></div>';
 					} else if($selected[0]['idUser'] != $this->sessions->connectedUser()['idUser'] && $gauchada['idUser'] != $this->sessions->connectedUser()['idUser'] && $selected) {
+						$location = explode(', ', $this->sessions->connectedUser()['location']);
 						$HTML .= '<div class="col-12"><br>
 						<div class="alert alert-info alert-dismissible fade show" role="alert">
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<p class="text-fluid text-center">Fuiste rechazado... Pero no te desmotives <a href=' . URL . ' >aquí</a> hay más gauchadas</p>
+						<p class="text-fluid text-center">Fuiste rechazado... Pero no te desmotives <a href=' . URL . '?search=&state=' . str_replace(' ', '%20', $location[0]) . '&locality=' . str_replace(' ', '%20', $location[1]) . ' >aquí</a> hay más gauchadas</p>
 						</div></div>';
 					} else if($selected[0]['idUser'] == $this->sessions->connectedUser()['idUser'] && $selected[0]['idRating']) {
 						$HTML .= '<div class="col-12"><br>
