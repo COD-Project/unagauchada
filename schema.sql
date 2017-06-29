@@ -2577,18 +2577,19 @@ CREATE TABLE `Postulants` (
   `idUser` int(11) NOT NULL,
   `idGauchada` int(11) NOT NULL,
   `description` varchar(50) NOT NULL,
-  `selected` int(11) NOT NULL DEFAULT '0'
+  `selected` int(11) NOT NULL DEFAULT '0',
+  `validate` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `Postulants`
 --
 
-INSERT INTO `Postulants` (`idPostulante`, `idUser`, `idGauchada`, `description`, `selected`) VALUES
-(1, 2, 2, 'No lo se...', 0),
-(2, 4, 2, 'Porque soy el mejor', 1),
-(3, 2, 3, 'Daaaleee', 1),
-(4, 3, 3, 'Una', 0);
+INSERT INTO `Postulants` (`idPostulante`, `idUser`, `idGauchada`, `description`, `selected`, `validate`) VALUES
+(1, 2, 2, 'No lo se...', 0, NULL),
+(2, 4, 2, 'Porque soy el mejor', 1, NULL),
+(3, 2, 3, 'Daaaleee', 1, NULL),
+(4, 3, 3, 'Una', 0, NULL);
 
 -- --------------------------------------------------------
 
