@@ -45,7 +45,7 @@ function Gauchadas($all = false) {
 
 function GauchadasDebit($idUser) {
   $db = new Connection();
-  $data = $db->select('*', 'Gauchadas g INNER JOIN Postulants p ON (g.idGauchada=p.idGauchada)', 'g.idUser='.$idUser.' AND p.selected=1');
+  $data = $db->select('*', 'Gauchadas g INNER JOIN Postulants p ON (g.idGauchada=p.idGauchada)', 'g.idUser='.$idUser.' AND p.selected=1 AND g.validate IS NULL');
   if(!$data) return false;
   return true;
 }
