@@ -56,18 +56,41 @@ function UserPostulants($idUser) {
   if (!$data) return false;
 
   for($i = 0; $i < count($data); $i++) {
-    $postulantes[$i] = $data[$i]['idGauchada'];
+    $postulantes[$i] = array(
+      'idGauchada' => $data[$i]['idGauchada'],
+      'description' => $data[$i]['description'],
+      'validate' => $data[$i]['validate'],
+      'description' => $data[$i]['description']
+    );
   }
   return $postulantes;
 }
 
-function PostulantAndNotSelected($idOwner, $idUser) {
+function PostulantIn($idUser, $idOwner) {
+  $db = new Connection();
+  $data = $db->select('u.idUser, g.idGauchada, u.name, u.surname',
+                            '((Users u INNER JOIN Postulants p ON(u.idUser=p.idUser))INNER JOIN Gauchadas g ON(p.idGauchada=g.idGauchada))
+                            LEFT JOIN Ratings r ON(p.idGauchada=r.idGauchada)',
+                            'p.validate IS NULL AND r.idRating IS NULL AND p.idUser='.$idUser.' AND g.idUser='.$idOwner);
+  if(!$data) return false;
+
+  for($i = 0; $i < count($data); $i++) {
+    $postulantes[$i] = array(
+      'idUser' => $data[$i]['idUser'],
+      'idGauchada' => $data[$i]['idGauchada'],
+      'completeName' => $data[$i]['name'] . ' ' . $data[$i]['surname']
+    );
+  }
+  return $postulantes;
+}
+
+function SelectedAndNotFinished($idOwner, $idUser) {
   $db = new Connection();
   $data = $db->select('p.idUser',
                       '(Gauchadas g INNER JOIN Postulants p ON (g.idGauchada=p.idGauchada))
                       LEFT JOIN Ratings r ON(p.idGauchada=r.idGauchada)',
                       "idRating IS NULL AND p.selected=1 AND g.idUser=$idOwner AND p.idUser=$idUser AND p.validate IS NULL");
-  return $data? true : false;
+  return $data? $data[0]['idUser'] : false;
 }
 
 ?>
