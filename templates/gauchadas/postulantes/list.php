@@ -17,25 +17,32 @@
                 $HTML = '<h3>' . $user['completeName'] .' se postuló en las siguientes gauchadas:</h3>
                 <br>';
                 $gauchadas = Gauchadas();
-                $postulantes = Postulants();
+                // $postulantes = Postulants();
+                $postulantes = PostulantIn($this->router->getId(), $this->sessions->connectedUser()['idUser']);
                 if($postulantes) {
                   $HTML .= '<ul class="list-group">';
                   foreach ($postulantes as $postulante) {
-                  if($postulante['idUser'] == $this->router->getId()) {
-                    $HTML .= '<li class="list-group-item justify-content-between">
-                    <h4>' . $gauchadas[$postulante['idGauchada']]['title'] . '</h4>
-                    <span>';
-                    if(!SelectedPostulant($postulante['idGauchada'])) {
-                      $HTML .= '<a onclick="postulantconfirm(this.href)" href="postulants/edit/' . $postulante['idGauchada'] . '/' . $postulante['idUser'] . '" class="btn btn-warning option-button text-center" data-dismiss="modal" data-toggle="modal" data-target="#Confirmation">
-                        <i class="fa fa-check" style="color: #fff"></i>
-                      </a>';
+                    if($postulante['idUser'] == $this->router->getId()) {
+                      $HTML .= '<li class="list-group-item justify-content-between">
+                      <h4>' . $gauchadas[$postulante['idGauchada']]['title'] . '</h4>
+                      <span>';
+                      if(!SelectedPostulant($postulante['idGauchada'])) {
+                        $HTML .= '<a onclick="postulantconfirm(this.href)" href="postulants/edit/' . $postulante['idGauchada'] . '/' . $postulante['idUser'] . '" class="btn btn-warning option-button text-center" data-dismiss="modal" data-toggle="modal" data-target="#Confirmation">
+                          <i class="fa fa-check" style="color: #fff"></i>
+                        </a>';
+                      }
+                      $HTML .= '</span>
+                      </li>';
                     }
-                    $HTML .= '</span>
-                    </li>';
+                    $HTML .= '</ul>';
                   }
-                  $HTML .= '</ul>';
+                } else {
+                  $HTML .= '<div class="col-12">
+                  <div class="alert alert-info alert-dismissible fade show" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <p class="text-fluid">Parece que el usuario <strong>' . $user['completeName'] . '</strong> no se postuló en ninguna de tus gauchadas.<br>O ya finalizó todas</p>
+                  </div></div>';
                 }
-              }
                 echo $HTML;
              ?>
          </div>
