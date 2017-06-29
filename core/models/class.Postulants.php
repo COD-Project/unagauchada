@@ -55,7 +55,7 @@ final class Postulants extends Models
       'description' => $this->description,
       'selected' => 0
     ));
-    Func::redirect();
+    Func::redirect(URL . '?success=true');
   }
 
   final public function edit()
@@ -71,7 +71,7 @@ final class Postulants extends Models
   {
     $this->errors('?error=');
     $this->db->delete('Postulants', "idUser=$this->idUser AND idGauchada=$this->idGauchada");
-    Func::redirect(URL);
+    Func::redirect(URL . '?success=true');
   }
 
   final public function __destruct()

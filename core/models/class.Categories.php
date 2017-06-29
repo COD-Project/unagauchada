@@ -48,7 +48,7 @@ final class Categories extends Models
 	    $this->db->insert('Categories', array(
 	      'name' => $this->name
 	    ));
-	    Func::redirect(URL);
+	    Func::redirect(URL . '?success=true');
   	}
 
 		final public function edit()

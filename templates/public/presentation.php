@@ -31,6 +31,12 @@
       if($this->sessions->isLoggedIn() && !$this->sessions->isGranted()) {
         echo ('
           <div class="col-4 text-right">
+            <a class="btn btn-warning rounded-circle option-button text-center" style="background: coral;" href="?mode=DESC">
+              <i class="fa fa-arrow-down"></i>
+            </a>
+            <a class="btn btn-warning rounded-circle option-button text-center" style="background: coral;" href="?mode=ASC">
+              <i class="fa fa-arrow-up"></i>
+            </a>
             <a class="btn btn-warning rounded-circle option-button text-center" style="background: coral;" href="gauchadas/add">
               <i class="fa fa-plus"></i>
             </a>

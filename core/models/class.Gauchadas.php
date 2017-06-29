@@ -75,7 +75,7 @@ final class Gauchadas extends Models
 				));
 			}
 	    $this->db->update('Users', array('credits' => (Sessions::getInstance())->connectedUser()['credits'] - 1), 'idUser='.(Sessions::getInstance())->connectedUser()['idUser'], 'LIMIT 1');
-	    Func::redirect(URL);
+	    Func::redirect(URL . '?success=true');
   	}
 
   	final public function delete() {
