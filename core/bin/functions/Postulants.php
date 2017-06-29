@@ -20,6 +20,15 @@ function Postulants($idGauchada=null) {
   return $postulantes;
 }
 
+function Postulants_aux($idGauchada) {
+  $db = new Connection();
+  $where = 'idGauchada='.$idGauchada;
+  $data = $db->select('*', 'Postulants', $where);
+
+  if(!$data) return false;
+  return true;
+}
+
 function Postulant($idGauchada, $idUser) {
   $postulantes = Postulants($idGauchada);
   if($postulantes) {
