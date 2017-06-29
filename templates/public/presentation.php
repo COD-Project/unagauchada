@@ -16,6 +16,27 @@
     <p class="text-fluid"><strong>' . $_GET['success'] . '</strong></p>
     </div></div>';
   }
+
+  $criteria = "<strong>Se filtraron las gauchadas que cumplen el siguiente criterio: </strong><br>";
+  $criteria .= !(isset($_GET['search']) && !empty($_GET['search'])) ? '' : 'gauchadas que contienen la palabra clave <strong>' . $_GET['search'] . '</strong><br>';
+  $criteria .= !(isset($_GET['category']) && is_numeric($_GET['category'])) ? '' : 'gauchadas pertenecientes a la categoría <strong>' . Categories(intval($_GET['category']))[0]['name']. '</strong><br>';
+  $criteria .= !(isset($_GET['state']) && !empty($_GET['state'])) ? '' : 'gauchadas de la provincia <strong>' . $_GET['state'] . '</strong><br>';
+  $criteria .= !(isset($_GET['locality']) && !empty($_GET['locality'])) ? '' : 'gauchadas de la localidad <strong>' . $_GET['locality'] . '</strong><br>';
+
+  if ((isset($_GET['search']) || isset($_GET['category']) || isset($_GET['state']) || isset($_GET['locality']))) {
+    echo '<div class="container pt-6 text-center wow fadeIn" data-wow-delay="0.2s">
+    <div class="alert alert-warning fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <p class="text-fluid">' . $criteria . '</p>
+    </div></div>';
+  }
+  if (isset($_GET['mode']) && !Func::emp($_GET['mode'])) {
+    echo '<div class="container pt-6 text-center wow fadeIn" data-wow-delay="0.2s">
+    <div class="alert alert-warning fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <p class="text-fluid">Se ordenaron las gauchadas por cantidad de postulantes de forma <strong>' . (strtolower($_GET['mode']) == 'asc' ? 'ascendente' : 'descendente'). '</strong></p>
+    </div></div>';
+  }
 ?>
 
 <!--Main layout-->
