@@ -12,6 +12,7 @@ function Postulants($idGauchada=null) {
       'idUser' => $data[$i]['idUser'],
       'idGauchada' => $data[$i]['idGauchada'],
       'completeName' => $data[$i]['name'] . ' ' . $data[$i]['surname'],
+      'description' => $data[$i]['description'],
       'email' => $data[$i]['email'],
       'profilePicture' => Images()[$data[$i]['idImage']]['path']
     );
@@ -43,6 +44,7 @@ function SelectedPostulant($idGauchada) {
       'idGauchada' => $data[$i]['idGauchada'],
       'completeName' => $data[$i]['name'] . ' ' . $data[$i]['surname'],
       'email' => $data[$i]['email'],
+      'description' => $data[$i]['description'],
       'profilePicture' => Images()[$data[$i]['idImage']]['path'],
       'idRating' => $data[$i]['idRating']
     );
@@ -68,7 +70,7 @@ function UserPostulants($idUser) {
 
 function PostulantIn($idUser, $idOwner) {
   $db = new Connection();
-  $data = $db->select('u.idUser, g.idGauchada, u.name, u.surname',
+  $data = $db->select('u.idUser, g.idGauchada, u.name, u.surname, p.description',
                             '((Users u INNER JOIN Postulants p ON(u.idUser=p.idUser))INNER JOIN Gauchadas g ON(p.idGauchada=g.idGauchada))
                             LEFT JOIN Ratings r ON(p.idGauchada=r.idGauchada)',
                             'p.validate IS NULL AND r.idRating IS NULL AND p.idUser='.$idUser.' AND g.idUser='.$idOwner);
@@ -78,7 +80,8 @@ function PostulantIn($idUser, $idOwner) {
     $postulantes[$i] = array(
       'idUser' => $data[$i]['idUser'],
       'idGauchada' => $data[$i]['idGauchada'],
-      'completeName' => $data[$i]['name'] . ' ' . $data[$i]['surname']
+      'completeName' => $data[$i]['name'] . ' ' . $data[$i]['surname'],
+      'description' => $data[$i]['description']
     );
   }
   return $postulantes;

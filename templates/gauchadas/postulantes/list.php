@@ -17,7 +17,6 @@
                 $HTML = '<h3>' . $user['completeName'] .' se postuló en las siguientes gauchadas:</h3>
                 <br>';
                 $gauchadas = Gauchadas();
-                // $postulantes = Postulants();
                 $postulantes = PostulantIn($this->router->getId(), $this->sessions->connectedUser()['idUser']);
                 if($postulantes) {
                   $HTML .= '<ul class="list-group">';
@@ -25,6 +24,7 @@
                     if($postulante['idUser'] == $this->router->getId()) {
                       $HTML .= '<li class="list-group-item justify-content-between">
                       <h4>' . $gauchadas[$postulante['idGauchada']]['title'] . '</h4>
+                      <small>' . $postulante['description'] . '</small>
                       <span>';
                       if(!SelectedPostulant($postulante['idGauchada'])) {
                         $HTML .= '<a onclick="postulantconfirm(this.href)" href="postulants/edit/' . $postulante['idGauchada'] . '/' . $postulante['idUser'] . '" class="btn btn-warning option-button text-center" data-dismiss="modal" data-toggle="modal" data-target="#Confirmation">
