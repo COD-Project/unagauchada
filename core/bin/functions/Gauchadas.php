@@ -19,6 +19,7 @@ function Gauchadas($all = false) {
   for($i = 0; $i < count($data); $i++) {
     $gauchadas[$data[$i]['idGauchada']] = array(
       'idGauchada' => $data[$i]['idGauchada'],
+      'idUser' => $data[$i]['idUser'],
       'title' => $data[$i]['title'],
       'body' => $data[$i]['body'],
       'location' => $data[$i]['location'],
