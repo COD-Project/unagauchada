@@ -17,11 +17,15 @@
           $HTML .= '<li class="list-group-item justify-content-between">
             <div class="col-1">
               <i class="fa fa-tag"></i>
-            </div>
-            <div class="col-1">
-              <a href="#"> <i class="fa fa-edit"></i> </a>
-            </div>
-            <div class="col-7">' .  $categories[$id]['name'] . '</div>
+            </div>';
+            if($categories[$id]['idCategory'] != 1){
+              $HTML .= '<div class="col-1">
+                            <a class="edit' . $categories[$id]['idCategory'] . '"> <i class="fa fa-edit" style="color:blue"></i> </a>
+                          </div>';
+            } else {
+              $HTML .= '<div class="col-1"></div>';
+            }
+            $HTML .= '<div class="col-7">' .  $categories[$id]['name'] . '</div>
           <div class="col-3">';
 
           if($categories[$id]['idCategory'] != 1){
