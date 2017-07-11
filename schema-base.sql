@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `Categories` (
 --
 
 INSERT INTO `Categories` (`idCategory`, `name`, `validate`) VALUES
-(1, 'Otros', NULL);
+(1, 'Otros', 0);
 
 -- --------------------------------------------------------
 
