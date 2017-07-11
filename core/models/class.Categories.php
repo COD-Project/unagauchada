@@ -44,10 +44,18 @@ final class Categories extends Models
 
   	final public function add() {
 	    $this->errors('categories?error=');
-	    $this->db->insert('Categories', array(
-	      'name' => $this->name
-	    ));
-	    Func::redirect(URL . 'categories/main?success=Se creo la categoria exitosamente.');
+	    if(!CategoriesExist($this->name)){
+	    	$this->db->insert('Categories', array(
+		      'name' => $this->name,
+		      'validate' => 0
+		    ));
+		    Func::redirect(URL . 'categories/main?success=Se creo la categoria exitosamente.');
+	    } else if (CategoriesExist($this->name)[0]['validate'] == 1){
+	    	$this->db->update('Categories', array('validate' => 0), 'idCategory='.CategoriesExist($this->name)[0]['idCategory']);
+	    	Func::redirect(URL . 'categories/main?success=Se creo la categoria exitosamente.');
+	    } else {
+	    	Func::redirect(URL . 'categories/main?error=Esa Categoria ya existe.');
+	    }    
   	}
 
 	final public function edit() {
