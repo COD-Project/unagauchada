@@ -46,7 +46,7 @@ final class Categories extends Models
 	    $this->errors('categories?error=');
 	    if(!CategoriesExist($this->name)){
 	    	$this->db->insert('Categories', array(
-		      'name' => $this->name,
+		      'name' => ucfirst(strtolower($this->name)),
 		      'validate' => 0
 		    ));
 		    Func::redirect(URL . 'categories/main?success=Se creo la categoria exitosamente.');
