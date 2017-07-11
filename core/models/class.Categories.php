@@ -60,11 +60,15 @@ final class Categories extends Models
 
 	final public function edit() {
 		$this->errors('categories?error=');
-		$this->db->update('Categories', array('validate' => 1), 'idCategory='.$this->id);
-		$this->db->insert('Categories', array(
-	      'name' => $this->name
-	    ));
-	    Func::redirect(URL . 'categories/main?success=Se edito la categoria exitosamente.');
+		if(!CategoriesExist($this->name)){
+			$this->db->update('Categories', array('validate' => 1), 'idCategory='.$this->id);
+			$this->db->insert('Categories', array(
+		      'name' => ucfirst(strtolower($this->name))
+		    ));
+		    Func::redirect(URL . 'categories/main?success=Se edito la categoria exitosamente.');
+		} else {
+			Func::redirect(URL . 'categories/main?error=No se puede escribir el nombre de una categoria que ya existe.');
+		}
 	}
 
   	final public function delete() {
