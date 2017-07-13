@@ -38,12 +38,6 @@
             </li>
           </ul>
           <div class="tab-content p-b-3">
-            <div class="tab-pane wow fadeIn" id="gauchadas" data-wow-delay="0.1s">
-              <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <p class="text-fluid"><strong>Ups! Esta historia corresponde a la siguiente demo.</strong></p>
-              </div>
-            </div>
             <div class="tab-pane wow fadeIn" id="postulaciones" data-wow-delay="0.1s">
               <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -57,6 +51,7 @@
               </div>
             </div>
             <?php
+              $this->include('profiles/myprofile/gauchadas');
               $this->include('profiles/myprofile/user');
               $this->include('profiles/myprofile/edit');
             ?>
