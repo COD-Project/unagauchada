@@ -8,12 +8,6 @@ class gauchadasController extends Controller {
 	public function __construct() {
   	parent::__construct(true);
   	if($this->sessions->isLoggedIn()) {
-  		$this->models = array(
-				"gauchadas" => new Gauchadas,
-				"postulantes" => new Postulants
-			);
-			$this->gauchadas = $this->models['gauchadas']->get(['all']);
-			$this->postulantes = $this->models['postulantes']->get($this->router->getId());
 			switch ($this->router->getMethod()) {
 	        case 'add':
 						if(!$this->sessions->isGranted()){
@@ -49,6 +43,15 @@ class gauchadasController extends Controller {
   	} else if ($this->router->getMethod() == 'view') {
   		Func::redirect(URL . '?error=Debes estar logueado para ver una gauchada');
   	}
+	}
+
+	protected function initialize() {
+		$this->setModels(array(
+			"gauchadas",
+			"postulants"
+		));
+		$this->gauchadas = $this->models['gauchadas']->get(['all']);
+		$this->postulantes = $this->models['postulants']->get($this->router->getId());
 	}
 }
 

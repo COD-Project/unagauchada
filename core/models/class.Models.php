@@ -15,7 +15,7 @@ abstract class Models
   protected $db; // All model class needs an instance variable of class Connection.
   protected $id; // Every table in the database has a column for the identifier.
   protected $router;
-  
+
   abstract static function getInstance();
 
   public function __construct()

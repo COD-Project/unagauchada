@@ -11,11 +11,11 @@ class homeController extends Controller {
     $this->render('index/index');
   }
 
-  private function initialize() {
-    $this->models = array(
-      'gauchadas' => new Gauchadas,
-      'categories' => new Categories
-    );
+  protected function initialize() {
+    $this->setModels(array(
+      'gauchadas',
+      'categories'
+    ));
     $this->gauchadas = $this->models['gauchadas']->get();
   }
 }

@@ -18,10 +18,10 @@ class profilesController extends Controller {
     }
   }
 
-  private function initialize() {
-    $this->models = array(
-      'gauchadas' => new Gauchadas
-    );
+  protected function initialize() {
+    $this->setModels(array(
+      'gauchadas'
+    ));
     $where = !$this->router->getId() ?
           array('user' => $this->sessions->connectedUser()['idUser']) :
           array('all' => true);

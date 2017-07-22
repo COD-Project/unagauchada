@@ -12,6 +12,7 @@ abstract class Controller
   protected $method;
   protected $router;
   protected $sessions = null;
+  protected $models = array();
 
   static function getInstance() {
     if (!self::$instance) {
@@ -49,6 +50,13 @@ abstract class Controller
     # Utilities
     $this->method = $this->method = ($this->router->getMethod() != null and ctype_alnum($this->router->getMethod())) ? $this->router->getMethod() : null;
     $this->isset_id = ($this->router->getId() != null and is_numeric($this->router->getId()) and $this->router->getId() >= 1);
+
+    $this->initialize();
+
+  }
+
+  protected function initialize() {
+
   }
 
   protected function render($template)
@@ -59,6 +67,17 @@ abstract class Controller
   protected function include($template)
   {
     return $this->render($template);
+  }
+
+  protected function setModels($models = array())
+  {
+    foreach ($models as $key => $value) {
+      $hash = strtolower($value);
+      $model = ucfirst($hash);
+      if (is_readable("core/models/class.$model.php")) {
+        $this->models[$hash] = new $model;
+      }
+    }
   }
 
 }
