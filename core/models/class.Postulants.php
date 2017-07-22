@@ -104,7 +104,7 @@ final class Postulants extends Models
         "profilePicture" => (new Images)->get(['image' => $data[$i]["idImage"]])[0]["path"]
       );
     }
-    return $postulants ?? false;
+    return !$data ? $data : $postulants;
   }
 
 
