@@ -16,16 +16,16 @@ class postulantsController extends Controller {
         Func::redirect();
       }
       break;
-case 'edit':
-  if (array_key_exists($this->router->getId(), Gauchadas())) {
-    $postulants->edit();
+    case 'edit':
+      if (array_key_exists($this->router->getId(), Gauchadas())) {
+        $postulants->edit();
       } else {
         Func::redirect();
       }
       break;
-case 'delete':
-  if (array_key_exists($this->router->getId(), Gauchadas())) {
-    $postulants->delete();
+    case 'delete':
+      if (array_key_exists($this->router->getId(), Gauchadas())) {
+        $postulants->delete();
       } else {
         Func::redirect();
       }

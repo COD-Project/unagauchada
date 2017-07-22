@@ -13,11 +13,11 @@ class ratingsController extends Controller {
       case 'add':
         if ($_POST) {
           $ratings->add();
-              }
-              break;
-          }
+        }
+        break;
       }
     }
+  }
 }
 
 ?>

@@ -14,22 +14,22 @@ class categoriesController extends Controller {
         case 'add':
           if ($_POST) {
             $categories->add();
-          } 
-          break;
-case 'edit':
-  if ($_POST) {
-    $categories->edit();
           }
           break;
-case 'delete':
-  if($this->router->getId() != 1){
-    $categories->delete();
+        case 'edit':
+          if ($_POST) {
+            $categories->edit();
           }
           break;
-case 'main':
-  $this->categories = $categories->get();
-  $this->render('categories/main');
-  break;
+        case 'delete':
+          if($this->router->getId() != 1){
+            $categories->delete();
+          }
+          break;
+        case 'main':
+          $this->categories = $categories->get();
+          $this->render('categories/main');
+          break;
         }
       }
     }
