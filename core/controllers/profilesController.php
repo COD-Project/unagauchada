@@ -7,10 +7,7 @@ defined('INDEX_DIR') OR exit(APP . ' software says .i.');
 class profilesController extends Controller {
   public function __construct() {
     parent::__construct(true);
-    $this->model = new Gauchadas;
-    $this->gauchadas = $this->model->get(array(
-      'user' => $this->sessions->connectedUser()['idUser']
-    ));
+    $this->initialize();
     if ($this->sessions->isLoggedIn() && !Func::emp($this->router->getMethod()) && OPTIONS['profiles'][$this->router->getMethod()]) {
       if($this->router->getId() == '1' || $this->router->getId() == $this->sessions->connectedUser()['idUser']) {
         Func::redirect();
@@ -19,6 +16,16 @@ class profilesController extends Controller {
     } else {
       Func::redirect();
     }
+  }
+
+  private function initialize() {
+    $this->models = array(
+      'gauchadas' => new Gauchadas
+    );
+    $where = !$this->router->getId() ?
+          array('users' => $this->sessions->connectedUser()['idUser']) :
+          array('all' => true);
+    $this->gauchadas = $this->model->get($where);
   }
 }
 
