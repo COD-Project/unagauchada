@@ -40,7 +40,8 @@ abstract class Models
   public function get($options = null)
   {
     $query = $this->filter($options);
-    return $this->prepare($this->executeQuery($query));
+    $data = $this->executeQuery($query);
+    return !$data ? $data : $this->prepare($data);
   }
 
   protected function __destruct()
