@@ -29,8 +29,10 @@ class profilesController extends Controller {
       array('all' => true);
     $this->gauchadas = $this->models['gauchadas']->get($where);
     $this->user = $this->models['users']->get()[$this->router->getId()];
-    $this->postulants = $this->models['postulants']->get(["user" => $this->router->getId()]);
-  }
+    $this->postulants = $this->models['postulants']->get([
+      "user" => $this->router->getId(),
+    ]);
+   }
 
   protected function news() {
     $db = new Connection();
@@ -60,6 +62,15 @@ class profilesController extends Controller {
     ]);
     return $selected_user || $selected_owner;
 
+  }
+
+  protected function selected($idGauchada) {
+    $this->selected = $this->models["postulants"]->get([
+      "user" => $this->router->getId(),
+      "gauchada" => $idGauchada,
+      "selected" => "1"
+    ]);
+    return $this->selected;
   }
 }
 

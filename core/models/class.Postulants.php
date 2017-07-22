@@ -85,9 +85,13 @@ final class Postulants extends Models
         $where .= " AND " . $value['content'] . ($options[$key] ?? $value['default']);
       }
     }
+    $table = "(Postulants p INNER JOIN Gauchadas g ON(p.idGauchada = g.idGauchada))";
+    if(isset($options['selected'])) {
+      $table .= "LEFT JOIN Ratings r ON(p.idGauchada=r.idGauchada)";
+    }
     return array(
-      "elements" => "*",
-      "table" => "(Postulants p INNER JOIN Gauchadas g ON(p.idGauchada = g.idGauchada)) LEFT JOIN Ratings r ON(p.idGauchada=r.idGauchada)",
+      "elements" => "*, p.idUser as idPostulant",
+      "table" => $table ,
       "where" => $where
     );
   }
@@ -96,14 +100,15 @@ final class Postulants extends Models
   {
     $users = (new Users)->get();
     for($i = 0; $i < count($data); $i++) {
-      $user = $users[$data[$i]["idUser"]];
+      $user = $users[$data[$i]["idPostulant"]];
       $postulants[$i] = array(
-        "idUser" => $data[$i]["idUser"],
+        "idUser" => $data[$i]["idPostulant"],
         "idGauchada" => $data[$i]["idGauchada"],
         "completeName" => $user["completeName"],
         "description" => $data[$i]["description"],
         "email" => $user["email"],
-        "profilePicture" => (new Images)->get(['image' => $user["idImage"]])[0]["path"]
+        "idRating" => $data[$i]["idRating"] ?? false,
+        "profilePicture" => $user["profilePicture"]
       );
     }
     return !$data ? $data : $postulants;

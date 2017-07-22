@@ -51,10 +51,11 @@ class gauchadasController extends Controller {
       "users"
     ));
     $this->gauchadas = $this->models['gauchadas']->get(['all']);
-    $this->postulantes = $this->models['postulants']->get(["gauchada" => $this->router->getId()]);
+    $this->postulants = $this->models['postulants']->get(["gauchada" => $this->router->getId()]);
     $this->users = $this->models["users"]->get();
     $this->selected = $this->models["postulants"]->get([
-      "gauchada" => $this->router->getId()
+      "gauchada" => $this->router->getId(),
+      "selected" => "1"
     ]);
   }
 
