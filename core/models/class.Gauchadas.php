@@ -137,7 +137,8 @@ final class Gauchadas extends Models
 		}
 
 		final public function get($options = null) {
-		  $data = !isset($options['all']) ? $this->filter() : $this->db->select('*', 'Gauchadas', '1=1', 'ORDER BY idGauchada DESC');
+			$where = isset($options['user']) ? "idUser=" . $options['user'] : '1=1';
+		  $data = !isset($options['all']) ? $this->filter() : $this->db->select('*', 'Gauchadas', $where, 'ORDER BY idGauchada DESC');
 		  return !$data ? $data : $this->prepare($data);
 		}
 
