@@ -51,6 +51,7 @@ class gauchadasController extends Controller {
     ));
     $this->gauchadas = $this->models['gauchadas']->get(['all']);
     $this->postulantes = $this->models['postulants']->get($this->router->getId());
+    $this->users = (new Users)->get();
   }
 
   private function debit() {
