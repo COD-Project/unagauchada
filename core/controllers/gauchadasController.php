@@ -8,15 +8,19 @@ class gauchadasController extends Controller {
 	public function __construct() {
   	parent::__construct(true);
   	if($this->sessions->isLoggedIn()) {
-  		$this->model = new Gauchadas();
-			$this->gauchadas = $this->model->get();
+  		$this->models = array(
+				"gauchadas" => new Gauchadas,
+				"postulantes" => new Postulants
+			);
+			$this->gauchadas = $this->models['gauchadas']->get(['all']);
+			$this->postulantes = $this->models['postulantes']->get($this->router->getId());
 			switch ($this->router->getMethod()) {
 	        case 'add':
 						if(!$this->sessions->isGranted()){
 							$this->categories = (new Categories)->get();
 		        	if ($_POST) {
 
-		        		$this->model->add();
+		        		$this->models['gauchadas']->add();
 		        	} else if(!GauchadasDebit((Sessions::getInstance())->connectedUser()['idUser'])){
 		        			$this->render('gauchadas/add');
 		        	} else {
@@ -26,6 +30,7 @@ class gauchadasController extends Controller {
 	        	break;
 					case 'view':
 						if (array_key_exists($this->router->getId(), $this->gauchadas)) {
+							$this->gauchada = $this->gauchadas[$this->router->getId()];
 							$this->render("gauchadas/view");
 						} else {
 							Func::redirect();
@@ -33,7 +38,7 @@ class gauchadasController extends Controller {
 						break;
 					case 'delete':
 						if (array_key_exists($this->router->getId(), $this->gauchadas)) {
-							$this->model->delete();
+							$this->models['gauchadas']->delete();
 						} else {
 							Func::redirect();
 						}

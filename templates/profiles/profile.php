@@ -8,7 +8,7 @@
       <div class="row">
         <?php
           $user = Users()[$this->router->getId()];
-          $postulants = UserPostulants($this->router->getId());
+          $postulants = UserPostulantions($this->router->getId());
           $HTML = '';
           if ($user) {
             $HTML .= '<div class="col-11">

@@ -6,46 +6,45 @@
 	<?php $this->render('overall/topnav'); ?>
 	<div class="container">
 		<?php
-				$gauchada = $this->gauchadas[$this->router->getId()];
-				$postulante = Postulant($gauchada['idGauchada'], $this->sessions->connectedUser()['idUser']);
+				$postulante = Postulant($this->gauchada['idGauchada'], $this->sessions->connectedUser()['idUser']);
 				$HTML = '';
-				if ($gauchada['images']) {
+				if ($this->gauchada['images']) {
 					$HTML .= '
-					<div id="carousel-example-1z" style="padding-top: 100px;" class="carousel slide" data-ride="carousel">
+					<div id="gauchadas_images" style="padding-top: 100px;" class="carousel slide" data-ride="carousel">
 						<ol class="carousel-indicators">';
-					for($i = 0; $i < count($gauchada['images']); $i++) {
+					for($i = 0; $i < count($this->gauchada['images']); $i++) {
 						if ($i == 0) {
-							$HTML .= '<li data-target="#carousel-example-1z" data-slide-to="' . ($i + 1) . '" class="active"></li>';
+							$HTML .= '<li data-target="#gauchadas_images" data-slide-to="' . ($i + 1) . '" class="active"></li>';
 						} else {
-							$HTML .= '<li data-target="#carousel-example-1z" data-slide-to="' . ($i + 1) . '"></li>';
+							$HTML .= '<li data-target="#gauchadas_images" data-slide-to="' . ($i + 1) . '"></li>';
 						}
 					}
 					$HTML .= '
 						</ol>
 						<div class="carousel-inner" role="listbox">';
 
-					for($i = 0; $i < count($gauchada['images']); $i++) {
+					for($i = 0; $i < count($this->gauchada['images']); $i++) {
 						if ($i == 0) {
 
 							$HTML .= '
 							<div class="carousel-item active">
-		              <img class="img-fluid rounded mx-auto d-block" style="height: 100%;" src="' . $gauchada['images'][$i]['path'] . '">
+		              <img class="img-fluid rounded mx-auto d-block" style="height: 100%;" src="' . $this->gauchada['images'][$i]['path'] . '">
 		          </div>';
 						} else {
 							$HTML .= '
 							<div class="carousel-item">
-		              <img class="img-fluid rounded mx-auto d-block" style="height: 100%;" src="' . $gauchada['images'][$i]['path'] . '">
+		              <img class="img-fluid rounded mx-auto d-block" style="height: 100%;" src="' . $this->gauchada['images'][$i]['path'] . '">
 		          </div>';
 						}
 					}
 					$HTML .= '</div>';
-					if($gauchada['images']) {
+					if($this->gauchada['images']) {
 						$HTML .= '
-		        <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+		        <a class="carousel-control-prev" href="#gauchadas_images" role="button" data-slide="prev">
 		            <span class="carousel-control-prev-icon" style="color: black; "aria-hidden="true"></span>
 		            <span class="sr-only">Previous</span>
 		        </a>
-		        <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+		        <a class="carousel-control-next" href="#gauchadas_images" role="button" data-slide="next">
 		            <span class="carousel-control-next-icon" aria-hidden="true"></span>
 		            <span class="sr-only">Next</span>
 		        </a>';
@@ -61,7 +60,7 @@
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<p class="text-fluid text-center">¡Felicitaciones <strong>' . $this->sessions->connectedUser()['completeName'] . '</strong> el poncho es todo tuyo!</p>
 						</div></div>';
-					} else if($selected[0]['idUser'] != $this->sessions->connectedUser()['idUser'] && $gauchada['idUser'] != $this->sessions->connectedUser()['idUser'] && $selected) {
+					} else if($selected[0]['idUser'] != $this->sessions->connectedUser()['idUser'] && $this->gauchada['idUser'] != $this->sessions->connectedUser()['idUser'] && $selected) {
 						$location = explode(', ', $this->sessions->connectedUser()['location']);
 						$HTML .= '<div class="col-12"><br>
 						<div class="alert alert-info alert-dismissible fade show" role="alert">
@@ -78,16 +77,16 @@
         	$HTML.= '<div class="row" style="padding-top: 50px">
 					<div class="col-2 text-right">
 						<div class="avatar">
-							<a href=profiles/profile/' . $gauchada['user']['idUser'] . '><img src="' . $gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 11vh"></a>
+							<a href=profiles/profile/' . $this->gauchada['user']['idUser'] . '><img src="' . $this->gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 11vh"></a>
 						</div>
 					</div>
 					<div class="col-8">
-						<h1 class="h1-responsive">'.$gauchada['title'] . '</h1>
-        			<a href=profiles/profile/' . $gauchada['user']['idUser'] . '><h6 class="h6-responsive">'. $gauchada['user']['completeName'] . '</a> - ' . $gauchada['location'] . ' - ' . $gauchada['creationDate'] .'</h6>
+						<h1 class="h1-responsive">'.$this->gauchada['title'] . '</h1>
+        			<a href=profiles/profile/' . $this->gauchada['user']['idUser'] . '><h6 class="h6-responsive">'. $this->gauchada['user']['completeName'] . '</a> - ' . $this->gauchada['location'] . ' - ' . $this->gauchada['creationDate'] .'</h6>
         			<hr>
-        			<p class="text-fluid">' . $gauchada['body'] . '</p>
+        			<p class="text-fluid">' . $this->gauchada['body'] . '</p>
 					</div>';
-					if($this->sessions->connectedUser()['idUser'] == $gauchada['user']['idUser']) {
+					if($this->sessions->connectedUser()['idUser'] == $this->gauchada['user']['idUser']) {
 						$HTML.= '<div class="col-2">
 							<a class="btn btn-warning rounded-circle option-button text-center" href="#">
 								<i class="fa fa-edit"></i>
@@ -127,9 +126,9 @@
 	<div class="row">
 		<?php
 				$HTML = '';
-				if ($gauchada['comments']) {
-					for($i = 0; $i < count($gauchada['comments']); $i++) {
-						$comment = $gauchada['comments'][$i];
+				if ($this->gauchada['comments']) {
+					for($i = 0; $i < count($this->gauchada['comments']); $i++) {
+						$comment = $this->gauchada['comments'][$i];
 						$userComment = Users()[$comment['idUser']];
 						$HTML.= '
 						<div class="col-3 text-right" style="margin-top: 15px;">
@@ -146,16 +145,16 @@
 							$HTML .= '
 				            	<div class="col-4 text-right" style="margin-top: 5px;">
 				              	<div class="avatar">
-				               	 <img src="' . $gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 6vh">
+				               	 <img src="' . $this->gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 6vh">
 				              	</div>
 				            	</div>
 				            	<div class="col-8">
-				              	<h4>' . $gauchada['user']['completeName'] . '</h4>
+				              	<h4>' . $this->gauchada['user']['completeName'] . '</h4>
 				             	 <h6 class="h6-responsive">' . $comment['answer']['lastModify'] . '</h6>
 				              	<p>' . $comment["answer"]["body"] . '</p>
 				            	</div>';
 						} else {
-							if($this->sessions->connectedUser()['idUser'] == $gauchada['user']['idUser'] && !$this->sessions->isGranted()){
+							if($this->sessions->connectedUser()['idUser'] == $this->gauchada['user']['idUser'] && !$this->sessions->isGranted()){
 								$HTML .= '
 										<div class="col-3"></div>
 											<div id="div_comment_button_' . $comment['idComment'] . '" class="col-9" style="margin-top: 20px; margin-bottom: 20px; "margin-bottom: 20px">
@@ -163,7 +162,7 @@
 													<div class="text-center">
 														<form class="form-inline" action="comments/add/'. $this->router->getId() . '?idQuestion='. $comment['idComment'] .'" method="post">
 															<div class="avatar" style="margin-right:3rem">
-															 <img src="' . $gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 8vh">
+															 <img src="' . $this->gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 8vh">
 															</div>
 															<label class="sr-only" for="body">Hace una pregunta!</label>
 															<input type="text" id="body" name="body" style="margin-right:1.5rem" class="form-control" for="body" placeholder="Responde la pregunta!">
@@ -178,7 +177,7 @@
 						}
 					}
 				} else {
-					if(($this->sessions->connectedUser()['idUser'] != $gauchada['user']['idUser']) && !$this->sessions->isGranted()) {
+					if(($this->sessions->connectedUser()['idUser'] != $this->gauchada['user']['idUser']) && !$this->sessions->isGranted()) {
 						$HTML .= '<div class="col-2"></div><div class="col-8">
 	              <div class="alert alert-info alert-dismissible fade show" role="alert">
 	              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -189,32 +188,32 @@
 				echo $HTML;
 			?>
 
-	</div>
-	<?php
-					$HTML = '';
-					if($this->sessions->connectedUser()['idUser'] != $gauchada['user']['idUser'] && !$this->sessions->isGranted()) {
-						$HTML .= '
-							<div class="row">
-								<div class="col-3 text-right">
-									<div class="avatar">
-									 <img src="' . $gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 8vh">
-									</div>
-								</div>
-								<div class="col-8" style="margin-top: 20px; "margin-bottom: 20px">
-									<div class="text-center">
-										<form class="form-inline" action="comments/add/'. $this->router->getId() . '" method="post">
-											<label class="sr-only" for="body">Hace una pregunta!</label>
-											<input type="text" id="body" name="body" style="width: 55%; margin-right: -1.35rem" class="form-control" for="body" placeholder="Escribe un comentario...">
-											<button type="submit" class="btn btn-warning rounded-circle"><i class="fa fa-angle-right"></i></button>
-										</form>
-									</div>
-								</div>
-								<div class="col-1"></div>
-							</div>';
-					}
-					$HTML .= '<hr>';
-					echo $HTML;
-				?>
+		</div>
+		<?php
+			$HTML = '';
+			if($this->sessions->connectedUser()['idUser'] != $this->gauchada['user']['idUser'] && !$this->sessions->isGranted()) {
+				$HTML .= '
+					<div class="row">
+						<div class="col-3 text-right">
+							<div class="avatar">
+							 <img src="' . $this->gauchada['user']['profilePicture'] . '" class="rounded-circle img-responsive" style="width: 8vh">
+							</div>
+						</div>
+						<div class="col-8" style="margin-top: 20px; "margin-bottom: 20px">
+							<div class="text-center">
+								<form class="form-inline" action="comments/add/'. $this->router->getId() . '" method="post">
+									<label class="sr-only" for="body">Hace una pregunta!</label>
+									<input type="text" id="body" name="body" style="width: 55%; margin-right: -1.35rem" class="form-control" for="body" placeholder="Escribe un comentario...">
+									<button type="submit" class="btn btn-warning rounded-circle"><i class="fa fa-angle-right"></i></button>
+								</form>
+							</div>
+						</div>
+						<div class="col-1"></div>
+					</div>';
+			}
+			$HTML .= '<hr>';
+			echo $HTML;
+		?>
 		</div>
 		<?php
 		$this->include('gauchadas/postulantes/postulants');

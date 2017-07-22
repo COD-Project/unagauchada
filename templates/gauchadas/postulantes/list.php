@@ -16,14 +16,13 @@
                 $user = Users()[$this->router->getId()];
                 $HTML = '<h3>' . $user['completeName'] .' se postuló en las siguientes gauchadas:</h3>
                 <br>';
-                $gauchadas = Gauchadas();
                 $postulantes = PostulantIn($this->router->getId(), $this->sessions->connectedUser()['idUser']);
                 if($postulantes) {
                   $HTML .= '<ul class="list-group">';
                   foreach ($postulantes as $postulante) {
                     if($postulante['idUser'] == $this->router->getId()) {
                       $HTML .= '<li class="list-group-item justify-content-between">
-                      <h4>' . $gauchadas[$postulante['idGauchada']]['title'] . '</h4>
+                      <h4>' . $this->gauchadas[$postulante['idGauchada']]['title'] . '</h4>
                       <small>' . $postulante['description'] . '</small>
                       <span>';
                       if(!SelectedPostulant($postulante['idGauchada'])) {
