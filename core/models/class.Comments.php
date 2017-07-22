@@ -69,8 +69,7 @@ final class Comments extends Models
 	            'createdAt' => $data[$i]['createdAt'],
 	            'lastModify' => $data[$i]['lastModify'],
 	            'idUser' => $data[$i]['idUser'],
-	            'answer' => (isset($data[$i]['idComment'])) ?
-	                $this->get(array(
+	            'answer' => (isset($data[$i]['idComment'])) ? $this->get(array(
 	              'gauchada' => $options['gauchada'],
 	              'question' => $data[$i]['idComment'])
 	            )[0] : false
@@ -79,7 +78,7 @@ final class Comments extends Models
 	    } else {
       	$comments = null;
 	    }
-	  return $comments;
+	  	return $comments;
 		}
 
     final public function __destruct() {
