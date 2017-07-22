@@ -6,7 +6,7 @@
 	<?php $this->render('overall/topnav'); ?>
 	<div class="container">
 		<?php
-				$gauchada = Gauchadas()[$this->router->getId()];
+				$gauchada = $this->gauchadas[$this->router->getId()];
 				$postulante = Postulant($gauchada['idGauchada'], $this->sessions->connectedUser()['idUser']);
 				$HTML = '';
 				if ($gauchada['images']) {
