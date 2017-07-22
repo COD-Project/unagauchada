@@ -60,6 +60,31 @@ final class Comments extends Models
 	    Func::redirect(URL . 'gauchadas/view/' . $this->idGauchada);
   	}
 
+  	final public function get($options) {
+  		$where = "idGauchada=".$options['gauchada'] ." AND idQuestion";
+  		$where .= isset($options['question']) ? "=\"".$options['question']."\"" : " IS NULL";
+		$data = $this->db->select('*', 'Comments', $where);
+		if ($data) {
+		  	for($i = 0; $i < count($data); $i++) {
+			    $comments[$i] = array(
+			      'idComment' => $data[$i]['idComment'],
+			      'body' => $data[$i]['body'],
+			      'createdAt' => $data[$i]['createdAt'],
+			      'lastModify' => $data[$i]['lastModify'],
+			      'idUser' => $data[$i]['idUser'],
+			      'answer' => (isset($data[$i]['idComment'])) ? 
+			      		$this->get(array(
+							'gauchada' => $options['gauchada'], 
+							'question' => $data[$i]['idComment'])
+						)[0] : false
+			    );
+		    }
+		} else {
+		  $comments = null;
+		}
+		return $comments;
+  	}
+
   	final public function __destruct()
   	{
   		parent::__destruct();
