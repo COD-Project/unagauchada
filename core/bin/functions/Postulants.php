@@ -75,10 +75,10 @@ function UserPostulantions($idUser) {
 
 function PostulantIn($idUser, $idOwner) {
   $db = new Connection();
-  $data = $db->select("u.idUser, g.idGauchada, u.name, u.surname, p.description
-                            ((Users u INNER JOIN Postulants p ON(u.idUser=p.idUser))INNER JOIN Gauchadas g ON(p.idGauchada=g.idGauchada))
-                            LEFT JOIN Ratings r ON(p.idGauchada=r.idGauchada)
-                            p.validate IS NULL AND r.idRating IS NULL AND p.idUser=$idUser AND g.idUser=$idOwner");
+  $data = $db->select("u.idUser, g.idGauchada, u.name, u.surname, p.description",
+                            "((Users u INNER JOIN Postulants p ON(u.idUser=p.idUser))INNER JOIN Gauchadas g ON(p.idGauchada=g.idGauchada))
+                            LEFT JOIN Ratings r ON(p.idGauchada=r.idGauchada)",
+                            "p.validate IS NULL AND r.idRating IS NULL AND p.idUser=$idUser AND g.idUser=$idOwner");
   if(!$data) return false;
 
   for($i = 0; $i < count($data); $i++) {
