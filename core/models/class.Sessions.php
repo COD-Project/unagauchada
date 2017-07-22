@@ -1,8 +1,8 @@
 <?php
 
 /**
-  * created by Ulises J. Cornejo Fandos on 17/03/2017
-  */
+ * created by Ulises J. Cornejo Fandos on 17/03/2017
+ */
 
 final class Sessions extends Models
 {
@@ -10,8 +10,8 @@ final class Sessions extends Models
 
   static function getInstance()
   {
-      if (!self::$ins) {
-          self::$ins = new self();
+    if (!self::$ins) {
+      self::$ins = new self();
       }
       return self::$ins;
   }
@@ -22,12 +22,12 @@ final class Sessions extends Models
   }
 
   /**
-    * Genera una sesión por un tiempo determinado para un usuario.
-    *
-    * @param int $id: Id de usuario para generar la sesión
-    *
-    * @return void
-  */
+   * Genera una sesión por un tiempo determinado para un usuario.
+   *
+   * @param int $id: Id de usuario para generar la sesión
+   *
+   * @return void
+   */
   final public function generateSession(int $id)
   {
     $_SESSION[SESS_APP_ID] = $id;
@@ -36,12 +36,12 @@ final class Sessions extends Models
   }
 
   /**
-    * Chequea el uso de la sesión en un usuario.
-    *
-    * @param int $id: Id de usuario para generar la sesión
-    *
-    * @return bool: TRUE si el usuario tiene la sesión iniciada, FALSE si no
-  */
+   * Chequea el uso de la sesión en un usuario.
+   *
+   * @param int $id: Id de usuario para generar la sesión
+   *
+   * @return bool: TRUE si el usuario tiene la sesión iniciada, FALSE si no
+   */
   final public function isLoggedIn(int $id = NULL) : bool
   {
     $idUser = ($id=='' && isset($_SESSION[SESS_APP_ID])) ? $_SESSION[SESS_APP_ID] : $id;
@@ -53,12 +53,12 @@ final class Sessions extends Models
   }
 
   /**
-    * Chequea la vida de una sesión, si ésta caduca se culmina la sesión existente.
-    *
-    * @param bool $force: Fuerza la culminación de una sesión que pueda existir.
-    *
-    * @return void
-  */
+   * Chequea la vida de una sesión, si ésta caduca se culmina la sesión existente.
+   *
+   * @param bool $force: Fuerza la culminación de una sesión que pueda existir.
+   *
+   * @return void
+   */
   final public function checkLife(bool $force = false)
   {
     if(isset($_SESSION[SESS_APP_ID])) {

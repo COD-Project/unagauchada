@@ -19,15 +19,15 @@ final class Credits extends Models
 
   static function getInstance()
   {
-      if (!self::$ins) {
-          self::$ins = new self();
+    if (!self::$ins) {
+      self::$ins = new self();
       }
       return self::$ins;
   }
 
   final public function __construct()
   {
-      parent::__construct();
+    parent::__construct();
   }
 
   final private function errors($url) {
@@ -41,8 +41,8 @@ final class Credits extends Models
     return $data;
   }
 
-	final public function __destruct() {
-		parent::__destruct();
-	}
+  final public function __destruct() {
+    parent::__destruct();
+  }
 
 }

@@ -14,18 +14,18 @@ class Images extends Models
 
   static private $ins;
 
-	static function getInstance()
-	{
-	    if (!self::$ins) {
-	        self::$ins = new self();
-	    }
-	    return self::$ins;
-	}
+  static function getInstance()
+  {
+    if (!self::$ins) {
+      self::$ins = new self();
+      }
+      return self::$ins;
+  }
 
-	final public function __construct()
-	{
-	    parent::__construct();
-	}
+  final public function __construct()
+  {
+    parent::__construct();
+  }
 
   final private function errors($url="")
   {
@@ -79,7 +79,7 @@ class Images extends Models
   final public function get($options = null) {
     $where = isset($options["image"]) ? "idImage=" . $options["image"] : "1=1";
     $data = !isset($options["gauchada"]) ? $this->db->select('*', 'Images', $where) :
-    $this->db->select('*', 'Images i INNER JOIN GauchadasImages g ON (i.idImage = g.idImage)', "idGauchada=". $options['gauchada']);
+      $this->db->select('*', 'Images i INNER JOIN GauchadasImages g ON (i.idImage = g.idImage)', "idGauchada=". $options['gauchada']);
     return !$data ? $data : $this->prepare($data);
   }
 
@@ -90,4 +90,4 @@ class Images extends Models
 }
 
 
- ?>
+?>

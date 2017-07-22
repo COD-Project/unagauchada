@@ -18,8 +18,8 @@ final class Postulants extends Models
 
   static function getInstance()
   {
-      if (!self::$ins) {
-          self::$ins = new self();
+    if (!self::$ins) {
+      self::$ins = new self();
       }
       return self::$ins;
   }
@@ -36,13 +36,13 @@ final class Postulants extends Models
         throw new PDOException("Error Processing Request");
       } else {
         $this->idUser = is_numeric($this->router->elements()[0]) ?
-                          intval($this->router->elements()[0]) :
-                          (Sessions::getInstance())->connectedUser()['idUser'];
+          intval($this->router->elements()[0]) :
+          (Sessions::getInstance())->connectedUser()['idUser'];
         $this->idGauchada = $this->router->getId() ?? null;
         $this->description = isset($_POST['description']) ? $this->purifier($this->db->escape($_POST['description'])) : null;
       }
     } catch (PDOException $error) {
-        Func::redirect(URL . $url . $error->getMessage());
+      Func::redirect(URL . $url . $error->getMessage());
     }
   }
 

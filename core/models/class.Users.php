@@ -1,8 +1,8 @@
 <?php
 
 /**
-  * created by Ulises J. Cornejo Fandos on 27/05/2017
-  */
+ * created by Ulises J. Cornejo Fandos on 27/05/2017
+ */
 
 final class Users extends Models
 {
@@ -24,8 +24,8 @@ final class Users extends Models
 
   static function getInstance()
   {
-      if (!self::$ins) {
-          self::$ins = new self();
+    if (!self::$ins) {
+      self::$ins = new self();
       }
       return self::$ins;
   }
@@ -55,7 +55,7 @@ final class Users extends Models
         $this->image = $_FILES['images'] ?? null;
       }
     } catch (PDOException $error) {
-        echo $error->getMessage();
+      echo $error->getMessage();
     }
   }
 

@@ -27,7 +27,7 @@ abstract class Models
 
   protected function purifier($elem)
   {
-      return str_replace(array('<script>','</script>','<script src','<script type='), '', $elem);
+    return str_replace(array('<script>','</script>','<script src','<script type='), '', $elem);
   }
 
   protected function __destruct()
