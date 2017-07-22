@@ -12,7 +12,9 @@ class gauchadasController extends Controller {
 			switch ($this->router->getMethod()) {
 	        case 'add':
 						if(!$this->sessions->isGranted()){
+							$this->categories = (new Categories)->get();
 		        	if ($_POST) {
+
 		        		$gauchadas->add();
 		        	} else if(!GauchadasDebit((Sessions::getInstance())->connectedUser()['idUser'])){
 		        			$this->render('gauchadas/add');
