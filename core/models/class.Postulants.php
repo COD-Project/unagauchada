@@ -94,14 +94,16 @@ final class Postulants extends Models
 
   final protected function prepare($data)
   {
+    $users = (new Users)->get();
     for($i = 0; $i < count($data); $i++) {
+      $user = $users[$data[$i]["idUser"]];
       $postulants[$i] = array(
         "idUser" => $data[$i]["idUser"],
         "idGauchada" => $data[$i]["idGauchada"],
-        "completeName" => $data[$i]["name"] . " " . $data[$i]["surname"],
+        "completeName" => $user["completeName"],
         "description" => $data[$i]["description"],
-        "email" => $data[$i]["email"],
-        "profilePicture" => (new Images)->get(['image' => $data[$i]["idImage"]])[0]["path"]
+        "email" => $user["email"],
+        "profilePicture" => (new Images)->get(['image' => $user["idImage"]])[0]["path"]
       );
     }
     return !$data ? $data : $postulants;
