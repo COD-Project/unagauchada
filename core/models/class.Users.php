@@ -121,7 +121,12 @@ final class Users extends Models
 
   final protected function filter($options)
   {
+    $where = $options['user'] ? "idUser=" . $options['user'] : "1=1";
     return array(
+      "elements" => "*",
+      "table" => "Users",
+      "where" => $where,
+      "criteria" => "ORDER BY role, registrationDate"
 
     );
   }
@@ -149,11 +154,6 @@ final class Users extends Models
       );
     }
     return !$data ? $data : $users;
-  }
-
-  final public function get($options = null) {
-    $data = $this->db->select("*", "Users", "1=1", "ORDER BY role, registrationDate");
-    return $this->prepare($data);
   }
 
   final public function __destruct()
