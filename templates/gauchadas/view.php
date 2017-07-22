@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
-	<?php $this->render('overall/header'); ?>
+<?php $this->render('overall/header'); ?>
+
 <body>
 	<?php $this->render('overall/topnav'); ?>
 	<div class="container">
-			<?php
+		<?php
 				$gauchada = Gauchadas()[$this->router->getId()];
 				$postulante = Postulant($gauchada['idGauchada'], $this->sessions->connectedUser()['idUser']);
 				$HTML = '';
@@ -116,15 +117,15 @@
 					}
         	echo $HTML;
 	        ?>
-	      </div>
-      	<div class="row" style="margin-top: 20px; margin-bottom: 10px">
-      		<div class="col-2"></div>
-          	<div class="col-10 text-left">
-            	<h3 class="h3-responsive">Comentarios</h3>
-          	</div>
-        </div>
-        <div class="row">
-			<?php
+	</div>
+	<div class="row" style="margin-top: 20px; margin-bottom: 10px">
+		<div class="col-2"></div>
+		<div class="col-10 text-left">
+			<h3 class="h3-responsive">Comentarios</h3>
+		</div>
+	</div>
+	<div class="row">
+		<?php
 				$HTML = '';
 				if ($gauchada['comments']) {
 					for($i = 0; $i < count($gauchada['comments']); $i++) {
@@ -188,8 +189,8 @@
 				echo $HTML;
 			?>
 
-      </div>
-				<?php
+	</div>
+	<?php
 					$HTML = '';
 					if($this->sessions->connectedUser()['idUser'] != $gauchada['user']['idUser'] && !$this->sessions->isGranted()) {
 						$HTML .= '
@@ -215,7 +216,7 @@
 					echo $HTML;
 				?>
 		</div>
-  <?php
+		<?php
 		$this->include('gauchadas/postulantes/postulants');
 		$this->include('gauchadas/postulantes/unpostulate');
 		$this->include('gauchadas/postulantes/postulate');
@@ -223,5 +224,6 @@
 		$this->include('gauchadas/calificaciones/califica');
 		$this->include('overall/footer');
 	?>
-	</body>
+</body>
+
 </html>

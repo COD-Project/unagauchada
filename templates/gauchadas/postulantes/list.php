@@ -1,18 +1,18 @@
 <div class="modal fade modal-ext" id="ListGauchadas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-   <div class="modal-dialog" role="document">
-     <div class="modal-content" style="background: #fafafa; border-radius: 0px;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="background: #fafafa; border-radius: 0px;">
 
-       <div class="modal-header">
-         <div>
-           <!-- -->
-         </div>
-         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <div class="modal-header">
+        <div>
+          <!-- -->
+        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true"> &times; </span>
          </button>
-       </div>
-       <div class="modal-body">
-         <div class="text-center">
-             <?php
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          <?php
                 $user = Users()[$this->router->getId()];
                 $HTML = '<h3>' . $user['completeName'] .' se postuló en las siguientes gauchadas:</h3>
                 <br>';
@@ -45,11 +45,11 @@
                 }
                 echo $HTML;
              ?>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <?php
   $this->include('gauchadas/postulantes/confirmation');
 ?>

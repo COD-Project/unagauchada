@@ -65,11 +65,26 @@ class Images extends Models
     }
   }
 
-  final public function __destruct()
-  {
-    parent::__destruct();
+
+  final private function prepare($data) {
+    for($i = 0; $i < count($data); $i++) {
+      $images[$data[$i]['idImage']] = array(
+        'idImage' => $data[$i]['idImage'],
+        'path' => 'views/app/images/' . $data[$i]['path']
+      );
+    }
+    return $images;
   }
 
+  final public function get($options = null) {
+    $data = !isset($options["gauchada"]) ? $this->db->select('*', 'Images') :
+    $this->db->select('*', 'Images i INNER JOIN GauchadasImages g ON (i.idImage = g.idImage)', "idGauchada=". $options['gauchada']);
+    return !$data ? $data : $this->prepare($data);
+  }
+
+  final public function __destruct() {
+    parent::__destruct();
+  }
 }
 
 

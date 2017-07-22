@@ -1,21 +1,21 @@
 <div class="modal fade modal-ext" id="Postulants" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-   <div class="modal-dialog" role="document">
-     <div class="modal-content" style="background: #fafafa; border-radius: 0px;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="background: #fafafa; border-radius: 0px;">
 
-       <div class="modal-header">
-         <div>
-           <!-- -->
-         </div>
-         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <div class="modal-header">
+        <div>
+          <!-- -->
+        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true"> &times; </span>
          </button>
-       </div>
-       <div class="modal-body">
-         <div class="text-center">
-             <h3><i class="fa fa-users"></i> Postulantes </h3>
-         </div>
-         <hr>
-           <?php
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          <h3><i class="fa fa-users"></i> Postulantes </h3>
+        </div>
+        <hr>
+        <?php
             $postulantes = Postulants($this->router->getId());
             $selected = SelectedPostulant($this->router->getId());
             $HTML = '';
@@ -51,8 +51,8 @@
             }
             echo $HTML;
            ?>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -80,5 +80,24 @@ final class Postulants extends Models
   {
     parent::__destruct();
   }
+
+  final public function get($idGauchada=null) {
+    $where = $idGauchada != null ? 'idGauchada='.$idGauchada.' AND validate IS NULL' : 'validate IS NULL';
+    $data = $this->db->select('*', 'Postulants p INNER JOIN Users u ON(p.idUser = u.idUser)', $where);
+
+    if(!$data) return false;
+
+    for($i = 0; $i < count($data); $i++) {
+      $postulantes[$i] = array(
+        'idUser' => $data[$i]['idUser'],
+        'idGauchada' => $data[$i]['idGauchada'],
+        'completeName' => $data[$i]['name'] . ' ' . $data[$i]['surname'],
+        'description' => $data[$i]['description'],
+        'email' => $data[$i]['email'],
+        'profilePicture' => (new Images)->get()[$data[$i]['idImage']]['path']
+      );
+    }
+    return $postulantes;
+  }
 }
 ?>
