@@ -15,7 +15,7 @@ class gauchadasController extends Controller {
 		        	if ($_POST) {
 
 		        		$this->models['gauchadas']->add();
-		        	} else if(!GauchadasDebit((Sessions::getInstance())->connectedUser()['idUser'])){
+		        	} else if(!$this->debit()){
 		        			$this->render('gauchadas/add');
 		        	} else {
 		        		Func::redirect(URL.'?success=Usted tiene calificaciones pendientes.');
@@ -52,6 +52,17 @@ class gauchadasController extends Controller {
 		));
 		$this->gauchadas = $this->models['gauchadas']->get(['all']);
 		$this->postulantes = $this->models['postulants']->get($this->router->getId());
+	}
+
+	private function debit() {
+		$db = new Connection();
+		$idUser = (Sessions::getInstance())->connectedUser()['idUser'];
+		$from = 'Gauchadas g INNER JOIN Postulants p ON (g.idGauchada=p.idGauchada)';
+		$subquery = '(SELECT idGauchada FROM Ratings)';
+		$where = 'g.idUser='.$idUser.' AND p.selected=1 AND g.validate IS NULL AND g.idGauchada NOT IN '. $subquery;
+		$data = $db->select('*', $from, $where);
+		if(!$data) return false;
+		return true;
 	}
 }
 
