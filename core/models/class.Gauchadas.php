@@ -97,7 +97,7 @@ final class Gauchadas extends Models
     }
 
 
-    final private function filter() {
+    final protected function filter() {
       $select = '*';
       $table = 'Gauchadas g';
       $criteria = 'ORDER BY g.idGauchada DESC';
@@ -111,10 +111,15 @@ final class Gauchadas extends Models
         $table .= ' LEFT JOIN Postulants p ON (g.idGauchada=p.idGauchada)';
         $criteria = 'GROUP BY g.idGauchada ORDER BY postulantes ' . $_GET['mode'] . ', g.idGauchada DESC';
       }
-      return $this->db->select($select, $table, $where, $criteria);
+      return array(
+        "elements" => $select,
+        "table" => $table,
+        "where" => $where,
+        "criteria" => $criteria
+      );
     }
 
-    final public function prepare($data) {
+    final protected function prepare($data) {
       for($i = 0; $i < count($data); $i++) {
         $gauchadas[$data[$i]['idGauchada']] = array(
           'idGauchada' => $data[$i]['idGauchada'],
@@ -133,14 +138,10 @@ final class Gauchadas extends Models
           ))
         );
       }
-      return $gauchadas;
+      return !$data ? $data : $gauchadas;
     }
 
-    final public function get($options = null) {
-      $where = isset($options['user']) ? "idUser=" . $options['user'] : '1=1';
-      $data = !isset($options['all']) ? $this->filter() : $this->db->select('*', 'Gauchadas', $where, 'ORDER BY idGauchada DESC');
-      return !$data ? $data : $this->prepare($data);
-    }
+
 
     final public function __destruct()
     {

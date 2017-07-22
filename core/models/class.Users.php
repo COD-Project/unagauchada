@@ -119,7 +119,14 @@ final class Users extends Models
 
   }
 
-  final private function prepare($data = null) {
+  final protected function filter($options)
+  {
+    return array(
+
+    );
+  }
+
+  final protected function prepare($data = null) {
     for($i = 0; $i < count($data); $i++) {
       $users[$data[$i]['idUser']] = array(
         'idUser' => $data[$i]['idUser'],
@@ -141,10 +148,10 @@ final class Users extends Models
         //put user's info here if there is more in the db
       );
     }
-    return $users ?? false;
+    return !$data ? $data : $users;
   }
 
-  final public function get() {
+  final public function get($options = null) {
     $data = $this->db->select("*", "Users", "1=1", "ORDER BY role, registrationDate");
     return $this->prepare($data);
   }

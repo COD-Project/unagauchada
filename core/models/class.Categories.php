@@ -79,7 +79,7 @@ final class Categories extends Models
     Func::redirect(URL . 'categories/main?success=Se elimino la categoria exitosamente.');
   }
 
-  final private function filter($options) {
+  final protected function filter($options) {
     $where = !isset($options['name']) ? 'validate=0' : 'name='.$options['name'];
     return array(
       "elements" => "*",
@@ -89,7 +89,7 @@ final class Categories extends Models
 
   }
 
-  final private function prepare($data) {
+  final protected function prepare($data) {
     for($i = 0; $i < count($data); $i++) {
       $categories[$i] = array(
         'idCategory' => $data[$i]['idCategory'],
@@ -97,12 +97,7 @@ final class Categories extends Models
         'validate' => $data[$i]['validate']
       );
     }
-    return $categories ?? false;
-  }
-
-  final public function get($options=null) {
-    $query = $this->filter($options);
-    return $this->prepare($this->executeQuery($query));
+    return !$data ? $data : $categories;
   }
 
   final public function __destruct()

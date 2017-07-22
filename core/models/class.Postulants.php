@@ -77,7 +77,7 @@ final class Postulants extends Models
   }
 
 
-  final private function filter($options)
+  final protected function filter($options)
   {
     $where = "1 = 1";
     foreach (OPTIONS['postulants'] as $key => $value) {
@@ -92,7 +92,7 @@ final class Postulants extends Models
     );
   }
 
-  final private function prepare($data)
+  final protected function prepare($data)
   {
     for($i = 0; $i < count($data); $i++) {
       $postulants[$i] = array(
@@ -107,11 +107,6 @@ final class Postulants extends Models
     return $postulants ?? false;
   }
 
-  final public function get($options=null)
-  {
-    $query = $this->filter($options);
-    return $this->prepare($this->executeQuery($query));
-  }
 
   final public function __destruct()
   {

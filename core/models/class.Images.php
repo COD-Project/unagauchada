@@ -27,7 +27,7 @@ class Images extends Models
     parent::__construct();
   }
 
-  final private function errors($url="")
+  final protected function errors($url="")
   {
     try {
       if (!Func::images($_FILES['images'])) {
@@ -65,22 +65,27 @@ class Images extends Models
     }
   }
 
+  final protected function filter($options)
+  {
+    $where = !isset($options["gauchada"]) ?
+        (isset($options["image"]) ? "i.idImage=" . $options["image"] : "1=1") :
+        "idGauchada=". $options['gauchada'];
+    return array(
+      "elements" => "*",
+      "table" => "Images i INNER JOIN GauchadasImages g ON (i.idImage = g.idImage)",
+      "where" => $where
+    );
+  }
 
-  final private function prepare($data) {
+  final protected function prepare($data)
+  {
     for($i = 0; $i < count($data); $i++) {
       $images[$i] = array(
         'idImage' => $data[$i]['idImage'],
         'path' => 'views/app/images/' . $data[$i]['path']
       );
     }
-    return $images;
-  }
-
-  final public function get($options = null) {
-    $where = isset($options["image"]) ? "idImage=" . $options["image"] : "1=1";
-    $data = !isset($options["gauchada"]) ? $this->db->select('*', 'Images', $where) :
-      $this->db->select('*', 'Images i INNER JOIN GauchadasImages g ON (i.idImage = g.idImage)', "idGauchada=". $options['gauchada']);
-    return !$data ? $data : $this->prepare($data);
+    return !$data ? $data : $images;
   }
 
   final public function __destruct() {

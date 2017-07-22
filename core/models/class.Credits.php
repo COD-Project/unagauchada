@@ -36,7 +36,7 @@ final class Credits extends Models
   final public function add() {
   }
 
-  final public function get() {
+  final public function get($options = null) {
     $data = $this->db->select('*', 'Creditos', '1=1', 'ORDER BY idCredito DESC');
     return $data;
   }

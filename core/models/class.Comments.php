@@ -61,7 +61,7 @@ final class Comments extends Models
     Func::redirect(URL . 'gauchadas/view/' . $this->idGauchada);
   }
 
-  final private function filter($options)
+  final protected function filter($options)
   {
     $where = "idGauchada=". $options['gauchada'] ." AND idQuestion" . (isset($options['question']) ? "=".$options['question'] : " IS NULL");
     return array(
@@ -71,7 +71,7 @@ final class Comments extends Models
     );
   }
 
-  final private function prepare($data)
+  final protected function prepare($data)
   {
     for($i = 0; $i < count($data); $i++) {
       $comments[$i] = array(
@@ -88,12 +88,6 @@ final class Comments extends Models
     }
 
     return !$data ? $data : $comments;
-  }
-
-  final public function get($options = null)
-  {
-    $query = $this->filter($options);
-    return $this->prepare($this->executeQuery($query));
   }
 
   final public function __destruct()

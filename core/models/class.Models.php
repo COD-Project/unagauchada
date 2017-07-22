@@ -32,7 +32,15 @@ abstract class Models
 
   protected function executeQuery($query)
   {
-    return $this->db->select($query['elements'], $query['table'], $query['where']);
+    $where = $query['where'] ?? "1=1";
+    $criteria = $query['criteria'] ?? "";
+    return $this->db->select($query['elements'], $query['table'], $where, $criteria);
+  }
+
+  public function get($options = null)
+  {
+    $query = $this->filter($options);
+    return $this->prepare($this->executeQuery($query));
   }
 
   protected function __destruct()
