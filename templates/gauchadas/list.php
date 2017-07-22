@@ -1,9 +1,8 @@
 <!--Second row-->
 <div class="row" style="margin-bottom: 5px;">
     <?php
-      $gauchadas = Gauchadas();
       $HTML = "";
-      if (!$gauchadas) {
+      if (!$this->gauchadas) {
         $HTML .= '<div class="col-12">
         <div class="alert alert-info alert-dismissible fade show" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -11,7 +10,7 @@
         </div></div>';
       } else {
         $i = 1;
-        foreach ($gauchadas as $id => $gauchada) {
+        foreach ($this->gauchadas as $id => $gauchada) {
           $HTML .= "<div class=\"col-lg-4\" style=\"margin-bottom: 10px;\">
           <!--Card-->
               <div class=\"card wow fadeIn\" data-wow-delay=\"0." . ($i+1)*2 . "s\">
@@ -37,7 +36,7 @@
                       <div class=\"text-left col-2\">
                       ";
                       if($this->sessions->isLoggedIn() && $this->sessions->connectedUser()['idUser'] == $gauchada['user']['idUser']){
-                          $HTML .= "<a href=\"gauchadas/delete/" . $gauchadas[$id]['idGauchada'] . "\" class=\"remove-item\"><i class=\"fa fa-trash\"></i></a>";
+                          $HTML .= "<a href=\"gauchadas/delete/" . $this->gauchadas[$id]['idGauchada'] . "\" class=\"remove-item\"><i class=\"fa fa-trash\"></i></a>";
                       }
                       $HTML .= "
                       </div>
