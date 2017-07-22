@@ -23,8 +23,8 @@ class profilesController extends Controller {
       'gauchadas'
     ));
     $where = !$this->router->getId() ?
-          array('user' => $this->sessions->connectedUser()['idUser']) :
-          array('all' => true);
+      array('user' => $this->sessions->connectedUser()['idUser']) :
+      array('all' => true);
     $this->gauchadas = $this->models['gauchadas']->get($where);
   }
 

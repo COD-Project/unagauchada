@@ -16,20 +16,20 @@ class categoriesController extends Controller {
             $categories->add();
           } 
           break;
-        case 'edit':
-          if ($_POST) {
-            $categories->edit();
+case 'edit':
+  if ($_POST) {
+    $categories->edit();
           }
           break;
-        case 'delete':
-          if($this->router->getId() != 1){
-            $categories->delete();
+case 'delete':
+  if($this->router->getId() != 1){
+    $categories->delete();
           }
           break;
-        case 'main':
-          $this->categories = $categories->get();
-          $this->render('categories/main');
-          break;
+case 'main':
+  $this->categories = $categories->get();
+  $this->render('categories/main');
+  break;
         }
       }
     }

@@ -9,23 +9,23 @@ class postulantsController extends Controller {
     parent::__construct(true);
     $postulants = new Postulants();
     switch ($this->router->getMethod()) {
-      case 'add':
+    case 'add':
       if (array_key_exists($this->router->getId(), Gauchadas())) {
         $postulants->add();
       } else {
         Func::redirect();
       }
       break;
-      case 'edit':
-      if (array_key_exists($this->router->getId(), Gauchadas())) {
-        $postulants->edit();
+case 'edit':
+  if (array_key_exists($this->router->getId(), Gauchadas())) {
+    $postulants->edit();
       } else {
         Func::redirect();
       }
       break;
-      case 'delete':
-      if (array_key_exists($this->router->getId(), Gauchadas())) {
-        $postulants->delete();
+case 'delete':
+  if (array_key_exists($this->router->getId(), Gauchadas())) {
+    $postulants->delete();
       } else {
         Func::redirect();
       }
