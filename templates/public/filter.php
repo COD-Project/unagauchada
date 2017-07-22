@@ -3,7 +3,7 @@
       <label class="col-lg-3 col-form-label form-control-label">Buscar</label>
       <datalist id="titles">
         <?php
-          foreach (Gauchadas(true) as $key => $value) {
+          foreach ($this->models['gauchadas']->get(['all']) as $key => $value) {
             echo"<option value=\"" . $value['title'] . "\"></option>";
           }
         ?>
@@ -18,7 +18,7 @@
           <select class="form-control" name="category">
             <option value="" selected disabled>Todas las categorías...</option>
             <?php
-              foreach (Categories() as $key => $value) {
+              foreach ($this->models['categories']->get() as $key => $value) {
                 echo"<option value=\"" . $value['idCategory'] . "\">" . $value['name'] . "</option>";
               }
             ?>

@@ -128,15 +128,16 @@ final class Gauchadas extends Models
 		      'user' => Users()[$data[$i]['idUser']],
 		      'idCategory' => $data[$i]['idCategory'],
 		      'comments' => Comments($data[$i]['idGauchada']),
-		      'images' => ImagesGauchada($data[$i]['idGauchada'])
+		      'images' => (new Images)->get(array(
+						'gauchada' => $data[$i]['idGauchada']
+					))
 		    );
 		  }
 			return $gauchadas;
 		}
 
 		final public function get($options = null) {
-			$this->db = new Connection();
-		  $data = !Func::emp($options['all']) ? $this->filter() : $this->db->select('*', 'Gauchadas', '1=1', 'ORDER BY idGauchada DESC');
+		  $data = !isset($options['all']) ? $this->filter() : $this->db->select('*', 'Gauchadas', '1=1', 'ORDER BY idGauchada DESC');
 		  return !$data ? $data : $this->prepare($data);
 		}
 
