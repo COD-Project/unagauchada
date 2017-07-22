@@ -129,7 +129,7 @@
         if ($this->gauchada['comments']) {
           for($i = 0; $i < count($this->gauchada['comments']); $i++) {
             $comment = $this->gauchada['comments'][$i];
-            $userComment = Users()[$comment['idUser']];
+            $userComment = $this->users[$comment['idUser']];
             $HTML.= '
             <div class="col-3 text-right" style="margin-top: 15px;">
               <div class="avatar">
