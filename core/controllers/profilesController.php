@@ -24,13 +24,15 @@ class profilesController extends Controller {
       'users',
       'postulants'
     ));
+    $this->user = !$this->router->getId() ?
+        $this->sessions->connectedUser() :
+        $this->models['users']->get()[$this->router->getId()];
     $where = !$this->router->getId() ?
-      array('user' => $this->sessions->connectedUser()['idUser']) :
+      array('user' => $this->user) :
       array('all' => true);
     $this->gauchadas = $this->models['gauchadas']->get($where);
-    $this->user = $this->models['users']->get()[$this->router->getId()];
     $this->postulants = $this->models['postulants']->get([
-      "user" => $this->router->getId(),
+      "user" => $this->user['idUser']
     ]);
    }
 
