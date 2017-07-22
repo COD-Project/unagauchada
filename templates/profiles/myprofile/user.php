@@ -21,10 +21,10 @@
           <div class=\"col-md-12\" style=\"margin-top: 20px;\">
             <h4 class=\"m-t-2\"><span class=\"fa fa-clock-o ion-clock\"></span> Actividad Reciente</h4>
         ";
-        if (News()) {
+        if ($this->news()) {
           $HTML .= "<table class=\"table table-hover table-striped\">
               <tbody>";
-                foreach (News() as $key => $value) {
+                foreach ($this->news() as $key => $value) {
                   $HTML .= "
                     <tr>
                         <td>

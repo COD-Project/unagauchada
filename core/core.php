@@ -30,20 +30,13 @@ __models_autoload(array(
   'Categories',
   'Comments',
   'Postulants',
-  'Ratings'
+  'Ratings',
+  'Credits'
 ));
 __functions_autoload(array(
-  'Images',
   'Users',
-  'EmailTemplate',
-  'Comments',
-  'Gauchadas',
-  'Categories',
-  'Creditos',
-  'Comments',
   'Postulants',
-  'Ratings',
-  'News'
+  'Ratings'
 ));
 
 

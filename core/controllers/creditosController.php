@@ -9,6 +9,14 @@ class creditosController extends Controller {
     parent::__construct(true);
     $this->render('creditos/compra');
   }
+
+  protected function initialize() {
+    $this->setModels(array(
+      'credits'
+    ));
+    $this->credits = $this->models['credits']->get();
+    $this->current = $this->credits[0];
+  }
 }
 
 ?>
