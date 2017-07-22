@@ -17,21 +17,18 @@ final class Comments extends Models
 
 	static private $ins;
 
-	static function getInstance()
-	{
+	static function getInstance() {
 	    if (!self::$ins) {
 	        self::$ins = new self();
 	    }
 	    return self::$ins;
 	}
 
-	final public function __construct()
-	{
+	final public function __construct() {
 	    parent::__construct();
 	}
 
-	final private function errors($url)
-	{
+	final private function errors($url) {
 	    try {
 	      	if (empty($this->router->getId()) && empty($_POST['body']) && empty($_GET['idQuestion'])) {
 	        	throw new PDOException("Error Processing Request", 1);
@@ -72,9 +69,9 @@ final class Comments extends Models
 			      'createdAt' => $data[$i]['createdAt'],
 			      'lastModify' => $data[$i]['lastModify'],
 			      'idUser' => $data[$i]['idUser'],
-			      'answer' => (isset($data[$i]['idComment'])) ? 
+			      'answer' => (isset($data[$i]['idComment'])) ?
 			      		$this->get(array(
-							'gauchada' => $options['gauchada'], 
+							'gauchada' => $options['gauchada'],
 							'question' => $data[$i]['idComment'])
 						)[0] : false
 			    );
@@ -85,8 +82,7 @@ final class Comments extends Models
 		return $comments;
   	}
 
-  	final public function __destruct()
-  	{
+  	final public function __destruct() {
   		parent::__destruct();
   	}
 }
