@@ -44,14 +44,14 @@ final class Categories extends Models
 
   	final public function add() {
 	    $this->errors('categories?error=');
-	    if(!CategoriesExist($this->name)){
+	    if(!$this->get(array('name' => $this->name))){
 	    	$this->db->insert('Categories', array(
 		      'name' => ucfirst(strtolower($this->name)),
 		      'validate' => 0
 		    ));
 		    Func::redirect(URL . 'categories/main?success=Se creo la categoria exitosamente.');
-	    } else if (CategoriesExist($this->name)[0]['validate'] == 1){
-	    	$this->db->update('Categories', array('validate' => 0), 'idCategory='.CategoriesExist($this->name)[0]['idCategory']);
+	    } else if ($this->get(array('name' => $this->name))[0]['validate'] == 1){
+	    	$this->db->update('Categories', array('validate' => 0), 'idCategory='.$this->get(array('name' => $this->name))[0]['idCategory']);
 	    	Func::redirect(URL . 'categories/main?success=Se creo la categoria exitosamente.');
 	    } else {
 	    	Func::redirect(URL . 'categories/main?error=Esa Categoria ya existe.');
@@ -60,7 +60,7 @@ final class Categories extends Models
 
 	final public function edit() {
 		$this->errors('categories?error=');
-		if(!CategoriesExist($this->name)){
+		if(!$this->get(array('name' => $this->name))){
 			$this->db->update('Categories', array('validate' => 1), 'idCategory='.$this->id);
 			$this->db->insert('Categories', array(
 		      'name' => ucfirst(strtolower($this->name))
@@ -75,6 +75,21 @@ final class Categories extends Models
 	    $this->errors('categories?error=');
 	    $this->db->update('Categories', array('validate' => 1), 'idCategory='.$this->id);
 	    Func::redirect(URL . 'categories/main?success=Se elimino la categoria exitosamente.');
+  	}
+
+  	final public function get($options=null) {
+  		$where = !isset($options['name']) ? '1=1 AND validate=0' : 'name LIKE "'.$options['name'].'"';
+  		$data = $this->db->select('*', 'Categories', $where);
+  		if(!$data) return false;
+
+		for($i = 0; $i < count($data); $i++) {
+		  $categories[$i] = array(
+		    'idCategory' => $data[$i]['idCategory'],
+		    'name' => $data[$i]['name'],
+		    'validate' => $data[$i]['validate']
+		  );
+		}
+		return $categories;
   	}
 
   	final public function __destruct()
