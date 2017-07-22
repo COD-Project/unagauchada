@@ -49,13 +49,14 @@ final class Categories extends Models
         'name' => ucfirst(strtolower($this->name)),
         'validate' => 0
       ));
-      Func::redirect(URL . 'categories/main?success=Se creo la categoria exitosamente.');
+      $params = "success=Se creo la categoria exitosamente";
     } else if ($this->get(array('name' => $this->name))[0]['validate'] == 1){
       $this->db->update('Categories', array('validate' => 0), 'idCategory='.$this->get(array('name' => $this->name))[0]['idCategory']);
-      Func::redirect(URL . 'categories/main?success=Se creo la categoria exitosamente.');
+      $params="success=Se creo la categoria exitosamente.";
     } else {
-      Func::redirect(URL . 'categories/main?error=Esa Categoria ya existe.');
-    }    
+      $params="error=Esa Categoria ya existe.";
+    }
+    Func::redirect(URL . "categories/main?$params");
   }
 
   final public function edit() {
@@ -65,10 +66,11 @@ final class Categories extends Models
       $this->db->insert('Categories', array(
         'name' => ucfirst(strtolower($this->name))
       ));
-      Func::redirect(URL . 'categories/main?success=Se edito la categoria exitosamente.');
+      $params = "success=Se edito la categoria exitosamente.";
     } else {
-      Func::redirect(URL . 'categories/main?error=No se puede escribir el nombre de una categoria que ya existe.');
+      $params = "error=No se puede escribir el nombre de una categoria que ya existe.";
     }
+    Func::redirect(URL . "categories/main?" . $params);
   }
 
   final public function delete() {
@@ -77,11 +79,17 @@ final class Categories extends Models
     Func::redirect(URL . 'categories/main?success=Se elimino la categoria exitosamente.');
   }
 
-  final public function get($options=null) {
-    $where = !isset($options['name']) ? '1=1 AND validate=0' : 'name LIKE "'.$options['name'].'"';
-    $data = $this->db->select('*', 'Categories', $where);
-    if(!$data) return false;
+  final private function filter($options) {
+    $where = !isset($options['name']) ? 'validate=0' : 'name='.$options['name'];
+    return array(
+      "elements" => "*",
+      "table" => "Categories",
+      "where" => $where
+    );
 
+  }
+
+  final private function prepare($data) {
     for($i = 0; $i < count($data); $i++) {
       $categories[$i] = array(
         'idCategory' => $data[$i]['idCategory'],
@@ -89,7 +97,12 @@ final class Categories extends Models
         'validate' => $data[$i]['validate']
       );
     }
-    return $categories;
+    return $categories ?? false;
+  }
+
+  final public function get($options=null) {
+    $query = $this->filter($options);
+    return $this->prepare($this->executeQuery($query));
   }
 
   final public function __destruct()

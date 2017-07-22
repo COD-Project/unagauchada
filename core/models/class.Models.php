@@ -30,6 +30,11 @@ abstract class Models
     return str_replace(array('<script>','</script>','<script src','<script type='), '', $elem);
   }
 
+  protected function executeQuery($query)
+  {
+    return $this->db->select($query['elements'], $query['table'], $query['where']);
+  }
+
   protected function __destruct()
   {
     $this->db = null;
