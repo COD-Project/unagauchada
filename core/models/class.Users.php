@@ -119,6 +119,36 @@ final class Users extends Models
 
   }
 
+  final private function prepare($data = null) {
+    for($i = 0; $i < count($data); $i++) {
+      $users[$data[$i]['idUser']] = array(
+        'idUser' => $data[$i]['idUser'],
+        'name' => $data[$i]['name'],
+        'surname' => $data[$i]['surname'],
+        'completeName' => $data[$i]['name'] . ' ' . $data[$i]['surname'],
+        'birthdate' => $data[$i]['birthdate'],
+        'location' => $data[$i]['location'],
+        'phone' => $data[$i]['phone'],
+        'email' => $data[$i]['email'],
+        'state' => ($data[$i]['state'] == 1),
+        'credits' => $data[$i]['credits'],
+        'points' => $data[$i]['points'],
+        'registrationDate' => $data[$i]['registrationDate'],
+        'role' => ($data[$i]['role'] == 1) ? 'admin' : 'user',
+        'profilePicture' => ((new Images)->get(array(
+          'image' => $data[$i]['idImage']
+        )))[0]['path']
+        //put user's info here if there is more in the db
+      );
+    }
+    return $users ?? false;
+  }
+
+  final public function get() {
+    $data = $this->db->select("*", "Users", "1=1", "ORDER BY role, registrationDate");
+    return $this->prepare($data);
+  }
+
   final public function __destruct()
   {
     parent::__destruct();
