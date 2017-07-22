@@ -17,18 +17,21 @@ final class Comments extends Models
 
   static private $ins;
 
-  static function getInstance() {
+  static function getInstance() 
+  {
     if (!self::$ins) {
       self::$ins = new self();
     }
     return self::$ins;
   }
 
-  final public function __construct() {
+  final public function __construct() 
+  {
     parent::__construct();
   }
 
-  final private function errors($url) {
+  final private function errors($url) 
+  {
     try {
       if (empty($this->router->getId()) && empty($_POST['body']) && empty($_GET['idQuestion'])) {
         throw new PDOException("Error Processing Request", 1);
@@ -43,7 +46,8 @@ final class Comments extends Models
     }
   }
 
-  final public function add() {
+  final public function add() 
+  {
     $this->errors('comments?error=');
     $insert = array(
       'body' => $this->body,
@@ -57,33 +61,43 @@ final class Comments extends Models
     Func::redirect(URL . 'gauchadas/view/' . $this->idGauchada);
   }
 
-  final private function prepare($data) {
+  final private function filter($options)
+  {
+    $where = "idGauchada=". $options['gauchada'] ." AND idQuestion" . (isset($options['question']) ? "=".$options['question'] : " IS NULL");
+    return array(
+      "elements" => "*", 
+      "table" => "Comments",
+      "where" => $where
+    );
+  }
+
+  final private function prepare($data) 
+  {
     for($i = 0; $i < count($data); $i++) {
       $comments[$i] = array(
-        'idComment' => $data[$i]['idComment'],
-        'body' => $data[$i]['body'],
-        'createdAt' => $data[$i]['createdAt'],
-        'lastModify' => $data[$i]['lastModify'],
-        'idUser' => $data[$i]['idUser'],
-        'answer' => (isset($data[$i]['idComment'])) ? $this->get(array(
-          'gauchada' => $data[$i]['idGauchada'],
-          'question' => $data[$i]['idComment'])
+        "idComment" => $data[$i]["idComment"],
+        "body" => $data[$i]["body"],
+        "createdAt" => $data[$i]["createdAt"],
+        "lastModify" => $data[$i]["lastModify"],
+        "idUser" => $data[$i]["idUser"],
+        "answer" => (isset($data[$i]["idComment"])) ? $this->get(array(
+          "gauchada" => $data[$i]["idGauchada"],
+          "question" => $data[$i]["idComment"])
         )[0] : false
       );
     }
 
-    return $comments;
+    return $comments ?? false;
   }
 
-  final public function get($options) {
-    $where = "idGauchada=".$options['gauchada'] ." AND idQuestion";
-    $where .= isset($options['question']) ? "=".$options['question'] : " IS NULL";
-    $data = $this->db->select('*', 'Comments', $where);
-
-    return $data ? $this->prepare($data) : null;    
+  final public function get($options = null) 
+  {
+    $query = $this->filter($options);
+    return $this->prepare($this->executeQuery($query));    
   }
 
-  final public function __destruct() {
+  final public function __destruct() 
+  {
     parent::__destruct();
   }
 }
