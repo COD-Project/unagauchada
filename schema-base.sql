@@ -34,7 +34,7 @@ DROP TABLE IF EXISTS `Categories`;
 CREATE TABLE IF NOT EXISTS `Categories` (
   `idCategory` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `validate` int(11) DEFAULT NULL,
+  `validate` int(11) DEFAULT '0',
   PRIMARY KEY (`idCategory`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
@@ -2564,7 +2564,7 @@ CREATE TABLE IF NOT EXISTS `Postulants` (
   `idGauchada` int(11) NOT NULL,
   `description` varchar(50) NOT NULL,
   `selected` int(11) NOT NULL DEFAULT '0',
-  `validate` int(11) DEFAULT NULL,
+  `validate` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`idPostulante`),
   KEY `idUser` (`idUser`,`idGauchada`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -16,7 +16,6 @@
         </div>
         <hr>
         <?php
-            $selected = SelectedPostulant($this->router->getId());
             $HTML = '';
             if($this->postulantes) {
                 $HTML .= '<ul class="list-group">';
@@ -27,11 +26,11 @@
                     <a class="btn btn-warning option-button text-right" href="profiles/profile/' . $this->postulantes[$i]['idUser'] . '">
                       <i class="fa fa-user"></i>
                     </a>';
-                  if(!$selected) {
+                  if(!$this->selected) {
                     $HTML .= '<a onclick="postulantconfirm(this.href)" href="postulants/edit/' . $this->postulantes[$i]['idGauchada'] . '/' . $this->postulantes[$i]['idUser'] . '" class="btn btn-warning option-button text-right" data-dismiss="modal" data-toggle="modal" data-target="#Confirmation">
                         <i class="fa fa-check" style="color: #fff"></i>
                       </a>';
-                  } else if($selected[0]['idUser'] == $this->postulantes[$i]['idUser']){
+                  } else if($this->selected[0]['idUser'] == $this->postulantes[$i]['idUser']){
                     $HTML .= '<span class="badge badge-success"><i class="fa fa-check"></i></span>';
                   } else {
                     $HTML .= '<span class="badge badge-danger"><i class="fa fa-close"></i></span>';
