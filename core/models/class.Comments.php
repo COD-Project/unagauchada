@@ -17,7 +17,7 @@ final class Comments extends Models
 
   static private $ins;
 
-  static function getInstance() 
+  static function getInstance()
   {
     if (!self::$ins) {
       self::$ins = new self();
@@ -25,12 +25,12 @@ final class Comments extends Models
     return self::$ins;
   }
 
-  final public function __construct() 
+  final public function __construct()
   {
     parent::__construct();
   }
 
-  final private function errors($url) 
+  final private function errors($url)
   {
     try {
       if (empty($this->router->getId()) && empty($_POST['body']) && empty($_GET['idQuestion'])) {
@@ -46,7 +46,7 @@ final class Comments extends Models
     }
   }
 
-  final public function add() 
+  final public function add()
   {
     $this->errors('comments?error=');
     $insert = array(
@@ -65,13 +65,13 @@ final class Comments extends Models
   {
     $where = "idGauchada=". $options['gauchada'] ." AND idQuestion" . (isset($options['question']) ? "=".$options['question'] : " IS NULL");
     return array(
-      "elements" => "*", 
+      "elements" => "*",
       "table" => "Comments",
       "where" => $where
     );
   }
 
-  final private function prepare($data) 
+  final private function prepare($data)
   {
     for($i = 0; $i < count($data); $i++) {
       $comments[$i] = array(
@@ -87,16 +87,16 @@ final class Comments extends Models
       );
     }
 
-    return $comments ?? false;
+    return !$data ? $data : $comments;
   }
 
-  final public function get($options = null) 
+  final public function get($options = null)
   {
     $query = $this->filter($options);
-    return $this->prepare($this->executeQuery($query));    
+    return $this->prepare($this->executeQuery($query));
   }
 
-  final public function __destruct() 
+  final public function __destruct()
   {
     parent::__destruct();
   }
