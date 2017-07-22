@@ -21,7 +21,9 @@ function Users() {
         'points' => $d[$i]['points'],
         'registrationDate' => $d[$i]['registrationDate'],
         'role' => ($d[$i]['role'] == 1) ? 'admin' : 'user',
-        'profilePicture' => (new Images)->get()[$d[$i]['idImage']]['path']
+        'profilePicture' => (new Images)->get(array(
+          'image' => $d[$i]['idImage']
+        ))[0]['path']
         //put user's info here if there is more in the db
       );
     }

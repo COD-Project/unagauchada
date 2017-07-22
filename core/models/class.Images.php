@@ -68,7 +68,7 @@ class Images extends Models
 
   final private function prepare($data) {
     for($i = 0; $i < count($data); $i++) {
-      $images[$data[$i]['idImage']] = array(
+      $images[$i] = array(
         'idImage' => $data[$i]['idImage'],
         'path' => 'views/app/images/' . $data[$i]['path']
       );
@@ -77,7 +77,8 @@ class Images extends Models
   }
 
   final public function get($options = null) {
-    $data = !isset($options["gauchada"]) ? $this->db->select('*', 'Images') :
+    $where = $options["image"] ?? "1=1";
+    $data = !isset($options["gauchada"]) ? $this->db->select('*', 'Images', $where) :
     $this->db->select('*', 'Images i INNER JOIN GauchadasImages g ON (i.idImage = g.idImage)', "idGauchada=". $options['gauchada']);
     return !$data ? $data : $this->prepare($data);
   }
@@ -85,6 +86,7 @@ class Images extends Models
   final public function __destruct() {
     parent::__destruct();
   }
+
 }
 
 
