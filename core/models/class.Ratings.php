@@ -55,7 +55,7 @@ final class Ratings extends Models
 	    $this->db->insert('Ratings', $insert);
 	    if($this->rating != 2){
 	    	$gaucho = SelectedPostulant($this->idGauchada);
-	    	$user = Users()[$gaucho[0]['idUser']];
+	    	$user = (new Users)->get()[$gaucho[0]['idUser']];
 	    	$where = 'idUser='.$user['idUser'];
 	    	if($this->rating == 3){
 	    		$points = 1;

@@ -77,7 +77,7 @@ final class Sessions extends Models
   final public function connectedUser() : array
   {
     $id = $_SESSION[SESS_APP_ID];
-    return ($this->isLoggedIn()) ? Users()[$id] : null;
+    return ($this->isLoggedIn()) ? (new Users)->get()[$id] : null;
   }
 
   final public function isGranted() : bool
