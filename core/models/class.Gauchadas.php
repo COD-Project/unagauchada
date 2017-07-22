@@ -127,7 +127,7 @@ final class Gauchadas extends Models
 		      'evaluation' => $data[$i]['evaluation'],
 		      'user' => Users()[$data[$i]['idUser']],
 		      'idCategory' => $data[$i]['idCategory'],
-		      'comments' => Comments($data[$i]['idGauchada']),
+		      'comments' => (new Comments)->get(array('gauchada' => $data[$i]['idGauchada'])),
 		      'images' => (new Images)->get(array(
 						'gauchada' => $data[$i]['idGauchada']
 					))
