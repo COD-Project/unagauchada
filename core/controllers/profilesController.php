@@ -20,12 +20,16 @@ class profilesController extends Controller {
 
   protected function initialize() {
     $this->setModels(array(
-      'gauchadas'
+      'gauchadas',
+      'users',
+      'postulants'
     ));
     $where = !$this->router->getId() ?
       array('user' => $this->sessions->connectedUser()['idUser']) :
       array('all' => true);
     $this->gauchadas = $this->models['gauchadas']->get($where);
+    $this->user = $this->models['users']->get()[$this->router->getId()];
+    $this->postulants = $this->models['postulants']->get(["user" => $this->router->getId()]);
   }
 
   protected function news() {
@@ -43,6 +47,19 @@ class profilesController extends Controller {
       );
     }
     return $news;
+  }
+
+  protected function access() {
+    $selected_user = $this->models['postulants']->get([
+      "user" => $this->router->getId(),
+      "owner" => $this->sessions->connectedUser()['idUser']
+    ]);
+    $selected_owner = $this->models['postulants']->get([
+      "user" => $this->sessions->connectedUser()['idUser'],
+      "owner" => $this->router->getId()
+    ]);
+    return $selected_user || $selected_owner;
+
   }
 }
 

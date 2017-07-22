@@ -35,7 +35,7 @@ __models_autoload(array(
 ));
 __functions_autoload(array(
   'Users',
-  'Postulants',
+  // 'Postulants',
   'Ratings'
 ));
 

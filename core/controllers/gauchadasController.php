@@ -47,11 +47,15 @@ class gauchadasController extends Controller {
   protected function initialize() {
     $this->setModels(array(
       "gauchadas",
-      "postulants"
+      "postulants",
+      "users"
     ));
     $this->gauchadas = $this->models['gauchadas']->get(['all']);
-    $this->postulantes = $this->models['postulants']->get($this->router->getId());
-    $this->users = (new Users)->get();
+    $this->postulantes = $this->models['postulants']->get(["gauchada" => $this->router->getId()]);
+    $this->users = $this->models["users"]->get();
+    $this->selected = $this->models["postulants"]->get([
+      "gauchada" => $this->router->getId()
+    ]);
   }
 
   private function debit() {

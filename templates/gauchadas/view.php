@@ -6,7 +6,10 @@
   <?php $this->render('overall/topnav'); ?>
   <div class="container">
     <?php
-        $postulante = Postulant($this->gauchada['idGauchada'], $this->sessions->connectedUser()['idUser']);
+        $postulante = $this->models["postulants"]->get(([
+          "gauchada" => $this->gauchada['idGauchada'],
+          "user" => $this->sessions->connectedUser()['idUser']
+        ]));
         $HTML = '';
         if ($this->gauchada['images']) {
           $HTML .= '
@@ -53,21 +56,20 @@
           }
           echo $HTML;
           $HTML = "";
-          $selected = SelectedPostulant($this->router->getId());
-          if($selected[0]['idUser'] == $this->sessions->connectedUser()['idUser'] && !$selected[0]['idRating']) {
+          if($this->selected[0]['idUser'] == $this->sessions->connectedUser()['idUser'] && !$this->selected[0]['idRating']) {
             $HTML .= '<div class="col-12"><br>
             <div class="alert alert-info alert-dismissible fade show" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <p class="text-fluid text-center">¡Felicitaciones <strong>' . $this->sessions->connectedUser()['completeName'] . '</strong> el poncho es todo tuyo!</p>
             </div></div>';
-          } else if($selected[0]['idUser'] != $this->sessions->connectedUser()['idUser'] && $this->gauchada['idUser'] != $this->sessions->connectedUser()['idUser'] && $selected) {
+          } else if($this->selected[0]['idUser'] != $this->sessions->connectedUser()['idUser'] && $this->gauchada['idUser'] != $this->sessions->connectedUser()['idUser'] && $this->selected) {
             $location = explode(', ', $this->sessions->connectedUser()['location']);
             $HTML .= '<div class="col-12"><br>
             <div class="alert alert-info alert-dismissible fade show" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <p class="text-fluid text-center">Fuiste rechazado... Pero no te desmotives <a href=' . URL . '?search=&state=' . str_replace(' ', '%20', $location[0]) . '&locality=' . str_replace(' ', '%20', $location[1]) . ' >aquí</a> hay más gauchadas</p>
             </div></div>';
-          } else if($selected[0]['idUser'] == $this->sessions->connectedUser()['idUser'] && $selected[0]['idRating']) {
+          } else if($this->selected[0]['idUser'] == $this->sessions->connectedUser()['idUser'] && $this->selected[0]['idRating']) {
             $HTML .= '<div class="col-12"><br>
             <div class="alert alert-info alert-dismissible fade show" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -94,14 +96,14 @@
               <a class="btn btn-warning rounded-circle option-button text-center" data-toggle="modal" data-target="#Postulants">
                 <i class="fa fa-users" style="color: #fff"></i>
               </a>';
-            if(SelectedPostulant($this->router->getId()) && Ratings($this->router->getId())){
+            if($this->selected && Ratings($this->router->getId())){
               $HTML .= '
               <a class="btn btn-warning option-button text-center" style="color: #fff" data-toggle="modal" data-target="#califica">
                 <i class="fa fa-star" style="color: #fff"></i>Calificar!
               </a>';
             }
             $HTML .= '</div>';
-          } else if(!$postulante && !SelectedPostulant($this->router->getId())) {
+          } else if(!$postulante && ! $this->selected) {
             $HTML.= '<div class="col-2">
               <a class="btn btn-warning option-button text-center" style="color: #fff" data-toggle="modal" data-target="#Postulate">
                 <img src="views/app/img/mate.png" style="width: 25px;"></img>Postulate!

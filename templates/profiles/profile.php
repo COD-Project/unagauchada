@@ -7,12 +7,10 @@
     <div class="container">
       <div class="row">
         <?php
-          $user = Users()[$this->router->getId()];
-          $postulants = UserPostulantions($this->router->getId());
           $HTML = '';
-          if ($user) {
+          if ($this->user) {
             $HTML .= '<div class="col-11">
-              <h1>' . $user['completeName'] . '</h1>
+              <h1>' . $this->user['completeName'] . '</h1>
             </div>
             <div class="col-1">
               <a class="btn btn-warning option-button text-center" data-toggle="modal" data-target="#ListGauchadas">
@@ -23,8 +21,8 @@
               <hr>
               <br>
               <div class="list-group">';
-            if($postulants) {
-              foreach ($postulants as $postulant) {
+            if($this->postulants) {
+              foreach ($this->postulants as $postulant) {
                 $rating = Rating($postulant['idGauchada']);
                 if($rating) {
                   $HTML .= '<a href="gauchadas/view/' . $postulant['idGauchada'] . '" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -41,22 +39,20 @@
             <br><hr><br>
             </div>
           </div>';
-
-            if(SelectedAndNotFinished($this->router->getId(), $this->sessions->connectedUser()['idUser']) || SelectedAndNotFinished($this->sessions->connectedUser()['idUser'], $this->router->getId())) {
-              $user = Users()[$this->router->getId()];
+            if($this->access()) {
               $HTML .= '<div class="jumbotron">
               <h1 class="h1-responsive"> Información de contacto</h1>
               <div class="row">
                 <div class="col-2">
-                  <img src=' . $user['profilePicture'] . '></img>
+                  <img src=' . $this->user['profilePicture'] . '></img>
                 </div>
                 <div class="col-10">
-                  <p class="lead"> Nombre: <small>' .$user['name'] . '</small></p>
-                  <p class="lead"> Apellido: <small>' . $user['surname'] . '</small></p>
-                  <p class="lead"> Email: <small>' . $user['email'] . '</small></p>
-                  <p class="lead"> Teléfono: <small>' . $user['phone'] . '</small></p>
-                  <p class="lead"> Fecha de Nacimiento: <small>' . $user['birthdate'] . '</small></p>
-                  <p class="lead"> Localización: <small>' . $user['location'] . '</small></p>
+                  <p class="lead"> Nombre: <small>' .$this->user['name'] . '</small></p>
+                  <p class="lead"> Apellido: <small>' . $this->user['surname'] . '</small></p>
+                  <p class="lead"> Email: <small>' . $this->user['email'] . '</small></p>
+                  <p class="lead"> Teléfono: <small>' . $this->user['phone'] . '</small></p>
+                  <p class="lead"> Fecha de Nacimiento: <small>' . $this->user['birthdate'] . '</small></p>
+                  <p class="lead"> Localización: <small>' . $this->user['location'] . '</small></p>
                 </div>
               </div>
             </div>';

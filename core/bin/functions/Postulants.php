@@ -1,24 +1,5 @@
 <?php
 
-function Postulants_aux($idGauchada) {
-  $db = new Connection();
-  $where = "idGauchada=$idGauchada";
-  $data = $db->select("*", "Postulants", $where);
-
-  if(!$data) return false;
-  return true;
-}
-
-function Postulant($idGauchada, $idUser) {
-  $postulantes = (new Postulants)->get($idGauchada);
-  if($postulantes) {
-    foreach ($postulantes as $key => $value) {
-      if($idUser == $value["idUser"])
-        return true;
-    }
-  }
-  return false;
-}
 
 function SelectedPostulant($idGauchada) {
   $db = new Connection();

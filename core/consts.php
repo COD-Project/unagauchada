@@ -39,6 +39,25 @@ define('OPTIONS', array(
     'profile' => array(
       'path' => 'profile'
     )
+  ),
+  'postulants' => array(
+    'gauchada' => array(
+      'content' => 'p.idGauchada='
+    ),
+    'user' => array(
+      'content' => 'p.idUser='
+    ),
+    'owner' => array(
+      'content' => 'g.idUser='
+    ),
+    'validate' => array(
+      'content' => 'validate=',
+      'default' => '0'
+    ),
+    'selected' => array(
+      'content' => 'selected=',
+      'default' => '0'
+    )
   )
 ));
 
