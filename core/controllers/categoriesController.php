@@ -27,6 +27,7 @@ class categoriesController extends Controller {
                   }
                   break;
                 case 'main':
+                  $this->categories = $categories->get();
                   $this->render('categories/main');
                   break;
                 }
