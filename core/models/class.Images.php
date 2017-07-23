@@ -67,12 +67,14 @@ class Images extends Models
 
   final protected function filter($options)
   {
-    $where = !isset($options["gauchada"]) ?
-        (isset($options["image"]) ? "i.idImage=" . $options["image"] : "1=1") :
-        "idGauchada=". $options['gauchada'];
+    $where = "1=1";
+    $where .= isset($options["gauchada"]) ? " AND idGauchada=". $options['gauchada'] : "";
+    $where .= isset($options["image"]) ? " AND i.idImage=" . $options["image"] : "";
+    $table = "Images i ";
+    $table .= isset($options["gauchada"]) ? "INNER JOIN GauchadasImages g ON (i.idImage = g.idImage)" : "";
     return array(
       "elements" => "*",
-      "table" => "Images i INNER JOIN GauchadasImages g ON (i.idImage = g.idImage)",
+      "table" => $table,
       "where" => $where
     );
   }

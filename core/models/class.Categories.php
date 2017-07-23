@@ -86,7 +86,6 @@ final class Categories extends Models
       "table" => "Categories",
       "where" => $where
     );
-
   }
 
   final protected function prepare($data) {
