@@ -3,9 +3,9 @@
       <label class="col-lg-3 col-form-label form-control-label">Buscar</label>
       <datalist id="titles">
         <?php
-          foreach ($this->models['gauchadas']->get(['all']) as $key => $value) {
-            echo"<option value=\"" . $value['title'] . "\"></option>";
-          }
+          array_walk($this->models['gauchadas']->get(['all']), function($gauchada) {
+            echo "<option value=\"" . $gauchada['title'] . "\"></option>";
+          });
         ?>
       </datalist>
       <div class="col-lg-9">
@@ -18,9 +18,9 @@
           <select class="form-control" name="category">
             <option value="" selected disabled>Todas las categorías...</option>
             <?php
-              foreach ($this->categories as $key => $value) {
-                echo"<option value=\"" . $value['idCategory'] . "\">" . $value['name'] . "</option>";
-              }
+              array_walk($this->categories, function($category) {
+                echo "<option value=\"" . $category['idCategory'] . "\">" . $category['name'] . "</option>";
+              });
             ?>
           </select>
       </div>

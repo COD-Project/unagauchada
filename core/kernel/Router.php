@@ -121,6 +121,7 @@ final class Router
       );
     return strtolower($string);
   }
+
 }
 
 ?>

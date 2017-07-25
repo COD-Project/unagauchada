@@ -7,7 +7,7 @@ defined('INDEX_DIR') OR exit(APP . ' software says .i.');
 class CreditosController extends Controller {
   public function __construct() {
     parent::__construct(true);
-    $this->render('creditos/compra');
+    return $this->render('creditos/compra');
   }
 
   protected function init() {

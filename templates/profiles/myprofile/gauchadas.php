@@ -2,17 +2,16 @@
   <!--Second row-->
   <div class="row" style="margin-bottom: 5px;">
       <?php
-        $HTML = "";
         if (!$this->gauchadas) {
-          $HTML .= '<div class="col-12">
+          echo '<div class="col-12">
           <div class="alert alert-info alert-dismissible fade show" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <p class="text-fluid">Aún no has solicitado gauchadas.
           </div></div>';
         } else {
-          $i = 1;
-          foreach ($this->gauchadas as $id => $gauchada) {
-            $HTML .= "<div class=\"col-lg-6\" style=\"margin-bottom: 10px;\">
+          $i = 0;
+          array_walk($this->gauchadas, function($gauchada) use($i) {
+            echo "<div class=\"col-lg-6\" style=\"margin-bottom: 10px;\">
             <!--Card-->
                 <div class=\"card wow fadeIn\" data-wow-delay=\"0." . ($i+1)*2 . "s\">
                     <!--Card content-->
@@ -31,9 +30,8 @@
                 <!--/.Card-->
             </div>";
             $i++;
-          }
+          });
         }
-        echo $HTML;
       ?>
   </div>
 
