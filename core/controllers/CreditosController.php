@@ -14,7 +14,8 @@ class CreditosController extends Controller {
     $this->setModels(array(
       'credits'
     ));
-    $this->credits = $this->models['credits']->get();
+    $this->credits = $this->models['credits']
+                          ->get();
     $this->current = $this->credits[0];
   }
 }

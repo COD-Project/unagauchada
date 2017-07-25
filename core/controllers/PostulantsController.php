@@ -38,12 +38,20 @@ class PostulantsController extends Controller {
       "postulants",
       "gauchadas"
     ));
-    $this->user = $this->models["users"]->get()[$this->router->getId()];
-    $this->postulants = $this->models["postulants"]->get([
-      "gauchada" => $this->router->getId(),
-      "user" => $this->sessions->connectedUser()['idUser']
-    ]);
-    $this->gauchadas = $this->models["gauchadas"]->get();
+    $this->user = $this->models["users"]
+                       ->get()[
+                          $this->router
+                               ->getId()
+                       ];
+
+    $this->postulants = $this->models["postulants"]
+                             ->get([
+                                "gauchada" => $this->router->getId(),
+                                "user" => $this->sessions->connectedUser()['idUser']
+                              ]);
+
+    $this->gauchadas = $this->models["gauchadas"]
+                            ->get();
   }
 
 }
