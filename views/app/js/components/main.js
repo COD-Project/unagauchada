@@ -1,30 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    let init = () => {
+    function init() {
       new WOW().init()
       $(function () {
         $('[data-toggle="popover"]').popover()
       })
     }
 
-    let scrollTop = () => {
-      $('.cmd_gotop').click(() => {
-          $('body, html').animate({
-              scrollTop: '0px'
-          }, 300);
-      });
-
-      $(window).scroll(() => {
-          if( $(this).scrollTop() > 0 ){
-              $('.cmd_gotop').slideDown(300);
-          } else {
-              $('.cmd_gotop').slideUp(300);
-          }
-      });
-    };
-
     init();
-    scrollTop();
 
 });
 
