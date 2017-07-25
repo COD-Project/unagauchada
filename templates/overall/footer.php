@@ -6,11 +6,12 @@
 <script src="views/node_modules/mdbootstrap/js/bootstrap.min.js"></script>
 <script src="views/node_modules/mdbootstrap/js/mdb.min.js"></script>
 
-<!-- Classes and consts files -->
-<script src="views/app/js/classes/class.Functions.js"></script>
-<script src="views/app/js/classes/class.CMDForm.js"></script>
-<script src="views/app/js/consts.js"></script>
-<script src="views/app/js/form_validate.js"></script>
+<!-- Helpers -->
+<script src="views/app/js/helpers/classes/class.Functions.js"></script>
+<script src="views/app/js/helpers/classes/class.CMDForm.js"></script>
+<script src="views/app/js/helpers/consts.js"></script>
+<script src="views/app/js/helpers/form_validate.js"></script>
+<script src="views/app/js/helpers/cmd_form.js"></script>
 
 <!-- AJAX Files -->
 <script src="views/app/js/ajax/init_login.js"></script>
@@ -20,15 +21,13 @@
 <script src="views/app/js/ajax/init_states.js"></script>
 <script src="views/app/js/ajax/init_localities.js"></script>
 
-<!-- General JS Files -->
-<script src="views/app/js/login.js"></script>
-<script src="views/app/js/signup.js"></script>
-<script src="views/app/js/edit.js"></script>
-<script src="views/app/js/cmd_form.js"></script>
-<script src="views/app/js/main.js"></script>
 
-<!-- Specific JS modules-->
-<script src="views/app/js/categorias/add.js"></script>
-<script src="views/app/js/creditos/compra.js"></script>
-<script src="views/app/js/localities/states.js"></script>
-<script src="views/app/js/localities/localities.js"></script>
+<!-- Specific JS components -->
+<script src="views/app/js/components/login.js"></script>
+<script src="views/app/js/components/signup.js"></script>
+<script src="views/app/js/components/edit.js"></script>
+<script src="views/app/js/components/categorias/categories.js"></script>
+<script src="views/app/js/components/creditos/creditos.js"></script>
+<script src="views/app/js/components/states/states.js"></script>
+<script src="views/app/js/components/localities/localities.js"></script>
+<script src="views/app/js/components/main.js"></script>

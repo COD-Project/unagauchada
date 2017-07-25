@@ -15,7 +15,7 @@
               <h6>Créditos y Puntos</h6>
               <hr>
               <span class=\"badge badge-pill badge-success\"><i class=\"fa fa-credit-card-alt\"></i> " . $this->user['credits'] . " Crédito/s </span>
-              <span class=\"badge badge-pill badge-danger\"><i class=\"fa fa-pinterest\"></i> " . $this->user['points'] . " Punto/s </span>
+              <span class=\"badge badge-pill badge-danger\"><i class=\"fa fa-star\"></i> " . $this->user['points'] . " Punto/s </span>
           </div>
           <div class=\"col-md-12\" style=\"margin-top: 20px;\">
             <h4 class=\"m-t-2\"><span class=\"fa fa-clock-o ion-clock\"></span> Actividad Reciente</h4>
