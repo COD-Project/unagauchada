@@ -10,8 +10,10 @@ class PostulantsController extends Controller {
     if (!array_key_exists($this->router->getId(), $this->gauchadas)) {
       Func::redirect();
     } else if (in_array($this->router->getMethod(), ['add', 'edit', 'delete'])) {
-        $method = $this->router->getMethod();
-        eval("(new Postulants())->$method();");
+        call_user_func([
+          (new Postulants),
+          $this->router->getMethod()
+        ]);
     }
   }
 
