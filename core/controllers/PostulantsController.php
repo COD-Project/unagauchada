@@ -7,28 +7,11 @@ defined('INDEX_DIR') OR exit(APP . ' software says .i.');
 class PostulantsController extends Controller {
   public function __construct() {
     parent::__construct(true);
-    $postulants = new Postulants();
-    switch ($this->router->getMethod()) {
-    case 'add':
-      if (array_key_exists($this->router->getId(), $this->gauchadas)) {
-        $postulants->add();
-      } else {
-        Func::redirect();
-      }
-      break;
-    case 'edit':
-      if (array_key_exists($this->router->getId(), $this->gauchadas)) {
-        $postulants->edit();
-      } else {
-        Func::redirect();
-      }
-      break;
-    case 'delete':
-      if (array_key_exists($this->router->getId(), $this->gauchadas)) {
-        $postulants->delete();
-      } else {
-        Func::redirect();
-      }
+    if (!array_key_exists($this->router->getId(), $this->gauchadas)) {
+      Func::redirect();
+    } else if (in_array($this->router->getMethod(), ['add', 'edit', 'delete'])) {
+        $method = $this->router->getMethod();
+        eval("(new Postulants())->$method();");
     }
   }
 
