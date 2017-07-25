@@ -8,13 +8,11 @@ class RatingsController extends Controller {
   public function __construct() {
     parent::__construct();
     if($this->sessions->isLoggedIn()) {
-      $ratings = new Ratings();
-      switch ($this->router->getMethod()) {
-        case 'add':
-          if ($_POST) {
-            $ratings->add();
-          }
-          break;
+      if ($_POST && in_array($this->router->getMethod(), ['add'])) {
+          call_user_func([
+            (new Ratings),
+            $this->router->getMethod()
+          ]);
       }
     }
   }

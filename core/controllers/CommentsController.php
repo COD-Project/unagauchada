@@ -8,13 +8,11 @@ class CommentsController extends Controller {
   public function __construct() {
     parent::__construct(true);
     if($this->sessions->isLoggedIn()) {
-      $comments = new Comments();
-      switch ($this->router->getMethod()) {
-        case 'add':
-          if ($_POST) {
-            $comments->add();
-          }
-          break;
+      if ($_POST && in_array($this->router->getMethod(), ['add'])) {
+          call_user_func([
+            (new Comments),
+            $this->router->getMethod()
+          ]);
       }
     }
   }
