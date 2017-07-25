@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    function init() {
-      new WOW().init()
-      $(function () {
-        $('[data-toggle="popover"]').popover()
-      })
-    }
+  function init() {
+    new WOW().init()
+    $(function() {
+      $('[data-toggle="popover"]').popover()
+    })
+  }
 
-    init();
+  init();
 
 });
 

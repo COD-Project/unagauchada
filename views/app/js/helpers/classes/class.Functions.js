@@ -10,7 +10,7 @@ class Functions {
   }
 
   insertAfter(e, i) {
-    if(e.nextSibling){
+    if (e.nextSibling) {
       e.parentNode.insertBefore(i, e.nextSibling);
     } else {
       e.parentNode.appendChild(i);
@@ -19,12 +19,12 @@ class Functions {
 
   deleteItem(contenido, url) {
     if (window.confirm(contenido)) {
-        window.location = url;
+      window.location = url;
     }
   }
 
   limitate(elems) {
-    elems.forEach( elem => {
+    elems.forEach(elem => {
       this.$('#' + elem.hash).onkeypress = e => {
         e.target.value = e.target.value.length > elem.value ? e.target.value.substr(0, elem.value) : e.target.value;
         // console.log(e.target.value);

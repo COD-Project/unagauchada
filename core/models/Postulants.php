@@ -79,16 +79,14 @@ final class Postulants extends Models
 
   final protected function filter($options)
   {
-    $where = "1 = 1";
+    $where = "1=1";
     foreach (OPTIONS['postulants'] as $key => $value) {
       if(array_key_exists($key, $options)) {
         $where .= " AND " . $value['content'] . ($options[$key] ?? $value['default']);
       }
     }
     $table = "(Postulants p INNER JOIN Gauchadas g ON(p.idGauchada = g.idGauchada))";
-    if(isset($options['selected'])) {
-      $table .= "LEFT JOIN Ratings r ON(p.idGauchada=r.idGauchada)";
-    }
+    $table .= isset($options['selected']) ? "LEFT JOIN Ratings r ON(p.idGauchada=r.idGauchada)" : "";
     return array(
       "elements" => "*, p.idUser as idPostulant",
       "table" => $table ,

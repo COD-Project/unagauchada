@@ -1,13 +1,15 @@
 if (Func.$('#description')) {
-  Func.limitate([
-    { hash: 'description', value: 155 }
-  ]);
+  Func.limitate([{
+    hash: 'description',
+    value: 155
+  }]);
 }
 
 if (Func.$('#body')) {
-  Func.limitate([
-    { hash: 'body', value: 155 }
-  ]);
+  Func.limitate([{
+    hash: 'body',
+    value: 155
+  }]);
 }
 
 let postulantconfirm = (elem) => {
@@ -15,7 +17,7 @@ let postulantconfirm = (elem) => {
 }
 
 let getLoginData = () => ({
-  email : {
+  email: {
     value: Func.$('#email').value,
     exprSuccess: Expresion.email.test(Func.$('#email').value),
     empty: (
@@ -54,7 +56,7 @@ let getSignupData = () => ({
     value: Func.$('#surname_signup').value,
     empty: Func.$('#surname_signup').value.length == 0
   },
-  email : {
+  email: {
     value: Func.$('#email_signup').value,
     exprSuccess: Expresion.email.test(Func.$('#email_signup').value),
     empty: (
@@ -73,7 +75,7 @@ let getSignupData = () => ({
     ],
     exprSuccess: (
       Expresion.password.test(Func.$('#pass_signup').value) &&
-  		Expresion.password.test(Func.$('#pass_signup_dos').value)
+      Expresion.password.test(Func.$('#pass_signup_dos').value)
     ),
     empty: (
       Func.$('#pass_signup').value == null ||
@@ -83,7 +85,7 @@ let getSignupData = () => ({
     ),
     success: (
       Expresion.password.test(Func.$('#pass_signup').value) &&
-  		Expresion.password.test(Func.$('#pass_signup_dos').value)
+      Expresion.password.test(Func.$('#pass_signup_dos').value)
     ) && !(
       Func.$('#pass_signup').value == null ||
       Func.$('#pass_signup_dos').value == null ||
@@ -127,7 +129,7 @@ let getEditData = () => ({
     ],
     exprSuccess: (
       Expresion.password.test(Func.$('#pass').value) &&
-  		Expresion.password.test(Func.$('#new_pass').value)
+      Expresion.password.test(Func.$('#new_pass').value)
     ),
     empty: (
       Func.$('#pass').value == null ||
@@ -137,7 +139,7 @@ let getEditData = () => ({
     ),
     success: (
       Expresion.password.test(Func.$('#pass').value) &&
-  		Expresion.password.test(Func.$('#new_pass').value)
+      Expresion.password.test(Func.$('#new_pass').value)
     )
   },
   phone: {

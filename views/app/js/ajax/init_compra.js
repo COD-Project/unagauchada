@@ -1,12 +1,12 @@
 let _init_compra = function() {
-	var data = getCreditsData(),
-      result,
-		  connect = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+  var data = getCreditsData(),
+    result,
+    connect = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
 
   var form = 'cantidad=' + data.creditos.value;
   if (data.tarjeta.success && data.creditos.value > 0 && data.date) {
     connect.onreadystatechange = () => {
-      if(connect.readyState == 4 && connect.status == 200) {
+      if (connect.readyState == 4 && connect.status == 200) {
         if (connect.responseText == 1) {
           result = '<div class="alert alert-success alert-dismissible fade show" role="alert" style="border-radius: 0;">';
           result += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
@@ -25,7 +25,7 @@ let _init_compra = function() {
         }
       }
     }
-    connect.open('POST','ajax.php?for=users&mode=credits', true);
+    connect.open('POST', 'ajax.php?for=users&mode=credits', true);
     connect.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     connect.send(form);
   } else if (!data.tarjeta.success) {
