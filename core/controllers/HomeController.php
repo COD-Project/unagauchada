@@ -11,10 +11,10 @@ class HomeController extends Controller {
   }
 
   protected function init() {
-    $this->setModels(array(
+    $this->setModels([
       'gauchadas',
       'categories'
-    ));
+    ]);
 
     $this->gauchadas = $this->models['gauchadas']
                             ->get();

@@ -18,21 +18,27 @@ class ProfilesController extends Controller {
   }
 
   protected function init() {
-    $this->setModels(array(
+    $this->setModels([
       'gauchadas',
       'users',
       'postulants'
-    ));
-    $this->user = !$this->router->getId() ?
-        $this->sessions->connectedUser() :
-        $this->models['users']->get()[$this->router->getId()];
-    $where = !$this->router->getId() ?
-      array('user' => $this->user) :
-      array('all' => true);
-    $this->gauchadas = $this->models['gauchadas']->get($where);
-    $this->postulants = $this->models['postulants']->get([
-      "user" => $this->user['idUser']
     ]);
+
+    $this->user = !$this->router->getId() ?
+                      $this->sessions->connectedUser() :
+                      $this->models['users']->get()[$this->router->getId()];
+
+    $where = !$this->router->getId() ?
+                  ['user' => $this->user] :
+                  ['all' => true];
+
+    $this->gauchadas = $this->models['gauchadas']
+                            ->get($where);
+
+    $this->postulants = $this->models['postulants']
+                             ->get([
+                                 "user" => $this->user['idUser']
+                               ]);
    }
 
   protected function news() {
@@ -41,13 +47,13 @@ class ProfilesController extends Controller {
     if(!$data) return false;
 
     for($i = 0; $i < count($data); $i++) {
-      $news[$data[$i]['idGauchada']] = array(
+      $news[$data[$i]['idGauchada']] = [
         'idGauchada' => $data[$i]['idGauchada'],
         'idUser' => $data[$i]['idUser'],
         'title' => $data[$i]['title'],
         'body' => $data[$i]['body'],
         'user' => Users()[$data[$i]['idUser']],
-      );
+      ];
     }
     return $news;
   }

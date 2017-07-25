@@ -33,22 +33,23 @@ class PostulantsController extends Controller {
   }
 
   protected function init() {
-    $this->setModels(array(
+    $this->setModels([
       "users",
       "postulants",
       "gauchadas"
-    ));
+    ]);
+
     $this->user = $this->models["users"]
                        ->get()[
-                          $this->router
-                               ->getId()
-                       ];
+                           $this->router
+                                ->getId()
+                         ];
 
     $this->postulants = $this->models["postulants"]
                              ->get([
-                                "gauchada" => $this->router->getId(),
-                                "user" => $this->sessions->connectedUser()['idUser']
-                              ]);
+                                 "gauchada" => $this->router->getId(),
+                                 "user" => $this->sessions->connectedUser()['idUser']
+                               ]);
 
     $this->gauchadas = $this->models["gauchadas"]
                             ->get();

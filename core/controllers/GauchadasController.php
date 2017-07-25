@@ -45,14 +45,15 @@ class GauchadasController extends Controller {
   }
 
   protected function init() {
-    $this->setModels(array(
+    $this->setModels([
       "gauchadas",
       "postulants",
       "users"
-    ));
+    ]);
+    
     $this->gauchadas = $this->models['gauchadas']
                             ->get(['all']);
-                            
+
     $this->postulants = $this->models['postulants']
                              ->get(["gauchada" => $this->router->getId()]);
 

@@ -11,11 +11,13 @@ class CreditosController extends Controller {
   }
 
   protected function init() {
-    $this->setModels(array(
+    $this->setModels([
       'credits'
-    ));
+    ]);
+
     $this->credits = $this->models['credits']
                           ->get();
+                          
     $this->current = $this->credits[0];
   }
 }
