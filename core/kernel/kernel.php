@@ -27,7 +27,7 @@ function __function_autoload($function)
 
 function __model_autoload($model)
 {
-  $model = 'core/models/class.'. $model .'.php';
+  $model = 'core/models/'. $model .'.php';
   if(is_readable($model)) {
     require_once($model);
   }

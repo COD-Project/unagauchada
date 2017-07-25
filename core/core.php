@@ -18,9 +18,9 @@ require('vendor/autoload.php');
 require('core/kernel/kernel.php');
 
 //-------------------------------------------------------------------
-__kernel_autoload('class.Router');
-__kernel_autoload('class.Connection');
-__kernel_autoload('class.Functions');
+__kernel_autoload('Router');
+__kernel_autoload('Connection');
+__kernel_autoload('Functions');
 __models_autoload(array(
   'Models',
   'Sessions',
@@ -34,7 +34,6 @@ __models_autoload(array(
   'Credits'
 ));
 __functions_autoload(array(
-  'Users',
   // 'Postulants',
   'Ratings'
 ));

@@ -16,7 +16,7 @@
   define('INDEX_DIR', true);
   # Kernel load
   require('core/core.php');
-  __kernel_autoload('class.Controller');
+  __kernel_autoload('Controller');
 
   //------------------------------------------------
 
