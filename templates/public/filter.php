@@ -18,7 +18,7 @@
           <select class="form-control" name="category">
             <option value="" selected disabled>Todas las categorías...</option>
             <?php
-              foreach ($this->models['categories']->get() as $key => $value) {
+              foreach ($this->categories as $key => $value) {
                 echo"<option value=\"" . $value['idCategory'] . "\">" . $value['name'] . "</option>";
               }
             ?>

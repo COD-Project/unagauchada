@@ -44,7 +44,7 @@ class gauchadasController extends Controller {
     }
   }
 
-  protected function initialize() {
+  protected function init() {
     $this->setModels(array(
       "gauchadas",
       "postulants",

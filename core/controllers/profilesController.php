@@ -7,7 +7,6 @@ defined('INDEX_DIR') OR exit(APP . ' software says .i.');
 class profilesController extends Controller {
   public function __construct() {
     parent::__construct(true);
-    $this->initialize();
     if ($this->sessions->isLoggedIn() && !Func::emp($this->router->getMethod()) && OPTIONS['profiles'][$this->router->getMethod()]) {
       if($this->router->getId() == '1' || $this->router->getId() == $this->sessions->connectedUser()['idUser']) {
         Func::redirect();
@@ -18,7 +17,7 @@ class profilesController extends Controller {
     }
   }
 
-  protected function initialize() {
+  protected function init() {
     $this->setModels(array(
       'gauchadas',
       'users',

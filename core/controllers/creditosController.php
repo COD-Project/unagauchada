@@ -10,7 +10,7 @@ class creditosController extends Controller {
     $this->render('creditos/compra');
   }
 
-  protected function initialize() {
+  protected function init() {
     $this->setModels(array(
       'credits'
     ));

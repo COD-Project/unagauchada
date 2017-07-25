@@ -51,7 +51,7 @@ abstract class Controller
     $this->method = $this->method = ($this->router->getMethod() != null and ctype_alnum($this->router->getMethod())) ? $this->router->getMethod() : null;
     $this->isset_id = ($this->router->getId() != null and is_numeric($this->router->getId()) and $this->router->getId() >= 1);
 
-    $this->initialize();
+    $this->init();
 
   }
 

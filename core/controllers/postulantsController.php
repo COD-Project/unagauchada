@@ -32,7 +32,7 @@ class postulantsController extends Controller {
     }
   }
 
-  protected function initialize() {
+  protected function init() {
     $this->setModels(array(
       "users",
       "postulants",

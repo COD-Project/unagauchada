@@ -19,7 +19,7 @@
 
   $criteria = "<strong>Se filtraron las gauchadas que cumplen el siguiente criterio: </strong><br>";
   $criteria .= !(isset($_GET['search']) && !empty($_GET['search'])) ? '' : 'gauchadas que contienen la palabra clave <strong>' . $_GET['search'] . '</strong><br>';
-  $criteria .= !(isset($_GET['category']) && is_numeric($_GET['category'])) ? '' : 'gauchadas pertenecientes a la categoría <strong>' . Categories(intval($_GET['category']))[0]['name']. '</strong><br>';
+  $criteria .= !(isset($_GET['category']) && is_numeric($_GET['category'])) ? '' : 'gauchadas pertenecientes a la categoría <strong>' . $this->models['categories']->get(intval($_GET['category']))[0]['name']. '</strong><br>';
   $criteria .= !(isset($_GET['state']) && !empty($_GET['state'])) ? '' : 'gauchadas de la provincia <strong>' . $_GET['state'] . '</strong><br>';
   $criteria .= !(isset($_GET['locality']) && !empty($_GET['locality'])) ? '' : 'gauchadas de la localidad <strong>' . $_GET['locality'] . '</strong><br>';
 
