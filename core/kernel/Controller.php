@@ -55,7 +55,7 @@ abstract class Controller
 
   }
 
-  protected function initialize() {
+  protected function init() {
 
   }
 
