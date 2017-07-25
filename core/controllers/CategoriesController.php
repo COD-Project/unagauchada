@@ -22,7 +22,7 @@ class CategoriesController extends Controller {
           }
           break;
         case 'delete':
-          if($this->router->getId() != 1){
+          if($this->router->getId() != 1) {
             $categories->delete();
           }
           break;

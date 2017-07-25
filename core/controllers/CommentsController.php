@@ -10,11 +10,11 @@ class CommentsController extends Controller {
     if($this->sessions->isLoggedIn()) {
       $comments = new Comments();
       switch ($this->router->getMethod()) {
-      case 'add':
-        if ($_POST) {
-          $comments->add();
-        }
-        break;
+        case 'add':
+          if ($_POST) {
+            $comments->add();
+          }
+          break;
       }
     }
   }

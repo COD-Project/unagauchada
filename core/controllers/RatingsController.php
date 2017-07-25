@@ -10,11 +10,11 @@ class RatingsController extends Controller {
     if($this->sessions->isLoggedIn()) {
       $ratings = new Ratings();
       switch ($this->router->getMethod()) {
-      case 'add':
-        if ($_POST) {
-          $ratings->add();
-        }
-        break;
+        case 'add':
+          if ($_POST) {
+            $ratings->add();
+          }
+          break;
       }
     }
   }
