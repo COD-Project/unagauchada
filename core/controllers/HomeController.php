@@ -15,9 +15,10 @@ class HomeController extends Controller {
       'gauchadas',
       'categories'
     ));
-    
+
     $this->gauchadas = $this->models['gauchadas']
                             ->get();
+                            
     $this->categories = $this->models['categories']
                             ->get();
   }
