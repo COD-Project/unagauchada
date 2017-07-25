@@ -27,7 +27,7 @@
 
   # Identification of the controller in the system
   if(!is_readable('core/controllers/' . $Controller . '.php')) {
-    $Controller = 'errorController';
+    $Controller = 'ErrorController';
   }
 
   # Loading selected driver

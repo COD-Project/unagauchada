@@ -4,7 +4,7 @@
 defined('INDEX_DIR') OR exit(APP . ' software says .i.');
 //------------------------------------------------
 
-class categoriesController extends Controller {
+class CategoriesController extends Controller {
   public function __construct() {
     parent::__construct(true);
     if($this->sessions->isLoggedIn()) {

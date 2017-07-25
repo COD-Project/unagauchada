@@ -34,11 +34,11 @@ final class Router
     }
     if(!empty($this->url) and $this->url != $this->dir) {
       $this->url = explode('/',$this->url);
-      $this->controller = ctype_alnum($this->url[0]) ? strtolower( $this->url[0] ) . 'Controller' : 'homeController';
+      $this->controller = ctype_alnum($this->url[0]) ? ucfirst(strtolower( $this->url[0] )) . 'Controller' : 'HomeController';
       $this->method = array_key_exists(1,$this->url) ? $this->url[1] : null;
       $this->id = array_key_exists(2,$this->url) ? intval($this->url[2]) : null;
     } else {
-      $this->controller = 'homeController';
+      $this->controller = 'HomeController';
     }
   }
 

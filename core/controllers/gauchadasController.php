@@ -4,7 +4,7 @@
 defined('INDEX_DIR') OR exit(APP . ' software says .i.');
 //------------------------------------------------
 
-class gauchadasController extends Controller {
+class GauchadasController extends Controller {
   public function __construct() {
     parent::__construct(true);
     if($this->sessions->isLoggedIn()) {
