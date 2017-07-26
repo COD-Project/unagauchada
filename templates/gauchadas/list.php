@@ -24,13 +24,13 @@
                   <!--Card content-->
                   <div class=\"card-block\">
                     <!--Avatar-->
-                    <div class=\"row wow fadeIn\" data-wow-delay=\"0." . ($i+1)*3 . "s\" style=\"background-color: rgba(0, 0, 0, 0.5); margin-top: -100px; padding-top: 10px; \">
+                    <div class=\"row wow fadeIn\" data-wow-delay=\"0." . ($i+1)*3 . "s\" style=\"background-color: rgba(0, 0, 0, 0.55); margin-top: -100px; padding-top: 10px; max-height: 85px; \">
                       <div class=\"avatar text-right col-3\">
-                        <img class=\"rounded-circle img-responsive\" src=\"" . $gauchada['user']['profilePicture'] . "\" style=\"width: 50px;\" >
+                        <img class=\"rounded-circle img-fluid\" src=\"" . $gauchada['user']['profilePicture'] . "\" style=\"height: 50px;\" >
                       </div>
                       <div class=\"text-left col-7\">
-                        <p class=\"text-fluid\" style=\"color: #fff\">" . $gauchada['user']['completeName'] . "</p>
-                        <p class=\"text-fluid\" style=\"color: #C0C0C0; margin-top: -15px\">" . $gauchada['creationDate'] . "</p>
+                        <p class=\"text-fluid\" style=\"color: #fff; font-size: 15px;\">" . $gauchada['user']['completeName'] . "</p>
+                        <p class=\"text-fluid\" style=\"color: #C0C0C0; margin-top: -13.5px; font-size: 15px\">" . $gauchada['creationDate'] . "</p>
                       </div>
                       <div class=\"text-left col-2\">
                       ";

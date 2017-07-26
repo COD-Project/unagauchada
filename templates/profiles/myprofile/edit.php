@@ -30,10 +30,10 @@
         <datalist id="states"></datalist>
       	<datalist id="localities"></datalist>
         <div class="col-lg-3">
-            <input list="states" id="state" class="form-control" type="text" value="" placeholder="Provincia">
+            <input list="states" id="state" class="form-control" type="text" value=" <?php echo $this->user['province']; ?> " placeholder="Provincia">
         </div>
         <div class="col-lg-6">
-            <input list="localities" id="locality" class="form-control" type="text" value="" placeholder="Ciudad">
+            <input list="localities" id="locality" class="form-control" type="text" value=" <?php echo $this->user['location']; ?> " placeholder="Ciudad">
         </div>
     </div>
     <div class="form-group row">

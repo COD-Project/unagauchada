@@ -131,7 +131,8 @@ final class Users extends Models
     );
   }
 
-  final protected function prepare($data = null) {
+  final protected function prepare($data = null)
+  {
     for($i = 0; $i < count($data); $i++) {
       $users[$data[$i]['idUser']] = array(
         'idUser' => $data[$i]['idUser'],
@@ -139,7 +140,9 @@ final class Users extends Models
         'surname' => $data[$i]['surname'],
         'completeName' => $data[$i]['name'] . ' ' . $data[$i]['surname'],
         'birthdate' => $data[$i]['birthdate'],
-        'location' => $data[$i]['location'],
+        'province' => explode(',', $data[$i]['location'])[0],
+        'location' => explode(',', $data[$i]['location'])[1],
+        'entireLocation' => $data[$i]['location'],
         'phone' => $data[$i]['phone'],
         'email' => $data[$i]['email'],
         'state' => ($data[$i]['state'] == 1),

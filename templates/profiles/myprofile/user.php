@@ -4,7 +4,7 @@
           <h3 style="color: #000"><?php echo $this->user['completeName']; ?></h3>
           <p style="color: gray;"><?php echo $this->user['email']; ?></p>
           <h6>Localidad</h6>
-          <p style="color: gray;"><?php echo $this->user['location']; ?></p>
+          <p style="color: gray;"><?php echo $this->user['entireLocation']; ?></p>
           <h6>Teléfono</h6>
           <p style="color: gray;"><?php echo $this->user['phone']; ?></p>
       </div>

@@ -19,7 +19,7 @@
                 echo ('
                 <div class="dropdown navbar-text">
                   <a class="nav-link dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="' . $this->sessions->connectedUser()['profilePicture'] . '" class="rounded-circle img-responsive cmd_zoomin" style="width: 35px;">
+                    <img src="' . $this->sessions->connectedUser()['profilePicture'] . '" class="rounded-circle img-fluid" style="height: 35px; width: 35px; margin-right: 2px;">
                     <span class="navbar-text">' . $this->sessions->connectedUser()['name'] . '</span>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -27,9 +27,11 @@
                     if(!$this->sessions->isGranted()) {
                       echo('
                       <a class="dropdown-item" href="creditos/comprar"><i class="fa fa-credit-card-alt"></i> Créditos: ' . $this->sessions->connectedUser()['credits'] . '</a>
+                      <a class="dropdown-item" href="creditos/comprar"><i class="fa fa-star"></i> Puntos: ' . $this->sessions->connectedUser()['points'] . '</a>
                       ');
                     }
                     echo('
+                    <hr />
                     <a class="dropdown-item" href="logout"><i class="fa fa-sign-out"></i> Cerrar sesión </a>
                   </div>
                 </div>
