@@ -8,7 +8,7 @@
       <div class="row m-y-2">
         <div class="col-lg-4 text-center" style="margin-bottom: 1vh;">
           <?php
-            echo '<img src="' . $this->sessions->connectedUser()['profilePicture'] . '" class="rounded img-fluid cmd_zoomin"  style="height: 40%;">';
+            echo '<img src="' . $this->sessions->connectedUser()['profilePicture'] . '" class="rounded img-fluid cmd_zoomin"  style="max-height: 250px; max-width: 100%;">';
           ?>
           <h6 class="m-t-2" style="margin-top: 2vh;"><strong>Cambia tu foto de perfil</strong></h6>
           <form class="form-inline" action="ajax.php?for=users&mode=edit" method="post" enctype="multipart/form-data">
