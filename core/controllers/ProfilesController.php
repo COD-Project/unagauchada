@@ -39,7 +39,7 @@ class ProfilesController extends Controller {
                              ->get([
                                  "user" => $this->user['idUser']
                                ]);
-   }
+  }
 
   protected function news() {
     $db = new Connection();
@@ -52,7 +52,7 @@ class ProfilesController extends Controller {
         'idUser' => $data[$i]['idUser'],
         'title' => $data[$i]['title'],
         'body' => $data[$i]['body'],
-        'user' => Users()[$data[$i]['idUser']],
+        'user' => (new Users)->get()[$data[$i]['idUser']],
       ];
     }
     return $news;

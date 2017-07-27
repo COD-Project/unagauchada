@@ -18,28 +18,29 @@
         <h4 class="m-t-2"><span class="fa fa-clock-o ion-clock"></span> Actividad Reciente</h4>
       <?php
         $HTML = "";
-        if ($this->news()) {
-          $HTML .= "<table class=\"table table-hover table-striped\">
-              <tbody>";
-                foreach ($this->news() as $key => $value) {
-                  $HTML .= "
-                    <tr>
-                        <td>
-                            <strong>" . $value['user']['completeName'] . "</strong> eliminó la gauchada <strong>`" . $value['title'] . "`</strong>
-                        </td>
-                    </tr>
-                  ";
-                }
-          $HTML .= "</tbody>
-              </table>";
-        } else {
+        if (!$this->news()) {
           $HTML .= '<div class="alert alert-info alert-dismissible fade show" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <p class="text-fluid"><strong></strong>No se han registrado actividades recientes.</p>
           </div>';
+        } else {
+          $HTML .= "<table class=\"table table-hover table-striped\">
+            <tbody>";
+              foreach ($this->news() as $key => $value) {
+                $HTML .= "
+                <tr>
+                  <td>
+                    <strong>" . $value['user']['completeName'] . "</strong> eliminó la gauchada <strong>`" . $value['title'] . "`</strong>
+                  </td>
+                </tr>
+                ";
+              }
+              $HTML .= "</tbody>
+            </table>";
         }
         $HTML .= "</div>";
         echo $HTML;
       ?>
     </div>
+
 </div>
