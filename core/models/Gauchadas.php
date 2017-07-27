@@ -97,14 +97,16 @@ final class Gauchadas extends Models
     }
 
 
-    final protected function filter() {
+    final protected function filter($options) {
       $select = '*';
       $table = 'Gauchadas g';
       $criteria = 'ORDER BY g.idGauchada DESC';
       $where = 'DATEDIFF(CURDATE(), limitDate) <= 0 AND g.validate IS NULL';
-      foreach (OPTIONS['gauchadas']['filter'] as $key => $value) {
-        $where .= array_key_exists($key, $_GET) && !Func::emp($_GET[$key]) ?
-          ' AND ' . $value['content'] . $value['begin'] . $this->db->escape($_GET[$key]) . $value['end'] : '';
+      if (!isset($options['all'])) {
+        foreach (OPTIONS['gauchadas']['filter'] as $key => $value) {
+          $where .= (array_key_exists($key, $_GET) && !Func::emp($_GET[$key])) || ($options && array_key_exists($key, $options) && !Func::emp($options[$key]))  ?
+            ' AND ' . $value['content'] . $value['begin'] . $this->db->escape($_GET[$key] ?? $options[$key]) . $value['end'] : '';
+        }
       }
       if (isset($_GET['mode'])) {
         $select = 'g.idGauchada, g.idUser, g.title, g.body, g.location, g.limitDate, g.createdAt, g.evaluation, g.idCategory, COUNT(idPostulante) as "postulantes"';

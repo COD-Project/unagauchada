@@ -106,7 +106,8 @@ final class Postulants extends Models
         "description" => $data[$i]["description"],
         "email" => $user["email"],
         "idRating" => $data[$i]["idRating"] ?? false,
-        "profilePicture" => $user["profilePicture"]
+        "profilePicture" => $user["profilePicture"],
+        "gauchada" => (new Gauchadas)->get()[$data[$i]["idGauchada"]]
       );
     }
     return !$data ? $data : $postulants;

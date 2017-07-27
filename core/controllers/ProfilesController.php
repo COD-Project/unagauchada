@@ -29,7 +29,7 @@ class ProfilesController extends Controller {
                       $this->models['users']->get()[$this->router->getId()];
 
     $where = !$this->router->getId() ?
-                  ['user' => $this->user] :
+                  ['user' => $this->user['idUser']] :
                   ['all' => true];
 
     $this->gauchadas = $this->models['gauchadas']

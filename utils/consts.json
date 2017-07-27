@@ -21,6 +21,11 @@
           "content": "g.location LIKE ",
           "begin": "\"%",
           "end": "%\""
+        },
+        "user": {
+          "content": "g.idUser=",
+          "begin": "\"",
+          "end": "\""
         }
       }
     },
