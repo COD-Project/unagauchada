@@ -1,5 +1,4 @@
 <div class="tab-pane wow fadeIn" id="gauchadas" data-wow-delay="0.1s">
-  <!--Second row-->
   <div class="row" style="margin-bottom: 5px;">
       <?php
         if (!$this->gauchadas) {
@@ -11,7 +10,7 @@
         } else {
           $i = 0;
           array_walk($this->gauchadas, function($gauchada) use($i) {
-            echo "<div class=\"col-lg-6\" style=\"margin-bottom: 10px;\">
+            echo "<div class=\"col-lg-12\" style=\"margin-bottom: 10px;\">
             <!--Card-->
                 <div class=\"card wow fadeIn\" data-wow-delay=\"0." . ($i+1)*2 . "s\">
                     <!--Card content-->

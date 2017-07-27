@@ -30,4 +30,5 @@
 <script src="views/app/js/components/creditos/creditos.js"></script>
 <script src="views/app/js/components/states/states.js"></script>
 <script src="views/app/js/components/localities/localities.js"></script>
+<script src="views/app/js/components/profiles/profiles.js"></script>
 <script src="views/app/js/components/main.js"></script>
