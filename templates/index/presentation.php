@@ -85,7 +85,7 @@
     <div class="tab-pane wow fadeIn" id="filtrado" data-wow-delay="0.1s">
       <?php
         if ($this->sessions->isLoggedIn()) {
-          $this->include('public/filter');
+          $this->include('index/filter');
         } else {
           echo "
             <div class=\"card-block text-center\">

@@ -84,7 +84,7 @@ class Images extends Models
     for($i = 0; $i < count($data); $i++) {
       $images[$i] = array(
         'idImage' => $data[$i]['idImage'],
-        'path' => 'views/app/images/' . $data[$i]['path']
+        'path' => 'assets/app/images/' . $data[$i]['path']
       );
     }
     return !$data ? $data : $images;

@@ -1,0 +1,23 @@
+@media screen and (max-width: 480px){
+
+	.cmd_jumbotron {
+		margin-top: 25px;
+	}
+
+	.wrap {
+		width: 90%;
+	}
+
+	.cmd_form_container {
+	  padding: 0px;
+	}
+
+	.navbar {
+        background-color: #f4f4f4;
+    }
+
+  .main-view {
+  	height: 400px;
+  }
+	
+}
