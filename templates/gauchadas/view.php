@@ -106,13 +106,13 @@
           } else if(!$postulante && ! $this->selected) {
             $HTML.= '<div class="col-2">
               <a class="btn btn-warning option-button text-center" style="color: #fff" data-toggle="modal" data-target="#Postulate">
-                <img src="views/app/img/mate.png" style="width: 25px;"></img>Postulate!
+                <img src="assets/app/img/mate.png" style="width: 25px;"></img>Postulate!
               </a>
             </div>';
           } else {
             $HTML.= '<div class="col-2">
               <a class="btn btn-warning option-button text-center" style="color: #fff" data-toggle="modal" data-target="#Unpostulate">
-                <img src="views/app/img/mate.png" style="width: 25px;"></img>Despostulate
+                <img src="assets/app/img/mate.png" style="width: 25px;"></img>Despostulate
               </a>
             </div>';
           }

@@ -7,7 +7,7 @@
     </button>
     <div class="container">
       <a class="navbar-brand" href="<?php echo URL; ?>">
-          <img src="views/app/images/logo.png" class="d-inline-block align-top cmd_zoomin" style="height: 35px;" alt="UnaGauchada">
+          <img src="assets/app/images/logo.png" class="d-inline-block align-top cmd_zoomin" style="height: 35px;" alt="UnaGauchada">
           <span style="color: coral;"><strong>Una</strong>Gauchada</span>
       </a>
       <div class="collapse navbar-collapse" id="navbarNav">
