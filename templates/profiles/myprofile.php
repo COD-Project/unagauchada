@@ -6,7 +6,7 @@
     <div class="" style="background-color: transparent; padding-top: 125px;"></div>
     <div class="container">
       <div class="row m-y-2">
-        <div class="col-lg-4 text-center" style="margin-bottom: 1vh;">
+        <div class="col-lg-4 text-center" style="margin-bottom: 5vh;">
           <?php
             echo '<img src="' . $this->sessions->connectedUser()['profilePicture'] . '" class="rounded img-fluid cmd_zoomin"  style="max-height: 250px; width: auto; ">';
           ?>
@@ -19,7 +19,7 @@
           </form>
         </div>
         <div class="col-lg-8">
-          <ul class="nav nav-pills nav-fill" style="margin-bottom: 5vh">
+          <ul class="nav nav-pills nav-fill" style="margin-bottom: 5vh;">
             <li class="nav-item">
                 <a href="" data-target="#profile" data-toggle="tab" class="nav-link active"><i class="fa fa-user"></i> Perfil</a>
             </li>

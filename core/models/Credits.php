@@ -12,7 +12,7 @@ defined('INDEX_DIR') OR exit(APP . ' software says .i.');
 final class Credits extends Models
 {
   private $monto;
-  private $idUser;
+  private $user;
   private $date;
 
   static private $ins;
@@ -30,10 +30,26 @@ final class Credits extends Models
     parent::__construct();
   }
 
-  final private function errors($url) {
+  final private function errors($url="") {
+    try {
+      if (empty($_GET["monto"]) && !is_numeric($_GET["monto"])) {
+        throw new PDOException("La operación no fué realizada con éxito.", 1);
+      }
+      $this->monto = $_GET["monto"];
+      $this->user = (Sessions::getInstance())->connectedUser();
+      $this->date = date('Y/m/d', time());
+    } catch (PDOException $e) {
+      Func::redirect(URL . $url . $e->getMessage());
+    }
   }
 
   final public function add() {
+    $this->errors();
+    $this->db->insert("Credits", [
+      "monto" => $this->monto,
+      "idUser" => $this->user['idUser'],
+      "date" => $this->date
+    ]);
   }
 
   final public function get($options = null) {
