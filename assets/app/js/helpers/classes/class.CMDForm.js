@@ -51,7 +51,7 @@ class CMDForm {
 
     // preparing children to append
     script = document.createElement('script');
-    script.setAttribute("src", "views/app/js/cmd_form.js");
+    script.setAttribute("src", "assets/app/js/helpers/cmd_form.js");
     container = document.createElement('div');
     container.setAttribute("class", "cmd_form_container");
     wrap = document.createElement('div');
