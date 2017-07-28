@@ -50,12 +50,21 @@ class GauchadasController extends Controller {
       "postulants",
       "users"
     ]);
-    
+
+    $this->categories = (new Categories)->get();
+
     $this->gauchadas = $this->models['gauchadas']
-                            ->get(['all']);
+                            ->get([
+                              'all'
+                            ]);
+
+    $this->gauchada = $this->router->getId() && array_key_exists($this->router->getId(), $this->gauchadas) ?
+                          $this->gauchadas[$this->router->getId()] : null;
 
     $this->postulants = $this->models['postulants']
-                             ->get(["gauchada" => $this->router->getId()]);
+                             ->get([
+                               "gauchada" => $this->router->getId()
+                             ]);
 
     $this->users = $this->models["users"]
                         ->get();
@@ -69,10 +78,10 @@ class GauchadasController extends Controller {
 
   private function debit() {
     $db = new Connection();
-    $idUser = (Sessions::getInstance())->connectedUser()['idUser'];
+    $idUser = $this->sessions->connectedUser()['idUser'];
     $from = 'Gauchadas g INNER JOIN Postulants p ON (g.idGauchada=p.idGauchada)';
     $subquery = '(SELECT idGauchada FROM Ratings)';
-    $where = 'g.idUser='.$idUser.' AND p.selected=1 AND g.validate IS NULL AND g.idGauchada NOT IN '. $subquery;
+    $where = 'g.idUser=' . $idUser . ' AND p.selected=1 AND g.validate IS NULL AND g.idGauchada NOT IN ' . $subquery;
     $data = $db->select('*', $from, $where);
     return !($data == false);
   }
