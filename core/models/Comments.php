@@ -49,13 +49,13 @@ final class Comments extends Models
   final public function add()
   {
     $this->errors('comments?error=');
-    $insert = array(
+    $insert = [
       'body' => $this->body,
       'createdAt' => date('Y/m/d H:i:s', time()),
       'lastModify' => date('Y/m/d H:i:s', time()),
       'idGauchada' => $this->idGauchada,
       'idUser' => (Sessions::getInstance())->connectedUser()['idUser'],
-    );
+    ];
     if ($this->idQuestion != null) $insert['idQuestion'] = $this->idQuestion;
     $this->db->insert('Comments', $insert);
     Func::redirect(URL . 'gauchadas/view/' . $this->idGauchada);
@@ -64,27 +64,27 @@ final class Comments extends Models
   final protected function filter($options)
   {
     $where = "idGauchada=". $options['gauchada'] ." AND idQuestion" . (isset($options['question']) ? "=".$options['question'] : " IS NULL");
-    return array(
+    return ([
       "elements" => "*",
       "table" => "Comments",
       "where" => $where
-    );
+    ]);
   }
 
   final protected function prepare($data)
   {
     for($i = 0; $i < count($data); $i++) {
-      $comments[$i] = array(
+      $comments[$i] = [
         "idComment" => $data[$i]["idComment"],
         "body" => $data[$i]["body"],
         "createdAt" => $data[$i]["createdAt"],
         "lastModify" => $data[$i]["lastModify"],
         "idUser" => $data[$i]["idUser"],
-        "answer" => (isset($data[$i]["idComment"])) ? $this->get(array(
+        "answer" => (isset($data[$i]["idComment"])) ? $this->get([
           "gauchada" => $data[$i]["idGauchada"],
-          "question" => $data[$i]["idComment"])
-        )[0] : false
-      );
+          "question" => $data[$i]["idComment"]
+        ])[0] : false
+      ];
     }
 
     return !$data ? $data : $comments;

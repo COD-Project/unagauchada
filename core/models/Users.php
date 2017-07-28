@@ -68,7 +68,7 @@ final class Users extends Models
     } else {
       $this->keyreg = md5(time());
       $regDate = date('Y/m/d', time());
-      $values = array(
+      $this->db->insert("Users", [
         'name' => $this->name,
         'surname' => $this->surname,
         'email' => $this->email,
@@ -80,8 +80,7 @@ final class Users extends Models
         'credits' => 1,
         'points' => 1,
         'idImage' => 1
-      );
-      $this->db->insert("Users", $values);
+      ]);
       $id = $this->db->lastInsertId('Users');
       (Sessions::getInstance())->generateSession($id);
       echo 1;
@@ -104,11 +103,11 @@ final class Users extends Models
       $idImage = $this->db->select('idImage', 'Images', '1=1', 'ORDER BY idImage DESC LIMIT 1')[0]['idImage'];
       $type = explode('/', $this->image['type'][0]);
       $name = 'image.' . $idImage . '.' . $type[1];
-      Func::saveFile(array(
+      Func::saveFile([
         'name' => $name,
         'tmp' => $this->image['tmp_name'][0],
         'folder' => 'users/' . $this->id
-      ));
+      ]);
       $update['idImage'] = ($this->db->select('idImage', 'Images', '1=1', 'ORDER BY idImage DESC LIMIT 1'))[0]['idImage'];
     }
     if ($update != null) $this->db->update("Users", $update, "idUser=" . $this->id, "LIMIT 1;");
@@ -122,19 +121,18 @@ final class Users extends Models
   final protected function filter($options)
   {
     $where = $options['user'] ? "idUser=" . $options['user'] : "1=1";
-    return array(
+    return ([
       "elements" => "*",
       "table" => "Users",
       "where" => $where,
       "criteria" => "ORDER BY role, registrationDate"
-
-    );
+    ]);
   }
 
   final protected function prepare($data = null)
   {
     for($i = 0; $i < count($data); $i++) {
-      $users[$data[$i]['idUser']] = array(
+      $users[$data[$i]['idUser']] = [
         'idUser' => $data[$i]['idUser'],
         'name' => $data[$i]['name'],
         'surname' => $data[$i]['surname'],
@@ -154,7 +152,7 @@ final class Users extends Models
           'image' => $data[$i]['idImage']
         )))[0]['path']
         //put user's info here if there is more in the db
-      );
+      ];
     }
     return !$data ? $data : $users;
   }

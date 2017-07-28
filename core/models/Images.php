@@ -51,11 +51,11 @@ class Images extends Models
       $id = $this->id + $i;
       $type = explode('/', $this->images['type'][$i]);
       $name = 'image.' . $id . '.' . $type[1];
-      Func::saveFile(array(
+      Func::saveFile([
         'name' => $name,
         'tmp' => $this->images['tmp_name'][$i],
         'folder' => $this->folder
-      ));
+      ]);
       if ($this->nexus != null) {
         $this->db->insert($this->nexus['name'], array(
           $this->nexus['fk'] => $this->fk,
@@ -72,20 +72,20 @@ class Images extends Models
     $where .= isset($options["image"]) ? " AND i.idImage=" . $options["image"] : "";
     $table = "Images i ";
     $table .= isset($options["gauchada"]) ? "INNER JOIN GauchadasImages g ON (i.idImage = g.idImage)" : "";
-    return array(
+    return ([
       "elements" => "*",
       "table" => $table,
       "where" => $where
-    );
+    ]);
   }
 
   final protected function prepare($data)
   {
     for($i = 0; $i < count($data); $i++) {
-      $images[$i] = array(
+      $images[$i] = [
         'idImage' => $data[$i]['idImage'],
         'path' => 'assets/app/images/' . $data[$i]['path']
-      );
+      ];
     }
     return !$data ? $data : $images;
   }

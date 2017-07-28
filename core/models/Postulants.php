@@ -49,30 +49,30 @@ final class Postulants extends Models
   final function add()
   {
     $this->errors("?error=");
-    $this->db->insert("Postulants", array(
+    $this->db->insert("Postulants", [
       "idUser" => $this->idUser,
       "idGauchada" => $this->idGauchada,
       "description" => $this->description,
       "selected" => 0
-    ));
+    ]);
     Func::redirect(URL . "?success=Se ha postulado correctamente");
   }
 
   final public function edit()
   {
     $this->errors("?error=");
-    $this->db->update("Postulants", array(
+    $this->db->update("Postulants", [
       "selected" => 1
-    ), "idUser=$this->idUser AND idGauchada=$this->idGauchada");
+    ], "idUser=$this->idUser AND idGauchada=$this->idGauchada");
     Func::redirect();
   }
 
   final public function delete()
   {
     $this->errors("?error=");
-    $this->db->update("Postulants", array(
+    $this->db->update("Postulants", [
       "validate" => 1
-    ), "idUser=$this->idUser AND idGauchada=$this->idGauchada");
+    ], "idUser=$this->idUser AND idGauchada=$this->idGauchada");
     Func::redirect(URL . "?success=Se despostulo correctamente");
   }
 
@@ -87,11 +87,11 @@ final class Postulants extends Models
     }
     $table = "(Postulants p INNER JOIN Gauchadas g ON(p.idGauchada = g.idGauchada))";
     $table .= isset($options['selected']) ? "LEFT JOIN Ratings r ON(p.idGauchada=r.idGauchada)" : "";
-    return array(
+    return ([
       "elements" => "*, p.idUser as idPostulant",
       "table" => $table ,
       "where" => $where
-    );
+    ]);
   }
 
   final protected function prepare($data)
@@ -99,7 +99,7 @@ final class Postulants extends Models
     $users = (new Users)->get();
     for($i = 0; $i < count($data); $i++) {
       $user = $users[$data[$i]["idPostulant"]];
-      $postulants[$i] = array(
+      $postulants[$i] = [
         "idUser" => $data[$i]["idPostulant"],
         "idGauchada" => $data[$i]["idGauchada"],
         "completeName" => $user["completeName"],
@@ -108,7 +108,7 @@ final class Postulants extends Models
         "idRating" => $data[$i]["idRating"] ?? false,
         "profilePicture" => $user["profilePicture"],
         "gauchada" => (new Gauchadas)->get()[$data[$i]["idGauchada"]]
-      );
+      ];
     }
     return !$data ? $data : $postulants;
   }

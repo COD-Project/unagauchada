@@ -45,13 +45,13 @@ final class Categories extends Models
   final public function add() {
     $this->errors('categories?error=');
     if(!$this->get(array('name' => $this->name))){
-      $this->db->insert('Categories', array(
+      $this->db->insert('Categories', [
         'name' => ucfirst(strtolower($this->name)),
         'validate' => 0
-      ));
+      ]);
       $params = "success=Se creo la categoria exitosamente";
-    } else if ($this->get(array('name' => $this->name))[0]['validate'] == 1){
-      $this->db->update('Categories', array('validate' => 0), 'idCategory='.$this->get(array('name' => $this->name))[0]['idCategory']);
+    } else if ($this->get(['name' => $this->name])[0]['validate'] == 1){
+      $this->db->update('Categories', ['validate' => 0], 'idCategory='.$this->get(['name' => $this->name])[0]['idCategory']);
       $params="success=Se creo la categoria exitosamente.";
     } else {
       $params="error=Esa Categoria ya existe.";
@@ -61,11 +61,11 @@ final class Categories extends Models
 
   final public function edit() {
     $this->errors('categories?error=');
-    if(!$this->get(array('name' => $this->name))){
-      $this->db->update('Categories', array('validate' => 1), 'idCategory='.$this->id);
-      $this->db->insert('Categories', array(
+    if(!$this->get(['name' => $this->name])){
+      $this->db->update('Categories', ['validate' => 1], 'idCategory='.$this->id);
+      $this->db->insert('Categories', [
         'name' => ucfirst(strtolower($this->name))
-      ));
+      ]);
       $params = "success=Se edito la categoria exitosamente.";
     } else {
       $params = "error=No se puede escribir el nombre de una categoria que ya existe.";
@@ -75,26 +75,26 @@ final class Categories extends Models
 
   final public function delete() {
     $this->errors('categories?error=');
-    $this->db->update('Categories', array('validate' => 1), 'idCategory='.$this->id);
+    $this->db->update('Categories', ['validate' => 1], 'idCategory='.$this->id);
     Func::redirect(URL . 'categories/main?success=Se elimino la categoria exitosamente.');
   }
 
   final protected function filter($options) {
     $where = !isset($options['name']) ? 'validate=0' : 'name="' . $options['name'] . '"';
-    return array(
+    return ([
       "elements" => "*",
       "table" => "Categories",
       "where" => $where
-    );
+    ]);
   }
 
   final protected function prepare($data) {
     for($i = 0; $i < count($data); $i++) {
-      $categories[$i] = array(
+      $categories[$i] = [
         'idCategory' => $data[$i]['idCategory'],
         'name' => $data[$i]['name'],
         'validate' => $data[$i]['validate']
-      );
+      ];
     }
     return !$data ? $data : $categories;
   }
