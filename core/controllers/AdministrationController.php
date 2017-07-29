@@ -9,6 +9,9 @@ class AdministrationController extends Controller {
   public function __construct() {
     parent::__construct(true);
     if ($this->sessions->isGranted()) {
+      if ($this->component && !in_array($this->component, ['categories', 'analytics'])) {
+        Func::redirect(URL . 'administration');
+      }
       $this->render('administration/admin');
     } else {
       Func::redirect();
@@ -23,9 +26,15 @@ class AdministrationController extends Controller {
 
       $this->admin = $this->sessions->connectedUser();
 
+      $this->component = $this->router->getMethod();
+
       $this->users = array_filter($this->models['users']->get(), function($user) {
         return $user['role'] != 'admin';
       });
+
+      $this->gauchadas = $this->models['gauchadas']->get([
+        'all'
+      ]);
   }
 }
 
