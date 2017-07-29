@@ -15,6 +15,14 @@ class AdministrationController extends Controller {
     }
   }
 
+  protected function init() {
+      $this->setModels([
+        'users',
+        'gauchadas'
+      ]);
+
+      
+  }
 }
 
 ?>

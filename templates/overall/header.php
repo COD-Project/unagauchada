@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="assets/app/css/styles.css">
     <link rel="stylesheet" href="assets/app/css/unagauchada.styles.css">
+    <link rel="stylesheet" href="assets/app/css/admin.styles.css">
     <link rel="stylesheet" href="assets/app/css/query.css">
     <link rel="stylesheet" href="assets/app/css/modal_form.css">
     <link rel="stylesheet" href="assets/app/css/cmd_form.css">

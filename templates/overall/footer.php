@@ -31,4 +31,5 @@
 <script src="assets/app/js/components/states/states.js"></script>
 <script src="assets/app/js/components/localities/localities.js"></script>
 <script src="assets/app/js/components/profiles/profiles.js"></script>
+<script src="assets/app/js/components/admin/admin.js"></script>
 <script src="assets/app/js/components/main.js"></script>
