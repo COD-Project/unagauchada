@@ -54,13 +54,8 @@
 
         <div class="col-md-9 col-lg-10 main">
 
-            <!--toggle sidebar button
-            <p class="hidden-md-up">
-                <button type="button" class="btn btn-primary-outline btn-sm" data-toggle="offcanvas"><i class="fa fa-chevron-left"></i> Menu</button>
-            </p>-->
-
             <h1 class="display-2 hidden-xs-down">
-            Bootstrap 4 Dashboard
+              Bienvenido, <?php echo $this->admin['name']; ?>
             </h1>
             <p class="lead hidden-xs-down">(with off-canvas sidebar, based on BS v4 alpha 6)</p>
 
@@ -82,7 +77,7 @@
                             <div class="rotate">
                                 <i class="fa fa-list fa-4x"></i>
                             </div>
-                            <h6 class="text-uppercase">Posts</h6>
+                            <h6 class="text-uppercase">Gauchadas</h6>
                             <h1 class="display-1">87</h1>
                         </div>
                     </div>
