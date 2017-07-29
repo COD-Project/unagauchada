@@ -15,14 +15,14 @@ final class Ratings extends Models
   private $body;
   private $idGauchada;
 
-  static private $ins;
+  static private $instance;
 
   static function getInstance()
   {
-    if (!self::$ins) {
-      self::$ins = new self();
+    if (!self::$instance) {
+      self::$instance = new self();
       }
-      return self::$ins;
+      return self::$instance;
   }
 
   final public function __construct()
@@ -47,12 +47,12 @@ final class Ratings extends Models
 
     final public function add() {
       $this->errors('comments?error=');
-      $insert = array(
+      $instanceert = array(
         'rating' => $this->rating,
         'body' => $this->body,
         'idGauchada' => $this->idGauchada
       );
-      $this->db->insert('Ratings', $insert);
+      $this->db->insert('Ratings', $instanceert);
       if($this->rating != 2){
         $gaucho = (new Postulants)->get([
           "gauchada" => $this->idGauchada,

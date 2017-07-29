@@ -9,7 +9,7 @@ final class Connection extends PDO {
 
   //------------------------------------------------
 
-  private static $inst;
+  private static $instancet;
 
   //------------------------------------------------
 
@@ -22,11 +22,11 @@ final class Connection extends PDO {
   */
   final public static function Start(string $DATABASE = DATABASE['name'], string $MOTOR = DATABASE['motor'], bool $new_instance = false) : Conexion {
 
-    if(!self::$inst instanceof self or $new_instance) {
-      self::$inst = new self($DATABASE,$MOTOR);
+    if(!self::$instancet instanceof self or $new_instance) {
+      self::$instancet = new self($DATABASE,$MOTOR);
     }
 
-    return self::$inst;
+    return self::$instancet;
   }
 
   //------------------------------------------------

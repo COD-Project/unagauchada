@@ -15,14 +15,14 @@ final class Comments extends Models
   private $idGauchada;
   private $idQuestion;
 
-  static private $ins;
+  static private $instance;
 
   static function getInstance()
   {
-    if (!self::$ins) {
-      self::$ins = new self();
+    if (!self::$instance) {
+      self::$instance = new self();
     }
-    return self::$ins;
+    return self::$instance;
   }
 
   final public function __construct()
@@ -49,15 +49,15 @@ final class Comments extends Models
   final public function add()
   {
     $this->errors('comments?error=');
-    $insert = [
+    $instanceert = [
       'body' => $this->body,
       'createdAt' => date('Y/m/d H:i:s', time()),
       'lastModify' => date('Y/m/d H:i:s', time()),
       'idGauchada' => $this->idGauchada,
       'idUser' => (Sessions::getInstance())->connectedUser()['idUser'],
     ];
-    if ($this->idQuestion != null) $insert['idQuestion'] = $this->idQuestion;
-    $this->db->insert('Comments', $insert);
+    if ($this->idQuestion != null) $instanceert['idQuestion'] = $this->idQuestion;
+    $this->db->insert('Comments', $instanceert);
     Func::redirect(URL . 'gauchadas/view/' . $this->idGauchada);
   }
 

@@ -15,14 +15,14 @@ final class Credits extends Models
   private $user;
   private $date;
 
-  static private $ins;
+  static private $instance;
 
   static function getInstance()
   {
-    if (!self::$ins) {
-      self::$ins = new self();
+    if (!self::$instance) {
+      self::$instance = new self();
       }
-      return self::$ins;
+      return self::$instance;
   }
 
   final public function __construct()
