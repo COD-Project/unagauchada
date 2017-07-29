@@ -27,7 +27,7 @@
                     if(!$this->sessions->isGranted()) {
                       echo('
                       <a class="dropdown-item" href="creditos/comprar"><i class="fa fa-credit-card-alt"></i> Créditos: ' . $this->sessions->connectedUser()['credits'] . '</a>
-                      <a class="dropdown-item" href="creditos/comprar"><i class="fa fa-star"></i> Puntos: ' . $this->sessions->connectedUser()['points'] . '</a>
+                      <a class="dropdown-item"><i class="fa fa-star"></i> Puntos: ' . $this->sessions->connectedUser()['points'] . '</a>
                       ');
                     }
                     echo('
