@@ -7,6 +7,9 @@ defined('INDEX_DIR') OR exit(APP . ' software says .i.');
 class HomeController extends Controller {
   public function __construct() {
     parent::__construct();
+    if ($this->sessions->isGranted()) {
+      Func::redirect(URL . 'administration');
+    }
     $this->render('index/index');
   }
 

@@ -8,7 +8,7 @@ class ProfilesController extends Controller {
   public function __construct() {
     parent::__construct(true);
     if ($this->sessions->isLoggedIn() && !Func::emp($this->router->getMethod()) && OPTIONS['profiles'][$this->router->getMethod()]) {
-      if($this->router->getId() == '1') {
+      if ($this->models['users']->get()[$this->router->getId()]['role'] == 'admin') {
         Func::redirect();
       } else if ($this->router->getId() == $this->sessions->connectedUser()['idUser']) {
         Func::redirect(URL . 'profiles/myprofile');

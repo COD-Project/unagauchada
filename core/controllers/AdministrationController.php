@@ -21,7 +21,9 @@ class AdministrationController extends Controller {
         'gauchadas'
       ]);
 
-      
+      $this->users = array_filter($this->models['users']->get(), function($user) {
+        return $user['role'] != 'admin';
+      });
   }
 }
 
