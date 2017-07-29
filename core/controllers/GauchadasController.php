@@ -62,18 +62,18 @@ class GauchadasController extends Controller {
                           $this->gauchadas[$this->router->getId()] : null;
 
     $this->postulants = $this->models['postulants']
-                             ->get([
-                               "gauchada" => $this->router->getId()
-                             ]);
+                             ->get($this->gauchada ? [
+                               "gauchada" => $this->gauchada['idGauchada']
+                             ] : null);
 
     $this->users = $this->models["users"]
                         ->get();
 
-    $this->selected = $this->models["postulants"]
-                           ->get([
-                               "gauchada" => $this->router->getId(),
-                               "selected" => "1"
-                             ]);
+    $this->selected = $this->gauchada ? $this->models["postulants"]
+                                             ->get([
+                                                 "gauchada" => $this->gauchada['idGauchada'],
+                                                 "selected" => "1"
+                                               ]) : null;
   }
 
   private function debit() {

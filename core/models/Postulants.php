@@ -81,12 +81,12 @@ final class Postulants extends Models
   {
     $where = "1=1";
     foreach (OPTIONS['postulants'] as $key => $value) {
-      if(array_key_exists($key, $options)) {
+      if($options && array_key_exists($key, $options)) {
         $where .= " AND " . $value['content'] . ($options[$key] ?? $value['default']);
       }
     }
     $table = "(Postulants p INNER JOIN Gauchadas g ON(p.idGauchada = g.idGauchada))";
-    $table .= isset($options['selected']) ? "LEFT JOIN Ratings r ON(p.idGauchada=r.idGauchada)" : "";
+    $table .= isset($options['selected']) ? " LEFT JOIN Ratings r ON(p.idGauchada=r.idGauchada)" : "";
     return ([
       "elements" => "*, p.idUser as idPostulant",
       "table" => $table ,
