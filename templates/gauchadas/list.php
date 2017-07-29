@@ -26,7 +26,7 @@
                     <!--Avatar-->
                     <div class=\"row wow fadeIn\" data-wow-delay=\"0." . ($i+1)*3 . "s\" style=\"background-color: rgba(0, 0, 0, 0.55); margin-top: -100px; padding-top: 10px; max-height: 85px; \">
                       <div class=\"avatar text-right col-3\">
-                        <img class=\"rounded-circle img-fluid\" src=\"" . $gauchada['user']['profilePicture'] . "\" style=\"height: 50px; width: 50px;\" >
+                        <img class=\"rounded-circle img-fluid\" src=\"" . $gauchada['user']['profilePicture'] . "\" style=\"height: 50px; width: 50px; margin-top: 17%\" >
                       </div>
                       <div class=\"text-left col-7\">
                         <p class=\"text-fluid\" style=\"color: #fff; font-size: 15px;\">" . $gauchada['user']['completeName'] . "</p>
@@ -35,7 +35,13 @@
                       <div class=\"text-left col-2\">
                       ";
                       if($this->sessions->isLoggedIn() && $this->sessions->connectedUser()['idUser'] == $gauchada['user']['idUser']){
-                          echo "<a href=\"gauchadas/delete/" . $gauchada['idGauchada'] . "\" class=\"remove-item\"><i class=\"fa fa-trash\"></i></a>";
+                          echo "<div class=\"d-flex flex-row-reverse\" style=\"margin-top: 75%;\">
+                            <a href=\"gauchadas/delete/" . $gauchada['idGauchada'] . "\">
+                              <button type=\"button\" class=\"btn btn-danger btn-circle\">
+                                <i class=\"fa fa-trash\"></i>
+                              </button>
+                            </a>
+                          </div>";
                       }
                       echo "
                       </div>
