@@ -11,8 +11,9 @@ class PostulantsController extends Controller {
       Func::redirect();
     } else if (in_array($this->router->getMethod(), ['add', 'edit', 'delete'])) {
         call_user_func([
-          (new Postulants),
-          $this->router->getMethod()
+          new Postulants,
+          $this->router
+               ->getMethod()
         ]);
     }
   }
@@ -32,8 +33,10 @@ class PostulantsController extends Controller {
 
     $this->postulants = $this->models["postulants"]
                              ->get([
-                                 "gauchada" => $this->router->getId(),
-                                 "user" => $this->sessions->connectedUser()['idUser']
+                                 "gauchada" => $this->router
+                                                    ->getId(),
+                                 "user" => $this->sessions
+                                                ->connectedUser()['idUser']
                                ]);
 
     $this->gauchadas = $this->models["gauchadas"]

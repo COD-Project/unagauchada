@@ -10,8 +10,9 @@ class CommentsController extends Controller {
     if($this->sessions->isLoggedIn()) {
       if ($_POST && in_array($this->router->getMethod(), ['add'])) {
           call_user_func([
-            (new Comments),
-            $this->router->getMethod()
+            new Comments,
+            $this->router
+                 ->getMethod()
           ]);
       }
     }

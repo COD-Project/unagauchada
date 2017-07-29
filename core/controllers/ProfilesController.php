@@ -28,7 +28,11 @@ class ProfilesController extends Controller {
 
     $this->user = !$this->router->getId() ?
                       $this->sessions->connectedUser() :
-                      $this->models['users']->get()[$this->router->getId()];
+                      $this->models['users']
+                           ->get()[
+                              $this->router
+                                   ->getId()
+                            ];
 
     $where = !$this->router->getId() ?
                   ['user' => $this->user['idUser']] :
@@ -54,7 +58,10 @@ class ProfilesController extends Controller {
         'idUser' => $data[$i]['idUser'],
         'title' => $data[$i]['title'],
         'body' => $data[$i]['body'],
-        'user' => (new Users)->get()[$data[$i]['idUser']],
+        'user' => $this->models['users']
+                       ->get()[
+                         $data[$i]['idUser']
+                       ],
       ];
     }
     return $news;
