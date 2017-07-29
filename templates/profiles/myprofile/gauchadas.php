@@ -12,17 +12,36 @@
           array_walk($this->gauchadas, function($gauchada) use($i) {
             echo "<div class=\"col-lg-12\" style=\"margin-bottom: 10px;\">
             <!--Card-->
-                <div class=\"card wow fadeIn\" data-wow-delay=\"0." . ($i+1)*2 . "s\">
+                <div class=\"card wow fadeIn\" style=\"max-width: 90%; margin: auto;\" data-wow-delay=\"0." . ($i+1)*2 . "s\">
                     <!--Card content-->
                     <div class=\"card-block\">
                       <!--Title-->
-                      <div class=\"card-title text-fluid\" style=\"max-height: 55px;\">
-                        <h5 class=\"h5-responsive\">" . Func::reduceString($gauchada['title'], 45) . "</h4>
+                      <div class=\"card-title\">
+                        <div class=\"row\">
+                          <div class=\"col-8 text-fluid\">
+                            <h5 class=\"h5-responsive\">" . $gauchada['title'] . "</h4>
+                          </div>
+                          <div class=\"col-4\">
+                            <div class=\"d-flex flex-row-reverse\">
+                              <a href=\"gauchadas/delete/" . $gauchada['idGauchada'] . "\">
+                                <button type=\"button\" class=\"btn btn-danger btn-circle\">
+                                  <i class=\"fa fa-trash\"></i>
+                                </button>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <hr>
+                      <hr/>
                       <!--Text-->
-                      <p class=\"card-text text-fluid\" style=\"max-height: 50px;\">" . Func::reduceString($gauchada['body'], 75) . "</p>
-                      <a href=\"gauchadas/view/" . $gauchada['idGauchada'] . "\" class=\"d-flex flex-row-reverse\"><h6 class=\"waves-effect p-2\"> Leer más <i class=\"fa fa-chevron-right\"></i></h6></a>
+                      <p class=\"card-text text-fluid\">" . $gauchada['body'] . "</p>
+                      <div class=\"d-flex flex-row-reverse\">
+                        <a href=\"gauchadas/view/" . $gauchada['idGauchada'] . "\">
+                          <button type=\"button\" class=\"btn btn-primary btn-circle\">
+                            <i class=\"fa fa-chevron-right\"></i>
+                          </button>
+                        </a>
+                      </div>
                     </div>
                     <!--/.Card content-->
                 </div>

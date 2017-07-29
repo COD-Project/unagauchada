@@ -8,8 +8,10 @@ class ProfilesController extends Controller {
   public function __construct() {
     parent::__construct(true);
     if ($this->sessions->isLoggedIn() && !Func::emp($this->router->getMethod()) && OPTIONS['profiles'][$this->router->getMethod()]) {
-      if($this->router->getId() == '1' || $this->router->getId() == $this->sessions->connectedUser()['idUser']) {
+      if($this->router->getId() == '1') {
         Func::redirect();
+      } else if ($this->router->getId() == $this->sessions->connectedUser()['idUser']) {
+        Func::redirect(URL . 'profiles/myprofile');
       }
       $this->render('profiles/' . OPTIONS['profiles'][$this->router->getMethod()]['path']);
     } else {

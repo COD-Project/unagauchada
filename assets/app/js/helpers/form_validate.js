@@ -12,6 +12,12 @@ if (Func.$('#body')) {
   }]);
 }
 
+function deleteItem(contenido, url) {
+  if (window.confirm(contenido)) {
+    window.location = url;
+  }
+}
+
 let postulantconfirm = (elem) => {
   Func.$('#postulant_confirm').href = elem;
 }
