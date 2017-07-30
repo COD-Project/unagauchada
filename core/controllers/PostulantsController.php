@@ -12,11 +12,20 @@ class PostulantsController extends Controller {
       Func::redirect();
     } else if (in_array($this->router->getMethod(), ['add', 'edit', 'delete'])) {
         call_user_func([
-          new Postulants,
+          (new Postulants),
           $this->router
                ->getMethod()
         ]);
     }
+  }
+
+  protected function init() {
+     $this->setModels([
+       "gauchadas"
+     ]);
+
+     $this->gauchadas = $this->models["gauchadas"]
+                             ->get();
   }
 
 }
