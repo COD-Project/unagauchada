@@ -95,5 +95,16 @@
         "key": "idUser"
       }
     }
+  },
+  "COMPONENTS": {
+    "analytics": {
+      "path": "analytics/analytics"
+    },
+    "categories": {
+      "path": "categories/categories"
+    },
+    "gauchadas": {
+      "path": "gauchadas/list"
+    }
   }
 }

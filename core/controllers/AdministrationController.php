@@ -9,7 +9,7 @@ class AdministrationController extends Controller {
   public function __construct() {
     parent::__construct(true);
     if ($this->sessions->isGranted()) {
-      if ($this->component && !in_array($this->component, ['categories', 'analytics'])) {
+      if ($this->component && !in_array($this->component, ['categories', 'analytics', 'gauchadas', 'users'])) {
         Func::redirect(URL . 'administration');
       }
       $this->render('administration/admin');
@@ -21,7 +21,8 @@ class AdministrationController extends Controller {
   protected function init() {
       $this->setModels([
         'users',
-        'gauchadas'
+        'gauchadas',
+        'categories'
       ]);
 
       $this->admin = $this->sessions
@@ -38,6 +39,14 @@ class AdministrationController extends Controller {
                               ->get([
                                 'all'
                               ]);
+
+      $this->categories = $this->models['categories']
+                               ->get();
+  }
+
+  protected function renderComponent() {
+    $this->component = $this->component ?? 'analytics';
+    $this->render(COMPONENTS[$this->component]["path"]);
   }
 }
 

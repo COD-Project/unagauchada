@@ -7,5 +7,6 @@ $data = json_decode(
 define('OPTIONS', $data['OPTIONS']);
 define('FILES', $data['FILES']);
 define('EQUALS', $data['EQUALS']);
+define('COMPONENTS', $data['COMPONENTS']);
 
 ?>

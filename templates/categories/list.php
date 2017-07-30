@@ -1,4 +1,4 @@
-<main>
+<div>
 
     <?php
       $HTML = '<div class="container">
@@ -43,4 +43,4 @@
       }
     ?>
 
-</main>
+</div>
