@@ -72,13 +72,13 @@ class ProfilesController extends Controller {
       "user" => $this->router->getId(),
       "owner" => $this->sessions->connectedUser()['idUser'],
       "selected" => "1",
-      "ranked" => "1"
+      "ranked" => false
     ]);
     $selected_owner = $this->models['postulants']->get([
       "user" => $this->sessions->connectedUser()['idUser'],
       "owner" => $this->router->getId(),
       "selected" => "1",
-      "ranked" => "1"
+      "ranked" => false
     ]);
     return $selected_user || $selected_owner;
 
