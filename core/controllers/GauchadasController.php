@@ -68,6 +68,8 @@ class GauchadasController extends Controller {
     $this->users = $this->models["users"]
                         ->get();
 
+    $this->user = $this->sessions->connectedUser();
+
     $this->selected = $this->gauchada ? $this->models["postulants"]
                                              ->get([
                                                  "gauchada" => $this->gauchada['idGauchada'],
