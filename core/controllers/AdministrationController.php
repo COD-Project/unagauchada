@@ -9,7 +9,7 @@ class AdministrationController extends Controller {
   public function __construct() {
     parent::__construct(true);
     if ($this->sessions->isGranted()) {
-      if ($this->component && !in_array($this->component, ['categories', 'analytics', 'gauchadas', 'users'])) {
+      if ($this->component && !in_array($this->component, ['settings', 'analytics', 'gauchadas', 'users'])) {
         Func::redirect(URL . 'administration');
       }
       $this->render('administration/admin');

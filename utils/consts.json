@@ -100,8 +100,8 @@
     "analytics": {
       "path": "analytics/analytics"
     },
-    "categories": {
-      "path": "categories/categories"
+    "settings": {
+      "path": "settings/settings"
     },
     "gauchadas": {
       "path": "gauchadas/list"
