@@ -6,4 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  let postulantconfirm = (elem) => {
+    Func.$('#postulant_confirm').href = elem;
+  }
+
 });

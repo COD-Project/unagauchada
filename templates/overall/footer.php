@@ -26,7 +26,8 @@
 <script src="assets/app/js/components/login.js"></script>
 <script src="assets/app/js/components/signup.js"></script>
 <script src="assets/app/js/components/edit.js"></script>
-<script src="assets/app/js/components/categorias/categories.js"></script>
+<script src="assets/app/js/components/gauchadas/gauchadas.js"></script>
+<script src="assets/app/js/components/categories/categories.js"></script>
 <script src="assets/app/js/components/creditos/creditos.js"></script>
 <script src="assets/app/js/components/states/states.js"></script>
 <script src="assets/app/js/components/localities/localities.js"></script>

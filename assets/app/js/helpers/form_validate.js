@@ -1,25 +1,7 @@
-if (Func.$('#description')) {
-  Func.limitate([{
-    hash: 'description',
-    value: 155
-  }]);
-}
-
-if (Func.$('#body')) {
-  Func.limitate([{
-    hash: 'body',
-    value: 155
-  }]);
-}
-
 function deleteItem(contenido, url) {
   if (window.confirm(contenido)) {
     window.location = url;
   }
-}
-
-let postulantconfirm = (elem) => {
-  Func.$('#postulant_confirm').href = elem;
 }
 
 let getLoginData = () => ({
