@@ -54,7 +54,7 @@ class GauchadasController extends Controller {
 
     $this->gauchadas = $this->models['gauchadas']
                             ->get([
-                              'all'
+                              'all' => true
                             ]);
 
     $this->gauchada = $this->router->getId() && array_key_exists($this->router->getId(), $this->gauchadas) ?
@@ -72,6 +72,12 @@ class GauchadasController extends Controller {
                                              ->get([
                                                  "gauchada" => $this->gauchada['idGauchada'],
                                                  "selected" => "1"
+                                               ]) : null;
+
+    $this->ranked = $this->gauchada ? $this->models["postulants"]
+                                             ->get([
+                                                 "gauchada" => $this->gauchada['idGauchada'],
+                                                 "ranked" => true
                                                ]) : null;
 
   }
