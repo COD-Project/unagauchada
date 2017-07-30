@@ -41,9 +41,16 @@
 
             <div class="col-md-9 col-lg-10 main">
 
-                <h1 class="display-2 hidden-xs-down">
-                  Bienvenido, <?php echo $this->admin['name']; ?>
-                </h1>
+                <div class="row hidden-xs-down">
+                  <div class="col-2 text-right">
+                    <img src="assets/app/images/logo.png" class="img-fluid" alt="">
+                  </div>
+                  <div class="col-10 text-left">
+                    <h1 class="display-2" style="margin-top: 10px;">
+                      Bienvenido, <?php echo $this->admin['name']; ?>
+                    </h1>
+                  </div>
+                </div>
 
                 <hr style="height: 50px;"/>
 
