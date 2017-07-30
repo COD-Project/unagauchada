@@ -8,7 +8,7 @@
     <?php
         $postulante = $this->models["postulants"]->get(([
           "gauchada" => $this->gauchada['idGauchada'],
-          "user" => $this->sessions->connectedUser()['idUser']
+          "user" => $this->user['idUser']
         ]));
         $HTML = '';
         if ($this->gauchada['images']) {
@@ -56,20 +56,19 @@
           }
           echo $HTML;
           $HTML = "";
-          if($this->selected[0]['idUser'] == $this->sessions->connectedUser()['idUser'] && !$this->selected[0]['idRating']) {
+          if($this->selected[0]['idUser'] == $this->user['idUser'] && !$this->ranked) {
             $HTML .= '<div class="col-12"><br>
             <div class="alert alert-info alert-dismissible fade show" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <p class="text-fluid text-center">¡Felicitaciones <strong>' . $this->sessions->connectedUser()['completeName'] . '</strong> el poncho es todo tuyo!</p>
+            <p class="text-fluid text-center">¡Felicitaciones <strong>' . $this->user['completeName'] . '</strong> el poncho es todo tuyo!</p>
             </div></div>';
-          } else if($this->selected[0]['idUser'] != $this->sessions->connectedUser()['idUser'] && $this->gauchada['idUser'] != $this->sessions->connectedUser()['idUser'] && $this->selected) {
-            $location = explode(', ', $this->sessions->connectedUser()['location']);
+          } else if($this->selected[0]['idUser'] != $this->user['idUser'] && $this->gauchada['idUser'] != $this->user['idUser'] && $this->is_postulated()) {
             $HTML .= '<div class="col-12"><br>
             <div class="alert alert-info alert-dismissible fade show" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <p class="text-fluid text-center">Fuiste rechazado... Pero no te desmotives <a href=' . URL . '?search=&state=' . str_replace(' ', '%20', $location[0]) . '&locality=' . str_replace(' ', '%20', $location[1]) . ' >aquí</a> hay más gauchadas</p>
+            <p class="text-fluid text-center">Fuiste rechazado... Pero no te desmotives <a href=' . URL . '?state=' . str_replace(" ", "%20", $this->user['province']) . '&locality=' . str_replace(" ", "%20", $this->user['location']) . ' >aquí</a> hay más gauchadas</p>
             </div></div>';
-          } else if($this->selected[0]['idUser'] == $this->sessions->connectedUser()['idUser'] && $this->selected[0]['idRating']) {
+          } else if($this->selected[0]['idUser'] == $this->user['idUser'] && $this->ranked) {
             $HTML .= '<div class="col-12"><br>
             <div class="alert alert-info alert-dismissible fade show" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -88,7 +87,7 @@
               <hr>
               <p class="text-fluid">' . $this->gauchada['body'] . '</p>
           </div>';
-          if($this->sessions->connectedUser()['idUser'] == $this->gauchada['user']['idUser']) {
+          if($this->user['idUser'] == $this->gauchada['user']['idUser']) {
             $HTML.= '<div class="col-2">
               <a class="btn btn-warning rounded-circle option-button text-center" href="#">
                 <i class="fa fa-edit"></i>
@@ -103,13 +102,13 @@
               </a>';
             }
             $HTML .= '</div>';
-          } else if(!$postulante && ! $this->selected) {
+          } else if(!$postulante && !$this->selected) {
             $HTML.= '<div class="col-2">
               <a class="btn btn-warning option-button text-center" style="color: #fff" data-toggle="modal" data-target="#Postulate">
                 <img src="assets/app/img/mate.png" style="width: 25px;"></img>Postulate!
               </a>
             </div>';
-          } else {
+          } else if($this->selected && !$this->ranked){
             $HTML.= '<div class="col-2">
               <a class="btn btn-warning option-button text-center" style="color: #fff" data-toggle="modal" data-target="#Unpostulate">
                 <img src="assets/app/img/mate.png" style="width: 25px;"></img>Despostulate
@@ -156,7 +155,7 @@
                         <p>' . $comment["answer"]["body"] . '</p>
                       </div>';
             } else {
-              if($this->sessions->connectedUser()['idUser'] == $this->gauchada['user']['idUser'] && !$this->sessions->isGranted()){
+              if($this->user['idUser'] == $this->gauchada['user']['idUser'] && !$this->sessions->isGranted()){
                 $HTML .= '
                     <div class="col-3"></div>
                       <div id="div_comment_button_' . $comment['idComment'] . '" class="col-9" style="margin-top: 20px; margin-bottom: 20px; "margin-bottom: 20px">
@@ -179,7 +178,7 @@
             }
           }
         } else {
-          if(($this->sessions->connectedUser()['idUser'] != $this->gauchada['user']['idUser']) && !$this->sessions->isGranted()) {
+          if(($this->user['idUser'] != $this->gauchada['user']['idUser']) && !$this->sessions->isGranted()) {
             $HTML .= '<div class="col-2"></div><div class="col-8">
                 <div class="alert alert-info alert-dismissible fade show" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -193,7 +192,7 @@
     </div>
     <?php
       $HTML = '';
-      if($this->sessions->connectedUser()['idUser'] != $this->gauchada['user']['idUser'] && !$this->sessions->isGranted()) {
+      if($this->user['idUser'] != $this->gauchada['user']['idUser'] && !$this->sessions->isGranted()) {
         $HTML .= '
           <div class="row">
             <div class="col-3 text-right">

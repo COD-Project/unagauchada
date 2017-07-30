@@ -93,6 +93,13 @@ class GauchadasController extends Controller {
     $data = $db->select('*', $from, $where);
     return !($data == false);
   }
+
+  protected function is_postulated() {
+    return $this->models['postulants']->get([
+      "gauchada" => $this->router->getId(),
+      "user" => $this->user['idUser']
+    ]);
+  }
 }
 
 ?>
