@@ -25,7 +25,7 @@
         <div class="card card-inverse card-info">
             <div class="card-block bg-info">
                 <div class="rotate">
-                    <i class="fa fa-twitter fa-5x"></i>
+                    <i class="fa fa-support fa-5x"></i>
                 </div>
                 <h6 class="text-uppercase">Postulaciones</h6>
                 <h1 class="display-1"><?php echo count($this->postulants); ?></h1>
@@ -36,10 +36,10 @@
         <div class="card card-inverse card-warning">
             <div class="card-block bg-warning">
                 <div class="rotate">
-                    <i class="fa fa-share fa-5x"></i>
+                    <i class="fa fa-shopping-bag fa-5x"></i>
                 </div>
-                <h6 class="text-uppercase"></h6>
-                <h1 class="display-1"></h1>
+                <h6 class="text-uppercase">Compras</h6>
+                <h1 class="display-1">12</h1>
             </div>
         </div>
     </div>
