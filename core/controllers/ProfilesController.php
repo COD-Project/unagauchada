@@ -70,11 +70,15 @@ class ProfilesController extends Controller {
   protected function access() {
     $selected_user = $this->models['postulants']->get([
       "user" => $this->router->getId(),
-      "owner" => $this->sessions->connectedUser()['idUser']
+      "owner" => $this->sessions->connectedUser()['idUser'],
+      "selected" => "1",
+      "ranked" => "1"
     ]);
     $selected_owner = $this->models['postulants']->get([
       "user" => $this->sessions->connectedUser()['idUser'],
-      "owner" => $this->router->getId()
+      "owner" => $this->router->getId(),
+      "selected" => "1",
+      "ranked" => "1"
     ]);
     return $selected_user || $selected_owner;
 
