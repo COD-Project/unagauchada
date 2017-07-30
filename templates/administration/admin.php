@@ -32,9 +32,12 @@
                 <ul class="nav flex-column pl-1">
                     <li class="nav-item"><a class="nav-link" href="administration">Principal</a></li>
                     <li class="nav-item"><a class="nav-link" href="administration/analytics">Estadísticas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="administration/categories">Categorías</a></li>
                     <li class="nav-item"><a class="nav-link" href="administration/users">Usuarios</a></li>
                     <li class="nav-item"><a class="nav-link" href="administration/gauchadas">Gauchadas</a></li>
+                    <li class="divider">
+                      <hr/>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="administration/settings">Configuración</a></li>
                 </ul>
             </div>
             <!--/col-->
