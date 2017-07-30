@@ -12,7 +12,7 @@ class PostulantsController extends Controller {
       Func::redirect();
     } else if (in_array($this->router->getMethod(), ['add', 'edit', 'delete'])) {
         call_user_func([
-          (new Postulants),
+          $this->models["postulants"],
           $this->router
                ->getMethod()
         ]);
@@ -21,7 +21,8 @@ class PostulantsController extends Controller {
 
   protected function init() {
      $this->setModels([
-       "gauchadas"
+       "gauchadas",
+       "postulants"
      ]);
 
      $this->gauchadas = $this->models["gauchadas"]
