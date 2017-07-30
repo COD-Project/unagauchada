@@ -86,7 +86,7 @@ final class Postulants extends Models
       }
     }
     $table = "(Postulants p INNER JOIN Gauchadas g ON(p.idGauchada = g.idGauchada))";
-    if ($options['ranked']) {
+    if (isset($options['ranked']) && $options['ranked']) {
       $table .= " LEFT JOIN Ratings r ON(p.idGauchada=r.idGauchada)";
       $where .= " AND r.idRating IS NOT NULL";
     }
