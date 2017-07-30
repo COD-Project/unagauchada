@@ -34,7 +34,7 @@
                     <li class="nav-item"><a class="nav-link" href="administration/analytics">Estadísticas</a></li>
                     <li class="nav-item"><a class="nav-link" href="administration/users">Usuarios</a></li>
                     <li class="nav-item"><a class="nav-link" href="administration/gauchadas">Gauchadas</a></li>
-                    <li class="divider">
+                    <li class="divider" style="width: 75%; margin-left: 5%;">
                       <hr/>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="administration/settings">Configuración</a></li>

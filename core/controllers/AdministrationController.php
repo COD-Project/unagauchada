@@ -22,7 +22,8 @@ class AdministrationController extends Controller {
       $this->setModels([
         'users',
         'gauchadas',
-        'categories'
+        'categories',
+        'postulants'
       ]);
 
       $this->admin = $this->sessions
@@ -39,6 +40,9 @@ class AdministrationController extends Controller {
                               ->get([
                                 'all'
                               ]);
+
+      $this->postulants = $this->models['postulants']
+                               ->get();
 
       $this->categories = $this->models['categories']
                                ->get();

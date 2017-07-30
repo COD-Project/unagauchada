@@ -27,8 +27,8 @@
                 <div class="rotate">
                     <i class="fa fa-twitter fa-5x"></i>
                 </div>
-                <h6 class="text-uppercase">Tweets</h6>
-                <h1 class="display-1">125</h1>
+                <h6 class="text-uppercase">Postulaciones</h6>
+                <h1 class="display-1"><?php echo count($this->postulants); ?></h1>
             </div>
         </div>
     </div>
@@ -38,8 +38,8 @@
                 <div class="rotate">
                     <i class="fa fa-share fa-5x"></i>
                 </div>
-                <h6 class="text-uppercase">Shares</h6>
-                <h1 class="display-1">36</h1>
+                <h6 class="text-uppercase"></h6>
+                <h1 class="display-1"></h1>
             </div>
         </div>
     </div>
