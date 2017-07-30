@@ -23,7 +23,6 @@ class GauchadasController extends Controller {
         break;
       case 'view':
         if (array_key_exists($this->router->getId(), $this->gauchadas)) {
-          $this->gauchada = $this->gauchadas[$this->router->getId()];
           $this->render("gauchadas/view");
         } else {
           Func::redirect();
@@ -74,6 +73,7 @@ class GauchadasController extends Controller {
                                                  "gauchada" => $this->gauchada['idGauchada'],
                                                  "selected" => "1"
                                                ]) : null;
+
   }
 
   private function debit() {

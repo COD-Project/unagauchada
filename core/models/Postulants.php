@@ -86,7 +86,7 @@ final class Postulants extends Models
       }
     }
     $table = "(Postulants p INNER JOIN Gauchadas g ON(p.idGauchada = g.idGauchada))";
-    $table .= isset($options['selected']) ? " LEFT JOIN Ratings r ON(p.idGauchada=r.idGauchada)" : "";
+    // $table .= isset($options['ranked']) ? " LEFT JOIN Ratings r ON(p.idGauchada=r.idGauchada)" : "";
     return ([
       "elements" => "*, p.idUser as idPostulant",
       "table" => $table ,
