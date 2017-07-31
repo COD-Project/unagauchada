@@ -87,7 +87,7 @@ final class Comments extends Models
       ];
     }
 
-    return !$data ? $data : $comments;
+    return !$data ? null : $comments;
   }
 
   final public function __destruct()

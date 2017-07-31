@@ -23,7 +23,8 @@ class AdministrationController extends Controller {
         'users',
         'gauchadas',
         'categories',
-        'postulants'
+        'postulants',
+        'purchases'
       ]);
 
       $this->admin = $this->sessions
@@ -46,6 +47,9 @@ class AdministrationController extends Controller {
 
       $this->categories = $this->models['categories']
                                ->get();
+
+      $this->purchases = $this->models['purchases']
+                              ->get();
   }
 
   protected function renderComponent() {

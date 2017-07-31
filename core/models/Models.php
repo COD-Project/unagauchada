@@ -45,7 +45,7 @@ abstract class Models
   {
     $query = $this->filter($options);
     $data = $this->executeQuery($query);
-    return !$data ? $data : $this->prepare($data);
+    return !$data ? null : $this->prepare($data);
   }
 
   protected function __destruct()

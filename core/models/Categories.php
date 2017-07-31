@@ -96,7 +96,7 @@ final class Categories extends Models
         'validate' => $data[$i]['validate']
       ];
     }
-    return !$data ? $data : $categories;
+    return !$data ? null : $categories;
   }
 
   final public function __destruct()

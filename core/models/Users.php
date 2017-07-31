@@ -154,7 +154,7 @@ final class Users extends Models
         //put user's info here if there is more in the db
       ];
     }
-    return !$data ? $data : $users;
+    return !$data ? null : $users;
   }
 
   final public function __destruct()

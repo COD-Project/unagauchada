@@ -113,7 +113,7 @@ final class Postulants extends Models
         "gauchada" => (new Gauchadas)->get()[$data[$i]["idGauchada"]]
       ];
     }
-    return !$data ? $data : $postulants;
+    return !$data ? null : $postulants;
   }
 
 

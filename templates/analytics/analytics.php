@@ -39,7 +39,7 @@
                     <i class="fa fa-shopping-bag fa-5x"></i>
                 </div>
                 <h6 class="text-uppercase">Compras</h6>
-                <h1 class="display-1">12</h1>
+                <h1 class="display-1"><?php echo count($this->purchases); ?></h1>
             </div>
         </div>
     </div>

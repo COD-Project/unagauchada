@@ -140,7 +140,7 @@ final class Gauchadas extends Models
           ))
         );
       }
-      return !$data ? $data : $gauchadas;
+      return !$data ? null : $gauchadas;
     }
 
 

@@ -87,7 +87,7 @@ class Images extends Models
         'path' => 'assets/app/images/' . $data[$i]['path']
       ];
     }
-    return !$data ? $data : $images;
+    return !$data ? null : $images;
   }
 
   final public function __destruct() {
