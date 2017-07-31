@@ -44,7 +44,7 @@
 
             <div class="col-md-9 col-lg-10 main">
 
-                <div class="row hidden-xs-down">
+                <div class="row hidden-xs-down wow fadeIn" data-wow-delay="0.1s">
                   <div class="col-2 text-right">
                     <img src="assets/app/images/logo.png" class="img-fluid" alt="">
                   </div>
@@ -55,7 +55,7 @@
                   </div>
                 </div>
 
-                <hr style="height: 50px;"/>
+                <div style="height: 75px;"></div>
 
                 <?php $this->renderComponent(); ?>
 

@@ -1,5 +1,5 @@
 <div class="row mb-3">
-    <div class="col-xl-3 col-lg-6">
+    <div class="col-xl-3 col-lg-6 wow fadeIn" data-wow-delay="0.2s">
         <div class="card card-inverse card-success">
             <div class="card-block bg-success">
                 <div class="rotate">
@@ -10,7 +10,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-lg-6">
+    <div class="col-xl-3 col-lg-6 wow fadeIn" data-wow-delay="0.4s">
         <div class="card card-inverse card-danger">
             <div class="card-block bg-danger">
                 <div class="rotate">
@@ -21,7 +21,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-lg-6">
+    <div class="col-xl-3 col-lg-6 wow fadeIn" data-wow-delay="0.8s">
         <div class="card card-inverse card-info">
             <div class="card-block bg-info">
                 <div class="rotate">
@@ -32,7 +32,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-lg-6">
+    <div class="col-xl-3 col-lg-6 wow fadeIn" data-wow-delay="1.0s">
         <div class="card card-inverse card-warning">
             <div class="card-block bg-warning">
                 <div class="rotate">
@@ -46,33 +46,23 @@
 </div>
 <!--/row-->
 
-<hr>
-<div class="row placeholders mb-3">
-    <div class="col-6 col-sm-3 placeholder text-center">
-        <img src="//placehold.it/200/dddddd/fff?text=1" class="mx-auto img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-        <h4>Responsive</h4>
-        <span class="text-muted">Device agnostic</span>
-    </div>
-    <div class="col-6 col-sm-3 placeholder text-center">
-        <img src="//placehold.it/200/e4e4e4/fff?text=2" class="mx-auto img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-        <h4>Frontend</h4>
-        <span class="text-muted">UI / UX oriented</span>
-    </div>
-    <div class="col-6 col-sm-3 placeholder text-center">
-        <img src="//placehold.it/200/d6d6d6/fff?text=3" class="mx-auto img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-        <h4>HTML5</h4>
-        <span class="text-muted">Standards-based</span>
-    </div>
-    <div class="col-6 col-sm-3 placeholder text-center">
-        <img src="//placehold.it/200/e0e0e0/fff?text=4" class="center-block img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-        <h4>Framework</h4>
-        <span class="text-muted">CSS and JavaScript</span>
-    </div>
-</div>
+<hr/>
 
-<a id="features"></a>
-<hr>
-<p class="lead mt-5">
-
-</p>
+<div class="row">
+  <div class="col-md-3 col-lg-2" role="navigation">
+    <ul class="nav nav-tabs flex-column pl-1">
+        <li class="nav-item"><a data-target="#principal" data-toggle="tab" class="nav-link active">Principal</a></li>
+        <li class="nav-item"><a class="nav-link">Estadísticas</a></li>
+        <li class="nav-item"><a class="nav-link">Usuarios</a></li>
+        <li class="nav-item"><a class="nav-link">Gauchadas</a></li>
+        <li class="nav-item"><a class="nav-link">Configuración</a></li>
+    </ul>
+  </div>
+  <div class="col-md-9 col-lg-10">
+    <div class="tab-content p-b-3">
+      <div class="tab-pane active wow fadeIn" id="principal" data-wow-delay="0.1s">
+asd
+      </div>
+    </div>
+  </div>
 </div>
