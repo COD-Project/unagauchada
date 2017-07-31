@@ -44,18 +44,18 @@
 
             <div class="col-md-9 col-lg-10 main">
 
-                <div class="row hidden-xs-down wow fadeIn" data-wow-delay="0.1s">
+                <div class="row hidden-xs-down wow fadeInUp" style="margin-top: 20px;" data-wow-delay="0.1s">
                   <div class="col-2 text-right">
-                    <img src="assets/app/images/logo.png" class="img-fluid" alt="">
+                    <img src="assets/app/img/gaucho-coral.png" class="img-fluid" style="max-width: 155px; opacity: 0.9;" alt="">
                   </div>
                   <div class="col-10 text-left">
-                    <h1 class="display-2" style="margin-top: 10px;">
+                    <h1 class="display-2">
                       Bienvenido, <?php echo $this->admin['name']; ?>
                     </h1>
                   </div>
                 </div>
 
-                <div style="height: 75px;"></div>
+                <div style="height: 35px;"></div>
 
                 <?php $this->renderComponent(); ?>
 
