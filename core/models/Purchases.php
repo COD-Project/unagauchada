@@ -1,7 +1,7 @@
 <?php
 
 /**
- * created by Lucas Di Cunzolo in 22/07/2017
+ * created by Ulises J. Cornejo Fandos in 31/07/2017
  */
 
 # Security
@@ -9,9 +9,9 @@ defined('INDEX_DIR') OR exit(APP . ' software says .i.');
 //------------------------------------------------
 
 
-final class Credits extends Models
+final class Purchases extends Models
 {
-  private $mount;
+  private $monto;
   private $user;
   private $date;
 
@@ -32,21 +32,21 @@ final class Credits extends Models
 
   final private function errors($url="") {
     try {
-      if (empty($_POST["mount"]) && !is_numeric($_POST["mount"])) {
+      if (empty($_POST["cantidad"]) && !is_numeric($_POST["cantidad"])) {
         throw new PDOException("La operación no fué realizada con éxito.", 1);
       }
-      $this->mount = $_POST["mount"];
+      $this->monto = $_POST["cantidad"];
       $this->user = (Sessions::getInstance())->connectedUser();
       $this->date = date('Y/m/d', time());
     } catch (PDOException $e) {
-      Func::redirect(URL . $url . $e->getMessage());
+      echo $e->getMessage();
     }
   }
 
   final public function add() {
     $this->errors();
-    $this->db->insert("Credits", [
-      "mount" => $this->mount,
+    $this->db->insert("Purchases", [
+      "mount" => $this->monto,
       "idUser" => $this->user['idUser'],
       "date" => $this->date
     ]);
@@ -55,8 +55,8 @@ final class Credits extends Models
   final public function filter($options) {
     return ([
       "elements" => "*",
-      "table" => "Creditos",
-      "criteria" => "ORDER BY idCredito DESC"
+      "table" => "Purchases",
+      "criteria" => "ORDER BY idPurchase DESC"
     ]);
   }
 

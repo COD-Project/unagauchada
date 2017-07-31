@@ -37,6 +37,10 @@ abstract class Models
     return $this->db->select($query['elements'], $query['table'], $where, $criteria);
   }
 
+  protected function prepare($data) {
+    return $data;
+  }
+
   public function get($options = null)
   {
     $query = $this->filter($options);
