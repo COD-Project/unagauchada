@@ -9,8 +9,9 @@
 
 .cmd_form_container {
   width: 100%;
+  margin: auto;
   color: #f2f2f2;
-  padding: 50px; }
+/* padding: 50px; */ }
   .cmd_form_container .cmd_form {
     width: 100%;
     margin: auto; }

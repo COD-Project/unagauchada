@@ -52,9 +52,12 @@ final class Purchases extends Models
   }
 
   final public function filter($options) {
+    $where = isset($_GET['min_date']) && isset($_GET['max_date']) ?
+                "date BETWEEN " . $_GET['min_date'] . " AND " . $_GET['min_date'] : "1=1";
     return ([
       "elements" => "*",
       "table" => "Purchases",
+      "where" => $where,
       "criteria" => "ORDER BY idPurchase DESC"
     ]);
   }
