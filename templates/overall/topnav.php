@@ -22,10 +22,10 @@
                     <img src="' . $this->sessions->connectedUser()['profilePicture'] . '" class="rounded-circle img-fluid" style="height: 35px; width: 35px; margin-right: 2px;">
                     <span class="navbar-text">' . $this->sessions->connectedUser()['name'] . '</span>
                   </a>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <a class="dropdown-item" href="profiles/myprofile"><i class="fa fa-user"></i> Ver Perfil </a>');
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenu1">');
                     if(!$this->sessions->isGranted()) {
                       echo('
+                      <a class="dropdown-item" href="profiles/myprofile"><i class="fa fa-user"></i> Ver Perfil </a>
                       <a class="dropdown-item" href="creditos/comprar"><i class="fa fa-credit-card-alt"></i> Créditos: ' . $this->sessions->connectedUser()['credits'] . '</a>
                       <a class="dropdown-item"><i class="fa fa-star"></i> Puntos: ' . $this->sessions->connectedUser()['points'] . '</a>
                       ');

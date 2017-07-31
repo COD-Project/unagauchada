@@ -49,19 +49,47 @@
 <hr/>
 
 <div class="row wow fadeIn" data-wow-delay="0.4s">
-  <div class="col-md-3 col-lg-2" role="navigation">
+  <div class="col-md-3" role="navigation">
     <ul class="nav nav-pills nav-fill flex-column pl-1">
-        <li class="nav-item"><a data-target="#principal" data-toggle="tab" class="nav-link active">Principal</a></li>
-        <li class="nav-item"><a class="nav-link">Estadísticas</a></li>
-        <li class="nav-item"><a class="nav-link">Usuarios</a></li>
-        <li class="nav-item"><a class="nav-link">Gauchadas</a></li>
-        <li class="nav-item"><a class="nav-link">Configuración</a></li>
+        <li class="nav-item"><a data-target="#analytics" data-toggle="tab" class="nav-link active">Estadísticas</a></li>
+        <li class="nav-item"><a data-target="#purchases" data-toggle="tab" class="nav-link">Compras</a></li>
     </ul>
   </div>
-  <div class="col-md-9 col-lg-10">
+  <div class="col-md-9">
     <div class="tab-content p-b-3">
-      <div class="tab-pane active wow fadeIn" id="principal" data-wow-delay="0.1s">
+      <div class="tab-pane active wow fadeIn" id="analytics" data-wow-delay="0.1s">
         asd
+      </div>
+      <div class="tab-pane wow fadeIn" id="purchases" data-wow-delay="0.1s">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>#</th>
+                        <th>Usuario</th>
+                        <th>Email</th>
+                        <th>Fecha</th>
+                        <th>Monto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  for ($i=0; $i < count($this->purchases); $i++) {
+                    $purchase = $this->purchases[$i];
+                    echo ("
+                      <tr>
+                          <td>" . ($i + 1) . "</td>
+                          <td>" . $this->users[$purchase['idUser']]['completeName'] . "</td>
+                          <td>" . $this->users[$purchase['idUser']]['email'] . "</td>
+                          <td>" . $purchase['date'] . "</td>
+                          <td>$" . $purchase['mount'] . "</td>
+                      </tr>
+                    ");
+                  }
+                  ?>
+                </tbody>
+            </table>
+        </div>
       </div>
     </div>
   </div>

@@ -21,7 +21,10 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href=""></a>
+                  <a class="nav-link" href="logout"><i class="fa fa-sign-out"></i> Cerrar sesión </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link"  data-target="#myModal"><i class="fa fa-info-circle"></i> Acerca de </a>
                 </li>
             </ul>
         </div>
