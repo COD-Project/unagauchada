@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `Purchases` (
   `mount` int(11) NOT NULL,
   `date` date DEFAULT NULL,
   PRIMARY KEY (`idPurchase`),
-  KEY `Purchases_ibfk_1` (`idUser`),
+  KEY `Purchases_ibfk_1` (`idUser`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
