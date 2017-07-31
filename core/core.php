@@ -32,7 +32,8 @@ __models_autoload(array(
   'Postulants',
   'Ratings',
   'Credits',
-  'Purchases'
+  'Purchases',
+  'Reputations'
 ));
 __functions_autoload(array(
   // 'Postulants',

@@ -9,7 +9,7 @@ defined('INDEX_DIR') OR exit(APP . ' software says .i.');
 //------------------------------------------------
 
 
-final class Purchases extends Models
+final class Reputations extends Models
 {
   private $mount;
   private $user;
@@ -31,34 +31,25 @@ final class Purchases extends Models
 
   final private function errors($url="") {
     try {
-      if (empty($_POST["cantidad"]) && !is_numeric($_POST["cantidad"])) {
+      if (empty($_POST["bound"]) && !is_numeric($_POST["bound"])) {
         throw new PDOException("La operación no fué realizada con éxito.", 1);
       }
-      $this->mount = $_POST["cantidad"];
-      $this->user = (Sessions::getInstance())->connectedUser();
-      $this->date = date('Y/m/d', time());
+      $this->bound = $_POST["bound"];
+      $this->name = $this->purifier($this->db->escape($_POST['name']));
     } catch (PDOException $e) {
       echo $e->getMessage();
     }
   }
 
   final public function add() {
-    $this->errors();
-    $this->db->insert("Purchases", [
-      "mount" => $this->mount,
-      "idUser" => $this->user['idUser'],
-      "date" => $this->date
-    ]);
+
   }
 
   final public function filter($options) {
-    $where = isset($_GET['min_date']) && isset($_GET['max_date']) ?
-                "date BETWEEN " . $_GET['min_date'] . " AND " . $_GET['min_date'] : "1=1";
     return ([
       "elements" => "*",
-      "table" => "Purchases",
-      "where" => $where,
-      "criteria" => "ORDER BY idPurchase DESC"
+      "table" => "Reputations",
+      "criteria" => "bound DESC"
     ]);
   }
 

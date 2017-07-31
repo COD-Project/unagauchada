@@ -12,7 +12,8 @@ class CMDForm {
     elem,
     inputs,
     submit,
-    action = null
+    action = null,
+    method = 'post'
   }) {
     var container,
       wrap,
@@ -28,7 +29,7 @@ class CMDForm {
     form.setAttribute("id", "cmd_form");
     form.setAttribute("class", "cmd_form");
     form.setAttribute("action", action);
-    form.setAttribute("method", "POST")
+    form.setAttribute("method", method)
 
     for (var i = 0; i < inputs.length; i++) {
       // preparing children to append

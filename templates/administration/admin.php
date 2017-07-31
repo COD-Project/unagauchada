@@ -3,7 +3,7 @@
   <?php $this->include('overall/header'); ?>
   <body>
 
-    <nav class="navbar fixed-top navbar-toggleable-sm navbar-inverse bg-warning text-white mb-3">
+    <nav class="navbar fixed-top navbar-toggleable-sm navbar-inverse bg-warning text-white mb-3" style="">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>

@@ -58,7 +58,14 @@
   <div class="col-md-9">
     <div class="tab-content p-b-3">
       <div class="tab-pane active wow fadeIn" id="analytics" data-wow-delay="0.1s">
-        asd
+        <div class="row">
+          <div class="col-8">
+            <div id="purchases_date_list"></div>
+          </div>
+          <div class="col-4">
+            Soy una estadística
+          </div>
+        </div>
       </div>
       <div class="tab-pane wow fadeIn" id="purchases" data-wow-delay="0.1s">
         <div class="table-responsive">
