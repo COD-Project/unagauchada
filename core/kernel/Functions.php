@@ -126,7 +126,7 @@ final class Func
    {
       $db = new Connection();
       $success = false;
-      $path = 'views/app/images/' . $data['folder'];
+      $path = 'assets/app/images/' . $data['folder'];
       $name = $data['name'];
       $route = $path . '/' . $name;
       if (!is_dir($path))
