@@ -27,6 +27,22 @@ USE `unagauchadaDB`;
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `Purchases`
+--
+
+DROP TABLE IF EXISTS `Purchases`;
+CREATE TABLE IF NOT EXISTS `Purchases` (
+  `idPurchase` int(11) NOT NULL AUTO_INCREMENT,
+  `idUser` int(11) NOT NULL,
+  `mount` int(11) NOT NULL,
+  `date` date DEFAULT NULL,
+  PRIMARY KEY (`idPurchase`),
+  KEY `Purchases_ibfk_1` (`idUser`),
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `Categories`
 --
 
@@ -2669,6 +2685,12 @@ INSERT INTO `Users` (`idUser`, `name`, `surname`, `birthdate`, `phone`, `locatio
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `Purchases`
+--
+ALTER TABLE `Purchases`
+  ADD CONSTRAINT `Purchases_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `Users` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
 
 --
 -- Filtros para la tabla `Comments`
