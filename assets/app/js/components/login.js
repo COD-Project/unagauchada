@@ -17,7 +17,8 @@ if (Func.$('#login_form')) {
   };
 
   Func.limitate([{
-    hash: 'email',
-    value: 35
-  }, ]);
+      hash: 'email',
+      value: 35
+    }
+  ]);
 }
