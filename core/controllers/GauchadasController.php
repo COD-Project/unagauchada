@@ -11,13 +11,25 @@ class GauchadasController extends Controller {
       switch ($this->router->getMethod()) {
       case 'add':
         if(!$this->sessions->isGranted()) {
-          $this->categories = (new Categories)->get();
           if ($_POST) {
             $this->models['gauchadas']->add();
           } else if(!$this->debit()){
             $this->render('gauchadas/add');
           } else {
             Func::redirect(URL.'?success=Usted tiene calificaciones pendientes.');
+          }
+        }
+        break;
+      case 'edit':
+        if(!$this->sessions->isGranted()) {
+          if (array_key_exists($this->router->getId(), $this->gauchadas)) {
+            if ($_POST) {
+              $this->models['gauchadas']->edit();
+            } else {
+              $this->render("gauchadas/edit");
+            }
+          } else {
+            Func::redirect();
           }
         }
         break;

@@ -34,10 +34,10 @@ class Images extends Models
         throw new PDOException("Solo pueden subirse imágenes", 1);
       }
       $this->images = $_FILES['images'];
-      $this->controller = explode('Controller', $this->router->getController())[0];
+      $this->controller = strtolower(explode('Controller', $this->router->getController())[0]);
       $this->nexus = EQUALS[$this->controller]['nexus'] ?? null;
       $table = EQUALS[$this->controller]['table'];
-      $this->fk = ($this->db->select($table['key'], $table['name'], '1=1', 'ORDER BY ' . $table['key'] . ' DESC LIMIT 1'))[0]['idGauchada'] ?? null;
+      $this->fk = ($this->db->select($table['key'], $table['name'], '1=1', 'ORDER BY ' . $table['criteria'] . ' DESC LIMIT 1'))[0][$table['key']] ?? null;
       $this->folder = $this->controller . '/' . $this->fk;
       $this->id = ($this->db->select('idImage', 'Images', '1=1', 'ORDER BY idImage DESC LIMIT 1'))[0]['idImage'] + 1;
     } catch (PDOException $e) {

@@ -82,7 +82,8 @@
     "gauchadas": {
       "table": {
         "name": "Gauchadas",
-        "key": "idGauchada"
+        "key": "idGauchada",
+        "criteria": "lastModified"
       },
       "nexus": {
         "name": "GauchadasImages",
@@ -92,7 +93,8 @@
     "profiles": {
       "table": {
         "name": "Users",
-        "key": "idUser"
+        "key": "idUser",
+        "criteria": "idUser"
       }
     }
   },

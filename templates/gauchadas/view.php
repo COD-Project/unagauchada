@@ -89,7 +89,7 @@
           </div>';
           if($this->user['idUser'] == $this->gauchada['user']['idUser']) {
             $HTML.= '<div class="col-2">
-              <a class="btn btn-warning rounded-circle option-button text-center" href="#">
+              <a class="btn btn-warning rounded-circle option-button text-center" href="gauchadas/edit/' . $this->gauchada["idGauchada"] . '">
                 <i class="fa fa-edit"></i>
               </a>
               <a class="btn btn-warning rounded-circle option-button text-center" data-toggle="modal" data-target="#Postulants">

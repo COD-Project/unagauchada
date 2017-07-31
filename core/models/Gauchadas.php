@@ -62,6 +62,7 @@ final class Gauchadas extends Models
         'location' => $this->state . ", " .$this->locality,
         'limitDate' => $this->limitDate,
         'createdAt' => date('Y/m/d H:i:s', time()),
+        'lastModified' => date('Y/m/d H:i:s', time()),
         'evaluation' => $this->evaluation,
         'idUser' => (Sessions::getInstance())->connectedUser()['idUser'],
         'idCategory' => $this->idCategory
@@ -76,6 +77,22 @@ final class Gauchadas extends Models
       }
       $this->db->update('Users', array('credits' => (Sessions::getInstance())->connectedUser()['credits'] - 1), 'idUser='.(Sessions::getInstance())->connectedUser()['idUser'], 'LIMIT 1');
       Func::redirect(URL . '?success=¡Se creo la gauchada!');
+    }
+
+    final public function edit() {
+      $this->errors('gauchadas?error=');
+      $this->db->update('Gauchadas', array(
+        'title' => $this->title,
+        'body' => $this->body,
+        'location' => $this->state . ", " .$this->locality,
+        'lastModified' => date('Y/m/d H:i:s', time()),
+        'limitDate' => $this->limitDate,
+        'idCategory' => $this->idCategory
+      ), "idGauchada=$this->id");
+      if (isset($_FILES['images']) && Func::images($_FILES['images'])) {
+        (new Images())->add();
+      }
+      Func::redirect(URL . '?success=¡Se editó la gauchada correctamente!');
     }
 
     final public function delete() {
@@ -96,7 +113,6 @@ final class Gauchadas extends Models
       }
     }
 
-
     final protected function filter($options) {
       $select = '*';
       $table = 'Gauchadas g';
@@ -111,7 +127,7 @@ final class Gauchadas extends Models
       if (isset($_GET['mode'])) {
         $select = 'g.idGauchada, g.idUser, g.title, g.body, g.location, g.limitDate, g.createdAt, g.evaluation, g.idCategory, COUNT(idPostulante) as "postulantes"';
         $table .= ' LEFT JOIN Postulants p ON (g.idGauchada=p.idGauchada)';
-        $criteria = 'GROUP BY g.idGauchada ORDER BY postulantes ' . $_GET['mode'] . ', g.idGauchada DESC';
+        $criteria = 'GROUP BY g.idGauchada ORDER BY postulantes ' . $_GET['mode'] . ', g.idGauchada DESC, lastModified DESC';
       }
       return array(
         "elements" => $select,
@@ -128,9 +144,12 @@ final class Gauchadas extends Models
           'idUser' => $data[$i]['idUser'],
           'title' => $data[$i]['title'],
           'body' => $data[$i]['body'],
-          'location' => $data[$i]['location'],
-          'limitDate' => $data[$i]['limitDate'],
+          'province' => explode(',', $data[$i]['location'])[0],
+          'location' => explode(',', $data[$i]['location'])[1],
+          'entireLocation' => $data[$i]['location'],
           'creationDate' => $data[$i]['createdAt'],
+          'lastModified' => $data[$i]['lastModified'],
+          'limitDate' => $data[$i]['limitDate'],
           'evaluation' => $data[$i]['evaluation'],
           'user' => (new Users)->get()[$data[$i]['idUser']],
           'idCategory' => $data[$i]['idCategory'],
