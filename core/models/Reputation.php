@@ -53,6 +53,17 @@ final class Reputations extends Models
 
     final public function delete()
     {
+        $this->errors("administration?");
+        $max_bound = $this->get()[0];
+        $this->db->delete("Reputations", "idReputation=$this->id");
+        if($max_bound["idReputation"] == $this->id) {
+            $this->db->insert("Reputations", [
+                "name" => "Gaucho",
+                "bound" => PHP_INT_MAX
+            ]);
+            Func::redirect(URL . "administration/settings/$this->id?success=La reputacion eliminada era la maxima. Se recomienda editar el nombre de la misma.");
+        }
+        Func::redirect(URL . "administration/settings?success=Se elimino la reputacion correctamente");
     }
 
     final public function filter($options)
