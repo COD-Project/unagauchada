@@ -1,13 +1,36 @@
 <div style="margin-top: 75px">
     <div class="row">
-        <div class="col-6 text-left">
+        <div class="col-8 text-left">
             <h2>Usuarios</h2>
         </div>
-        <div class="col-6">
-            <h1></h1>
+        <div class="col-4 text-right">
+            <form role="form" method="get" action="administration/users">
+                <div class="form_group">
+                    <div class="row">
+                        <div class="col-8">
+                            <input name="ranking" class="form-control" type="number" value="0" placeholder="">
+                        </div>
+                        <div class="col-4 text-left">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="criteria"" value="ASC">
+                                  <small>Ascendente</small>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="criteria"" value="DESC" checked>
+                                  <small>Descendente</small>
+                              </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <hr style="height: 15px">
+    <br>
     <div class="row">
     <?php
     array_walk($this->users, function($user) {

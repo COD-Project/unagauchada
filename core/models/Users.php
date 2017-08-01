@@ -126,8 +126,8 @@ final class Users extends Models
 
     final protected function filter($options)
     {
-        $where = $options['user'] ? "idUser=" . $options['user'] : "1=1";
-        $criteria = $options['ranking'] ? "ORDER BY role, points DESC, registrationDate LIMIT ". $options['ranking'] : "ORDER BY role, registrationDate";
+        $where = isset($options['user']) ? "idUser=" . $options['user'] : "1=1";
+        $criteria = $options['ranking'] && $options['criteria'] ? "ORDER BY role, points " . $options['criteria'] . ", registrationDate LIMIT ". (abs($options['ranking']) + 1) : "ORDER BY role, registrationDate";
         return ([
           "elements" => "*",
           "table" => "Users",
