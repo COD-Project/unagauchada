@@ -36,13 +36,6 @@ class AdministrationController extends Controller
         $this->component = $this->router
                                 ->getMethod();
 
-        $options['ranking'] = $_GET['ranking'] ?? null;
-        $options['criteria'] = $_GET['criteria'] ?? null;
-
-        $this->users = array_filter($this->models['users']->get($options), function ($user) {
-            return $user['role'] != 'admin';
-        });
-
         $this->gauchadas = $this->models['gauchadas']
                                 ->get([
                                   'all'
@@ -62,11 +55,16 @@ class AdministrationController extends Controller
 
         $id = $this->router->getId();
 
+        $options['ranking'] = $_GET['ranking'] ?? null;
+        $options['criteria'] = isset($_GET['criteria']) && in_array(strtolower($_GET['criteria']), ['asc', 'desc']) ? $_GET['criteria'] : 'DESC';
+
+        $this->users = array_filter($this->models['users']->get($options), function ($user) {
+            return $user['role'] != 'admin';
+        });
+
         $this->reputation = $this->router->getId() ? array_filter($this->reputations, function($reputation) use($id) {
           return $reputation['idReputation'] == $id;
         })[0] : null;
-
-        echo json_encode($this->reputation);
     }
 
     protected function renderComponent()
