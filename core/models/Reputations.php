@@ -58,7 +58,7 @@ final class Reputations extends Models
           ],
           "idReputation=$this->id"
         );
-
+        Func::redirect(URL . "administration/settings?success=La reputación fué editada con éxito.");
     }
 
     final public function delete()
@@ -74,7 +74,7 @@ final class Reputations extends Models
             Func::redirect(URL . "administration/settings/$id?success=La reputacion eliminada era la maxima. Se recomienda editar el nombre de la misma.");
             return;
         }
-        Func::redirect(URL . "administration/settings?success=Se elimino la reputacion correctamente");
+        Func::redirect(URL . "administration/settings?success=Se eliminó la reputacion correctamente");
     }
 
     final public function filter($options)
@@ -84,6 +84,19 @@ final class Reputations extends Models
           "table" => "Reputations",
           "criteria" => "ORDER BY bound DESC"
         ]);
+    }
+
+    final public function prepare($data)
+    {
+        for ($i=0; $i < count($data); $i++) {
+          $reputations[$i] = [
+              'idReputation' => $data[$i]['idReputation'],
+              'name' => $data[$i]['name'],
+              'bound' => $data[$i]['bound'],
+              'max_bound' => $data[$i]['bound'],
+              'min_bound' => $data[$i - 1]['bound'] ?? PHP_INT_MIN
+          ];
+        }
     }
 
     final public function __destruct()
