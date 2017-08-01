@@ -8,9 +8,9 @@ class ReputationsController extends Controller {
 
   public function __construct() {
     parent::__construct(true);
-    if($this->sessions->isLoggedIn()) {
+    if($this->sessions->isGranted()) {
 
-      if (($_POST && in_array($this->router->getMethod(), ['add', 'edit'])) || ($this->router->getId() && in_array($this->router->getMethod(), ['delete'])) {
+      if (($_POST && in_array($this->router->getMethod(), ['add', 'edit'])) || ($this->router->getId() && in_array($this->router->getMethod(), ['delete']))) {
           call_user_func([
             $this->models["reputations"],
             $this->router

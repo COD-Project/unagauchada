@@ -31,7 +31,7 @@ final class Reputations extends Models
     final private function errors($url="")
     {
         try {
-            if (empty($_POST["bound"]) && !is_numeric($_POST["bound"])) {
+            if (!$this->router->getId() && empty($_POST["name"]) && empty($_POST["bound"]) && !is_numeric($_POST["bound"])) {
                 throw new PDOException("La operación no fué realizada con éxito.", 1);
             }
             $this->id = $this->router->getId();
@@ -55,8 +55,8 @@ final class Reputations extends Models
           [
             "name" => $this->name,
             "bound" => $this->bound
-          ]
-          "idReputation=$this->id",
+          ],
+          "idReputation=$this->id"
         );
 
     }
@@ -70,7 +70,9 @@ final class Reputations extends Models
                 "name" => $this->name,
                 "bound" => $this->bound
             ]);
-            Func::redirect(URL . "administration/settings/$this->id?success=La reputacion eliminada era la maxima. Se recomienda editar el nombre de la misma.");
+            $id = $this->db->lastInsertId("Reputations");
+            Func::redirect(URL . "administration/settings/$id?success=La reputacion eliminada era la maxima. Se recomienda editar el nombre de la misma.");
+            return;
         }
         Func::redirect(URL . "administration/settings?success=Se elimino la reputacion correctamente");
     }
@@ -80,7 +82,7 @@ final class Reputations extends Models
         return ([
           "elements" => "*",
           "table" => "Reputations",
-          "criteria" => "bound DESC"
+          "criteria" => "ORDER BY bound DESC"
         ]);
     }
 
