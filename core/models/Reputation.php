@@ -35,8 +35,9 @@ final class Reputations extends Models
                 throw new PDOException("La operación no fué realizada con éxito.", 1);
             }
             $this->id = $this->router->getId();
-            $this->bound = $_POST["bound"] ?? null;
-            $this->name = $_POST['name'] ?? null;
+            $this->max_bound = $this->get()[0];
+            $this->bound = $_POST["bound"] ?? PHP_INT_MAX;
+            $this->name = $_POST['name'] ?? "Gaucho";
         } catch (PDOException $e) {
             Func::redirect(URL . $url . $e->getMessage());
         }
@@ -48,18 +49,26 @@ final class Reputations extends Models
 
     final public function edit()
     {
+        $this->errors("administration/settings?error=");
+        $this->update(
+          "Reputations",
+          [
+            "name" => $this->name,
+            "bound" => $this->bound
+          ]
+          "idReputation=$this->id",
+        );
 
     }
 
     final public function delete()
     {
-        $this->errors("administration?");
-        $max_bound = $this->get()[0];
+        $this->errors("administration/settings?error=");
         $this->db->delete("Reputations", "idReputation=$this->id");
-        if($max_bound["idReputation"] == $this->id) {
+        if($this->max_bound["idReputation"] == $this->id) {
             $this->db->insert("Reputations", [
-                "name" => "Gaucho",
-                "bound" => PHP_INT_MAX
+                "name" => $this->name,
+                "bound" => $this->bound
             ]);
             Func::redirect(URL . "administration/settings/$this->id?success=La reputacion eliminada era la maxima. Se recomienda editar el nombre de la misma.");
         }
