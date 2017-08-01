@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 31-07-2017 a las 22:04:30
+-- Tiempo de generación: 01-08-2017 a las 03:19:35
 -- Versión del servidor: 10.1.22-MariaDB
--- Versión de PHP: 7.0.18
+-- Versión de PHP: 7.1.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -2591,6 +2591,19 @@ INSERT INTO `Provincias` (`id`, `provincia`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `Purchases`
+--
+
+CREATE TABLE `Purchases` (
+  `idPurchase` int(11) NOT NULL,
+  `idUser` int(11) DEFAULT NULL,
+  `mount` int(11) DEFAULT NULL,
+  `count` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `Ratings`
 --
 
@@ -2716,6 +2729,13 @@ ALTER TABLE `Provincias`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `Purchases`
+--
+ALTER TABLE `Purchases`
+  ADD PRIMARY KEY (`idPurchase`),
+  ADD KEY `idUser` (`idUser`);
+
+--
 -- Indices de la tabla `Ratings`
 --
 ALTER TABLE `Ratings`
@@ -2784,6 +2804,11 @@ ALTER TABLE `Postulants`
 ALTER TABLE `Provincias`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
+-- AUTO_INCREMENT de la tabla `Purchases`
+--
+ALTER TABLE `Purchases`
+  MODIFY `idPurchase` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `Ratings`
 --
 ALTER TABLE `Ratings`
@@ -2829,6 +2854,12 @@ ALTER TABLE `Gauchadas`
 ALTER TABLE `GauchadasImages`
   ADD CONSTRAINT `GauchadasImages_ibfk_1` FOREIGN KEY (`idGauchada`) REFERENCES `Gauchadas` (`idGauchada`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `GauchadasImages_ibfk_2` FOREIGN KEY (`idImage`) REFERENCES `Images` (`idImage`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `Purchases`
+--
+ALTER TABLE `Purchases`
+  ADD CONSTRAINT `Purchases_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `Users` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `Ratings`
