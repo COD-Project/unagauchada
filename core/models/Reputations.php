@@ -97,6 +97,7 @@ final class Reputations extends Models
               'min_bound' => $data[$i - 1]['bound'] ?? PHP_INT_MIN
           ];
         }
+        return !$data ? null : $reputations;
     }
 
     final public function __destruct()
