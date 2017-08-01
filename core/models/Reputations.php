@@ -101,6 +101,7 @@ final class Reputations extends Models
               'idReputation' => $data[$i]['idReputation'],
               'name' => $data[$i]['name'],
               'bound' => $data[$i]['bound'],
+              'next' => $i < count($data) ? PHP_INT_MAX : $data[$i + 1]['bound'] - 1,
               'max_bound' => $data[$i]['bound'],
               'min_bound' => $data[$i + 1]['bound'] ?? PHP_INT_MIN
           ];

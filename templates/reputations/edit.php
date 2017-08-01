@@ -1,14 +1,20 @@
-<form id="edit_user_form" role="form" method="post" action="" enctype="multipart/form-data">
+<form role="form" method="post" action="">
   <div class="form-group row">
       <label class="col-lg-3 col-form-label form-control-label">Nombre</label>
       <div class="col-lg-9">
-          <input id="name" class="form-control" type="text" value=" <?php echo $this->reputation['name']; ?> ">
+          <input id="name" class="form-control" type="text" value=" <?= $this->reputation['name']; ?> ">
       </div>
   </div>
   <div class="form-group row">
-      <label class="col-lg-3 col-form-label form-control-label">Apellido</label>
+      <label class="col-lg-3 col-form-label form-control-label">Límite Inferior</label>
       <div class="col-lg-9">
-          <input id="surname" class="form-control" type="number" value=" <?php echo $this->reputation['name']; ?> ">
+          <input class="form-control" type="number" value="<?= $this->reputation['min_bound'];?>" disabled>
+      </div>
+  </div>
+  <div class="form-group row">
+      <label class="col-lg-3 col-form-label form-control-label">Límite Superior</label>
+      <div class="col-lg-9">
+          <input id="bound" class="form-control" min="<?= $this->reputation['min_bound'];?>" max="<?= $this->reputation['next'];?>" type="number" value="<?= $this->reputation['bound'];?>">
       </div>
   </div>
   <div class="form-group row">

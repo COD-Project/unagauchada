@@ -22,7 +22,7 @@
                   <td>" . $reputation['max_bound'] . "</td>
                   <td>" . $reputation['min_bound'] . "</td>
                   <td>
-                    <a href=\"reputations/edit/" . $reputation['idReputation'] . "\">
+                    <a href=\"administration/settings/" . $reputation['idReputation'] . "\">
                       <button type=\"button\" class=\"btn btn-warning btn-circle\">
                         <i class=\"fa fa-edit\"></i>
                       </button>
