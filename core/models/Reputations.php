@@ -94,7 +94,7 @@ final class Reputations extends Models
               'name' => $data[$i]['name'],
               'bound' => $data[$i]['bound'],
               'max_bound' => $data[$i]['bound'],
-              'min_bound' => $data[$i - 1]['bound'] ?? PHP_INT_MIN
+              'min_bound' => $data[$i + 1]['bound'] ?? PHP_INT_MIN
           ];
         }
         return !$data ? null : $reputations;
