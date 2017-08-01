@@ -4,8 +4,8 @@
             <tr>
                 <th>#</th>
                 <th>Nombre</th>
-                <th>Límite Inferior</th>
                 <th>Límite Superior</th>
+                <th>Límite Inferior</th>
                 <th>Opciones</th>
             </tr>
         </thead>
@@ -19,8 +19,8 @@
               <tr>
                   <td>" . ($i + 1) . "</td>
                   <td>" . $reputation['name'] . "</td>
-                  <td>" . $reputation['min_bound'] . "</td>
                   <td>" . $reputation['max_bound'] . "</td>
+                  <td>" . $reputation['min_bound'] . "</td>
                   <td>
                     <a href=\"reputations/edit/" . $reputation['idReputation'] . "\">
                       <button type=\"button\" class=\"btn btn-warning btn-circle\">
