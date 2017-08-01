@@ -2598,7 +2598,8 @@ CREATE TABLE `Purchases` (
   `idPurchase` int(11) NOT NULL,
   `idUser` int(11) DEFAULT NULL,
   `mount` int(11) DEFAULT NULL,
-  `count` int(11) DEFAULT NULL
+  `count` int(11) DEFAULT NULL,
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
