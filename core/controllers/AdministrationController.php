@@ -36,7 +36,9 @@ class AdministrationController extends Controller
         $this->component = $this->router
                                 ->getMethod();
 
-        $this->users = array_filter($this->models['users']->get(), function ($user) {
+        $options = isset($_GET['ranking']) && is_numeric($_GET['ranking']) ? ['ranking' => intval($_GET['ranking'])] : null;
+
+        $this->users = array_filter($this->models['users']->get($options), function ($user) {
             return $user['role'] != 'admin';
         });
 
