@@ -11,10 +11,9 @@ defined('INDEX_DIR') OR exit(APP . ' software says .i.');
 
 final class Reputations extends Models
 {
-  private $mount;
-  private $user;
-  private $date;
   static private $instance;
+  private $bound;
+  private $name;
 
   static function getInstance()
   {
@@ -34,14 +33,22 @@ final class Reputations extends Models
       if (empty($_POST["bound"]) && !is_numeric($_POST["bound"])) {
         throw new PDOException("La operación no fué realizada con éxito.", 1);
       }
-      $this->bound = $_POST["bound"];
-      $this->name = $this->purifier($this->db->escape($_POST['name']));
+      $this->bound = $_POST["bound"] ?? null;
+      $this->name = $_POST['name'] ?? null;
     } catch (PDOException $e) {
       echo $e->getMessage();
     }
   }
 
   final public function add() {
+
+  }
+
+  final public function edit() {
+
+  }
+
+  final public function delete() {
 
   }
 

@@ -37,7 +37,7 @@ final class Credits extends Models
       }
       $this->mount = $_POST["mount"];
       $this->user = (Sessions::getInstance())->connectedUser();
-      $this->date = date('Y/m/d', time());
+      $this->date = $this->currentTime();
     } catch (PDOException $e) {
       Func::redirect(URL . $url . $e->getMessage());
     }

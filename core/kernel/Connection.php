@@ -132,6 +132,11 @@ final class Connection extends PDO {
 
   //------------------------------------------------
 
+  final private function purifier($elem)
+  {
+    return str_replace(array('<script>','</script>','<script src','<script type='), '', $elem);
+  }
+
   /**
     * Heals a value to be later entered into a query
     *
@@ -152,7 +157,7 @@ final class Connection extends PDO {
       return (int) $e;
     }
 
-    return (string) trim(str_replace(['\\',"\x00",'\n','\r',"'",'"',"\x1a"],['\\\\','\\0','\\n','\\r',"\'",'\"','\\Z'],$e));
+    return (string) trim(str_replace(['\\',"\x00",'\n','\r',"'",'"',"\x1a"],['\\\\','\\0','\\n','\\r',"\'",'\"','\\Z'], $this->purifier($e)));
   }
 
   //------------------------------------------------

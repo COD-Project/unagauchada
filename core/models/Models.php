@@ -25,11 +25,6 @@ abstract class Models
     $this->router = $router;
   }
 
-  protected function purifier($elem)
-  {
-    return str_replace(array('<script>','</script>','<script src','<script type='), '', $elem);
-  }
-
   protected function executeQuery($query)
   {
     $where = $query['where'] ?? "1=1";
@@ -46,6 +41,11 @@ abstract class Models
     $query = $this->filter($options);
     $data = $this->executeQuery($query);
     return !$data ? null : $this->prepare($data);
+  }
+
+  protected function currentTime()
+  {
+    return date('Y/m/d H:i:s', time());
   }
 
   protected function __destruct()

@@ -41,13 +41,13 @@ final class Users extends Models
       if (empty($_POST['email']) && empty($_POST['pass']) && empty($_POST['name']) && empty($_POST['surname']) && empty($_POST['birthdate']) && empty($_POST['phone']) && empty($_FILES['images'])) {
         throw new PDOException("Error Processing Request");
       } else {
-        $this->id = (Sessions::getInstance())->isLoggedIn() ? intval((Sessions::getInstance())->connectedUser()['idUser']) : null;
-        $this->name = isset($_POST['name']) ? $this->purifier($this->db->escape($_POST['name'])) : null;
-        $this->surname = isset($_POST['surname']) ? $this->purifier($this->db->escape($_POST['surname'])) : null;
-        $this->email = isset($_POST['email']) ? $this->purifier($this->db->escape($_POST['email'])) : null;
+        $this->id = (Sessions::getInstance())->connectedUser()['idUser'] ?? null;
+        $this->name = $_POST['name'] ?? null;
+        $this->surname = $_POST['surname'] ?? null;
+        $this->email = $_POST['email'] ?? null;
         $this->password = isset($_POST['pass']) ? Func::encrypt($_POST['pass']) : null;
-        $this->state = isset($_POST['state']) ? $this->purifier($this->db->escape($_POST['state'])) : null;
-        $this->locality = isset($_POST['locality']) ? $this->purifier($this->db->escape($_POST['locality'])) : null;
+        $this->state = $_POST['state'] ?? null;
+        $this->locality = $_POST['locality'] ?? null;
         $this->birthdate = $_POST['birthdate'] ?? null;
         $this->phone = $_POST['phone'] ?? null;
         $this->points = $_POST['points'] ?? null;
@@ -67,7 +67,7 @@ final class Users extends Models
       echo 'El mail ingresado corresponde a un usuario existente.';
     } else {
       $this->keyreg = md5(time());
-      $regDate = date('Y/m/d', time());
+      $regDate = $this->currentTime();
       $this->db->insert("Users", [
         'name' => $this->name,
         'surname' => $this->surname,

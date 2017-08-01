@@ -36,9 +36,9 @@ final class Ratings extends Models
       if (empty($this->router->getId()) && empty($_POST['body']) && empty($_POST['rating'])) {
         throw new PDOException("Error Processing Request", 1);
           } else {
-            $this->rating = isset($_POST['rating']) ? intval($_POST['rating']) : null;
-            $this->body = isset($_POST['body']) ? $this->purifier($this->db->escape($_POST['body'])) : null;
-            $this->idGauchada = ($this->router->getId()) ? intval($this->router->getId()) : null;
+            $this->rating = $_POST['rating'] ?? null;
+            $this->body = $_POST['body'] ?? null;
+            $this->idGauchada = $this->router->getId();
           }
       } catch (PDOException $e) {
         Func::redirect(URL . $url . $e->getMessage());

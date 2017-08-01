@@ -24,7 +24,7 @@
                   <a class="nav-link" href="logout"><i class="fa fa-sign-out"></i> Cerrar sesión </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link"  data-target="#myModal"><i class="fa fa-info-circle"></i> Acerca de </a>
+                  <a class="nav-link"  data-target="#about"><i class="fa fa-info-circle"></i> Acerca de </a>
                 </li>
             </ul>
         </div>
@@ -59,9 +59,7 @@
                 </div>
 
                 <div style="height: 35px;"></div>
-
                 <?php $this->renderComponent(); ?>
-
             <!--/main col-->
             </div>
 

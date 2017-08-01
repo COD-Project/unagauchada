@@ -36,10 +36,10 @@ final class Comments extends Models
       if (empty($this->router->getId()) && empty($_POST['body']) && empty($_GET['idQuestion'])) {
         throw new PDOException("Error Processing Request", 1);
       } else {
-        $this->id = $this->router->getId() != null ? intval($this->router->getId()) : null;
-        $this->body = isset($_POST['body']) ? $this->purifier($this->db->escape($_POST['body'])) : null;
-        $this->idGauchada = is_numeric($this->router->getId()) ? intval($this->router->getId()) : null;
-        $this->idQuestion = isset($_GET['idQuestion']) ? intval($_GET['idQuestion']) : null;
+        $this->id = $this->router->getId();
+        $this->body = $_POST['body'] ?? null;
+        $this->idGauchada = $this->router->getId();
+        $this->idQuestion = $_GET['idQuestion'] ?? null;
       }
     } catch (PDOException $e) {
       Func::redirect(URL . $url . $e->getMessage());
@@ -49,15 +49,15 @@ final class Comments extends Models
   final public function add()
   {
     $this->errors('comments?error=');
-    $instanceert = [
+    $data = [
       'body' => $this->body,
-      'createdAt' => date('Y/m/d H:i:s', time()),
-      'lastModify' => date('Y/m/d H:i:s', time()),
+      'createdAt' => $this->currentTime,
+      'lastModify' => $this->currentTime,
       'idGauchada' => $this->idGauchada,
       'idUser' => (Sessions::getInstance())->connectedUser()['idUser'],
     ];
-    if ($this->idQuestion != null) $instanceert['idQuestion'] = $this->idQuestion;
-    $this->db->insert('Comments', $instanceert);
+    if ($this->idQuestion != null) $data['idQuestion'] = $this->idQuestion;
+    $this->db->insert('Comments', $data);
     Func::redirect(URL . 'gauchadas/view/' . $this->idGauchada);
   }
 

@@ -40,14 +40,14 @@ final class Gauchadas extends Models
       if (empty($this->router->getId()) && empty($_POST['title']) && empty($_POST['body']) && empty($_POST['locality']) && empty($_POST['limitDate']) && empty($_POST['evaluation']) && empty($_POST['idUser']) && empty($_POST['idCategory'])) {
         throw new PDOException("Error Processing Request", 1);
           } else {
-            $this->id = $this->router->getId() != null ? intval($this->router->getId()) : null;
-            $this->title = isset($_POST['title']) ? $this->purifier($this->db->escape($_POST['title'])) : null;
-            $this->body = isset($_POST['body']) ? $this->purifier($this->db->escape($_POST['body'])) : null;
-            $this->state = isset($_POST['state']) ? $this->purifier($this->db->escape($_POST['state'])) : null;
-            $this->locality = isset($_POST['locality']) ? $this->purifier($this->db->escape($_POST['locality'])) : null;
+            $this->id = $this->router->getId();
+            $this->title = $_POST['title'] ?? null;
+            $this->body = $_POST['body'] ?? null;
+            $this->state = $_POST['state'] ?? null;
+            $this->locality = $_POST['locality'] ?? null;
             $this->limitDate = $_POST['limitDate'] ?? null;
-            $this->evaluation = isset($_POST['evaluation']) ? intval($_POST['evaluation']) : null;
-            $this->idCategory = isset($_POST['idCategory']) ? intval($_POST['idCategory']) : null;
+            $this->evaluation = $_POST['evaluation'] ?? null;
+            $this->idCategory = $_POST['idCategory'] ?? null;
           }
       } catch (PDOException $e) {
         Func::redirect(URL . $url . $e->getMessage());

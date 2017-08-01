@@ -11,8 +11,6 @@ defined('INDEX_DIR') OR exit(APP . ' software says .i.');
 
 final class Categories extends Models
 {
-  private $name;
-
   static private $instance;
 
   static function getInstance()
@@ -34,8 +32,8 @@ final class Categories extends Models
       if (empty($this->router->getId()) && empty($_POST['name']) && empty($_POST['idCategory'])) {
         throw new PDOException("Error Processing Request", 1);
       } else {
-        $this->id = $this->router->getId() != null ? intval($this->router->getId()) : null;
-        $this->name = isset($_POST['name']) ? $this->purifier($this->db->escape($_POST['name'])) : null;
+        $this->id = $this->router->getId();
+        $this->name = $_POST['name'] ?? null;
       }
     } catch (PDOException $e) {
       Func::redirect(URL . $url . $e->getMessage());
