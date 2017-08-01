@@ -5,122 +5,120 @@
  */
 
 # Security
-defined("INDEX_DIR") OR exit(APP . " software says .i.");
+defined("INDEX_DIR") or exit(APP . " software says .i.");
 //------------------------------------------------
 
 final class Postulants extends Models
 {
-  private $idUser;
-  private $idGauchada;
-  private $description;
+    private $idUser;
+    private $idGauchada;
+    private $description;
 
-  static private $instance;
+    private static $instance;
 
-  static function getInstance()
-  {
-    if (!self::$instance) {
-      self::$instance = new self();
-      }
-      return self::$instance;
-  }
-
-  final public function __construct()
-  {
-    parent::__construct();
-  }
-
-  final function errors($url="")
-  {
-    try {
-      if (empty($_POST["description"]) && empty($_POST["selected"]) && empty($this->router->elements()[0]) && empty($this->router->getId())) {
-        throw new PDOException("Error Processing Request");
-      } else {
-        $this->idUser = is_numeric($this->router->elements()[0]) ?
-                            intval($this->router->elements()[0]) :
-                            (Sessions::getInstance())->connectedUser()["idUser"];
-        $this->idGauchada = $this->router->getId();
-        $this->description = $_POST["description"] ?? null;
-      }
-    } catch (PDOException $error) {
-      Func::redirect(URL . $url . $error->getMessage());
+    public static function getInstance()
+    {
+        if (!self::$instance) {
+            self::$instance = new self();
+        }
+        return self::$instance;
     }
-  }
 
-  final function add()
-  {
-    $this->errors("?error=");
-    $this->db->insert("Postulants", [
-      "idUser" => $this->idUser,
-      "idGauchada" => $this->idGauchada,
-      "description" => $this->description,
-      "selected" => 0
-    ]);
-    Func::redirect(URL . "?success=Se ha postulado correctamente");
-  }
-
-  final public function edit()
-  {
-    $this->errors("?error=");
-    $this->db->update("Postulants", [
-      "selected" => 1
-    ], "idUser=$this->idUser AND idGauchada=$this->idGauchada");
-    Func::redirect();
-  }
-
-  final public function delete()
-  {
-    $this->errors("?error=");
-    $this->db->update("Postulants", [
-      "validate" => 1
-    ], "idUser=$this->idUser AND idGauchada=$this->idGauchada");
-    Func::redirect(URL . "?success=Se despostulo correctamente");
-  }
-
-
-  final protected function filter($options)
-  {
-    $where = "1=1";
-    foreach (OPTIONS['postulants'] as $key => $value) {
-      if($options && array_key_exists($key, $options)) {
-        $where .= " AND " . $value['content'] . ($options[$key] ?? $value['default']);
-      }
+    final public function __construct()
+    {
+        parent::__construct();
     }
-    $table = "(Postulants p INNER JOIN Gauchadas g ON(p.idGauchada = g.idGauchada))";
-    if (isset($options['ranked'])) {
-      $table .= " LEFT JOIN Ratings r ON(p.idGauchada=r.idGauchada)";
-      $where .= " AND r.idRating " . ($options['ranked'] ? " IS NOT NULL" : "IS NULL");
+
+    final public function errors($url="")
+    {
+        try {
+            if (empty($_POST["description"]) && empty($_POST["selected"]) && empty($this->router->elements()[0]) && empty($this->router->getId())) {
+                throw new PDOException("Error Processing Request");
+            } else {
+                $this->idUser = is_numeric($this->router->elements()[0]) ?
+                                  intval($this->router->elements()[0]) :
+                                  (Sessions::getInstance())->connectedUser()["idUser"];
+                $this->idGauchada = $this->router->getId();
+                $this->description = $_POST["description"] ?? null;
+            }
+        } catch (PDOException $error) {
+            Func::redirect(URL . $url . $error->getMessage());
+        }
     }
-    return ([
-      "elements" => "*, p.idUser as idPostulant",
-      "table" => $table ,
-      "where" => $where
-    ]);
-  }
 
-  final protected function prepare($data)
-  {
-    $users = (new Users)->get();
-    for($i = 0; $i < count($data); $i++) {
-      $user = $users[$data[$i]["idPostulant"]];
-      $postulants[$i] = [
-        "idUser" => $data[$i]["idPostulant"],
-        "idGauchada" => $data[$i]["idGauchada"],
-        "completeName" => $user["completeName"],
-        "description" => $data[$i]["description"],
-        "email" => $user["email"],
-        "idRating" => $data[$i]["idRating"] ?? false,
-        "profilePicture" => $user["profilePicture"],
-        "gauchada" => (new Gauchadas)->get()[$data[$i]["idGauchada"]]
-      ];
+    final public function add()
+    {
+        $this->errors("?error=");
+        $this->db->insert("Postulants", [
+          "idUser" => $this->idUser,
+          "idGauchada" => $this->idGauchada,
+          "description" => $this->description,
+          "selected" => 0
+        ]);
+        Func::redirect(URL . "?success=Se ha postulado correctamente");
     }
-    return !$data ? null : $postulants;
-  }
+
+    final public function edit()
+    {
+        $this->errors("?error=");
+        $this->db->update("Postulants", [
+          "selected" => 1
+        ], "idUser=$this->idUser AND idGauchada=$this->idGauchada");
+        Func::redirect();
+    }
+
+    final public function delete()
+    {
+        $this->errors("?error=");
+        $this->db->update("Postulants", [
+          "validate" => 1
+        ], "idUser=$this->idUser AND idGauchada=$this->idGauchada");
+        Func::redirect(URL . "?success=Se despostulo correctamente");
+    }
 
 
-  final public function __destruct()
-  {
-    parent::__destruct();
-  }
+    final protected function filter($options)
+    {
+        $where = "1=1";
+        foreach (OPTIONS['postulants'] as $key => $value) {
+            if ($options && array_key_exists($key, $options)) {
+                $where .= " AND " . $value['content'] . ($options[$key] ?? $value['default']);
+            }
+        }
+        $table = "(Postulants p INNER JOIN Gauchadas g ON(p.idGauchada = g.idGauchada))";
+        if (isset($options['ranked'])) {
+            $table .= " LEFT JOIN Ratings r ON(p.idGauchada=r.idGauchada)";
+            $where .= " AND r.idRating " . ($options['ranked'] ? " IS NOT NULL" : "IS NULL");
+        }
+        return ([
+          "elements" => "*, p.idUser as idPostulant",
+          "table" => $table ,
+          "where" => $where
+        ]);
+    }
 
+    final protected function prepare($data)
+    {
+        $users = (new Users)->get();
+        for ($i = 0; $i < count($data); $i++) {
+            $user = $users[$data[$i]["idPostulant"]];
+            $postulants[$i] = [
+              "idUser" => $data[$i]["idPostulant"],
+              "idGauchada" => $data[$i]["idGauchada"],
+              "completeName" => $user["completeName"],
+              "description" => $data[$i]["description"],
+              "email" => $user["email"],
+              "idRating" => $data[$i]["idRating"] ?? false,
+              "profilePicture" => $user["profilePicture"],
+              "gauchada" => (new Gauchadas)->get()[$data[$i]["idGauchada"]]
+            ];
+        }
+        return !$data ? null : $postulants;
+    }
+
+
+    final public function __destruct()
+    {
+        parent::__destruct();
+    }
 }
-?>
