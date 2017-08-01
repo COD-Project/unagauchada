@@ -47,6 +47,7 @@ final class Reputations extends Models
 
     final public function edit()
     {
+        
     }
 
     final public function delete()
