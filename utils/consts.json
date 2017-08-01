@@ -1,0 +1,112 @@
+{
+  "OPTIONS": {
+    "gauchadas": {
+      "filter": {
+        "search": {
+          "content": "g.title LIKE ",
+          "begin": "\"%",
+          "end": "%\""
+        },
+        "category": {
+          "content": "g.idCategory=",
+          "begin": "\"",
+          "end": "\""
+        },
+        "locality": {
+          "content": "g.location LIKE ",
+          "begin": "\"%",
+          "end": "%\""
+        },
+        "state": {
+          "content": "g.location LIKE ",
+          "begin": "\"%",
+          "end": "%\""
+        },
+        "user": {
+          "content": "g.idUser=",
+          "begin": "\"",
+          "end": "\""
+        }
+      }
+    },
+    "profiles": {
+      "myprofile": {
+        "path": "myprofile",
+        "edit_options": {
+          "pass": "password",
+          "name": "name",
+          "surname": "surname",
+          "birthdate": "birthdate",
+          "phone": "phone"
+        }
+      },
+      "profile": {
+        "path": "profile"
+      }
+    },
+    "postulants": {
+      "gauchada": {
+        "content": "p.idGauchada="
+      },
+      "user": {
+        "content": "p.idUser="
+      },
+      "owner": {
+        "content": "g.idUser="
+      },
+      "validate": {
+        "content": "validate=",
+        "default": "0"
+      },
+      "selected": {
+        "content": "selected=",
+        "default": "0"
+      }
+    }
+  },
+  "FILES": {
+    "images": {
+      "format": "image",
+      "extensions": [
+        "png",
+        "jpg",
+        "jpeg",
+        "gif",
+        "tiff",
+        "bmp",
+        "bpg"
+      ]
+    }
+  },
+  "EQUALS": {
+    "gauchadas": {
+      "table": {
+        "name": "Gauchadas",
+        "key": "idGauchada",
+        "criteria": "lastModified"
+      },
+      "nexus": {
+        "name": "GauchadasImages",
+        "fk": "idGauchada"
+      }
+    },
+    "profiles": {
+      "table": {
+        "name": "Users",
+        "key": "idUser",
+        "criteria": "idUser"
+      }
+    }
+  },
+  "COMPONENTS": {
+    "analytics": {
+      "path": "analytics/analytics"
+    },
+    "settings": {
+      "path": "settings/settings"
+    },
+    "gauchadas": {
+      "path": "gauchadas/list"
+    }
+  }
+}

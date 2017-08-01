@@ -1,0 +1,15 @@
+{
+    "name": "root/php7-quickstart",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ulises-jeremias",
+            "email": "ulisescf.24@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpmailer/phpmailer": "^5.2",
+        "paypal/rest-api-sdk-php": "*"
+    }
+}
