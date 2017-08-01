@@ -12,10 +12,9 @@
 */
 
   define('INDEX_DIR', true);
-  
+
   require('core/core.php');
   __kernel_autoload('Controller');
-
 
   $Controller = $router->getController();
 
@@ -25,5 +24,3 @@
 
   require('core/controllers/' . $Controller . '.php');
   new $Controller;
-
- 
