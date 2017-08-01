@@ -34,10 +34,11 @@ final class Reputations extends Models
             if (empty($_POST["bound"]) && !is_numeric($_POST["bound"])) {
                 throw new PDOException("La operación no fué realizada con éxito.", 1);
             }
+            $this->id = $this->router->getId();
             $this->bound = $_POST["bound"] ?? null;
             $this->name = $_POST['name'] ?? null;
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            Func::redirect(URL . $url . $e->getMessage());
         }
     }
 
@@ -47,7 +48,7 @@ final class Reputations extends Models
 
     final public function edit()
     {
-        
+
     }
 
     final public function delete()
