@@ -23,8 +23,8 @@
                   <td>" . $reputation['max_bound'] . "</td>
                   <td>
                     <a href=\"reputations/edit/" . $reputation['idReputation'] . "\">
-                      <button type=\"button\" class=\"btn btn-danger btn-circle\">
-                        <i class=\"fa fa-trash\"></i>
+                      <button type=\"button\" class=\"btn btn-warning btn-circle\">
+                        <i class=\"fa fa-edit\"></i>
                       </button>
                     </a>
                     <a href=\"reputations/delete/" . $reputation['idReputation'] . "\">
