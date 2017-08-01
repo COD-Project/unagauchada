@@ -107,6 +107,9 @@
     },
     "gauchadas": {
       "path": "gauchadas/list"
+    },
+    "users": {
+      "path": "users/users"
     }
   }
 }

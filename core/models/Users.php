@@ -152,6 +152,9 @@ final class Users extends Models
               'state' => ($data[$i]['state'] == 1),
               'credits' => $data[$i]['credits'],
               'points' => $data[$i]['points'],
+              'reputation' => (new Reputations)->get([
+                'points' =>  $data[$i]['points']
+              ])[0]['name'],
               'registrationDate' => $data[$i]['registrationDate'],
               'role' => ($data[$i]['role'] == 1) ? 'admin' : 'user',
               'profilePicture' => ((new Images)->get(array(

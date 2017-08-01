@@ -79,9 +79,13 @@ final class Reputations extends Models
 
     final public function filter($options)
     {
+        if(isset($options['points'])) {
+          $where = $options['points'] . ' between (SELECT bound FROM Reputations r2 WHERE r2.bound<r.bound ORDER BY r2.bound DESC LIMIT 1) AND r.bound';
+        }
         return ([
           "elements" => "*",
-          "table" => "Reputations",
+          "table" => "Reputations r",
+          "where" => $where ?? "1=1",
           "criteria" => "ORDER BY bound DESC"
         ]);
     }
