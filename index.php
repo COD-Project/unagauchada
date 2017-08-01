@@ -11,27 +11,19 @@
   * @link http://github.com/ulises-jeremias/php7-quickstart
 */
 
-  //------------------------------------------------
-
   define('INDEX_DIR', true);
-  # Kernel load
+  
   require('core/core.php');
   __kernel_autoload('Controller');
 
-  //------------------------------------------------
 
-  # Driver Detection
   $Controller = $router->getController();
 
-  //------------------------------------------------
-
-  # Identification of the controller in the system
   if (!is_readable('core/controllers/' . $Controller . '.php')) {
       $Controller = 'ErrorController';
   }
 
-  # Loading selected driver
   require('core/controllers/' . $Controller . '.php');
   new $Controller;
 
-  //------------------------------------------------
+ 
