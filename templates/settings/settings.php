@@ -22,6 +22,8 @@
       <h3>Reputaciones</h3>
     </div>
     <div class="col-md-9">
+      <?php $this->include('reputations/edit'); ?>
+      <hr>
       <?php $this->include('reputations/reputations'); ?>
     </div>
   </div>
