@@ -5,7 +5,7 @@ declare(strict_types=1);
 
 //------------------------------------------------
 # Security
-defined('INDEX_DIR') OR exit('unagauchada software says .i.');
+defined('INDEX_DIR') or exit('unagauchada software says .i.');
 
 //------------------------------------------------
 # Timezone DOC http://php.net/manual/es/timezones.php
@@ -52,7 +52,7 @@ define('__ROOT__', '/unagauchada/');
 define('URL', 'http://localhost/unagauchada/');
 define('APP', 'UnaGauchada');
 define('HTML_DIR', 'templates/');
-define('APP_COPY','Copyright &copy; ' . date('Y',time()) . APP);
+define('APP_COPY', 'Copyright &copy; ' . date('Y', time()) . APP);
 
 //------------------------------------------------
 # Session control
@@ -114,11 +114,9 @@ define('IS_API', false);
 define('GENERATOR', false);
 
 //------------------------------------------------
-define('E_ERNO','');
+define('E_ERNO', '');
 
 
 //------------------------------------------------
 # Current version of the framework
 define('VERSION', '1.1');
-
-?>

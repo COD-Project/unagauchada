@@ -5,13 +5,13 @@
   <?php $this->render('overall/topnav'); ?>
   <?php
     if (isset($_GET['success'])) {
-      echo '<div class="container pt-6 text-center wow fadeIn" data-wow-delay="0.2s" style="margin-top: 100px;">
+        echo '<div class="container pt-6 text-center wow fadeIn" data-wow-delay="0.2s" style="margin-top: 100px;">
       <div class="alert alert-success alert-dismissible fade show" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <p class="text-fluid"><strong>La operación fue realizada con éxito.</strong></p>
       </div></div>';
     } else {
-      echo '<div class="jumbotron" style="background-color: transparent;"></div>';
+        echo '<div class="jumbotron" style="background-color: transparent;"></div>';
     }
   ?>
   <div class="container">

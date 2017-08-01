@@ -1,23 +1,27 @@
 <?php
 
-function Ratings($idGauchada) {
-  $db = new Connection();
-  $where = 'idGauchada='.$idGauchada;
-  $data = $db->select('*', 'Ratings', $where);
+function Ratings($idGauchada)
+{
+    $db = new Connection();
+    $where = 'idGauchada='.$idGauchada;
+    $data = $db->select('*', 'Ratings', $where);
 
-  return (!$data) ? true : false;
+    return (!$data) ? true : false;
 }
 
-function Rating($idGauchada) {
-  $db = new Connection();
-  $data = $db->select('r.body, g.title, r.rating', 'Ratings r INNER JOIN Gauchadas g ON(r.idGauchada=g.idGauchada)', "r.idGauchada=$idGauchada");
-  if (!$data) return false;
+function Rating($idGauchada)
+{
+    $db = new Connection();
+    $data = $db->select('r.body, g.title, r.rating', 'Ratings r INNER JOIN Gauchadas g ON(r.idGauchada=g.idGauchada)', "r.idGauchada=$idGauchada");
+    if (!$data) {
+        return false;
+    }
 
-  $rating = array(
+    $rating = array(
     'body' => $data[0]['body'],
     'title' => $data[0]['title']
   );
-  switch ($data[0]['rating']) {
+    switch ($data[0]['rating']) {
     case '1':
       $rating['rating'] = 'Mal';
       $rating['color'] = '-danger';
@@ -31,7 +35,5 @@ function Rating($idGauchada) {
       $rating['color'] = '-success';
       break;
   }
-  return $rating;
+    return $rating;
 }
-
-?>

@@ -82,8 +82,8 @@
                 <tbody>
                   <?php
                   for ($i=0; $i < count($this->purchases); $i++) {
-                    $purchase = $this->purchases[$i];
-                    echo ("
+                      $purchase = $this->purchases[$i];
+                      echo("
                       <tr>
                           <td>" . ($i + 1) . "</td>
                           <td>" . $this->users[$purchase['idUser']]['completeName'] . "</td>
