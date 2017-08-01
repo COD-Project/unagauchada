@@ -11,7 +11,7 @@ defined('INDEX_DIR') or exit(APP . ' software says .i.');
 
 final class Purchases extends Models
 {
-    private $mount;
+    private $count;
     private $user;
     private $date;
     private static $instance;
@@ -35,9 +35,10 @@ final class Purchases extends Models
             if (empty($_POST["cantidad"]) && !is_numeric($_POST["cantidad"])) {
                 throw new PDOException("La operación no fué realizada con éxito.", 1);
             }
-            $this->mount = $_POST["cantidad"];
+            $this->count = $_POST["cantidad"] ?? null;
+            $this->mount = $this->count * (Credits::getInstance())->get()[0]['mount'];
             $this->user = (Sessions::getInstance())->connectedUser();
-            $this->date = date('Y/m/d', time());
+            $this->date = $this->currentTime();
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
@@ -47,6 +48,7 @@ final class Purchases extends Models
     {
         $this->errors();
         $this->db->insert("Purchases", [
+          "count" => $this->count,
           "mount" => $this->mount,
           "idUser" => $this->user['idUser'],
           "date" => $this->date
