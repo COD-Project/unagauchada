@@ -9,11 +9,11 @@
         <?php
           $HTML = '';
           if ($this->user) {
-            $HTML .= '<div class="col-10">
+            $HTML .= '<div class="col-8">
               <h1>' . $this->user['completeName'] . '</h1>
             </div>
-            <div class="col-1">
-            <span class="badge badge-pill badge-danger"><i class="fa fa-star"></i>' . $this->user['points'] . 'Punto/s </span>
+            <div class="col-3 text-right">
+            <span class="badge badge-pill badge-danger"><i class="fa fa-star"></i>' . $this->user['reputation'] . '</span>
             </div>
             <div class="col-1">
               <a class="btn btn-warning option-button text-center" data-toggle="modal" data-target="#ListGauchadas">

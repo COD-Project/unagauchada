@@ -22,7 +22,7 @@
       				for($i = 0; $i < count($this->postulants); $i++) {
                 $HTML.= '<div class="container"><li class="list-group-item justify-content-between">';
                 if(!$this->selected){
-                    $HTML .= '<button type="button" class="btn btn-danger btn-circle btn"><i class="fa fa-star"></i>' . $this->user['points'] . '</button>';
+                    $HTML .= '<button type="button" class="btn btn-danger btn-circle btn"><i class="fa fa-star"></i>' . $this->user['reputation'] . '</button>';
                 }
                 $HTML.= '<h4>'.$this->postulants[$i]['completeName'].'</h4>
                 <span>
