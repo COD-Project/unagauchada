@@ -57,9 +57,10 @@ final class Reputations extends Models
               "name" => $this->name,
               "bound" => $this->bound
             ],
-            "idReputation=$this->id"
+            "idReputation=$this->id",
+            "LIMIT 1"
           );
-          if($this->max_bound["idReputation"] == $this->id) {
+          if($this->max_bound["idReputation"] == $this->id and $this->bound != PHP_INT_MAX) {
               $this->db->insert("Reputations", [
                   "name" => "Gaucho",
                   "bound" => PHP_INT_MAX
