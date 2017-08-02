@@ -6,7 +6,7 @@
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <p class="text-fluid">Aún no has solicitado gauchadas.
           </div>
-        </div>'
+        </div>
     <?php else:
       $i = 0;
       array_walk($this->gauchadas, function($gauchada) use($i) {
@@ -47,7 +47,7 @@
                 <!--/.Card content-->
             </div>
             <!--/.Card-->
-        </div>";
+        </div>
     <?php
         $i++;
         });

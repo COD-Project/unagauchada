@@ -72,9 +72,9 @@ final class Gauchadas extends Models
             (new Images())->add();
         } else {
             $this->db->insert('GauchadasImages', array(
-        'idGauchada' => $this->db->lastInsertId(),
-        'idImage' => 1
-      ));
+              'idGauchada' => $this->db->lastInsertId(),
+              'idImage' => 1
+            ));
         }
         $this->db->update('Users', array('credits' => (Sessions::getInstance())->connectedUser()['credits'] - 1), 'idUser='.(Sessions::getInstance())->connectedUser()['idUser'], 'LIMIT 1');
         Func::redirect(URL . '?success=¡Se creo la gauchada!');

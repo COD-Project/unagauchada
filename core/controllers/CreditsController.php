@@ -4,12 +4,20 @@
 defined('INDEX_DIR') or exit(APP . ' software says .i.');
 //------------------------------------------------
 
-class CreditosController extends Controller
+class CreditsController extends Controller
 {
     public function __construct()
     {
         parent::__construct(true);
-        return $this->render('creditos/compra');
+        if ($this->router->getMethod() && in_array($this->router->getMethod(), ['add'])) {
+            call_user_func([
+              $this->models["credits"],
+              $this->router
+                   ->getMethod()
+            ]);
+        } else {
+          $this->render('creditos/compra');
+        }
     }
 
     protected function init()

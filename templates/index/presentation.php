@@ -4,16 +4,18 @@
 
 <?php if (isset($_GET['error'])): ?>
     <div class="container pt-6 text-center wow fadeIn" data-wow-delay="0.2s">
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <p class="text-fluid"><strong><?= $_GET['error'] ?>'</strong></p>
-    </div></div>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <p class="text-fluid"><strong><?= $_GET['error'] ?>'</strong></p>
+      </div>
+    </div>
 <?php elseif (isset($_GET['success'])): ?>
     <div class="container pt-6 text-center wow fadeIn" data-wow-delay="0.2s">
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <p class="text-fluid"><strong><?= $_GET['success'] ?></strong></p>
-    </div></div>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <p class="text-fluid"><strong><?= $_GET['success'] ?></strong></p>
+      </div>
+    </div>
 <?php endif; ?>
 
 <?php
@@ -26,19 +28,20 @@
 
 <?php  if ((isset($_GET['search']) || isset($_GET['category']) || isset($_GET['state']) || isset($_GET['locality']))): ?>
     <div class="container pt-6 text-center wow fadeIn" data-wow-delay="0.2s">
-    <div class="alert alert-warning fade show" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <p class="text-fluid"><?= $criteria ?></p>
-    </div></div>
+      <div class="alert alert-warning fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <p class="text-fluid"><?= $criteria ?></p>
+      </div>
+    </div>
 <?php endif; ?>
 
 <?php if (isset($_GET['mode']) && !Func::emp($_GET['mode'])): ?>
     <div class="container pt-6 text-center wow fadeIn" data-wow-delay="0.2s">
-    <div class="alert alert-warning fade show" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <p class="text-fluid">Se ordenaron las gauchadas por cantidad de postulantes de forma <strong><?= (strtolower($_GET['mode']) == 'asc' ? 'ascendente' : 'descendente') ?>'</strong></p>
-    </div></div>
-
+      <div class="alert alert-warning fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <p class="text-fluid">Se ordenaron las gauchadas por cantidad de postulantes de forma <strong><?= (strtolower($_GET['mode']) == 'asc' ? 'ascendente' : 'descendente') ?>'</strong></p>
+      </div>
+    </div>
 <?php endif; ?>
 
 <!--Main layout-->

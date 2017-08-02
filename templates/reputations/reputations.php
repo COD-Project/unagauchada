@@ -21,14 +21,14 @@
                   <td><?= $reputation['max_bound'] ?></td>
                   <td><?= $reputation['min_bound'] ?></td>
                   <td>
-                    <a href=\"administration/settings/<?= $reputation['idReputation'] ?>\">
-                      <button type=\"button\" class=\"btn btn-warning btn-circle\">
-                        <i class=\"fa fa-edit\"></i>
+                    <a href="administration/settings/<?= $reputation['idReputation'] ?>">
+                      <button type="button" class="btn btn-warning btn-circle">
+                        <i class="fa fa-edit"></i>
                       </button>
                     </a>
-                    <a href=\"reputations/delete/<?= $reputation['idReputation'] ?>\">
-                      <button type=\"button\" class=\"btn btn-danger btn-circle\">
-                        <i class=\"fa fa-trash\"></i>
+                    <a href="reputations/delete/<?= $reputation['idReputation'] ?>">
+                      <button type="button" class="btn btn-danger btn-circle">
+                        <i class="fa fa-trash"></i>
                       </button>
                     </a>
                   </td>

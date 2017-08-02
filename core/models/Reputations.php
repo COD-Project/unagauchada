@@ -50,15 +50,28 @@ final class Reputations extends Models
     final public function edit()
     {
         $this->errors("administration/settings?error=");
-        $this->update(
-          "Reputations",
-          [
-            "name" => $this->name,
-            "bound" => $this->bound
-          ],
-          "idReputation=$this->id"
-        );
-        Func::redirect(URL . "administration/settings?success=La reputación fué editada con éxito.");
+        if (!$this->db->select("*", "Reputations", "name='$this->name' AND idReputation <> $this->id", "LIMIT 1")) {
+          $this->db->update(
+            "Reputations",
+            [
+              "name" => $this->name,
+              "bound" => $this->bound
+            ],
+            "idReputation=$this->id"
+          );
+          if($this->max_bound["idReputation"] == $this->id) {
+              $this->db->insert("Reputations", [
+                  "name" => "Gaucho",
+                  "bound" => PHP_INT_MAX
+              ]);
+              $id = $this->db->lastInsertId("Reputations");
+              Func::redirect(URL . "administration/settings/$id?success=La reputacion eliminada era la maxima. Se recomienda editar el nombre de la misma.");
+              return;
+          }
+          Func::redirect(URL . "administration/settings?success=La reputación fué editada con éxito.");
+        } else {
+          Func::redirect(URL . "administration/settings?error=Ya existe una reputación con el nombre $this->name.");
+        }
     }
 
     final public function delete()

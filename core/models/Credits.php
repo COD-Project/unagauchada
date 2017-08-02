@@ -47,11 +47,12 @@ final class Credits extends Models
     final public function add()
     {
         $this->errors();
-        $this->db->insert("Credits", [
-          "mount" => $this->mount,
+        $this->db->insert("Creditos", [
+          "monto" => $this->mount,
           "idUser" => $this->user['idUser'],
           "date" => $this->date
         ]);
+        Func::redirect(URL . "administration/settings?success=La operación fué realizada con éxito.");
     }
 
     final public function filter($options)
