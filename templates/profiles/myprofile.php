@@ -35,18 +35,21 @@
             </li>
           </ul>
           <div class="tab-content p-b-3">
-            <div class="tab-pane wow fadeIn" id="califications" data-wow-delay="0.1s">
-              <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <p class="text-fluid"><strong>Ups! Esta historia corresponde a la siguiente demo.</strong></p>
-              </div>
+            <div class="tab-pane active wow fadeIn" id="profile" data-wow-delay="0.1s">
+              <?php $this->include('myprofile/user'); ?>
             </div>
-            <?php
-              $this->include('myprofile/user');
-              $this->include('myprofile/gauchadas');
-              $this->include('myprofile/postulations');
-              $this->include('myprofile/edit');
-            ?>
+            <div class="tab-pane wow fadeIn" id="gauchadas" data-wow-delay="0.1s">
+              <?php $this->include('myprofile/gauchadas'); ?>
+            </div>
+            <div class="tab-pane wow fadeIn" id="postulations" data-wow-delay="0.1s">
+              <?php $this->include('myprofile/postulations'); ?>
+            </div>
+            <div class="tab-pane wow fadeIn" id="califications" data-wow-delay="0.1s">
+              <?php $this->include('myprofile/califications'); ?>
+            </div>
+            <div class="tab-pane wow fadeIn" id="edit" data-wow-delay="0.1s">
+              <?php $this->include('myprofile/edit'); ?>
+            </div>
           </div>
         </div>
       </div>
