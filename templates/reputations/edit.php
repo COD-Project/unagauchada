@@ -2,7 +2,7 @@
   <div class="form-group row">
       <label class="col-lg-3 col-form-label form-control-label">Nombre</label>
       <div class="col-lg-9">
-          <input name="name" class="form-control" type="text" value="<?= $this->reputation['name']; ?>">
+          <input name="name" class="form-control" type="text" value="<?= $this->reputation['name']; ?>" required>
       </div>
   </div>
   <div class="form-group row">
