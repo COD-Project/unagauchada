@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 01-08-2017 a las 20:23:57
+-- Tiempo de generación: 02-08-2017 a las 20:42:11
 -- Versión del servidor: 10.1.22-MariaDB
 -- Versión de PHP: 7.0.18
 
@@ -55,8 +55,8 @@ DROP TABLE IF EXISTS `Comments`;
 CREATE TABLE IF NOT EXISTS `Comments` (
   `idComment` int(11) NOT NULL AUTO_INCREMENT,
   `body` varchar(255) NOT NULL,
-  `createdAt` date DEFAULT NULL,
-  `lastModify` date DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `lastModify` datetime DEFAULT NULL,
   `idQuestion` int(11) DEFAULT NULL,
   `idGauchada` int(11) DEFAULT NULL,
   `idUser` int(11) NOT NULL,
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `Creditos` (
   `idCredito` int(11) NOT NULL AUTO_INCREMENT,
   `monto` int(11) NOT NULL,
   `idUser` int(11) NOT NULL,
-  `date` date NOT NULL,
+  `date` datetime NOT NULL,
   PRIMARY KEY (`idCredito`),
   KEY `idUser` (`idUser`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `Creditos` (
 --
 
 INSERT INTO `Creditos` (`idCredito`, `monto`, `idUser`, `date`) VALUES
-(1, 50, 1, '2017-06-01');
+(1, 50, 1, '2017-06-01 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -101,9 +101,9 @@ CREATE TABLE IF NOT EXISTS `Gauchadas` (
   `title` varchar(100) NOT NULL,
   `body` varchar(1024) NOT NULL,
   `location` varchar(255) NOT NULL,
-  `limitDate` date NOT NULL,
-  `createdAt` date NOT NULL,
-  `lastModified` date DEFAULT NULL,
+  `limitDate` datetime NOT NULL,
+  `createdAt` datetime NOT NULL,
+  `lastModified` datetime DEFAULT NULL,
   `evaluation` int(11) DEFAULT NULL,
   `idUser` int(11) NOT NULL,
   `idCategory` int(11) NOT NULL,
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `Gauchadas` (
   PRIMARY KEY (`idGauchada`),
   KEY `Gauchadas_ibfk_1` (`idUser`),
   KEY `Gauchadas_ibfk_2` (`idCategory`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `GauchadasImages` (
   PRIMARY KEY (`idGauchadaImage`),
   KEY `idGauchada` (`idGauchada`,`idImage`),
   KEY `idImage` (`idImage`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -140,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `Images` (
   `idImage` int(11) NOT NULL AUTO_INCREMENT,
   `path` varchar(255) NOT NULL,
   PRIMARY KEY (`idImage`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `Images`
@@ -2629,10 +2629,10 @@ CREATE TABLE IF NOT EXISTS `Purchases` (
   `idUser` int(11) DEFAULT NULL,
   `mount` int(11) DEFAULT NULL,
   `count` int(11) DEFAULT NULL,
-  `date` date NOT NULL,
+  `date` datetime NOT NULL,
   PRIMARY KEY (`idPurchase`),
   KEY `idUser` (`idUser`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -2648,7 +2648,7 @@ CREATE TABLE IF NOT EXISTS `Ratings` (
   `idGauchada` int(11) NOT NULL,
   PRIMARY KEY (`idRating`),
   KEY `idGauchada` (`idGauchada`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -2662,7 +2662,14 @@ CREATE TABLE IF NOT EXISTS `Reputations` (
   `name` varchar(55) DEFAULT NULL,
   `bound` int(11) NOT NULL,
   PRIMARY KEY (`idReputation`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `Reputations`
+--
+
+INSERT INTO `Reputations` (`idReputation`, `name`, `bound`) VALUES
+(1, 'Gaucho', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -2697,9 +2704,9 @@ CREATE TABLE IF NOT EXISTS `Users` (
 
 INSERT INTO `Users` (`idUser`, `name`, `surname`, `birthdate`, `phone`, `location`, `email`, `password`, `credits`, `points`, `state`, `session`, `registrationDate`, `keyreg`, `role`, `idImage`) VALUES
 (1, 'Admin', 'Admin', '1990-04-12', '22112345678', 'Buenos Aires, La Plata', 'admin@admin.com', 'd18cda93701d8d6538c763b6847d218d', 1, 1, 0, 0, '2017-06-29', '7ac3523b9cc73d4c8d9d97029', 1, 1),
-(2, 'Juan Cruz', 'Ocampos', '1997-05-31', '2216150702', 'Buenos Aires, La Plata', 'ocamposjuanc@gmail.com', 'd18cda93701d8d6538c763b6847d218d', 1, 1, 0, 0, '2017-06-29', 'cfe500602a4467c0768edafff', 2, 2),
-(3, 'Ulises Jeremias', 'Cornejo Fandos', '1996-11-24', '2215693723', 'Buenos Aires, La Plata', 'ulisescf.24@gmail.com', 'd18cda93701d8d6538c763b6847d218d', 1, 1, 0, 0, '2017-06-29', 'f9a9d588a8ca45ea01244b699', 2, 3),
-(4, 'Lucas', 'Di Cunzolo', '1996-11-12', '2215764531', 'Buenos Aires, La Plata', 'lucasdc@gmail.com', 'd18cda93701d8d6538c763b6847d218d', 0, 1, 0, 0, '2017-06-29', 'e1ea2f37ee2f7fae640901321', 2, 4);
+(2, 'Juan Cruz', 'Ocampos', '1997-05-31', '2216150702', 'Buenos Aires, La Plata', 'ocamposjuanc@gmail.com', 'd18cda93701d8d6538c763b6847d218d', 1, -90, 0, 0, '2017-06-29', 'cfe500602a4467c0768edafff', 2, 2),
+(3, 'Ulises Jeremias', 'Cornejo Fandos', '1996-11-24', '2215693723', 'Buenos Aires, La Plata', 'ulisescf.24@gmail.com', 'd18cda93701d8d6538c763b6847d218d', 1, 10, 0, 0, '2017-06-29', 'f9a9d588a8ca45ea01244b699', 2, 3),
+(4, 'Lucas', 'Di Cunzolo', '1996-11-12', '2215764531', 'Buenos Aires, La Plata', 'lucasdc@gmail.com', 'd18cda93701d8d6538c763b6847d218d', 2147483642, 10000, 0, 0, '2017-06-29', 'e1ea2f37ee2f7fae640901321', 2, 4);
 
 --
 -- Restricciones para tablas volcadas
