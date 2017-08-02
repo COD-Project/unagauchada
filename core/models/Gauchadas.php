@@ -99,7 +99,7 @@ final class Gauchadas extends Models
 
     final public function delete()
     {
-        $this->Errors('gauchadas?errors=');
+        $this->errors('gauchadas?errors=');
         $this->db->update('Gauchadas', array(
           'validate' => 1
         ), "idGauchada=$this->id");
