@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `Gauchadas` (
   PRIMARY KEY (`idGauchada`),
   KEY `Gauchadas_ibfk_1` (`idUser`),
   KEY `Gauchadas_ibfk_2` (`idCategory`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `GauchadasImages` (
   PRIMARY KEY (`idGauchadaImage`),
   KEY `idGauchada` (`idGauchada`,`idImage`),
   KEY `idImage` (`idImage`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -140,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `Images` (
   `idImage` int(11) NOT NULL AUTO_INCREMENT,
   `path` varchar(255) NOT NULL,
   PRIMARY KEY (`idImage`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `Images`
@@ -2571,7 +2571,7 @@ CREATE TABLE IF NOT EXISTS `Postulants` (
   `validate` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`idPostulante`),
   KEY `idUser` (`idUser`,`idGauchada`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -2632,7 +2632,7 @@ CREATE TABLE IF NOT EXISTS `Purchases` (
   `date` datetime NOT NULL,
   PRIMARY KEY (`idPurchase`),
   KEY `idUser` (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -2662,7 +2662,7 @@ CREATE TABLE IF NOT EXISTS `Reputations` (
   `name` varchar(55) DEFAULT NULL,
   `bound` int(11) NOT NULL,
   PRIMARY KEY (`idReputation`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `Reputations`
@@ -2704,9 +2704,9 @@ CREATE TABLE IF NOT EXISTS `Users` (
 
 INSERT INTO `Users` (`idUser`, `name`, `surname`, `birthdate`, `phone`, `location`, `email`, `password`, `credits`, `points`, `state`, `session`, `registrationDate`, `keyreg`, `role`, `idImage`) VALUES
 (1, 'Admin', 'Admin', '1990-04-12', '22112345678', 'Buenos Aires, La Plata', 'admin@admin.com', 'd18cda93701d8d6538c763b6847d218d', 1, 1, 0, 0, '2017-06-29', '7ac3523b9cc73d4c8d9d97029', 1, 1),
-(2, 'Juan Cruz', 'Ocampos', '1997-05-31', '2216150702', 'Buenos Aires, La Plata', 'ocamposjuanc@gmail.com', 'd18cda93701d8d6538c763b6847d218d', 1, -90, 0, 0, '2017-06-29', 'cfe500602a4467c0768edafff', 2, 2),
-(3, 'Ulises Jeremias', 'Cornejo Fandos', '1996-11-24', '2215693723', 'Buenos Aires, La Plata', 'ulisescf.24@gmail.com', 'd18cda93701d8d6538c763b6847d218d', 1, 10, 0, 0, '2017-06-29', 'f9a9d588a8ca45ea01244b699', 2, 3),
-(4, 'Lucas', 'Di Cunzolo', '1996-11-12', '2215764531', 'Buenos Aires, La Plata', 'lucasdc@gmail.com', 'd18cda93701d8d6538c763b6847d218d', 2147483642, 10000, 0, 0, '2017-06-29', 'e1ea2f37ee2f7fae640901321', 2, 4);
+(2, 'Juan Cruz', 'Ocampos', '1997-05-31', '2216150702', 'Buenos Aires, La Plata', 'ocamposjuanc@gmail.com', 'd18cda93701d8d6538c763b6847d218d', 1, 1, 0, 0, '2017-06-29', 'cfe500602a4467c0768edafff', 2, 2),
+(3, 'Ulises Jeremias', 'Cornejo Fandos', '1996-11-24', '2215693723', 'Buenos Aires, La Plata', 'ulisescf.24@gmail.com', 'd18cda93701d8d6538c763b6847d218d', 1, 1, 0, 0, '2017-06-29', 'f9a9d588a8ca45ea01244b699', 2, 3),
+(4, 'Lucas', 'Di Cunzolo', '1996-11-12', '2215764531', 'Buenos Aires, La Plata', 'lucasdc@gmail.com', 'd18cda93701d8d6538c763b6847d218d', 1, 1, 0, 0, '2017-06-29', 'e1ea2f37ee2f7fae640901321', 2, 4);
 
 --
 -- Restricciones para tablas volcadas
