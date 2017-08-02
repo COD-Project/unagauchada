@@ -45,6 +45,21 @@ final class Reputations extends Models
 
     final public function add()
     {
+        $this->errors("administration/settings?error=");
+        if (!$this->db->select("*", "Reputations", "name='$this->name' OR bound='$this->bound'", "LIMIT 1")) {
+          $this->db->insert(
+            "Reputations",
+            [
+              "name" => $this->name,
+              "bound" => $this->bound
+            ]
+          );
+          Func::redirect(URL . "administration/settings?success=La reputación fué editada con éxito.");
+        } elseif ($this->db->select("*", "Reputations", "name='$this->name'", "LIMIT 1")) {
+          Func::redirect(URL . "administration/settings?error=Ya existe una reputación con el nombre $this->name.");
+        } else {
+          Func::redirect(URL . "administration/settings?error=Ya existe una reputación con el límite superior de $this->bound puntos.");
+        }
     }
 
     final public function edit()
