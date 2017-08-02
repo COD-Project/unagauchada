@@ -12,15 +12,15 @@
       </div>
       <div class="modal-body">
         <div class="text-center">
-          <h3> Pero...¿Quien es COD Project? </h3>
-          <hr>
-          <p>Pues, COD Project es la empresa con más prestigio de los ultimos años</p>
-          <br>
-          <p>Cuando usted piensa en performancia, piensa en COD Project</p>
-          <br>
-          <p>Cuando piensa en buena gente, piensa en COD Project</p>
-          <br>
-          <p>Cuando piensa en robo! NO CUENTE CON NOSOTROS</p><small><small><small>llama aca...nadie se entera ;)</small></small></small>
+          <div class="row">
+            <div class="col-4">
+              <img src="assets/app/img/cod-logo.png" class="img-fluid" style="" alt="">
+            </div>
+            <div class="col-8 text-left">
+              <h4>COD-Project</h4>
+              <p style="color: gray;">A freelance organization dedicated to free software development.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
