@@ -3,8 +3,6 @@
   <?php $this->render('overall/header'); ?>
 <body>
   <?php $this->render('overall/topnav'); ?>
-  <datalist id="states"></datalist>
-  <datalist id="localities"></datalist>
   <div class="below-topnav"></div>
   <div class="container">
     <?php if($this->sessions->hasCredits()): ?>
@@ -35,10 +33,12 @@
               </div>
             </div>
             <div class="cmd_input-group">
+              <datalist id="states"></datalist>
               <input list="states" type="text" id="state" name="state">
               <label class="cmd_label" for="state">Provincia</label>
             </div>
             <div class="cmd_input-group">
+              <datalist id="localities"></datalist>
               <input list="localities" type="text" id="locality" name="locality">
               <label class="cmd_label" for="locality">Localidad</label>
             </div>
