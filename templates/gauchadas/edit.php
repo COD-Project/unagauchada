@@ -21,12 +21,12 @@
             <div class="col-10">
               <select id="idCategory" class="form_control" name="idCategory">';
                 <?php if($this->categories != NULL): ?>
-                  <option value=0 selected disabled> Seleccione una categoria </option>
+                  <option value="0" selected disabled> Seleccione una categoria </option>
                   <?php for($i = 0; $i < count($this->categories); $i++): ?>
-                    <option value=<?= $this->categories[$i]['idCategory'] ?>><?= $this->categories[$i]['name'] ?></option>
+                    <option value="<?= $this->categories[$i]['idCategory'] ?>"><?= $this->categories[$i]['name'] ?></option>
                   <?php endfor; ?>
                 <?php else: ?>
-                  <option value=blank selected disabled>No hay categorias</option>
+                  <option value="blank" selected disabled>No hay categorias</option>
                 <?php endif; ?>
               </select>
             </div>
