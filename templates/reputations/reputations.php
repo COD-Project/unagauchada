@@ -26,8 +26,8 @@
                         <i class="fa fa-edit"></i>
                       </button>
                     </a>
-                    <a href="reputations/delete/<?= $reputation['idReputation'] ?>">
-                      <button type="button" class="btn btn-danger btn-circle">
+                    <a>
+                      <button type="button" class="btn btn-danger btn-circle" onclick="deleteItem('¿Realmente desea eliminar la reputación?', 'reputations/delete/<?= $reputation['idReputation'] ?>');">
                         <i class="fa fa-trash"></i>
                       </button>
                     </a>
