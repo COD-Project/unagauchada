@@ -33,7 +33,7 @@
                           <p class="text-fluid" style="color: #C0C0C0; margin-top: -13.5px; font-size: 15px"><?= $gauchada['creationDate'] ?></p>
                         </div>
                         <div class="text-left col-2">
-                        <?php if($this->sessions->isLoggedIn() && $this->sessions->connectedUser()['idUser'] == $gauchada['user']['idUser']): ?>
+                        <?php if(($this->sessions->isLoggedIn() && $this->sessions->connectedUser()['idUser'] == $gauchada['user']['idUser']) or $this->sessions->isGranted()): ?>
                             <div class="d-flex flex-row-reverse" style="margin-top: 75%;">
                               <a href="gauchadas/delete/<?= $gauchada['idGauchada'] ?>">
                                 <button type="button" class="btn btn-danger btn-circle">
