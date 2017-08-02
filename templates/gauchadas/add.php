@@ -32,13 +32,13 @@
                 </select>
               </div>
             </div>
+            <datalist id="states"></datalist>
             <div class="cmd_input-group">
-              <datalist id="states"></datalist>
               <input list="states" type="text" id="state" name="state">
               <label class="cmd_label" for="state">Provincia</label>
             </div>
+            <datalist id="localities"></datalist>
             <div class="cmd_input-group">
-              <datalist id="localities"></datalist>
               <input list="localities" type="text" id="locality" name="locality">
               <label class="cmd_label" for="locality">Localidad</label>
             </div>
