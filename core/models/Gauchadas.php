@@ -169,8 +169,6 @@ final class Gauchadas extends Models
         return !$data ? null : $gauchadas;
     }
 
-
-
     final public function __destruct()
     {
         parent::__destruct();
