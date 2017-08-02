@@ -32,7 +32,7 @@
         <?php endif; ?>
         </div>
       </li>
-    <?php endfor; ?>
+    <?php endforeach; ?>
     </ul>
   <?php endif; ?>
   </div>
