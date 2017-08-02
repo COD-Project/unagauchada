@@ -13,6 +13,11 @@
       <?php endif; ?>
     <?php endforeach; ?>
   <?php else: ?>
-
+    <div class="col-12">
+      <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <p class="text-fluid">Aún no se han registrado calificaciones.
+      </div>
+    </div>
   <?php endif; ?>
 </div>
