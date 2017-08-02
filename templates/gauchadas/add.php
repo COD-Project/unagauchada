@@ -44,7 +44,7 @@
             </div>
             <br>
             <div class="cmd_input-group">
-              <input type="date" id="limitDate" min="' . date('Y-m-d') . '" name="limitDate">
+              <input type="date" id="limitDate" min="<?= date('Y-m-d') ?>" name="limitDate">
               <label class="cmd_label" for="limitDate">Plazo Limite</label>
             </div>
             <div class="cmd_input-group">
