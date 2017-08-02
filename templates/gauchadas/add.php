@@ -63,7 +63,7 @@
         <div class="card-block">
           <h4 class="card-title">No se disponen de creditos</h4>
           <p class="card-text">Debes tener aunque sea un crédito para poder solicitar una gauchada, si deseas comprar mas, ¡toca el botón!.</p>
-          <a href="creditos/comprar" class="btn btn-primary" style="background-color:coral; border-color:coral">Comprar Creditos</a>
+          <a href="credits/comprar" class="btn btn-primary" style="background-color:coral; border-color:coral">Comprar Creditos</a>
         </div>
       </div>
     <?php endif; ?>
