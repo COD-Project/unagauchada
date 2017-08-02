@@ -57,7 +57,7 @@ final class Gauchadas extends Models
     final public function add()
     {
         $this->errors('gauchadas?error=');
-        $this->db->insert('Gauchadas', array(
+        $this->db->insert('Gauchadas', [
           'title' => $this->title,
           'body' => $this->body,
           'location' => $this->state . ", " .$this->locality,
@@ -67,14 +67,14 @@ final class Gauchadas extends Models
           'evaluation' => $this->evaluation,
           'idUser' => (Sessions::getInstance())->connectedUser()['idUser'],
           'idCategory' => $this->idCategory
-        ));
+        ]);
         if (isset($_FILES['images']) && Func::images($_FILES['images'])) {
             (new Images())->add();
         } else {
-            $this->db->insert('GauchadasImages', array(
+            $this->db->insert('GauchadasImages', [
               'idGauchada' => $this->db->lastInsertId(),
               'idImage' => 1
-            ));
+            ]);
         }
         $this->db->update('Users', array('credits' => (Sessions::getInstance())->connectedUser()['credits'] - 1), 'idUser='.(Sessions::getInstance())->connectedUser()['idUser'], 'LIMIT 1');
         Func::redirect(URL . '?success=¡Se creo la gauchada!');

@@ -33,7 +33,7 @@ class Images extends Models
             if (!Func::images($_FILES['images'])) {
                 throw new PDOException("Solo pueden subirse imágenes", 1);
             }
-            $this->images = $_FILES['images'];
+            $this->images = $_FILES['images'] ?? null;
             $this->controller = strtolower(explode('Controller', $this->router->getController())[0]);
             $this->nexus = EQUALS[$this->controller]['nexus'] ?? null;
             $table = EQUALS[$this->controller]['table'];
@@ -57,7 +57,7 @@ class Images extends Models
               'tmp' => $this->images['tmp_name'][$i],
               'folder' => $this->folder
             ]);
-            if ($this->nexus != null) {
+            if (!$this->nexus) {
                 $this->db->insert($this->nexus['name'], [
                   $this->nexus['fk'] => $this->fk,
                   'idImage' => $id

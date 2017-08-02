@@ -22,7 +22,7 @@
               <p class="text-fluid"><strong></strong>No se han registrado actividades recientes.</p>
             </div>'
         <?php else: ?>
-            <table class=\"table table-hover table-striped\">
+            <table class="table table-hover table-striped">
               <tbody>"
                 <?php foreach ($this->news() as $key => $value): ?>
                   <tr>

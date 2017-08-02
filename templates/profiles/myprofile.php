@@ -42,10 +42,10 @@
               </div>
             </div>
             <?php
-              $this->include('profiles/myprofile/user');
-              $this->include('profiles/myprofile/gauchadas');
-              $this->include('profiles/myprofile/postulations');
-              $this->include('profiles/myprofile/edit');
+              $this->include('myprofile/user');
+              $this->include('myprofile/gauchadas');
+              $this->include('myprofile/postulations');
+              $this->include('myprofile/edit');
             ?>
           </div>
         </div>
