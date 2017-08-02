@@ -37,7 +37,6 @@ __models_autoload(array(
   'Reputations'
 ));
 __functions_autoload(array(
-  // 'Postulants',
   'Ratings'
 ));
 
