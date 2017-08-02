@@ -6,7 +6,7 @@
                     <i class="fa fa-user fa-5x"></i>
                 </div>
                 <h6 class="text-uppercase">Users</h6>
-                <h1 class="display-1"><?php echo count($this->users); ?></h1>
+                <h1 class="display-1"><?= count($this->users); ?></h1>
             </div>
         </div>
     </div>
@@ -17,7 +17,7 @@
                     <i class="fa fa-list fa-4x"></i>
                 </div>
                 <h6 class="text-uppercase">Gauchadas</h6>
-                <h1 class="display-1"><?php echo count($this->gauchadas); ?></h1>
+                <h1 class="display-1"><?= count($this->gauchadas); ?></h1>
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
                     <i class="fa fa-support fa-5x"></i>
                 </div>
                 <h6 class="text-uppercase">Postulaciones</h6>
-                <h1 class="display-1"><?php echo count($this->postulants); ?></h1>
+                <h1 class="display-1"><?= count($this->postulants); ?></h1>
             </div>
         </div>
     </div>
@@ -39,7 +39,7 @@
                     <i class="fa fa-shopping-bag fa-5x"></i>
                 </div>
                 <h6 class="text-uppercase">Compras</h6>
-                <h1 class="display-1"><?php echo count($this->purchases); ?></h1>
+                <h1 class="display-1"><?= count($this->purchases); ?></h1>
             </div>
         </div>
     </div>

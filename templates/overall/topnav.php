@@ -6,7 +6,7 @@
         <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
     </button>
     <div class="container">
-      <a class="navbar-brand" href="<?php echo URL; ?>">
+      <a class="navbar-brand" href="<?= URL; ?>">
           <img src="assets/app/images/logo.png" class="d-inline-block align-top cmd_zoomin" style="height: 35px;" alt="UnaGauchada">
           <span style="color: coral;"><strong>Una</strong>Gauchada</span>
       </a>

@@ -30,7 +30,7 @@
               Compra Créditos
             </div>
             <div class="card-block">
-              <h4 class="card-title">Cada crédito cuesta $<span id="precio"><?php echo $this->current['monto'] ?></span></h4>
+              <h4 class="card-title">Cada crédito cuesta $<span id="precio"><?= $this->current['monto'] ?></span></h4>
               <p class="card-text">Debes contar con una tarjeta de crédito para comprar créditos. Si tienes una y quieres comprar oprime el botón para avanzar.</p>
               <a data-toggle="tab" href="#details" class="btn btn-primary" style="background-color:coral; border-color:coral">Siguiente >></a>
             </div>

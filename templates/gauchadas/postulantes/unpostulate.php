@@ -14,7 +14,7 @@
         <div class="text-center">
           <h3><i class="fa fa-user"></i> Despostularse </h3>
         </div>
-        <form id="postulate_form" role="form" action=<?php echo "postulants/delete/" . $this->router->getId() ?> method="post">
+        <form id="postulate_form" role="form" action=<?= "postulants/delete/" . $this->router->getId() ?> method="post">
           <button id="postulate_button" type="submit" class="button"> Despostularse
                <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
            </button>

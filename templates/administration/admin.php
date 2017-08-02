@@ -53,7 +53,7 @@
                   </div>
                   <div class="col-10 text-left">
                     <h1 class="display-2">
-                      Bienvenido, <?php echo $this->admin['name']; ?>
+                      Bienvenido, <?= $this->admin['name']; ?>
                     </h1>
                   </div>
                 </div>

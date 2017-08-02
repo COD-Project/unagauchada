@@ -19,7 +19,7 @@
 			  	<div class="container">
 					<div class="cmd_form_container">
     					<div class="wrap">
-			    			<form name="cmd_form" class="cmd_form" action=<?php echo "ratings/add/" . $this->router->getId() ?> method="post">
+			    			<form name="cmd_form" class="cmd_form" action=<?= "ratings/add/" . $this->router->getId() ?> method="post">
 					            <div class="cmd_input-group">
 									<label class="col-2 control-label" for="rating">Calificaciones</label>
 									<div class="col-10">
