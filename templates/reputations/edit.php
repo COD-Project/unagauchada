@@ -8,13 +8,13 @@
   <div class="form-group row">
       <label class="col-lg-3 col-form-label form-control-label">Límite Inferior</label>
       <div class="col-lg-9">
-          <input class="form-control" type="number" value="<?= $this->reputation['min_bound'];?>" disabled>
+          <input class="form-control" type="number" value="<?= $this->reputation['min_bound'] ?>" disabled>
       </div>
   </div>
   <div class="form-group row">
       <label class="col-lg-3 col-form-label form-control-label">Límite Superior</label>
       <div class="col-lg-9">
-          <input id="bound" class="form-control" min="<?= $this->reputation['min_bound'];?>" max="<?= $this->reputation['next'];?>" type="number" value="<?= $this->reputation['bound'];?>">
+          <input id="bound" class="form-control" min="<?= $this->reputation['min_bound'] ?>" max="<?= $this->reputation['next'] ?>" type="number" value="<?= $this->reputation['bound'] ?>">
       </div>
   </div>
   <div class="form-group row">

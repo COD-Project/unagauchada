@@ -7,9 +7,7 @@
     <div class="container">
       <div class="row m-y-2">
         <div class="col-lg-4 text-center" style="margin-bottom: 5vh;">
-          <?php
-            echo '<img src="' . $this->sessions->connectedUser()['profilePicture'] . '" class="rounded img-fluid cmd_zoomin"  style="max-height: 250px; width: auto; ">';
-          ?>
+          <img src="<?= $this->sessions->connectedUser()['profilePicture'] ?>" class="rounded img-fluid cmd_zoomin"  style="max-height: 250px; width: auto; ">
           <h6 class="m-t-2" style="margin-top: 2vh;"><strong>Cambia tu foto de perfil</strong></h6>
           <form class="form-inline" id="profile_picture_form" action="ajax.php?for=users&mode=edit" method="post" enctype="multipart/form-data">
             <label class="custom-file" style="margin: auto;">
@@ -54,7 +52,6 @@
       </div>
       <hr>
     </div>
-
     <?php $this->include('overall/footer'); ?>
   </body>
 </html>

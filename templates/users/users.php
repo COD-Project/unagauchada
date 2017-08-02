@@ -32,25 +32,22 @@
     <hr style="height: 15px">
     <br>
     <div class="row">
-    <?php
-    array_walk($this->users, function($user) {
-        echo '
+    <?php array_walk($this->users, function($user) { ?>
         <div class="col-4">
             <div class="card">
                 <div class="card-block">
                     <div class="row">
                         <div class="col-4">
-                            <img src="' . $user['profilePicture'] . '" class="rounded img-fluid cmd_zoomin"  style="max-height: 250px; width: auto; ">
+                            <img src="<?= $user['profilePicture'] ?>" class="rounded img-fluid cmd_zoomin"  style="max-height: 250px; width: auto; ">
                         </div>
                         <div class="col-8">
-                            <h5>' . $user['completeName'] . '</h5>
-                            <span class="badge badge-pill badge-danger"><i class="fa fa-star"></i>' . $user['reputation'] . '</span>
-                            <span class="badge badge-pill badge-danger"><i class="fa fa-star"></i>' . $user['points'] . 'Punto/s </span>
+                            <h5><?= $user['completeName'] ?></h5>
+                            <span class="badge badge-pill badge-danger"><i class="fa fa-star"></i><?= $user['reputation'] ?></span>
+                            <span class="badge badge-pill badge-danger"><i class="fa fa-star"></i><?= $user['points'] ?>Punto/s </span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>';
-    });
-    ?>
+        </div>
+    <?php }); ?>
 </div>

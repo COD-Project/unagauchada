@@ -22,9 +22,13 @@
       <h3>Reputaciones</h3>
     </div>
     <div class="col-md-9">
-      <?php $this->include('reputations/edit'); ?>
-      <hr>
       <?php $this->include('reputations/reputations'); ?>
+      <hr>
+      <?php
+        if ($this->router->getId()) {
+          $this->include('reputations/edit');
+        }
+      ?>
     </div>
   </div>
 </div>

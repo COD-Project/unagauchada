@@ -14,10 +14,8 @@
         <div class="text-center">
           <h3> <img src="assets/app/img/poncho.png" style="width: 25px;"></img> ¿Poner poncho? </h3>
           <br>
-          <?php
-                echo '<a id="postulant_confirm" class="btn btn-success" href="" ><i class="fa fa-check"></i></a>';
-             ?>
-            <a data-dismiss="modal" class="btn btn-danger" style="color: #fff"><i class="fa fa-close"></i></a>
+          <a id="postulant_confirm" class="btn btn-success" href=""><i class="fa fa-check"></i></a>';
+          <a data-dismiss="modal" class="btn btn-danger" style="color: #fff"><i class="fa fa-close"></i></a>
         </div>
       </div>
     </div>

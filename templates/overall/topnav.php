@@ -6,7 +6,7 @@
         <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
     </button>
     <div class="container">
-      <a class="navbar-brand" href="<?= URL; ?>">
+      <a class="navbar-brand" href="<?= URL ?>">
           <img src="assets/app/images/logo.png" class="d-inline-block align-top cmd_zoomin" style="height: 35px;" alt="UnaGauchada">
           <span style="color: coral;"><strong>Una</strong>Gauchada</span>
       </a>
@@ -14,39 +14,30 @@
           <ul class="navbar-nav mr-auto">
 
           </ul>
-          <?php
-              if($this->sessions->isLoggedIn()) {
-                echo ('
-                <div class="dropdown navbar-text">
-                  <a class="nav-link dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="' . $this->sessions->connectedUser()['profilePicture'] . '" class="rounded-circle img-fluid" style="height: 35px; width: 35px; margin-right: 2px;">
-                    <span class="navbar-text">' . $this->sessions->connectedUser()['name'] . '</span>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenu1">');
-                    if(!$this->sessions->isGranted()) {
-                      echo('
-                      <a class="dropdown-item" href="profiles/myprofile"><i class="fa fa-user"></i> Ver Perfil </a>
-                      <a class="dropdown-item" href="creditos/comprar"><i class="fa fa-credit-card-alt"></i> Créditos: ' . $this->sessions->connectedUser()['credits'] . '</a>
-                      <a class="dropdown-item"><i class="fa fa-star"></i> Puntos: ' . $this->sessions->connectedUser()['points'] . '</a>
-                      ');
-                    }
-                    echo('
-                    <hr />
-                    <a class="dropdown-item" href="logout"><i class="fa fa-sign-out"></i> Cerrar sesión </a>
-                  </div>
+          <?php if($this->sessions->isLoggedIn()): ?>
+              <div class="dropdown navbar-text">
+                <a class="nav-link dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img src="<?= $this->sessions->connectedUser()['profilePicture'] ?>" class="rounded-circle img-fluid" style="height: 35px; width: 35px; margin-right: 2px;">
+                  <span class="navbar-text"><?= $this->sessions->connectedUser()['name'] ?></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <?php if(!$this->sessions->isGranted()): ?>
+                    <a class="dropdown-item" href="profiles/myprofile"><i class="fa fa-user"></i> Ver Perfil </a>
+                    <a class="dropdown-item" href="creditos/comprar"><i class="fa fa-credit-card-alt"></i> Créditos: <?= $this->sessions->connectedUser()['credits'] ?></a>
+                    <a class="dropdown-item"><i class="fa fa-star"></i> Puntos: <?= $this->sessions->connectedUser()['points'] ?></a>
+                  <?php endif; ?>
+                  <hr />
+                  <a class="dropdown-item" href="logout"><i class="fa fa-sign-out"></i> Cerrar sesión </a>
                 </div>
-                ');
-              } else {
-                echo ('
-                <div class="navbar-right">
-                  <ul class="navbar-nav mr-auto">
-                    <li><a class="dropdown-item" data-toggle="modal" data-target="#Login"><i class="fa fa-sign-in"></i>  Iniciar sesión </a></li>
-                    <li><a class="dropdown-item" data-toggle="modal" data-target="#Signup"><i class="fa fa-user-plus"></i>  Registrarse </a></li>
-                  </ul>
-                </div>
-                ');
-              }
-            ?>
+              </div>
+          <?php else: ?>
+              <div class="navbar-right">
+                <ul class="navbar-nav mr-auto">
+                  <li><a class="dropdown-item" data-toggle="modal" data-target="#Login"><i class="fa fa-sign-in"></i>  Iniciar sesión </a></li>
+                  <li><a class="dropdown-item" data-toggle="modal" data-target="#Signup"><i class="fa fa-user-plus"></i>  Registrarse </a></li>
+                </ul>
+              </div>
+          <?php endif; ?>
       </div>
     </div>
   </nav>

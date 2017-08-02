@@ -2,42 +2,44 @@
 <div class="" style="height: 75px;"></div>
 <!--/.Mask-->
 
-<?php
-  if (isset($_GET['error'])) {
-    echo '<div class="container pt-6 text-center wow fadeIn" data-wow-delay="0.2s">
+<?php if (isset($_GET['error'])): ?>
+    <div class="container pt-6 text-center wow fadeIn" data-wow-delay="0.2s">
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <p class="text-fluid"><strong>' . $_GET['error'] . '</strong></p>
-    </div></div>';
-  } else if (isset($_GET['success'])) {
-    echo '<div class="container pt-6 text-center wow fadeIn" data-wow-delay="0.2s">
+    <p class="text-fluid"><strong><?= $_GET['error'] ?>'</strong></p>
+    </div></div>
+<?php elseif (isset($_GET['success'])): ?>
+    <div class="container pt-6 text-center wow fadeIn" data-wow-delay="0.2s">
     <div class="alert alert-success alert-dismissible fade show" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <p class="text-fluid"><strong>' . $_GET['success'] . '</strong></p>
-    </div></div>';
-  }
+    <p class="text-fluid"><strong><?= $_GET['success'] ?></strong></p>
+    </div></div>
+<?php endif; ?>
 
+<?php
   $criteria = "<strong>Se filtraron las gauchadas que cumplen el siguiente criterio: </strong><br>";
   $criteria .= !(isset($_GET['search']) && !empty($_GET['search'])) ? '' : 'gauchadas que contienen la palabra clave <strong>' . $_GET['search'] . '</strong><br>';
   $criteria .= !(isset($_GET['category']) && is_numeric($_GET['category'])) ? '' : 'gauchadas pertenecientes a la categoría <strong>' . $this->models['categories']->get(intval($_GET['category']))[0]['name']. '</strong><br>';
   $criteria .= !(isset($_GET['state']) && !empty($_GET['state'])) ? '' : 'gauchadas de la provincia <strong>' . $_GET['state'] . '</strong><br>';
   $criteria .= !(isset($_GET['locality']) && !empty($_GET['locality'])) ? '' : 'gauchadas de la localidad <strong>' . $_GET['locality'] . '</strong><br>';
-
-  if ((isset($_GET['search']) || isset($_GET['category']) || isset($_GET['state']) || isset($_GET['locality']))) {
-    echo '<div class="container pt-6 text-center wow fadeIn" data-wow-delay="0.2s">
-    <div class="alert alert-warning fade show" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <p class="text-fluid">' . $criteria . '</p>
-    </div></div>';
-  }
-  if (isset($_GET['mode']) && !Func::emp($_GET['mode'])) {
-    echo '<div class="container pt-6 text-center wow fadeIn" data-wow-delay="0.2s">
-    <div class="alert alert-warning fade show" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <p class="text-fluid">Se ordenaron las gauchadas por cantidad de postulantes de forma <strong>' . (strtolower($_GET['mode']) == 'asc' ? 'ascendente' : 'descendente'). '</strong></p>
-    </div></div>';
-  }
 ?>
+
+<?php  if ((isset($_GET['search']) || isset($_GET['category']) || isset($_GET['state']) || isset($_GET['locality']))): ?>
+    <div class="container pt-6 text-center wow fadeIn" data-wow-delay="0.2s">
+    <div class="alert alert-warning fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <p class="text-fluid"><?= $criteria ?></p>
+    </div></div>
+<?php endif; ?>
+
+<?php if (isset($_GET['mode']) && !Func::emp($_GET['mode'])): ?>
+    <div class="container pt-6 text-center wow fadeIn" data-wow-delay="0.2s">
+    <div class="alert alert-warning fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <p class="text-fluid">Se ordenaron las gauchadas por cantidad de postulantes de forma <strong><?= (strtolower($_GET['mode']) == 'asc' ? 'ascendente' : 'descendente') ?>'</strong></p>
+    </div></div>
+
+<?php endif; ?>
 
 <!--Main layout-->
 <main class="container pt-6 text-center wow fadeInUp" style="margin-top: 25px;" data-wow-delay="0.3s">
@@ -48,22 +50,19 @@
     <div class="col-4">
 
     </div>
-    <?php
-      if($this->sessions->isLoggedIn() && !$this->sessions->isGranted()) {
-        echo ('
-          <div class="col-4 text-right">
-            <a href="?mode=DESC"><button type="button" class="btn btn-warning btn-circle btn-lg">
-              <i class="fa fa-arrow-down"></i>
-            </button></a>
-            <a href="?mode=ASC"><button type="button" class="btn btn-warning btn-circle btn-lg">
-              <i class="fa fa-arrow-up"></i>
-            </button></a>
-            <a  href="gauchadas/add"><button type="button" class="btn btn-warning btn-circle btn-lg">
-              <i class="fa fa-plus"></i>
-            </button></a>
-          </div>');
-      }
-    ?>
+    <?php if($this->sessions->isLoggedIn() && !$this->sessions->isGranted()): ?>
+      <div class="col-4 text-right">
+        <a href="?mode=DESC"><button type="button" class="btn btn-warning btn-circle btn-lg">
+          <i class="fa fa-arrow-down"></i>
+        </button></a>
+        <a href="?mode=ASC"><button type="button" class="btn btn-warning btn-circle btn-lg">
+          <i class="fa fa-arrow-up"></i>
+        </button></a>
+        <a  href="gauchadas/add"><button type="button" class="btn btn-warning btn-circle btn-lg">
+          <i class="fa fa-plus"></i>
+        </button></a>
+      </div>
+    <?php endif; ?>
   </div>
 </main>
 <!--/Main layout-->
@@ -80,7 +79,7 @@
   </ul>
   <div class="tab-content">
     <div class="tab-pane active wow fadeIn" id="listado" data-wow-delay="0.1s">
-      <?php $this->include('gauchadas/list'); ?>
+      <?php $this->include('gauchadas/list') ?>
     </div>
     <div class="tab-pane wow fadeIn" id="filtrado" data-wow-delay="0.1s">
       <?php
