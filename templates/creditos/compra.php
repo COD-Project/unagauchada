@@ -3,17 +3,16 @@
   <?php $this->render('overall/header'); ?>
 <body>
   <?php $this->render('overall/topnav'); ?>
-  <?php
-    if (isset($_GET['success'])) {
-        echo '<div class="container pt-6 text-center wow fadeIn" data-wow-delay="0.2s" style="margin-top: 100px;">
+  <?php if (isset($_GET['success'])): ?>
+    <div class="container pt-6 text-center wow fadeIn" data-wow-delay="0.2s" style="margin-top: 100px;">
       <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <p class="text-fluid"><strong>La operación fue realizada con éxito.</strong></p>
-      </div></div>';
-    } else {
-        echo '<div class="jumbotron" style="background-color: transparent;"></div>';
-    }
-  ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <p class="text-fluid"><strong>La operación fue realizada con éxito.</strong></p>
+      </div>
+    </div>
+  <?php else: ?>
+      <div class="jumbotron" style="background-color: transparent;"></div>
+  <?php endif; ?>
   <div class="container">
     <ul class="nav nav-pills nav-fill">
         <li class="nav-item">
@@ -46,7 +45,6 @@
         </div>
     </div>
   </div>
-
   <?php $this->render('overall/footer'); ?>
 </body>
 </html>
