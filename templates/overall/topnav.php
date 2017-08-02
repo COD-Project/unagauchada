@@ -25,6 +25,8 @@
                     <a class="dropdown-item" href="profiles/myprofile"><i class="fa fa-user"></i> Ver Perfil </a>
                     <a class="dropdown-item" href="credits/comprar"><i class="fa fa-credit-card-alt"></i> Créditos: <?= $this->sessions->connectedUser()['credits'] ?></a>
                     <a class="dropdown-item"><i class="fa fa-star"></i> Puntos: <?= $this->sessions->connectedUser()['points'] ?></a>
+                  <?php else: ?>
+                    <a class="dropdown-item" href="administration"><i class="fa fa-cogs"></i> Administración</a>
                   <?php endif; ?>
                   <hr />
                   <a class="dropdown-item" href="logout"><i class="fa fa-sign-out"></i> Cerrar sesión </a>
