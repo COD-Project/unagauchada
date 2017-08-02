@@ -3,8 +3,6 @@
   <?php $this->render('overall/header'); ?>
 <body>
   <?php $this->render('overall/topnav'); ?>
-  <datalist id="states"></datalist>
-  <datalist id="localities"></datalist>
   <div class="below-topnav"></div>
   <div class="container">
     <div class="cmd_form_container">
@@ -25,7 +23,7 @@
                 <?php if($this->categories != NULL): ?>
                   <option value=0 selected disabled> Seleccione una categoria </option>
                   <?php for($i = 0; $i < count($this->categories); $i++): ?>
-                    <option value=" . $this->categories[$i]['idCategory'] . ">" . $this->categories[$i]['name'] . "</option>
+                    <option value=<?= $this->categories[$i]['idCategory'] ?>><?= $this->categories[$i]['name'] ?></option>
                   <?php endfor; ?>
                 <?php else: ?>
                   <option value=blank selected disabled>No hay categorias</option>
@@ -33,10 +31,12 @@
               </select>
             </div>
           </div>
+          <datalist id="states"></datalist>
           <div class="cmd_input-group">
             <input list="states" type="text" id="state" name="state" value="<?= $this->gauchada["province"] ?>">
             <label class="cmd_label" for="state">Provincia</label>
           </div>
+          <datalist id="localities"></datalist>
           <div class="cmd_input-group">
             <input list="localities" type="text" id="locality" name="locality" value="<?= $this->gauchada["location"] ?>">
             <label class="cmd_label" for="locality">Localidad</label>
