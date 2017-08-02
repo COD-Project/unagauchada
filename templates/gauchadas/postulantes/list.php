@@ -29,7 +29,7 @@
                     </span>
                   </li>
                 <?php endif; ?>
-              <?php endfor; ?>
+              <?php endforeach; ?>
             </ul>
           <?php else: ?>
             <div class="col-12">
