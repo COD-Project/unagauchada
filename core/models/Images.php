@@ -57,7 +57,7 @@ class Images extends Models
               'tmp' => $this->images['tmp_name'][$i],
               'folder' => $this->folder
             ]);
-            if (!$this->nexus) {
+            if ($this->nexus) {
                 $this->db->insert($this->nexus['name'], [
                   $this->nexus['fk'] => $this->fk,
                   'idImage' => $id
