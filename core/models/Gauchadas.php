@@ -133,7 +133,7 @@ final class Gauchadas extends Models
 
     final protected function filter($options)
     {
-        $select = '*';
+        $select = 'g.*';
         $table = 'Gauchadas g LEFT JOIN Ratings r ON(g.idGauchada=r.idGauchada)';
         $criteria = 'ORDER BY g.idGauchada DESC';
         $where = 'DATEDIFF(CURDATE(), limitDate) <= 0 AND g.validate IS NULL AND r.idGauchada IS NULL';
