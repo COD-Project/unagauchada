@@ -83,6 +83,9 @@ final class Categories extends Models
     final protected function filter($options)
     {
         $where = !isset($options['name']) ? 'validate=0' : 'name="' . $options['name'] . '"';
+        if (isset($options['category'])) {
+          $where = "idCategory=" . $options['category'];
+        }
         return ([
           "elements" => "*",
           "table" => "Categories",

@@ -47,7 +47,7 @@ final class Gauchadas extends Models
                 $this->locality = $_POST['locality'] ?? null;
                 $this->limitDate = $_POST['limitDate'] ?? null;
                 $this->evaluation = $_POST['evaluation'] ?? null;
-                $this->idCategory = $_POST['idCategory'] ?? null;
+                $this->idCategory = $_POST['idCategory'] ?? $this->get()[$this->id]['idCategory'];
                 $this->user = (Sessions::getInstance())->connectedUser();
             }
         } catch (PDOException $e) {
