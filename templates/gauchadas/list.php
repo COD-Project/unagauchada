@@ -34,7 +34,7 @@
                         </div>
                         <div class="text-left col-2">
                         <?php if(($this->sessions->isLoggedIn() && $this->sessions->connectedUser()['idUser'] == $gauchada['user']['idUser'] && !$this->selected($gauchada['idGauchada'])) or $this->sessions->isGranted()): ?>
-                            <div class="d-flex flex-row-reverse" style="margin-top: 75%;">
+                            <div class="d-flex flex-row-reverse" style="margin-top: 10px;">
                               <a>
                                 <button type="button" class="btn btn-danger btn-circle" onclick="deleteItem('¿Realmente desea eliminar esa gauchada?', 'gauchadas/delete/<?= $gauchada['idGauchada'] ?>');">
                                   <i class="fa fa-trash"></i>
