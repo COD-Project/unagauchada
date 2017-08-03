@@ -63,6 +63,12 @@
               }
               $HTML .= '
                   </div>
+                  <hr/>
+                  <div class="row">
+                    <div class="col-12 text-center" style="margin-top: -17px;">
+                    <p style="color: gray;"><small>"' . $this->postulants[$i]['description'] . '"</small></p>
+                    </div>
+                  </div>
                 </div>
               </li>';
             }
