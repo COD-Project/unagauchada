@@ -10,8 +10,6 @@ En este archivo se disponen cada uno de los bugs que presenta el sistema, para r
 
 * Cuando un user quiere ver sus gauchadas y postulaciones, se rompe si alguna de las postulaciones corresponde a una gauchada eliminada (ver una vez arreglado el bug anterior).
 
-* Editar Categorias
-
 * Una vez postulado, voy al view de la gauchada y me aparece esto "Fuiste rechazado... Pero no te desmotives aquí hay más gauchadas", aún cuando no me han rechazado.
 
     * Sin embargo, me deja ponerle el poncho y el resto anda bien... Debe ser algún if mal puesto en el template view.
