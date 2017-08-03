@@ -44,17 +44,19 @@ class ProfilesController extends Controller
         $this->gauchadas = $this->models['gauchadas']
                                 ->get($where);
 
+        $this->rankings = $this->models['postulants']
+                                ->get([
+                                  "user" => $this->user['idUser'],
+                                  "selected" => "1",
+                                  "ranked" => true
+                                ]);
+                                
         $this->postulants = $this->models['postulants']
                                  ->get([
                                      "user" => $this->user['idUser'],
                                      "ranked" => false
                                    ]);
 
-        $this->rankings = $this->models['postulants']
-                                 ->get([
-                                    "user" => $this->user['idUser'],
-                                    "ranked" => true
-                                  ]);
     }
 
     protected function news()
