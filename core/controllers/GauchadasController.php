@@ -62,7 +62,8 @@ class GauchadasController extends Controller
         $this->setModels([
           "gauchadas",
           "postulants",
-          "users"
+          "users",
+          "categories"
         ]);
 
         $this->categories = (new Categories)->get();
@@ -96,6 +97,11 @@ class GauchadasController extends Controller
                                                    "gauchada" => $this->gauchada['idGauchada'],
                                                    "ranked" => true
                                                  ]) : null;
+
+        $this->category = $this->models['categories']
+                               ->get([
+                                 "category" => $this->gauchada['idCategory']
+                               ])[0];
     }
 
     private function debit()

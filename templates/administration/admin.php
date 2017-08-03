@@ -24,7 +24,7 @@
                   <a class="nav-link" href="logout"><i class="fa fa-sign-out"></i> Cerrar sesión </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link"  data-target="#about"><i class="fa fa-info-circle"></i> Acerca de </a>
+                  <a class="nav-link" data-toggle="modal" data-target="#about_us"><i class="fa fa-info-circle"></i> Acerca de </a>
                 </li>
             </ul>
         </div>
@@ -47,25 +47,39 @@
 
             <div class="col-md-9 col-lg-10 main">
 
-                <div class="row hidden-xs-down wow fadeInUp" style="margin-top: 20px;" data-wow-delay="0.1s">
+                <div class="row hidden-xs-down wow fadeInDown" data-wow-delay="0.1s" style="margin-top: 20px;">
                   <div class="col-2 text-right">
                     <img src="assets/app/img/gaucho-coral.png" class="img-fluid" style="max-width: 155px; opacity: 0.9;" alt="">
                   </div>
                   <div class="col-10 text-left">
                     <h1 class="display-2">
-                      Bienvenido, <?php echo $this->admin['name']; ?>
+                      Bienvenido, <?= $this->admin['name']; ?>
                     </h1>
                   </div>
                 </div>
-
-                <div style="height: 35px;"></div>
+                <br style="height: 35px;"/>
+                <?php if (isset($_GET['error'])): ?>
+                    <div class="pt-6 text-center wow fadeIn" data-wow-delay="0.2s">
+                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <p class="text-fluid"><strong><?= $_GET['error'] ?></strong></p>
+                      </div>
+                    </div>
+                <?php elseif (isset($_GET['success'])): ?>
+                    <div class="pt-6 text-center wow fadeIn" data-wow-delay="0.2s">
+                      <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <p class="text-fluid"><strong><?= $_GET['success'] ?></strong></p>
+                      </div>
+                    </div>
+                <?php endif; ?>
                 <?php $this->renderComponent(); ?>
             <!--/main col-->
             </div>
 
     </div>
     <!--/.container-->
-
+    <?php $this->include('administration/about'); ?>
     <?php $this->include('overall/footer'); ?>
   </body>
 </html>

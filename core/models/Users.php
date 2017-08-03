@@ -41,7 +41,8 @@ final class Users extends Models
             if (empty($_POST['email']) && empty($_POST['pass']) && empty($_POST['name']) && empty($_POST['surname']) && empty($_POST['birthdate']) && empty($_POST['phone']) && empty($_FILES['images'])) {
                 throw new PDOException("Error Processing Request");
             } else {
-                $this->id = (Sessions::getInstance())->connectedUser()['idUser'] ?? null;
+                $this->user = (Sessions::getInstance())->isLoggedIn() ? (Sessions::getInstance())->connectedUser() : null;
+                $this->id = $this->user ? $this->user['idUser'] : null;
                 $this->name = $_POST['name'] ?? null;
                 $this->surname = $_POST['surname'] ?? null;
                 $this->email = $_POST['email'] ?? null;
@@ -126,12 +127,13 @@ final class Users extends Models
 
     final protected function filter($options)
     {
-        $where = $options['user'] ? "idUser=" . $options['user'] : "1=1";
+        $where = isset($options['user']) ? "idUser=" . $options['user'] : "1=1";
+        $criteria = $options['ranking'] && $options['criteria'] ? "ORDER BY role, points " . $options['criteria'] . ", registrationDate LIMIT ". (abs($options['ranking']) + 1) : "ORDER BY role, registrationDate";
         return ([
           "elements" => "*",
           "table" => "Users",
           "where" => $where,
-          "criteria" => "ORDER BY role, registrationDate"
+          "criteria" => $criteria
         ]);
     }
 
@@ -144,14 +146,17 @@ final class Users extends Models
               'surname' => $data[$i]['surname'],
               'completeName' => $data[$i]['name'] . ' ' . $data[$i]['surname'],
               'birthdate' => $data[$i]['birthdate'],
-              'province' => explode(',', $data[$i]['location'])[0],
-              'location' => explode(',', $data[$i]['location'])[1],
+              'province' => $data[$i]['location'] ? explode(',', $data[$i]['location'])[0] : "",
+              'location' => $data[$i]['location'] ? explode(',', $data[$i]['location'])[1] : "",
               'entireLocation' => $data[$i]['location'],
               'phone' => $data[$i]['phone'],
               'email' => $data[$i]['email'],
               'state' => ($data[$i]['state'] == 1),
               'credits' => $data[$i]['credits'],
               'points' => $data[$i]['points'],
+              'reputation' => (new Reputations)->get([
+                'points' =>  $data[$i]['points']
+              ])[0]['name'],
               'registrationDate' => $data[$i]['registrationDate'],
               'role' => ($data[$i]['role'] == 1) ? 'admin' : 'user',
               'profilePicture' => ((new Images)->get(array(

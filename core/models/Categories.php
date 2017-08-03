@@ -29,7 +29,7 @@ final class Categories extends Models
     final private function errors($url)
     {
         try {
-            if (empty($this->router->getId()) && empty($_POST['name']) && empty($_POST['idCategory'])) {
+            if (empty($this->router->getId()) && empty($_POST['name'])) {
                 throw new PDOException("Error Processing Request", 1);
             } else {
                 $this->id = $this->router->getId();
@@ -42,7 +42,7 @@ final class Categories extends Models
 
     final public function add()
     {
-        $this->errors('categories?error=');
+        $this->errors('administration/settings?error=');
         if (!$this->get(array('name' => $this->name))) {
             $this->db->insert('Categories', [
               'name' => ucfirst(strtolower($this->name)),
@@ -53,14 +53,14 @@ final class Categories extends Models
             $this->db->update('Categories', ['validate' => 0], 'idCategory='.$this->get(['name' => $this->name])[0]['idCategory']);
             $params="success=Se creo la categoria exitosamente.";
         } else {
-            $params="error=Esa Categoria ya existe.";
+            $params="error=El nombre $this->name corresponde a una categoría ya existente.";
         }
-        Func::redirect(URL . "categories/main?$params");
+        Func::redirect(URL . "administration/settings?$params");
     }
 
     final public function edit()
     {
-        $this->errors('categories?error=');
+        $this->errors('administration/settings?error=');
         if (!$this->get(['name' => $this->name])) {
             $this->db->update('Categories', ['validate' => 1], 'idCategory='.$this->id);
             $this->db->insert('Categories', [
@@ -70,19 +70,22 @@ final class Categories extends Models
         } else {
             $params = "error=No se puede escribir el nombre de una categoria que ya existe.";
         }
-        Func::redirect(URL . "categories/main?" . $params);
+        Func::redirect(URL . "administration/settings?" . $params);
     }
 
     final public function delete()
     {
-        $this->errors('categories?error=');
+        $this->errors('administration/settings?error=');
         $this->db->update('Categories', ['validate' => 1], 'idCategory='.$this->id);
-        Func::redirect(URL . 'categories/main?success=Se elimino la categoria exitosamente.');
+        Func::redirect(URL . 'administration/settings?success=Se elimino la categoria exitosamente.');
     }
 
     final protected function filter($options)
     {
         $where = !isset($options['name']) ? 'validate=0' : 'name="' . $options['name'] . '"';
+        if (isset($options['category'])) {
+          $where = "idCategory=" . $options['category'];
+        }
         return ([
           "elements" => "*",
           "table" => "Categories",

@@ -7,9 +7,7 @@
     <div class="container">
       <div class="row m-y-2">
         <div class="col-lg-4 text-center" style="margin-bottom: 5vh;">
-          <?php
-            echo '<img src="' . $this->sessions->connectedUser()['profilePicture'] . '" class="rounded img-fluid cmd_zoomin"  style="max-height: 250px; width: auto; ">';
-          ?>
+          <img src="<?= $this->sessions->connectedUser()['profilePicture'] ?>" class="rounded img-fluid cmd_zoomin"  style="max-height: 250px; width: auto; ">
           <h6 class="m-t-2" style="margin-top: 2vh;"><strong>Cambia tu foto de perfil</strong></h6>
           <form class="form-inline" id="profile_picture_form" action="ajax.php?for=users&mode=edit" method="post" enctype="multipart/form-data">
             <label class="custom-file" style="margin: auto;">
@@ -37,24 +35,26 @@
             </li>
           </ul>
           <div class="tab-content p-b-3">
-            <div class="tab-pane wow fadeIn" id="califications" data-wow-delay="0.1s">
-              <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <p class="text-fluid"><strong>Ups! Esta historia corresponde a la siguiente demo.</strong></p>
-              </div>
+            <div class="tab-pane active wow fadeIn" id="profile" data-wow-delay="0.1s">
+              <?php $this->include('myprofile/user'); ?>
             </div>
-            <?php
-              $this->include('profiles/myprofile/user');
-              $this->include('profiles/myprofile/gauchadas');
-              $this->include('profiles/myprofile/postulations');
-              $this->include('profiles/myprofile/edit');
-            ?>
+            <div class="tab-pane wow fadeIn" id="gauchadas" data-wow-delay="0.1s">
+              <?php $this->include('myprofile/gauchadas'); ?>
+            </div>
+            <div class="tab-pane wow fadeIn" id="postulations" data-wow-delay="0.1s">
+              <?php $this->include('myprofile/postulations'); ?>
+            </div>
+            <div class="tab-pane wow fadeIn" id="califications" data-wow-delay="0.1s">
+              <?php $this->include('myprofile/califications'); ?>
+            </div>
+            <div class="tab-pane wow fadeIn" id="edit" data-wow-delay="0.1s">
+              <?php $this->include('myprofile/edit'); ?>
+            </div>
           </div>
         </div>
       </div>
       <hr>
     </div>
-
     <?php $this->include('overall/footer'); ?>
   </body>
 </html>

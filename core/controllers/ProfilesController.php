@@ -46,8 +46,15 @@ class ProfilesController extends Controller
 
         $this->postulants = $this->models['postulants']
                                  ->get([
-                                     "user" => $this->user['idUser']
+                                     "user" => $this->user['idUser'],
+                                     "ranked" => false
                                    ]);
+
+        $this->rankings = $this->models['postulants']
+                                 ->get([
+                                    "user" => $this->user['idUser'],
+                                    "ranked" => true
+                                  ]);
     }
 
     protected function news()
@@ -93,7 +100,6 @@ class ProfilesController extends Controller
     protected function selected($idGauchada)
     {
         $this->selected = $this->models["postulants"]->get([
-                            "user" => $this->router->getId(),
                             "gauchada" => $idGauchada,
                             "selected" => "1"
                           ]);

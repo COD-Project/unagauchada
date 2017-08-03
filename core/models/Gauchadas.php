@@ -47,7 +47,8 @@ final class Gauchadas extends Models
                 $this->locality = $_POST['locality'] ?? null;
                 $this->limitDate = $_POST['limitDate'] ?? null;
                 $this->evaluation = $_POST['evaluation'] ?? null;
-                $this->idCategory = $_POST['idCategory'] ?? null;
+                $this->idCategory = $_POST['idCategory'] ?? $this->get()[$this->id]['idCategory'];
+                $this->user = (Sessions::getInstance())->connectedUser();
             }
         } catch (PDOException $e) {
             Func::redirect(URL . $url . $e->getMessage());
@@ -57,7 +58,7 @@ final class Gauchadas extends Models
     final public function add()
     {
         $this->errors('gauchadas?error=');
-        $this->db->insert('Gauchadas', array(
+        $this->db->insert('Gauchadas', [
           'title' => $this->title,
           'body' => $this->body,
           'location' => $this->state . ", " .$this->locality,
@@ -65,18 +66,26 @@ final class Gauchadas extends Models
           'createdAt' => date('Y/m/d H:i:s', time()),
           'lastModified' => date('Y/m/d H:i:s', time()),
           'evaluation' => $this->evaluation,
-          'idUser' => (Sessions::getInstance())->connectedUser()['idUser'],
+          'idUser' => $this->user['idUser'],
           'idCategory' => $this->idCategory
-        ));
+        ]);
         if (isset($_FILES['images']) && Func::images($_FILES['images'])) {
             (new Images())->add();
         } else {
-            $this->db->insert('GauchadasImages', array(
-        'idGauchada' => $this->db->lastInsertId(),
-        'idImage' => 1
-      ));
+            $this->db->insert(
+              'GauchadasImages',
+              [
+                'idGauchada' => $this->db->lastInsertId(),
+                'idImage' => 1
+              ]
+            );
         }
-        $this->db->update('Users', array('credits' => (Sessions::getInstance())->connectedUser()['credits'] - 1), 'idUser='.(Sessions::getInstance())->connectedUser()['idUser'], 'LIMIT 1');
+        $this->db->update(
+          'Users',
+          ['credits' => $this->user['credits'] - 1],
+          'idUser='.$this->user['idUser'],
+          'LIMIT 1'
+        );
         Func::redirect(URL . '?success=¡Se creo la gauchada!');
     }
 
@@ -99,17 +108,23 @@ final class Gauchadas extends Models
 
     final public function delete()
     {
-        $this->Errors('gauchadas?errors=');
-        $this->db->update('Gauchadas', array(
-          'validate' => 1
-        ), "idGauchada=$this->id");
-        $this->db->update('Postulants', array(
-          'validate' => 1
-        ), "idGauchada=$this->id");
-        if (Postulants_aux($this->id) == false) {
-            $this->db->update('Users', array(
-              'credits' => (Sessions::getInstance())->connectedUser()['credits'] + 1
-            ), 'idUser='.(Sessions::getInstance())->connectedUser()['idUser']);
+        $this->errors('gauchadas?errors=');
+        $this->db->update(
+          'Gauchadas',
+          [ 'validate' => 1 ],
+          "idGauchada=$this->id"
+        );
+        $this->db->update(
+          'Postulants',
+          [ 'validate' => 1 ],
+          "idGauchada=$this->id"
+        );
+        if (!(new Postulants)->get(['gauchada' => $this->id])) {
+            $this->db->update(
+              'Users',
+              [ 'credits' => $this->user['credits'] + 1 ],
+              'idUser=' . $this->user['idUser']
+            );
             Func::redirect(URL . '?success=Gauchada eliminada con exito, se devolvio el credito invertido en la misma.');
         } else {
             Func::redirect(URL . '?success=Gauchada eliminada con exito, no se devolvio el credito invertido en la misma debido a que esta tenia usuarios postulados.');
@@ -118,10 +133,10 @@ final class Gauchadas extends Models
 
     final protected function filter($options)
     {
-        $select = '*';
-        $table = 'Gauchadas g';
+        $select = 'g.*';
+        $table = 'Gauchadas g LEFT JOIN Ratings r ON(g.idGauchada=r.idGauchada)';
         $criteria = 'ORDER BY g.idGauchada DESC';
-        $where = 'DATEDIFF(CURDATE(), limitDate) <= 0 AND g.validate IS NULL';
+        $where = 'DATEDIFF(CURDATE(), limitDate) <= 0 AND g.validate IS NULL AND r.idGauchada IS NULL';
         if (!isset($options['all'])) {
             foreach (OPTIONS['gauchadas']['filter'] as $key => $value) {
                 $where .= (array_key_exists($key, $_GET) && !Func::emp($_GET[$key])) || ($options && array_key_exists($key, $options) && !Func::emp($options[$key]))  ?
@@ -129,7 +144,7 @@ final class Gauchadas extends Models
             }
         }
         if (isset($_GET['mode'])) {
-            $select = 'g.idGauchada, g.idUser, g.title, g.body, g.location, g.limitDate, g.createdAt, g.evaluation, g.idCategory, COUNT(idPostulante) as "postulantes"';
+            $select = 'g.*, COUNT(idPostulante) as "postulantes"';
             $table .= ' LEFT JOIN Postulants p ON (g.idGauchada=p.idGauchada)';
             $criteria = 'GROUP BY g.idGauchada ORDER BY postulantes ' . $_GET['mode'] . ', g.idGauchada DESC, lastModified DESC';
         }
@@ -168,8 +183,6 @@ final class Gauchadas extends Models
         }
         return !$data ? null : $gauchadas;
     }
-
-
 
     final public function __destruct()
     {

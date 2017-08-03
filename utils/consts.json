@@ -55,11 +55,11 @@
         "content": "g.idUser="
       },
       "validate": {
-        "content": "validate=",
+        "content": "p.validate=",
         "default": "0"
       },
       "selected": {
-        "content": "selected=",
+        "content": "p.selected=",
         "default": "0"
       }
     }
@@ -107,6 +107,9 @@
     },
     "gauchadas": {
       "path": "gauchadas/list"
+    },
+    "users": {
+      "path": "users/users"
     }
   }
 }

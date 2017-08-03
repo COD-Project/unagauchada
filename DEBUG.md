@@ -7,9 +7,4 @@ En este archivo se disponen cada uno de los bugs que presenta el sistema, para r
 
 ### Listado
 
-* Sistema de postulantes.
-
-* Cuando un user quiere ver sus gauchadas y postulaciones, se rompe si alguna de las postulaciones corresponde a una gauchada eliminada (ver una vez arreglado el bug anterior).
-
-
-* Recordar cambiar tabla de compras, agregando una columna para la cantidad de créditos.
+FREE OF BUGS!

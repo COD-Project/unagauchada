@@ -81,7 +81,7 @@ final class Postulants extends Models
     {
         $where = "1=1";
         foreach (OPTIONS['postulants'] as $key => $value) {
-            if ($options && array_key_exists($key, $options)) {
+            if (($options && array_key_exists($key, $options)) or in_array($key, ['selected', 'validate'])) {
                 $where .= " AND " . $value['content'] . ($options[$key] ?? $value['default']);
             }
         }
@@ -91,7 +91,7 @@ final class Postulants extends Models
             $where .= " AND r.idRating " . ($options['ranked'] ? " IS NOT NULL" : "IS NULL");
         }
         return ([
-          "elements" => "*, p.idUser as idPostulant",
+          "elements" => "p.*, p.idUser as idPostulant" . (isset($options['ranked']) ? ", r.idRating" : ""),
           "table" => $table ,
           "where" => $where
         ]);

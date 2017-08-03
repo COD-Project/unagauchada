@@ -36,7 +36,7 @@ final class Purchases extends Models
                 throw new PDOException("La operación no fué realizada con éxito.", 1);
             }
             $this->count = $_POST["cantidad"] ?? null;
-            $this->mount = $this->count * (Credits::getInstance())->get()[0]['mount'];
+            $this->mount = $this->count * (Credits::getInstance())->get()[0]['monto'];
             $this->user = (Sessions::getInstance())->connectedUser();
             $this->date = $this->currentTime();
         } catch (PDOException $e) {
@@ -58,7 +58,7 @@ final class Purchases extends Models
     final public function filter($options)
     {
         $where = isset($_GET['min_date']) && isset($_GET['max_date']) ?
-                "date BETWEEN " . $_GET['min_date'] . " AND " . $_GET['min_date'] : "1=1";
+                "date BETWEEN '" . $_GET['min_date'] . "' AND '" . $_GET['max_date'] . "'" : "1=1";
         return ([
           "elements" => "*",
           "table" => "Purchases",

@@ -19,7 +19,8 @@ class HomeController extends Controller
     {
         $this->setModels([
           'gauchadas',
-          'categories'
+          'categories',
+          'postulants'
         ]);
 
         $this->gauchadas = $this->models['gauchadas']
@@ -27,5 +28,16 @@ class HomeController extends Controller
 
         $this->categories = $this->models['categories']
                                  ->get();
+
+    }
+
+    protected function selected($idGauchada)
+    {
+        $this->selected = $this->models["postulants"]->get([
+                            "gauchada" => $idGauchada,
+                            "selected" => "1",
+                            "validate" => "0"
+                          ]);
+        return $this->selected;
     }
 }
