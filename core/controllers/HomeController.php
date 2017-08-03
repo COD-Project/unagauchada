@@ -29,6 +29,11 @@ class HomeController extends Controller
         $this->categories = $this->models['categories']
                                  ->get();
 
+        $this->category = $this->models['categories']
+                               ->get([
+                                 "category" => $_GET['category'] ?? null
+                               ])[0];
+
     }
 
     protected function selected($idGauchada)
