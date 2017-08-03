@@ -39,7 +39,7 @@
     <div class="container pt-6 text-center wow fadeIn" data-wow-delay="0.2s">
       <div class="alert alert-warning fade show" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <p class="text-fluid">Se ordenaron las gauchadas por cantidad de postulantes de forma <strong><?= (strtolower($_GET['mode']) == 'asc' ? 'ascendente' : 'descendente') ?>'</strong></p>
+        <p class="text-fluid">Se ordenaron las gauchadas por cantidad de postulantes de forma <strong><?= (strtolower($_GET['mode']) == 'asc' ? 'ascendente' : 'descendente') ?></strong></p>
       </div>
     </div>
 <?php endif; ?>
@@ -55,13 +55,13 @@
     </div>
     <?php if($this->sessions->isLoggedIn() && !$this->sessions->isGranted()): ?>
       <div class="col-4 text-right">
-        <a href="?mode=DESC"><button type="button" class="btn btn-warning btn-circle btn-lg">
+        <a href="?mode=DESC"><button type="button" class="btn btn-warning btn-circle btn-lg" title="Ordenar gauchadas por cantidad de postulantes de forma descendente">
           <i class="fa fa-arrow-down"></i>
         </button></a>
-        <a href="?mode=ASC"><button type="button" class="btn btn-warning btn-circle btn-lg">
+        <a href="?mode=ASC"><button type="button" class="btn btn-warning btn-circle btn-lg" title="Ordenar gauchadas por cantidad de postulantes de forma ascendente">
           <i class="fa fa-arrow-up"></i>
         </button></a>
-        <a  href="gauchadas/add"><button type="button" class="btn btn-warning btn-circle btn-lg">
+        <a href="gauchadas/add"><button type="button" class="btn btn-warning btn-circle btn-lg" title="Agregar gauchada">
           <i class="fa fa-plus"></i>
         </button></a>
       </div>
@@ -74,31 +74,26 @@
   <hr class="extra-margins">
   <ul class="nav nav-pills nav-fill" style="margin-bottom: 5vh">
     <li class="nav-item">
-        <a href="" data-target="#listado" data-toggle="tab" class="nav-link active"><i class="fa fa-bars"></i></a>
+        <a href="" data-target="#listado" data-toggle="tab" class="nav-link active" title="Listado de gauchadas"><i class="fa fa-bars"></i></a>
     </li>
     <li class="nav-item">
-        <a href="" data-target="#filtrado" data-toggle="tab" class="nav-link"><i class="fa fa-search"></i></a>
+        <a href="" data-target="#filtrado" data-toggle="tab" class="nav-link" title="Filtrar gauchadas"><i class="fa fa-search"></i></a>
     </li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane active wow fadeIn" id="listado" data-wow-delay="0.1s">
-      <?php $this->include('gauchadas/list') ?>
+      <?php $this->include('gauchadas/list'); ?>
     </div>
     <div class="tab-pane wow fadeIn" id="filtrado" data-wow-delay="0.1s">
-      <?php
-        if ($this->sessions->isLoggedIn()) {
-          $this->include('index/filter');
-        } else {
-          echo "
-            <div class=\"card-block text-center\">
-              <h4 class=\"card-title\">Debes iniciar sesión para buscar y filtrar las gauchadas.</h4>
-              <p class=\"card-text\">Debes iniciar sesión para buscar y filtrar las gauchadas. Puedes iniciar sesión presionando el siguiente botón.</p>
-              <a class=\"btn btn-warning\" style=\"color: #fff;\" data-toggle=\"modal\" data-target=\"#Login\"><i class=\"fa fa-sign-in\"></i>  Iniciar sesión </a>
-            </div>
-          ";
-        }
-
-      ?>
+      <?php if ($this->sessions->isLoggedIn()):
+              $this->include('index/filter');
+            else: ?>
+              <div class="card-block text-center">
+                <h4 class="card-title">Debes iniciar sesión para buscar y filtrar las gauchadas.</h4>
+                <p class="card-text">Debes iniciar sesión para buscar y filtrar las gauchadas. Puedes iniciar sesión presionando el siguiente botón.</p>
+                <a class="btn btn-warning" style="color: #fff;" data-toggle="modal" data-target="#Login"><i class="fa fa-sign-in"></i>  Iniciar sesión </a>
+              </div>
+      <?php endif; ?>
     </div>
   </div>
 </div>
