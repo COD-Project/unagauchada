@@ -70,7 +70,7 @@
                     </div>
                   </div>
                 </div>
-              </li>';
+              </li><br>';
             }
             $HTML .= '</ul>';
           } else {
