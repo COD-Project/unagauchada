@@ -39,7 +39,7 @@
                     <i class="fa fa-shopping-bag fa-5x"></i>
                 </div>
                 <h6 class="text-uppercase">Compras</h6>
-                <h1 class="display-1">$ <?= count($this->purchases) ?></h1>
+                <h1 class="display-1"><?= count($this->purchases) ?></h1>
             </div>
         </div>
     </div>
@@ -66,8 +66,8 @@
                             <div class="rotate">
                                 <i class="fa fa-shopping-bag fa-5x"></i>
                             </div>
-                            <h6 class="text-uppercase">Compras</h6>
-                            <h1 class="display-1"><?= count($this->purchases) ?></h1>
+                            <h6 class="text-uppercase">Ganancia total</h6>
+                            <h1 class="display-1">$ <?= (int) $this->sum ?></h1>
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                                 <i class="fa fa-btc fa-5x"></i>
                             </div>
                             <h6 class="text-uppercase">Ganancia promedio</h6>
-                            <h1 class="display-1"><?= (int) $this->avg ?></h1>
+                            <h1 class="display-1">$ <?= (int) $this->avg ?></h1>
                         </div>
                     </div>
                 </div>
