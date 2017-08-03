@@ -22,12 +22,12 @@
                   <td><?= $reputation['min_bound'] ?></td>
                   <td>
                     <a href="administration/settings/<?= $reputation['idReputation'] ?>">
-                      <button type="button" class="btn btn-warning btn-circle">
+                      <button type="button" class="btn btn-warning btn-circle" title="Editar reputación">
                         <i class="fa fa-edit"></i>
                       </button>
                     </a>
                     <a>
-                      <button type="button" class="btn btn-danger btn-circle" onclick="deleteItem('¿Realmente desea eliminar la reputación?', 'reputations/delete/<?= $reputation['idReputation'] ?>');">
+                      <button type="button" class="btn btn-danger btn-circle" onclick="deleteItem('¿Realmente desea eliminar la reputación?', 'reputations/delete/<?= $reputation['idReputation'] ?>');" title="Eliminar reputación">
                         <i class="fa fa-trash"></i>
                       </button>
                     </a>

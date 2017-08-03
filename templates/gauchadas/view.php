@@ -93,10 +93,10 @@
           if(!$this->sessions->isGranted()) {
             if($this->user['idUser'] == $this->gauchada['user']['idUser']) {
               $HTML.= '<div class="col-2">
-                <a class="btn btn-warning rounded-circle option-button text-center" href="gauchadas/edit/' . $this->gauchada["idGauchada"] . '">
+                <a class="btn btn-warning rounded-circle option-button text-center" href="gauchadas/edit/' . $this->gauchada["idGauchada"] . '" title="Editar gauchada">
                   <i class="fa fa-edit"></i>
                 </a>
-                <a class="btn btn-warning rounded-circle option-button text-center" data-toggle="modal" data-target="#Postulants">
+                <a class="btn btn-warning rounded-circle option-button text-center" data-toggle="modal" data-target="#Postulants" title="Ver postulantes">
                   <i class="fa fa-users" style="color: #fff"></i>
                 </a>';
               if($this->selected && Ratings($this->router->getId())){

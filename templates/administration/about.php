@@ -23,6 +23,9 @@
           </div>
         </div>
       </div>
+      <div class="modal-footer">
+        <p style="color: gray;"><small>&copy; COD-Project - 2017</small></p>
+      </div>
     </div>
   </div>
 </div>

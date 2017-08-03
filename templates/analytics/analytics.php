@@ -16,7 +16,7 @@
                 <div class="rotate">
                     <i class="fa fa-list fa-4x"></i>
                 </div>
-                <h6 class="text-uppercase">Gauchadas</h6>
+                <h6 class="text-uppercase">Gauchadas activas</h6>
                 <h1 class="display-1"><?= count($this->gauchadas) ?></h1>
             </div>
         </div>
@@ -39,7 +39,7 @@
                     <i class="fa fa-shopping-bag fa-5x"></i>
                 </div>
                 <h6 class="text-uppercase">Compras</h6>
-                <h1 class="display-1"><?= count($this->purchases) ?></h1>
+                <h1 class="display-1">$ <?= count($this->purchases) ?></h1>
             </div>
         </div>
     </div>

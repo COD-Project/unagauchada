@@ -2,7 +2,7 @@
   <div class="form-group row">
       <label class="col-lg-3 col-form-label form-control-label">Precio</label>
       <div class="col-lg-9">
-          <input class="form-control" name="mount" type="number" value="<?= $this->credit['monto'] ?? 0 ?>">
+          <input class="form-control" name="mount" type="number" min="0" max="<?= PHP_INT_MAX ?>" value="<?= $this->credit['monto'] ?? 0 ?>">
       </div>
   </div>
   <div class="form-group row">
