@@ -4,10 +4,10 @@
       <h3>Categorías</h3>
     </div>
     <div class="col-md-9">
-      <h3>Agregar categoría</h3>
+      <h4>Agregar categoría</h4>
       <?php $this->include('categories/add'); ?>
       <br/>
-      <h3>Listado de categorías</h3>
+      <h4>Listado de categorías</h4>
       <?php $this->include('categories/list'); ?>
     </div>
   </div>
