@@ -41,7 +41,8 @@ final class Users extends Models
             if (empty($_POST['email']) && empty($_POST['pass']) && empty($_POST['name']) && empty($_POST['surname']) && empty($_POST['birthdate']) && empty($_POST['phone']) && empty($_FILES['images'])) {
                 throw new PDOException("Error Processing Request");
             } else {
-                $this->id = (Sessions::getInstance())->connectedUser()['idUser'] ?? null;
+                $this->user = (Sessions::getInstance())->isLoggedIn() ? (Sessions::getInstance())->connectedUser() : null;
+                $this->id = $this->user ? $this->user['idUser'] : null;
                 $this->name = $_POST['name'] ?? null;
                 $this->surname = $_POST['surname'] ?? null;
                 $this->email = $_POST['email'] ?? null;
@@ -145,8 +146,8 @@ final class Users extends Models
               'surname' => $data[$i]['surname'],
               'completeName' => $data[$i]['name'] . ' ' . $data[$i]['surname'],
               'birthdate' => $data[$i]['birthdate'],
-              'province' => explode(',', $data[$i]['location'])[0],
-              'location' => explode(',', $data[$i]['location'])[1],
+              'province' => $data[$i]['location'] ? explode(',', $data[$i]['location'])[0] : "",
+              'location' => $data[$i]['location'] ? explode(',', $data[$i]['location'])[1] : "",
               'entireLocation' => $data[$i]['location'],
               'phone' => $data[$i]['phone'],
               'email' => $data[$i]['email'],
