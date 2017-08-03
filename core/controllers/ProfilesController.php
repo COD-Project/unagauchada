@@ -49,6 +49,12 @@ class ProfilesController extends Controller
                                      "user" => $this->user['idUser'],
                                      "ranked" => false
                                    ]);
+
+        $this->rankings = $this->models['postulants']
+                                 ->get([
+                                    "user" => $this->user['idUser'],
+                                    "ranked" => true
+                                  ]);
     }
 
     protected function news()
