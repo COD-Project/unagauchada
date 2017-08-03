@@ -33,7 +33,7 @@
     <br>
     <div class="row">
     <?php array_walk($this->users, function($user) { ?>
-        <div class="col-4">
+        <div class="col-4" style="margin-bottom: 15px;">
             <div class="card">
                 <div class="card-block">
                     <div class="row">
