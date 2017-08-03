@@ -88,11 +88,11 @@ final class Postulants extends Models
         $table = "(Postulants p INNER JOIN Gauchadas g ON(p.idGauchada = g.idGauchada))";
         if (isset($options['ranked'])) {
             $table .= " LEFT JOIN Ratings r ON(p.idGauchada=r.idGauchada)";
-            $where .= " AND r.idRating " . ($options['ranked'] ? " IS NOT NULL" : "IS NULL");
+            $where .= " AND r.idGauchada " . ($options['ranked'] ? " IS NOT NULL" : "IS NULL");
         }
         return ([
           "elements" => "p.*, p.idUser as idPostulant" . (isset($options['ranked']) ? ", r.idRating" : ""),
-          "table" => $table ,
+          "table" => $table,
           "where" => $where
         ]);
     }
@@ -108,9 +108,9 @@ final class Postulants extends Models
               "completeName" => $user["completeName"],
               "description" => $data[$i]["description"],
               "email" => $user["email"],
-              "idRating" => $data[$i]["idRating"] ?? false,
+              "idRating" => $data[$i]["idRating"] ?? null,
               "profilePicture" => $user["profilePicture"],
-              "gauchada" => (new Gauchadas)->get()[$data[$i]["idGauchada"]]
+              "gauchada" => (new Gauchadas)->get()[$data[$i]["idGauchada"]] ?? null
             ];
         }
         return !$data ? null : $postulants;

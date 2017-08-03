@@ -22,16 +22,16 @@
               <hr>
               <br>
               <div class="list-group">
-                <?php if($this->postulants): ?>
-                  <?php foreach ($this->postulants as $postulant):
-                    $rating = Rating($postulant['idGauchada']);
-                    if($rating): ?>
+                <?php if($this->rankings): ?>
+                  <?php foreach ($this->rankings as $postulant):
+                    $data = Rating($postulant['idGauchada']);
+                    if($data): ?>
                       <a href="gauchadas/view/<?= $postulant['idGauchada'] ?>" class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
-                          <h5 class="mb-1"><strong><?= $rating['title'] ?></strong></h5>
-                          <h5><span class="badge badge-pill badge<?= $rating['color'] ?>"><?= $rating['rating'] ?></span></h5>
+                          <h5 class="mb-1"><strong><?= $data['title'] ?></strong></h5>
+                          <h5><span class="badge badge-pill badge<?= $data['color'] ?>"><?= $data['rating'] ?></span></h5>
                         </div>
-                        <p class="mb-1"><?= $rating['body'] ?></p>
+                        <p class="mb-1"><?= $data['body'] ?></p>
                       </a>
                     <?php endif; ?>
                   <?php endforeach; ?>
