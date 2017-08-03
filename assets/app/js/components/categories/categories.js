@@ -13,8 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
           var div_col_7 = li.children[2];
           div_col_7.innerHTML =
           `<form class="form-inline" action="${href}" method="post">
-            <input type="text" name="name" placeholder=${category_name} required>
-            <button type="submit" class="btn btn-primary rounded-circle"><i class="fa fa-arrow-right"></i></button>
+            <div class="row">
+              <div class="col-8">
+                <input type="text" style="width: 95%;" name="name" placeholder=${category_name} required>
+              </div>
+              <div class="col-4 text-left">
+                <button type="submit" class="btn btn-primary btn-circle"><i class="fa fa-arrow-right"></i></button>
+              </div>
+            </div>
           </form>`
         };
       }
