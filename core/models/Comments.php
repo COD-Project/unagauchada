@@ -51,8 +51,8 @@ final class Comments extends Models
         $this->errors('comments?error=');
         $data = [
           'body' => $this->body,
-          'createdAt' => $this->currentTime,
-          'lastModify' => $this->currentTime,
+          'createdAt' => $this->currentTime(),
+          'lastModify' => $this->currentTime(),
           'idGauchada' => $this->idGauchada,
           'idUser' => (Sessions::getInstance())->connectedUser()['idUser'],
         ];
