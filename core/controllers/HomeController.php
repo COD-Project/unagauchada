@@ -35,7 +35,8 @@ class HomeController extends Controller
     {
         $this->selected = $this->models["postulants"]->get([
                             "gauchada" => $idGauchada,
-                            "selected" => "1"
+                            "selected" => "1",
+                            "validate" => "0"
                           ]);
         return $this->selected;
     }
