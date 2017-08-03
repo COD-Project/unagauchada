@@ -134,9 +134,9 @@ final class Gauchadas extends Models
     final protected function filter($options)
     {
         $select = '*';
-        $table = 'Gauchadas g';
+        $table = 'Gauchadas g LEFT JOIN Ranking r ON(g.idGauchada=r.idGauchada)';
         $criteria = 'ORDER BY g.idGauchada DESC';
-        $where = 'DATEDIFF(CURDATE(), limitDate) <= 0 AND g.validate IS NULL';
+        $where = 'DATEDIFF(CURDATE(), limitDate) <= 0 AND g.validate IS NULL AND r.idGauchada IS NULL';
         if (!isset($options['all'])) {
             foreach (OPTIONS['gauchadas']['filter'] as $key => $value) {
                 $where .= (array_key_exists($key, $_GET) && !Func::emp($_GET[$key])) || ($options && array_key_exists($key, $options) && !Func::emp($options[$key]))  ?
