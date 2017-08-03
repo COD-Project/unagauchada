@@ -47,13 +47,15 @@ class ProfilesController extends Controller
         $this->postulants = $this->models['postulants']
                                  ->get([
                                      "user" => $this->user['idUser'],
-                                     "ranked" => false
+                                     "ranked" => false,
+                                     "validate" => 0
                                    ]);
 
         $this->rankings = $this->models['postulants']
                                  ->get([
                                     "user" => $this->user['idUser'],
-                                    "ranked" => true
+                                    "ranked" => true,
+                                    "validate" => 0
                                   ]);
     }
 
