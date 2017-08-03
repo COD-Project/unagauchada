@@ -91,7 +91,7 @@ final class Postulants extends Models
             $where .= " AND r.idRating " . ($options['ranked'] ? " IS NOT NULL" : "IS NULL");
         }
         return ([
-          "elements" => "p.*, r.idRating, p.idUser as idPostulant",
+          "elements" => "p.*, p.idUser as idPostulant" . (isset($options['ranked']) ? ", r.idRating" : ""),
           "table" => $table ,
           "where" => $where
         ]);
