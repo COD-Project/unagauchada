@@ -144,7 +144,7 @@ final class Gauchadas extends Models
             }
         }
         if (isset($_GET['mode'])) {
-            $select = 'g.idGauchada, g.idUser, g.title, g.body, g.location, g.limitDate, g.createdAt, g.evaluation, g.idCategory, COUNT(idPostulante) as "postulantes"';
+            $select = 'g.*, COUNT(idPostulante) as "postulantes"';
             $table .= ' LEFT JOIN Postulants p ON (g.idGauchada=p.idGauchada)';
             $criteria = 'GROUP BY g.idGauchada ORDER BY postulantes ' . $_GET['mode'] . ', g.idGauchada DESC, lastModified DESC';
         }
