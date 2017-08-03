@@ -23,11 +23,13 @@
                     </div>
                     <div class="col-4">
                       <div class="d-flex flex-row-reverse">
-                        <a href="gauchadas/delete/<?= $gauchada['idGauchada'] ?>">
-                          <button type="button" class="btn btn-danger btn-circle">
-                            <i class="fa fa-trash"></i>
-                          </button>
-                        </a>
+                        <?php if ($this->selected($gauchada['idGauchada'])): ?>
+                          <a>
+                            <button type="button" class="btn btn-danger btn-circle" onclick="deleteItem('¿Está seguro que desea eliminar esta gauchada?', 'gauchadas/delete/<?= $gauchada['idGauchada'] ?>');">
+                              <i class="fa fa-trash"></i>
+                            </button>
+                          </a>
+                        <?php endif; ?>
                       </div>
                     </div>
                   </div>
