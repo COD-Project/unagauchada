@@ -82,7 +82,7 @@ final class Postulants extends Models
         $where = "1=1";
         foreach (OPTIONS['postulants'] as $key => $value) {
             if ($options && array_key_exists($key, $options)) {
-                $where .= " AND " . $value['content'] . ($options[$key] ?? $value['default']);
+                $where .= " AND " . $value['content'] . ($value ?? $value['default']);
             }
         }
         $table = "(Postulants p INNER JOIN Gauchadas g ON(p.idGauchada = g.idGauchada))";
