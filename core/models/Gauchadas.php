@@ -101,6 +101,11 @@ final class Gauchadas extends Models
           'idCategory' => $this->idCategory
         ), "idGauchada=$this->id");
         if (isset($_FILES['images']) && Func::images($_FILES['images'])) {
+            $this->db->delete(
+              "GauchadasImages",
+              "idGauchada=$this->id",
+              ""
+            );
             (new Images())->add();
         }
         Func::redirect(URL . '?success=¡Se editó la gauchada correctamente!');
