@@ -100,7 +100,7 @@ class ProfilesController extends Controller
     protected function selected($idGauchada)
     {
         $this->selected = $this->models["postulants"]->get([
-                            "user" => $this->router->getId(),
+                            "user" => $this->user['idUser'],
                             "gauchada" => $idGauchada,
                             "selected" => "1"
                           ]);
