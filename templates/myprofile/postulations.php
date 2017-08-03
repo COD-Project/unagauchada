@@ -27,7 +27,7 @@
                 <!--/.Card content-->
             </div>
             <!--/.Card-->
-        </div>";
+        </div>
   <?php
         $i++;
       });
