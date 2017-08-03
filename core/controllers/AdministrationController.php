@@ -63,7 +63,7 @@ class AdministrationController extends Controller
             $this->mounts = array_map(function($purchase) {
                 return $purchase['mount'];
             }, $this->purchases);
-            
+
             $this->sum = array_sum($this->mounts);
             $this->avg = ($this->sum / count($this->mounts));
         }
