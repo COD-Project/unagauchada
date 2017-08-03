@@ -86,7 +86,7 @@
             </div>
             <div class="col-8">
               <h1 class="h1-responsive">'.$this->gauchada['title'] . '</h1>
-                <a href=profiles/profile/' . $this->gauchada['user']['idUser'] . '><h6 class="h6-responsive">'. $this->gauchada['user']['completeName'] . '</a> - ' . $this->gauchada['location'] . ' - ' . $this->gauchada['creationDate'] .'</h6>
+                <a href=profiles/profile/' . $this->gauchada['user']['idUser'] . '><h6 class="h6-responsive">'. $this->gauchada['user']['completeName'] . '</a> - ' . $this->gauchada['entireLocation'] . ' - ' . $this->gauchada['creationDate'] . ' - ' . $this->category['name'] . '</h6>
                 <hr>
                 <p class="text-fluid">' . $this->gauchada['body'] . '</p>
             </div>';
